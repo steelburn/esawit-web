@@ -1,0 +1,59 @@
+page-home .content-md {
+    background-color: #fcfcfc !important;
+}
+page-home .pgTitle {
+    margin-bottom: 10px;
+}
+page-home .hdIcon {
+    color: #c8c8c8;
+    font-size: 150px;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+page-home .cardBox:hover > .hd > .hdIcon {
+    font-size: 170px;
+    color: #f53d3d;
+    margin: 0px;
+}
+page-home .cardBox {
+    width: calc(20% - 20px);
+    float: left;
+    margin: 10px !important;
+    cursor: pointer;
+    box-shadow: none;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    min-height: 230px;
+}
+page-home .hd {
+    text-align: center;
+}
+page-home .cbTitle {
+    font-size: 22px;
+    text-align: center;
+    color: #aaa;
+    margin-top: -30px;
+}
+
+
+
+
+
+@media screen and (max-width: 480px) {
+
+    page-home .cardBox {
+        width: calc(50% - 20px);
+        min-height: 100px;
+    }
+    page-home .cardBox:hover > .hd > .hdIcon {
+        font-size: 60px;
+        margin-bottom: 20px;
+    }
+    page-home .hdIcon {
+        font-size: 60px;
+    }
+
+    page-home .cbTitle {
+        font-size: 15px;
+    }
+}
