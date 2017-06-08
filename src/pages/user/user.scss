@@ -1,3 +1,114 @@
-page-user {
+page-user .content-md {
+    background-color: #f6f6f6 !important;
+}
 
+page-user .pgTitle {
+    margin-bottom: 10px;
+}
+page-user .col1 {float: left;width: 10%;}
+page-user .col2 {float: left;width: 20%;}
+page-user .col3 {float: left;width: 30%;}
+page-user .col4 {float: left;width: 40%;}
+page-user .col5 {float: left;width: 50%;}
+page-user .col6 {float: left;width: 60%;}
+page-user .col7 {float: left;width: 70%;}
+page-user .col8 {float: left;width: 80%;}
+page-user .col9 {float: left;width: 90%;}
+page-user .col100 {float: left;width: 100%;}
+
+page-user .cb1 {width: calc(10% - 20px);float:left; margin:10px !important;}
+page-user .cb2 {width: calc(20% - 20px);float:left; margin:10px !important;}
+page-user .cb3 {width: calc(30% - 20px);float:left; margin:10px !important;}
+page-user .cb4 {width: calc(40% - 20px);float:left; margin:10px !important;}
+page-user .cb5 {width: calc(50% - 20px);float:left; margin:10px !important;}
+page-user .cb6 {width: calc(60% - 20px);float:left; margin:10px !important;}
+page-user .cb7 {width: calc(70% - 20px);float:left; margin:10px !important;}
+page-user .cb8 {width: calc(80% - 20px);float:left; margin:10px !important;}
+page-user .cb9 {width: calc(90% - 20px);float:left; margin:10px !important;}
+page-user .cb10 {width: calc(100% - 20px);float:left; margin:10px !important;}
+
+page-user .bgColor-black {background: #e4e4e4;}
+page-user .bgColor-lightblue {background: #a6bed2;}
+page-user .bgColor-red {background: #ff6b6b; color: #fff;}
+page-user .bgColor-purple {background: #9c27b0; color: #fff;}
+page-user .bgColor-green {background: #45b7af; color: #fff;}
+page-user .bgColor-grey {background: #9aa8b3;border-color:  #adadad;}
+page-user .bgColor-yellow {background: #f8cb00; color: #fff;}
+page-user .bgColor-blue {background: #65c3df; color: #fff;}
+
+page-user .fontColor-white {color: #fff !important;}
+page-user .fontColor-red {color: #ff6b6b !important;}
+page-user .fontColor-green {color: #45b7af !important;}
+page-user .fontColor-yellow {color: #f8cb00 !important;}
+
+page-user .fullHeight {height: 100%;}
+page-user .fullWidth {height: 100%;}
+
+page-user .posFixed {position: fixed;}
+page-user .posRelative {position: relative;}
+page-user .posAbsolute {position: absolute;}
+
+page-user .floatRight {float: right !important;}
+page-user .floatLeft {float: left !important;}
+
+page-user .leftZero {left: 0;}
+page-user .topZero {top: 0;}
+page-user .rightZero {right: 0;}
+page-user .bottomZero {bottom: 0;}
+
+page-user .headerColor-lightred {background: #fe8660 !important; border-color: #da572d !important; color: white !important;}
+page-user .headerColor-lightblue {background: #56bdde !important; border-color: #2583a0 !important; color: white !important;}
+page-user .headerColor-lightpurple {background: #c21fde !important; border-color: #7350af !important; color: white !important;}
+page-user .headerColor-lightgreen {background: #6dc9be !important; border-color: #2b9286 !important; color: white !important;}
+page-user .headerColor-green {background: #8bc34a !important; border-color: #4caf50 !important; color: white !important;}
+page-user .headerColor-white {background: #ffffff !important; border-color: #e8e8e8 !important; color: #a5a3a3 !important;}
+
+page-user .icTitle {border-bottom: 1px solid;margin-bottom: 10px;padding: 10px !important;}
+
+page-user .icHeaderIcon {height: 100%;padding: 10px;}
+
+page-user .icHeaderText {margin-left: 40px; font-size: 15px;}
+
+page-user .btnStyle1 {box-shadow: none;border: 1px solid;border-radius: 3px;font-size: 13px;}
+
+page-user .infoLabel {
+    width: 85px;
+    padding: 2px 0 2px 12px;
+    border-radius: 15px 0 0 15px;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+page-user .infoText {
+    margin-left: 84px;
+    border-left: 1px solid #d8d8d8;
+    padding-left: 10px;
+    padding-bottom: 15px;
+}
+
+page-user .editInput {
+    border-left: 2px solid #d16ae2 !important;
+    padding-left: 5px !important;
+    font-size: 14px !important;
+}
+
+page-user .tnUser {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50%;
+    min-width: 60px !important;
+    min-height: 60px !important;   
+}
+page-user .item-md ion-thumbnail {
+    min-width: 60px !important;
+    min-height: 60px !important;
+}
+page-user .tnUserRow {
+    border-bottom: 2px solid #efefef;
+}
+
+page-user .cardBox {
+    border-radius: 5px !important;
+    border: 1px solid #b1cbe0 !important;
+    box-shadow: none !important;
 }

@@ -1,3 +1,118 @@
 page-tenant {
 
 }
+page-tenant .content-md {
+    background-color: #f6f6f6 !important;
+}
+
+page-tenant .pgTitle {
+    margin-bottom: 10px;
+}
+page-tenant .col1 {float: left;width: 10%;}
+page-tenant .col2 {float: left;width: 20%;}
+page-tenant .col3 {float: left;width: 30%;}
+page-tenant .col4 {float: left;width: 40%;}
+page-tenant .col5 {float: left;width: 50%;}
+page-tenant .col6 {float: left;width: 60%;}
+page-tenant .col7 {float: left;width: 70%;}
+page-tenant .col8 {float: left;width: 80%;}
+page-tenant .col9 {float: left;width: 90%;}
+page-tenant .col100 {float: left;width: 100%;}
+
+page-tenant .cb1 {width: calc(10% - 20px);float:left; margin:10px !important;}
+page-tenant .cb2 {width: calc(20% - 20px);float:left; margin:10px !important;}
+page-tenant .cb3 {width: calc(30% - 20px);float:left; margin:10px !important;}
+page-tenant .cb4 {width: calc(40% - 20px);float:left; margin:10px !important;}
+page-tenant .cb5 {width: calc(50% - 20px);float:left; margin:10px !important;}
+page-tenant .cb6 {width: calc(60% - 20px);float:left; margin:10px !important;}
+page-tenant .cb7 {width: calc(70% - 20px);float:left; margin:10px !important;}
+page-tenant .cb8 {width: calc(80% - 20px);float:left; margin:10px !important;}
+page-tenant .cb9 {width: calc(90% - 20px);float:left; margin:10px !important;}
+page-tenant .cb10 {width: calc(100% - 20px);float:left; margin:10px !important;}
+
+page-tenant .bgColor-black {background: #e4e4e4;}
+page-tenant .bgColor-lightblue {background: #a6bed2;}
+page-tenant .bgColor-red {background: #ff6b6b; color: #fff;}
+page-tenant .bgColor-purple {background: #9c27b0; color: #fff;}
+page-tenant .bgColor-green {background: #45b7af; color: #fff;}
+page-tenant .bgColor-grey {background: #9aa8b3;border-color:  #adadad;}
+page-tenant .bgColor-yellow {background: #f8cb00; color: #fff;}
+page-tenant .bgColor-blue {background: #65c3df; color: #fff;}
+
+page-tenant .fontColor-white {color: #fff !important;}
+page-tenant .fontColor-red {color: #ff6b6b !important;}
+page-tenant .fontColor-green {color: #45b7af !important;}
+page-tenant .fontColor-yellow {color: #f8cb00 !important;}
+
+page-tenant .fullHeight {height: 100%;}
+page-tenant .fullWidth {height: 100%;}
+
+page-tenant .posFixed {position: fixed;}
+page-tenant .posRelative {position: relative;}
+page-tenant .posAbsolute {position: absolute;}
+
+page-tenant .floatRight {float: right !important;}
+page-tenant .floatLeft {float: left !important;}
+
+page-tenant .leftZero {left: 0;}
+page-tenant .topZero {top: 0;}
+page-tenant .rightZero {right: 0;}
+page-tenant .bottomZero {bottom: 0;}
+
+page-tenant .headerColor-lightred {background: #fe8660 !important; border-color: #da572d !important; color: white !important;}
+page-tenant .headerColor-lightblue {background: #56bdde !important; border-color: #2583a0 !important; color: white !important;}
+page-tenant .headerColor-lightpurple {background: #c21fde !important; border-color: #7350af !important; color: white !important;}
+page-tenant .headerColor-lightgreen {background: #6dc9be !important; border-color: #2b9286 !important; color: white !important;}
+page-tenant .headerColor-green {background: #8bc34a !important; border-color: #4caf50 !important; color: white !important;}
+page-tenant .headerColor-white {background: #ffffff !important; border-color: #e8e8e8 !important; color: #a5a3a3 !important;}
+
+page-tenant .icTitle {border-bottom: 1px solid;margin-bottom: 10px;padding: 10px !important;}
+
+page-tenant .icHeaderIcon {height: 100%;padding: 10px;}
+
+page-tenant .icHeaderText {margin-left: 40px; font-size: 15px;}
+
+page-tenant .btnStyle1 {box-shadow: none;border: 1px solid;border-radius: 3px;font-size: 13px;}
+
+page-tenant .infoLabel {
+    width: 85px;
+    padding: 2px 0 2px 12px;
+    border-radius: 15px 0 0 15px;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+page-tenant .infoText {
+    margin-left: 84px;
+    border-left: 1px solid #d8d8d8;
+    padding-left: 10px;
+    padding-bottom: 15px;
+}
+
+page-tenant .editInput {
+    border-left: 2px solid #d16ae2 !important;
+    padding-left: 5px !important;
+    font-size: 14px !important;
+}
+
+page-tenant .tnUser {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50%;
+    min-width: 60px !important;
+    min-height: 60px !important;   
+}
+page-tenant .item-md ion-thumbnail {
+    min-width: 60px !important;
+    min-height: 60px !important;
+}
+page-tenant .tnUserRow {
+    border-bottom: 2px solid #efefef;
+}
+
+page-tenant .cardBox {
+    border-radius: 5px !important;
+    border: 1px solid #b1cbe0 !important;
+    box-shadow: none !important;
+}
+

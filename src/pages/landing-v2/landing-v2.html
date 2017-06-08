@@ -4,15 +4,159 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+<!--
+  Generated template for the DriverInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
-  <ion-navbar color="danger">
+  <ion-navbar color="darkblue">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Landing Version 2</ion-title>
+    <ion-title>Driver Information</ion-title>
   </ion-navbar>
 </ion-header>
 
+
 <ion-content padding>
 
+  <!--left pane start-->
+  <div class="col2">
+
+    <ion-card class="cb10">
+      <ion-card-content >
+          Portlet Style 1
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="cb10 posRelative portletStyle1">
+      <ion-icon name="md-car" class="portletIconStyle1 posAbsolute leftZero topZero bgColor-red" item-start></ion-icon>
+      <div class="portletColStyle1">
+        <div class="portletHeaderStyle1 fontColor-red">Total Vehicles</div>
+        <div class="portletContentStyle2 fontColor-dark">198</div>
+        <div class="portletContentStyle1 fontColor-grey">15 March 2017</div>
+      </div>
+    </ion-card>
+
+    <ion-card class="cb10 posRelative portletStyle1">
+      <ion-icon name="md-car" class="portletIconStyle1 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
+      <div class="portletColStyle1">
+        <div class="portletHeaderStyle1 fontColor-green">Total Drivers</div>
+        <div class="portletContentStyle2 fontColor-dark">79</div>
+        <div class="portletContentStyle1 fontColor-grey">10 March 2017</div>
+      </div>
+    </ion-card>
+
+    <ion-card class="cb10 posRelative portletStyle1">
+      <ion-icon name="ios-person" class="portletIconStyle1 posAbsolute leftZero topZero bgColor-blue" item-start></ion-icon>
+      <div class="portletColStyle1">
+        <div class="portletHeaderStyle1 fontColor-blue">Total Users</div>
+        <div class="portletContentStyle2 fontColor-dark">104</div>
+        <div class="portletContentStyle1 fontColor-grey">02 April 2017</div>
+      </div>
+    </ion-card>
+
+    <ion-card class="cb10 posRelative portletStyle1">
+      <ion-icon name="ios-book" class="portletIconStyle1 posAbsolute leftZero topZero bgColor-yellow" item-start></ion-icon>
+      <div class="portletColStyle1">
+        <div class="portletHeaderStyle1 fontColor-yellow">Total Module</div>
+        <div class="portletContentStyle2 fontColor-dark">5</div>
+        <div class="portletContentStyle1 fontColor-grey">05 April 2017</div>
+      </div>
+    </ion-card>
+
+    <ion-card class="cb10 posRelative portletStyle1">
+      <ion-icon name="ios-book" class="portletIconStyle1 posAbsolute leftZero topZero bgColor-purple" item-start></ion-icon>
+      <div class="portletColStyle1">
+        <div class="portletHeaderStyle1 fontColor-purple">Total Sector</div>
+        <div class="portletContentStyle2 fontColor-dark">99</div>
+        <div class="portletContentStyle1 fontColor-grey">05 April 2017</div>
+      </div>
+    </ion-card>
+    
+  </div>
+  <!--left pane end-->
+
+  <!--user start-->
+  <div class="col2">
+
+    <ion-card class="cb10">
+      <ion-card-content >
+          Portlet Style 2
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="cb10">
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
+          Total Vehicles
+        </ion-card-header>
+      </ion-row>
+      <ion-card-content >
+        <div class="graphContentStyle2 fontColor-red">127</div>
+        <div class="graphContentStyle1 fontColor-grey">Updated on 13 March 2017</div>
+        <ion-item>
+            <canvas #vehicleDoughnutCanvas></canvas>
+        </ion-item>
+        <ion-item class="graphLabelStyle1 fontColor-grey">
+          Active
+          <ion-badge item-end class="bgColor-blue">109</ion-badge>
+        </ion-item>
+        <ion-item class="graphLabelStyle1 fontColor-grey">
+          Inactive
+          <ion-badge item-end class="bgColor-red">18</ion-badge>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+  <!--user end-->
+
+  <!--Vehicle start-->
+  <div class="col3">
+
+    <ion-card class="cb10">
+      <ion-card-content >
+          Graph Style
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="cb10">
+      <ion-card-content >
+ 
+        <ion-card>
+          <ion-card-header>
+            Bar Chart
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #barCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+    
+        <ion-card>
+          <ion-card-header>
+            Doughnut Chart
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #doughnutCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+    
+        <ion-card>
+          <ion-card-header>
+            Line Chart
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #lineCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <!--Vehicle end-->
+
 </ion-content>
+

@@ -23,7 +23,7 @@ import { VehiclePage } from '../pages/vehicle/vehicle';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LocationPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 

@@ -1,3 +1,118 @@
 page-sector {
 
 }
+page-sector .content-md {
+    background-color: #f6f6f6 !important;
+}
+
+page-sector .pgTitle {
+    margin-bottom: 10px;
+}
+page-sector .col1 {float: left;width: 10%;}
+page-sector .col2 {float: left;width: 20%;}
+page-sector .col3 {float: left;width: 30%;}
+page-sector .col4 {float: left;width: 40%;}
+page-sector .col5 {float: left;width: 50%;}
+page-sector .col6 {float: left;width: 60%;}
+page-sector .col7 {float: left;width: 70%;}
+page-sector .col8 {float: left;width: 80%;}
+page-sector .col9 {float: left;width: 90%;}
+page-sector .col100 {float: left;width: 100%;}
+
+page-sector .cb1 {width: calc(10% - 20px);float:left; margin:10px !important;}
+page-sector .cb2 {width: calc(20% - 20px);float:left; margin:10px !important;}
+page-sector .cb3 {width: calc(30% - 20px);float:left; margin:10px !important;}
+page-sector .cb4 {width: calc(40% - 20px);float:left; margin:10px !important;}
+page-sector .cb5 {width: calc(50% - 20px);float:left; margin:10px !important;}
+page-sector .cb6 {width: calc(60% - 20px);float:left; margin:10px !important;}
+page-sector .cb7 {width: calc(70% - 20px);float:left; margin:10px !important;}
+page-sector .cb8 {width: calc(80% - 20px);float:left; margin:10px !important;}
+page-sector .cb9 {width: calc(90% - 20px);float:left; margin:10px !important;}
+page-sector .cb10 {width: calc(100% - 20px);float:left; margin:10px !important;}
+
+page-sector .bgColor-black {background: #e4e4e4;}
+page-sector .bgColor-lightblue {background: #a6bed2;}
+page-sector .bgColor-red {background: #ff6b6b; color: #fff;}
+page-sector .bgColor-purple {background: #9c27b0; color: #fff;}
+page-sector .bgColor-green {background: #45b7af; color: #fff;}
+page-sector .bgColor-grey {background: #9aa8b3;border-color:  #adadad;}
+page-sector .bgColor-yellow {background: #f8cb00; color: #fff;}
+page-sector .bgColor-blue {background: #65c3df; color: #fff;}
+
+page-sector .fontColor-white {color: #fff !important;}
+page-sector .fontColor-red {color: #ff6b6b !important;}
+page-sector .fontColor-green {color: #45b7af !important;}
+page-sector .fontColor-yellow {color: #f8cb00 !important;}
+
+page-sector .fullHeight {height: 100%;}
+page-sector .fullWidth {height: 100%;}
+
+page-sector .posFixed {position: fixed;}
+page-sector .posRelative {position: relative;}
+page-sector .posAbsolute {position: absolute;}
+
+page-sector .floatRight {float: right !important;}
+page-sector .floatLeft {float: left !important;}
+
+page-sector .leftZero {left: 0;}
+page-sector .topZero {top: 0;}
+page-sector .rightZero {right: 0;}
+page-sector .bottomZero {bottom: 0;}
+
+page-sector .headerColor-lightred {background: #fe8660 !important; border-color: #da572d !important; color: white !important;}
+page-sector .headerColor-lightblue {background: #56bdde !important; border-color: #2583a0 !important; color: white !important;}
+page-sector .headerColor-lightpurple {background: #c21fde !important; border-color: #7350af !important; color: white !important;}
+page-sector .headerColor-lightgreen {background: #6dc9be !important; border-color: #2b9286 !important; color: white !important;}
+page-sector .headerColor-green {background: #8bc34a !important; border-color: #4caf50 !important; color: white !important;}
+page-sector .headerColor-white {background: #ffffff !important; border-color: #e8e8e8 !important; color: #a5a3a3 !important;}
+
+page-sector .icTitle {border-bottom: 1px solid;margin-bottom: 10px;padding: 10px !important;}
+
+page-sector .icHeaderIcon {height: 100%;padding: 10px;}
+
+page-sector .icHeaderText {margin-left: 40px; font-size: 15px;}
+
+page-sector .btnStyle1 {box-shadow: none;border: 1px solid;border-radius: 3px;font-size: 13px;}
+
+page-sector .infoLabel {
+    width: 85px;
+    padding: 2px 0 2px 12px;
+    border-radius: 15px 0 0 15px;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+page-sector .infoText {
+    margin-left: 84px;
+    border-left: 1px solid #d8d8d8;
+    padding-left: 10px;
+    padding-bottom: 15px;
+}
+
+page-sector .editInput {
+    border-left: 2px solid #d16ae2 !important;
+    padding-left: 5px !important;
+    font-size: 14px !important;
+}
+
+page-sector .tnUser {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50%;
+    min-width: 60px !important;
+    min-height: 60px !important;   
+}
+page-sector .item-md ion-thumbnail {
+    min-width: 60px !important;
+    min-height: 60px !important;
+}
+page-sector .tnUserRow {
+    border-bottom: 2px solid #efefef;
+}
+
+page-sector .cardBox {
+    border-radius: 5px !important;
+    border: 1px solid #b1cbe0 !important;
+    box-shadow: none !important;
+}
+
