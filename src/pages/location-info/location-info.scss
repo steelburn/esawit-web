@@ -2,7 +2,7 @@ page-location-info {
 
 }
 page-location-info .content-md {
-    background-color: #edf2f6 !important;
+    background-color: #f6f6f6 !important;
 }
 
 page-location-info .pgTitle {
@@ -30,10 +30,122 @@ page-location-info .cb8 {width: calc(80% - 20px);float:left; margin:10px !import
 page-location-info .cb9 {width: calc(90% - 20px);float:left; margin:10px !important;}
 page-location-info .cb10 {width: calc(100% - 20px);float:left; margin:10px !important;}
 
-page-location-info .fontColor-dark {color: #000 !important;}
-page-location-info .fontColor-light {color: #fff !important;}
-page-location-info .fontColor-blue {color: blue !important;}
+page-location-info .bgColor-black {background: #e4e4e4;}
+page-location-info .bgColor-lightblue {background: #a6bed2;}
+page-location-info .bgColor-red {background: #ff6b6b; color: #fff;}
+page-location-info .bgColor-purple {background: #9c27b0; color: #fff;}
+page-location-info .bgColor-green {background: #45b7af; color: #fff;}
+page-location-info .bgColor-grey {background: #9aa8b3;border-color:  #adadad;}
+page-location-info .bgColor-yellow {background: #f8cb00; color: #fff;}
+page-location-info .bgColor-blue {background: #65c3df; color: #fff;}
 
-page-location-info .headerColor-lightblue {background: #488aff !important; border-color: #0d57da !important; color: white !important;}
+page-location-info .fontColor-white {color: #fff !important;}
+page-location-info .fontColor-grey {color: #9c9b9b !important;}
+page-location-info .fontColor-dark {color: #717171 !important;}
+page-location-info .fontColor-red {color: #ff6b6b !important;}
+page-location-info .fontColor-green {color: #45b7af !important;}
+page-location-info .fontColor-yellow {color: #f8cb00 !important;}
+page-location-info .fontColor-blue {color: #65c3df !important;}
+page-location-info .fontColor-purple {color: #9c27b0 !important;}
 
-page-location-info .icTitle {border-bottom: 2px solid;margin-bottom: 10px;}
+page-location-info .fullHeight {height: 100%;}
+page-location-info .fullWidth {width: 100%;}
+
+page-location-info .posFixed {position: fixed;}
+page-location-info .posRelative {position: relative;}
+page-location-info .posAbsolute {position: absolute;}
+
+page-location-info .floatRight {float: right !important;}
+page-location-info .floatLeft {float: left !important;}
+
+page-location-info .leftZero {left: 0;}
+page-location-info .topZero {top: 0;}
+page-location-info .rightZero {right: 0;}
+page-location-info .bottomZero {bottom: 0;}
+
+page-location-info .headerColor-lightred {background: #fe8660 !important; border-color: #da572d !important; color: white !important;}
+page-location-info .headerColor-lightblue {background: #56bdde !important; border-color: #2583a0 !important; color: white !important;}
+page-location-info .headerColor-lightpurple {background: #c21fde !important; border-color: #7350af !important; color: white !important;}
+page-location-info .headerColor-lightgreen {background: #6dc9be !important; border-color: #2b9286 !important; color: white !important;}
+page-location-info .headerColor-green {background: #8bc34a !important; border-color: #4caf50 !important; color: white !important;}
+page-location-info .headerColor-white {background: #ffffff !important; border-color: #e8e8e8 !important; color: #a5a3a3 !important;}
+
+page-location-info .marginZero {margin: 0 !important;}
+page-location-info .paddingZero {padding: 0 !important;}
+
+page-location-info .icTitle {border-bottom: 1px solid;margin-bottom: 10px;padding: 10px !important;}
+
+page-location-info .icHeaderIcon {height: 100%;padding: 10px;}
+
+page-location-info .icHeaderText {margin-left: 40px; font-size: 15px;}
+
+page-location-info .btnStyle1 {box-shadow: none;border: 1px solid;border-radius: 3px;font-size: 13px;}
+
+page-location-info .portletStyle1{height: 70px;}
+page-location-info .portletColStyle1{margin-left: 65px;}
+page-location-info .portletIconStyle1 {height: 100%;padding: 16px 0;font-size: 35px;width: 65px;text-align: center;}
+page-location-info .portletHeaderStyle1 {font-size: 15px;padding: 8px 10px 0 10px;font-weight: 400;}
+page-location-info .portletContentStyle1 {font-size: 12px;padding: 0 10px;font-weight: 100;}
+page-location-info .portletContentStyle2 {font-size: 25px;padding: 0 10px;font-weight: 500;margin-top: -3px;margin-bottom: -2px;}
+
+page-location-info .graphLabelStyle1 {height: 25px !important; font-size: 15px !important;min-height: 0 !important;}
+page-location-info .graphHeaderStyleRed {border-top: 5px solid #ff6b6b;border-bottom: 1px solid #d6d6d6;}
+page-location-info .graphContentStyle1 {font-size: 12px;padding: 0 10px;font-weight: 100;text-align: center;}
+page-location-info .graphContentStyle2 {font-size: 35px;font-weight: 500;text-align: center;margin-bottom: -5px;margin-top: -10px;}
+
+page-location-info .percentBar {height: 8px;background: #eaeaea;border-radius: 5px;overflow: hidden;}
+page-location-info .percentBarValue {height: 8px;border-radius: 5px;}
+
+page-location-info .infoLabel {
+    width: 85px;
+    padding: 2px 0 2px 12px;
+    border-radius: 15px 0 0 15px;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+page-location-info .infoText {
+    margin-left: 84px;
+    border-left: 1px solid #d8d8d8;
+    padding-left: 10px;
+    padding-bottom: 15px;
+}
+
+page-location-info .editInput {
+    border-left: 2px solid #d16ae2 !important;
+    padding-left: 5px !important;
+    font-size: 14px !important;
+}
+
+page-location-info .tnUser {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50%;
+    min-width: 60px !important;
+    min-height: 60px !important;   
+}
+page-location-info .item-md ion-thumbnail {
+    min-width: 60px !important;
+    min-height: 60px !important;
+}
+
+page-location-info .tnUserRow {border-bottom: 2px solid #efefef;}
+
+page-location-info .hdIcon {color: #c8c8c8;font-size: 150px;margin: 10px;transition: all 0.3s ease;}
+
+page-location-info .cb1:hover > .hd > .hdIcon {font-size: 170px;color: #f53d3d;margin: 0px;}
+
+page-location-info .cardBox {
+    width: calc(20% - 20px);
+    float: left;
+    margin: 10px !important;
+    cursor: pointer;
+    box-shadow: none;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    min-height: 230px;
+}
+
+page-location-info .hd {text-align: center;}
+
+page-location-info .cbTitle {font-size: 22px;text-align: center;color: #aaa;margin-top: -30px;}

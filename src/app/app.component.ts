@@ -16,6 +16,7 @@ import { SectorPage } from '../pages/sector/sector';
 import { TenantPage } from '../pages/tenant/tenant';
 import { UserPage } from '../pages/user/user';
 import { VehiclePage } from '../pages/vehicle/vehicle';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,7 +24,7 @@ import { VehiclePage } from '../pages/vehicle/vehicle';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = TabsPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -44,7 +45,8 @@ export class MyApp {
       { title: 'Sector', component: SectorPage },
       { title: 'Tenant', component: TenantPage },
       { title: 'User', component: UserPage },
-      { title: 'Vehicle', component: VehiclePage }
+      { title: 'Vehicle', component: VehiclePage },
+      { title: 'Tabs', component: TabsPage }
     ];
 
   }

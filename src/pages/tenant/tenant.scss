@@ -40,12 +40,16 @@ page-tenant .bgColor-yellow {background: #f8cb00; color: #fff;}
 page-tenant .bgColor-blue {background: #65c3df; color: #fff;}
 
 page-tenant .fontColor-white {color: #fff !important;}
+page-tenant .fontColor-grey {color: #9c9b9b !important;}
+page-tenant .fontColor-dark {color: #717171 !important;}
 page-tenant .fontColor-red {color: #ff6b6b !important;}
 page-tenant .fontColor-green {color: #45b7af !important;}
 page-tenant .fontColor-yellow {color: #f8cb00 !important;}
+page-tenant .fontColor-blue {color: #65c3df !important;}
+page-tenant .fontColor-purple {color: #9c27b0 !important;}
 
 page-tenant .fullHeight {height: 100%;}
-page-tenant .fullWidth {height: 100%;}
+page-tenant .fullWidth {width: 100%;}
 
 page-tenant .posFixed {position: fixed;}
 page-tenant .posRelative {position: relative;}
@@ -66,6 +70,9 @@ page-tenant .headerColor-lightgreen {background: #6dc9be !important; border-colo
 page-tenant .headerColor-green {background: #8bc34a !important; border-color: #4caf50 !important; color: white !important;}
 page-tenant .headerColor-white {background: #ffffff !important; border-color: #e8e8e8 !important; color: #a5a3a3 !important;}
 
+page-tenant .marginZero {margin: 0 !important;}
+page-tenant .paddingZero {padding: 0 !important;}
+
 page-tenant .icTitle {border-bottom: 1px solid;margin-bottom: 10px;padding: 10px !important;}
 
 page-tenant .icHeaderIcon {height: 100%;padding: 10px;}
@@ -73,6 +80,21 @@ page-tenant .icHeaderIcon {height: 100%;padding: 10px;}
 page-tenant .icHeaderText {margin-left: 40px; font-size: 15px;}
 
 page-tenant .btnStyle1 {box-shadow: none;border: 1px solid;border-radius: 3px;font-size: 13px;}
+
+page-tenant .portletStyle1{height: 70px;}
+page-tenant .portletColStyle1{margin-left: 65px;}
+page-tenant .portletIconStyle1 {height: 100%;padding: 16px 0;font-size: 35px;width: 65px;text-align: center;}
+page-tenant .portletHeaderStyle1 {font-size: 15px;padding: 8px 10px 0 10px;font-weight: 400;}
+page-tenant .portletContentStyle1 {font-size: 12px;padding: 0 10px;font-weight: 100;}
+page-tenant .portletContentStyle2 {font-size: 25px;padding: 0 10px;font-weight: 500;margin-top: -3px;margin-bottom: -2px;}
+
+page-tenant .graphLabelStyle1 {height: 25px !important; font-size: 15px !important;min-height: 0 !important;}
+page-tenant .graphHeaderStyleRed {border-top: 5px solid #ff6b6b;border-bottom: 1px solid #d6d6d6;}
+page-tenant .graphContentStyle1 {font-size: 12px;padding: 0 10px;font-weight: 100;text-align: center;}
+page-tenant .graphContentStyle2 {font-size: 35px;font-weight: 500;text-align: center;margin-bottom: -5px;margin-top: -10px;}
+
+page-tenant .percentBar {height: 8px;background: #eaeaea;border-radius: 5px;overflow: hidden;}
+page-tenant .percentBarValue {height: 8px;border-radius: 5px;}
 
 page-tenant .infoLabel {
     width: 85px;
@@ -106,13 +128,24 @@ page-tenant .item-md ion-thumbnail {
     min-width: 60px !important;
     min-height: 60px !important;
 }
-page-tenant .tnUserRow {
-    border-bottom: 2px solid #efefef;
-}
+
+page-tenant .tnUserRow {border-bottom: 2px solid #efefef;}
+
+page-tenant .hdIcon {color: #c8c8c8;font-size: 150px;margin: 10px;transition: all 0.3s ease;}
+
+page-tenant .cb1:hover > .hd > .hdIcon {font-size: 170px;color: #f53d3d;margin: 0px;}
 
 page-tenant .cardBox {
-    border-radius: 5px !important;
-    border: 1px solid #b1cbe0 !important;
-    box-shadow: none !important;
+    width: calc(20% - 20px);
+    float: left;
+    margin: 10px !important;
+    cursor: pointer;
+    box-shadow: none;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    min-height: 230px;
 }
 
+page-tenant .hd {text-align: center;}
+
+page-tenant .cbTitle {font-size: 22px;text-align: center;color: #aaa;margin-top: -30px;}

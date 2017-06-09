@@ -16,6 +16,7 @@ import { SectorPage } from '../pages/sector/sector';
 import { TenantPage } from '../pages/tenant/tenant';
 import { UserPage } from '../pages/user/user';
 import { VehiclePage } from '../pages/vehicle/vehicle';
+import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -35,7 +36,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SectorPage,
     TenantPage,
     UserPage,
-    VehiclePage
+    VehiclePage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SectorPage,
     TenantPage,
     UserPage,
-    VehiclePage
+    VehiclePage,
+    TabsPage
   ],
   providers: [
     StatusBar,

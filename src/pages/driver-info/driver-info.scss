@@ -1,3 +1,6 @@
+page-driver-info {
+
+}
 page-driver-info .content-md {
     background-color: #f6f6f6 !important;
 }
@@ -46,7 +49,7 @@ page-driver-info .fontColor-blue {color: #65c3df !important;}
 page-driver-info .fontColor-purple {color: #9c27b0 !important;}
 
 page-driver-info .fullHeight {height: 100%;}
-page-driver-info .fullWidth {height: 100%;}
+page-driver-info .fullWidth {width: 100%;}
 
 page-driver-info .posFixed {position: fixed;}
 page-driver-info .posRelative {position: relative;}
@@ -67,6 +70,9 @@ page-driver-info .headerColor-lightgreen {background: #6dc9be !important; border
 page-driver-info .headerColor-green {background: #8bc34a !important; border-color: #4caf50 !important; color: white !important;}
 page-driver-info .headerColor-white {background: #ffffff !important; border-color: #e8e8e8 !important; color: #a5a3a3 !important;}
 
+page-driver-info .marginZero {margin: 0 !important;}
+page-driver-info .paddingZero {padding: 0 !important;}
+
 page-driver-info .icTitle {border-bottom: 1px solid;margin-bottom: 10px;padding: 10px !important;}
 
 page-driver-info .icHeaderIcon {height: 100%;padding: 10px;}
@@ -77,10 +83,18 @@ page-driver-info .btnStyle1 {box-shadow: none;border: 1px solid;border-radius: 3
 
 page-driver-info .portletStyle1{height: 70px;}
 page-driver-info .portletColStyle1{margin-left: 65px;}
-page-driver-info .portletIconStyle1 {height: 100%;padding: 20px 20px;font-size: 30px;}
+page-driver-info .portletIconStyle1 {height: 100%;padding: 16px 0;font-size: 35px;width: 65px;text-align: center;}
 page-driver-info .portletHeaderStyle1 {font-size: 15px;padding: 8px 10px 0 10px;font-weight: 400;}
 page-driver-info .portletContentStyle1 {font-size: 12px;padding: 0 10px;font-weight: 100;}
 page-driver-info .portletContentStyle2 {font-size: 25px;padding: 0 10px;font-weight: 500;margin-top: -3px;margin-bottom: -2px;}
+
+page-driver-info .graphLabelStyle1 {height: 25px !important; font-size: 15px !important;min-height: 0 !important;}
+page-driver-info .graphHeaderStyleRed {border-top: 5px solid #ff6b6b;border-bottom: 1px solid #d6d6d6;}
+page-driver-info .graphContentStyle1 {font-size: 12px;padding: 0 10px;font-weight: 100;text-align: center;}
+page-driver-info .graphContentStyle2 {font-size: 35px;font-weight: 500;text-align: center;margin-bottom: -5px;margin-top: -10px;}
+
+page-driver-info .percentBar {height: 8px;background: #eaeaea;border-radius: 5px;overflow: hidden;}
+page-driver-info .percentBarValue {height: 8px;border-radius: 5px;}
 
 page-driver-info .infoLabel {
     width: 85px;
@@ -114,12 +128,24 @@ page-driver-info .item-md ion-thumbnail {
     min-width: 60px !important;
     min-height: 60px !important;
 }
-page-driver-info .tnUserRow {
-    border-bottom: 2px solid #efefef;
-}
+
+page-driver-info .tnUserRow {border-bottom: 2px solid #efefef;}
+
+page-driver-info .hdIcon {color: #c8c8c8;font-size: 150px;margin: 10px;transition: all 0.3s ease;}
+
+page-driver-info .cb1:hover > .hd > .hdIcon {font-size: 170px;color: #f53d3d;margin: 0px;}
 
 page-driver-info .cardBox {
-    border-radius: 5px !important;
-    border: 1px solid #b1cbe0 !important;
-    box-shadow: none !important;
+    width: calc(20% - 20px);
+    float: left;
+    margin: 10px !important;
+    cursor: pointer;
+    box-shadow: none;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    min-height: 230px;
 }
+
+page-driver-info .hd {text-align: center;}
+
+page-driver-info .cbTitle {font-size: 22px;text-align: center;color: #aaa;margin-top: -30px;}

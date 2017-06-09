@@ -23,9 +23,41 @@
     <ion-icon name="md-car" class="portletIconStyle1 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
     <div class="portletColStyle1">
       <div class="portletHeaderStyle1 fontColor-green">Total Drivers</div>
-      <div class="portletContentStyle2 fontColor-dark">79</div>
+      <div class="portletContentStyle2 fontColor-dark">127</div>
       <div class="portletContentStyle1 fontColor-grey">10 March 2017</div>
     </div>
+  </ion-card>
+
+
+  <ion-card class="cb10">
+    <ion-row>
+      <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
+        Total Driver
+      </ion-card-header>
+    </ion-row>
+    <ion-card-content >
+      <div class="graphContentStyle2 fontColor-green">127</div>
+      <div class="graphContentStyle1 fontColor-grey">Updated on 13 March 2017</div>
+      <ion-item>
+          <canvas #driverDoughnutCanvas></canvas>
+      </ion-item>
+      <ion-item class="graphLabelStyle1 fontColor-grey">
+        Permanent
+        <ion-badge item-end class="bgColor-blue">75</ion-badge>
+      </ion-item>
+      <ion-item class="graphLabelStyle1 fontColor-grey">
+        Temporary
+        <ion-badge item-end class="bgColor-red">27</ion-badge>
+      </ion-item>
+      <ion-item class="graphLabelStyle1 fontColor-grey">
+        Probation
+        <ion-badge item-end class="bgColor-yellow">5</ion-badge>
+      </ion-item>
+      <ion-item class="graphLabelStyle1 fontColor-grey">
+        Contract
+        <ion-badge item-end class="bgColor-green">19</ion-badge>
+      </ion-item>
+    </ion-card-content>
   </ion-card>
 
   <!--<ion-card>
@@ -48,7 +80,7 @@
     </ion-card-content>
   </ion-card>-->
 
-  <ion-card class="cb10">
+  <!--<ion-card class="cb10">
     <ion-card-header class="icTitle headerColor-white posRelative">
       <ion-icon name="ios-options-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon> 
       <div class="icHeaderText">Filter</div>
@@ -71,7 +103,7 @@
     <ion-card-content >
       <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Filter</button>
     </ion-card-content>
-  </ion-card>
+  </ion-card>-->
 
   <ion-card class="cb10">
     <ion-card-content >
@@ -86,6 +118,9 @@
 <div class="col5">
 
   <ion-card class="cb10">
+    <ion-row>
+      <ion-searchbar class="bgColor-grey"></ion-searchbar>
+    </ion-row>
     <ion-card-content >
 
       <ion-list>
@@ -212,10 +247,6 @@
 
 <!--Profile start-->
 <div class="col3">
-
-  <ion-card class="cb10">
-    <ion-searchbar class="bgColor-grey"></ion-searchbar>
-  </ion-card>
 
   <ion-card class="cb10">
 

@@ -13,14 +13,13 @@
   </ion-navbar>
 </ion-header>
 
-
-<ion-content padding>
+<ion-content padding class="posRelative">
 
 <!--form start-->
-<div class="col2">
+  <div class="col2">
 
     <ion-card class="cb10 posRelative portletStyle1">
-      <ion-icon name="ios-book" class="portletIconStyle1 posAbsolute leftZero topZero bgColor-purple" item-start></ion-icon>
+      <ion-icon name="ios-pin" class="portletIconStyle1 posAbsolute leftZero topZero bgColor-purple" item-start></ion-icon>
       <div class="portletColStyle1">
         <div class="portletHeaderStyle1 fontColor-purple">Total Location</div>
         <div class="portletContentStyle2 fontColor-dark">99</div>
@@ -28,25 +27,100 @@
       </div>
     </ion-card>
 
+</div>
+<!--form end-->
+
+<!--listing start-->
+<div class="col5">
+
   <ion-card class="cb10">
-    <ion-card-header class="icTitle headerColor-white posRelative">
-      <ion-icon name="ios-search" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon> 
-      <div class="icHeaderText">Search Location</div>
-    </ion-card-header>
-    <ion-list>
-      <ion-item>
-        <ion-input type="text"  placeholder="Location"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input type="text" placeholder="State"></ion-input>
-      </ion-item>
-    </ion-list>
-
+    <ion-row>
+      <ion-searchbar class="bgColor-grey"></ion-searchbar>
+    </ion-row>
     <ion-card-content >
-      <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Search</button>
+
+      <ion-list>
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark" >Putrajaya, Kuala Lumpur</ion-label>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark" >Cyberjaya, Selangor</ion-label>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark" >Raub, Pahang</ion-label>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark" >Kuala Nerus, Terengganu</ion-label>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark" >Dungun, Terengganu</ion-label>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark" >Putrajaya, Kuala Lumpur</ion-label>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark" >Cyberjaya, Selangor</ion-label>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark" >Raub, Pahang</ion-label>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark" >Kuala Nerus, Terengganu</ion-label>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark" >Dungun, Terengganu</ion-label>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+      </ion-list>
+
     </ion-card-content>
+
   </ion-card>
+
+</div>
+<!--listing end-->
+
+
+<!--form start-->
+<div class="col3">
 
   <ion-card class="cb10">
     <ion-card-header class="icTitle headerColor-white posRelative">
@@ -89,60 +163,7 @@
       <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Register</button>
     </ion-card-content>
   </ion-card>
-
 </div>
 <!--form end-->
-
-<!--listing start-->
-<div class="col8">
-
-  <ion-card class="cb10">
-    <ion-card-content >
-
-      <ion-list>
-        <ion-item class="tnUserRow">
-          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark" >Putrajaya, Kuala Lumpur</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark" >Cyberjaya, Selangor</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark" >Raub, Pahang</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark" >Kuala Nerus, Terengganu</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark" >Dungun, Terengganu</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-      </ion-list>
-
-    </ion-card-content>
-
-  </ion-card>
-
-</div>
-<!--listing end-->
-
 </ion-content>
 

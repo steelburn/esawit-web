@@ -20,10 +20,10 @@ export class LandingV2Page {
   @ViewChild('lineCanvas') lineCanvas;
   @ViewChild('vehicleDoughnutCanvas') vehicleDoughnutCanvas;
  
-    barChart: any;
-    doughnutChart: any;
-    lineChart: any;
-    vehicleDoughnutChart: any;
+  barChart: any;
+  doughnutChart: any;
+  lineChart: any;
+  vehicleDoughnutChart: any;
  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
