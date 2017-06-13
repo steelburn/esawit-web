@@ -24,7 +24,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = TabsPage;
+  rootPage: any = LandingV1Page;
 
   pages: Array<{title: string, component: any}>;
 
@@ -35,7 +35,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Landing V1', component: LandingV1Page },
-      { title: 'Landing V2', component: LandingV2Page },
+      { title: 'Component Demo', component: LandingV2Page },
       { title: 'Driver', component: DriverPage },
       { title: 'DriverInfo', component: DriverInfoPage },
       { title: 'Location', component: LocationPage },
