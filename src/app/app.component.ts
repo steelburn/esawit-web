@@ -18,6 +18,9 @@ import { UserPage } from '../pages/user/user';
 import { VehiclePage } from '../pages/vehicle/vehicle';
 import { TabsPage } from '../pages/tabs/tabs';
 
+import { ReportsPage } from '../pages/reports/reports';
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -28,12 +31,14 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen)
+   {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
+      {title: 'Report', component: ReportsPage},
       { title: 'Landing V1', component: LandingV1Page },
       { title: 'Component Demo', component: LandingV2Page },
       { title: 'Driver', component: DriverPage },

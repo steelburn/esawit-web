@@ -14,26 +14,48 @@
     </ion-avatar>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
+
   <div class="col2">
     <ion-card>
       <ion-row>
         <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
-          Harvested
+
+          Harvested<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+          
+
         </ion-card-header>
       </ion-row>
       <ion-item class="bgColor-lightGrey">
         <ion-label>Location</ion-label>
         <ion-label class="textRight" item-end>bunches</ion-label>
       </ion-item>
-      <ion-list>
-        <ion-item *ngFor="let item of items">
-          <ion-badge class="bgColor-white fontColor-grey" item-start>1</ion-badge>
-          <ion-label>putrajaya</ion-label>
-          <ion-badge item-end class="bgColor-purple">652</ion-badge>
-        </ion-item>
-      </ion-list>
+      <ion-item *ngFor="let harvestreport of harvestreports |  slice:0:2">
+        <!--<ion-badge class="bgColor-green" item-start>1</ion-badge>-->
+        <ion-label>{{harvestreport.name}},{{harvestreport.created_ts|date:"dd/MM/yy"}}</ion-label>
+        <ion-badge item-end class="bgColor-purple">{{harvestreport.bunch_count}}</ion-badge>
+      </ion-item>
+      <!--<ion-item>
+        <ion-badge class="bgColor-green" item-start>2</ion-badge>
+        <ion-label>Cyberjaya</ion-label>
+        <ion-badge item-end class="bgColor-purple">123</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-badge class="bgColor-green" item-start>3</ion-badge>
+        <ion-label>Behrang</ion-label>
+        <ion-badge item-end class="bgColor-purple">552</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-badge class="bgColor-green" item-start>4</ion-badge>
+        <ion-label>kuala Kubu bharu</ion-label>
+        <ion-badge item-end class="bgColor-purple">123</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-badge class="bgColor-green" item-start>5</ion-badge>
+        <ion-label>Port Dickson</ion-label>
+        <ion-badge item-end class="bgColor-purple">552</ion-badge>
+      </ion-item>-->
+
 
       <ion-item >
         <button ion-button class="bgColor-grey fontColor-white btnStyle1">View All</button>
@@ -53,14 +75,37 @@
             <ion-label class="textRight" item-end>Lorry</ion-label>
             <ion-label class="textRight" item-end>Bunches</ion-label>
           </ion-item>
-          <ion-list>
-            <ion-item *ngFor="let item of items">
-              <ion-badge class="bgColor-white fontColor-grey" item-start>1</ion-badge>
-              <ion-label item-start>Kumar</ion-label>
-              <ion-label item-end>BNF1234</ion-label>
-              <ion-badge item-end class="bgColor-yellow">652</ion-badge>
-            </ion-item>
-          </ion-list>
+          <ion-item *ngFor="let mandorreport of mandorreports |  slice:0:9">
+            <!--<ion-badge class="bgColor-red" item-start>1</ion-badge>-->
+            <ion-label item-start>{{mandorreport.mandor}}</ion-label>
+            <ion-label item-end>{{mandorreport.lorry}}</ion-label>
+            <ion-badge item-end class="bgColor-yellow">{{mandorreport.bunch_count}}</ion-badge>
+          </ion-item>
+          <!--<ion-item>
+            <ion-badge class="bgColor-red" item-start>2</ion-badge>
+            <ion-label item-start>Firdaus</ion-label>
+            <ion-label item-end>BNF1234</ion-label>
+            <ion-badge item-end class="bgColor-yellow">123</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-badge class="bgColor-red" item-start>3</ion-badge>
+            <ion-label item-start>Bala</ion-label>
+            <ion-label item-end>BNF1234</ion-label>
+            <ion-badge item-end class="bgColor-yellow">552</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-badge class="bgColor-red" item-start>4</ion-badge>
+            <ion-label item-start>Khairul</ion-label>
+            <ion-label item-end>BNF1234</ion-label>
+            <ion-badge item-end class="bgColor-yellow">123</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-badge class="bgColor-red" item-start>5</ion-badge>
+            <ion-label item-start>Allan</ion-label>
+            <ion-label item-end>BNF1234</ion-label>
+            <ion-badge item-end class="bgColor-yellow">552</ion-badge>
+          </ion-item>-->
+
 
         <ion-item >
           <button ion-button class="bgColor-grey fontColor-white btnStyle1">View All</button>
@@ -81,16 +126,36 @@
             <ion-label class="textRight" item-end>Location</ion-label>
             <ion-label class="textRight" item-end>Bunches</ion-label>
           </ion-item>
-          
-          <ion-list>
-            <ion-item *ngFor="let item of items">
-              <ion-badge class="bgColor-white fontColor-grey" item-start>1</ion-badge>
-              <ion-label item-start>Kumar</ion-label>
-              <ion-label item-end>BNF1234</ion-label>
-              <ion-badge item-end class="bgColor-yellow">652</ion-badge>
-            </ion-item>
-          </ion-list>
-
+          <ion-item *ngFor="let factoryreport of factoryreports |  slice:0:9">
+            <!--<ion-badge class="bgColor-red" item-start>1</ion-badge>-->
+            <ion-label item-start>{{factoryreport.lorry}}</ion-label>
+            <ion-label item-end>{{factoryreport.location}}</ion-label>
+            <ion-badge item-end class="bgColor-yellow">{{factoryreport.bunch_count}}</ion-badge>
+          </ion-item>
+          <!--<ion-item>
+            <ion-badge class="bgColor-red" item-start>2</ion-badge>
+            <ion-label item-start>Firdaus</ion-label>
+            <ion-label item-end>BNF1234</ion-label>
+            <ion-badge item-end class="bgColor-yellow">123</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-badge class="bgColor-red" item-start>3</ion-badge>
+            <ion-label item-start>Bala</ion-label>
+            <ion-label item-end>BNF1234</ion-label>
+            <ion-badge item-end class="bgColor-yellow">552</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-badge class="bgColor-red" item-start>4</ion-badge>
+            <ion-label item-start>Khairul</ion-label>
+            <ion-label item-end>BNF1234</ion-label>
+            <ion-badge item-end class="bgColor-yellow">123</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-badge class="bgColor-red" item-start>5</ion-badge>
+            <ion-label item-start>Allan</ion-label>
+            <ion-label item-end>BNF1234</ion-label>
+            <ion-badge item-end class="bgColor-yellow">552</ion-badge>
+          </ion-item>-->
       </ion-card>
     </div>
 

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams,LoadingController  } from 'ionic-angular';
 import { ReportService } from '../../services/reportservice';
 
 import {BaseHttpService} from '../../services/base-http';
@@ -14,23 +13,23 @@ import 'rxjs/add/operator/catch';
 import {Observable} from 'rxjs/Observable';
 import { FormControl } from '@angular/forms';
 
-
 class ServerResponse {
 	constructor(public resource: any) {
 	}
 };
+
 /**
- * Generated class for the LandingV1Page page.
+ * Generated class for the ReportsPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
 @IonicPage()
 @Component({
-  selector: 'page-landing-v1',
-  templateUrl: 'landing-v1.html',providers: [ReportService,BaseHttpService]
+  selector: 'page-reports-list',
+  templateUrl: 'reports.html',providers: [ReportService,BaseHttpService]
 })
-export class LandingV1Page {
+export class ReportsPage {
   public harvestreports: Harvestreport[] = [];   
   searchTerm: string = ''; searchControl: FormControl;items: any;
 
@@ -53,7 +52,6 @@ baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitd
 
     this.getList();  this.getMandorList();this.getFactoryList();
     this.presentLoading();
-
   }
 
 presentLoading() 
@@ -173,4 +171,3 @@ GetHarvestReport(): Observable<Harvestreport>
     }
 
 }
-
