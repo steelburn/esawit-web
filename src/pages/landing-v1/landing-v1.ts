@@ -53,6 +53,7 @@ baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitd
 
     this.getList();  this.getMandorList();this.getFactoryList();
     this.presentLoading();
+
   }
 
 presentLoading() 

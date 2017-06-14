@@ -1,6 +1,21 @@
 page-landing-v2 {
 
 }
+
+.logoSize {width: 120px;}
+
+.menuButton {    
+    border-bottom: 1px solid #dedede !important;
+    font-size: 13px !important;
+    font-weight: 100 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    }
+    
+.menuButton:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
 .content-md {
     background-color: #f6f6f6 !important;
 }
@@ -30,6 +45,8 @@ page-landing-v2 {
 .cb9 {width: calc(90% - 20px);float:left; margin:10px !important;}
 .cb10 {width: calc(100% - 20px);float:left; margin:10px !important;}
 
+
+.bgColor-white {background: #fff;}
 .bgColor-lightGrey {background: #f6f6f6;}
 .bgColor-lightblue {background: #a6bed2;}
 .bgColor-red {background: #ff6b6b; color: #fff;}
@@ -38,6 +55,7 @@ page-landing-v2 {
 .bgColor-grey {background: #9aa8b3;border-color:  #adadad;}
 .bgColor-yellow {background: #f8cb00; color: #fff;}
 .bgColor-blue {background: #65c3df; color: #fff;}
+.bgColor-darkBlue {background: #31333c; color: #fff;}
 
 .fontColor-white {color: #fff !important;}
 .fontColor-grey {color: #9c9b9b !important;}

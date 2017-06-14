@@ -27,7 +27,7 @@ import { ReportsPage } from '../pages/reports/reports';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = TabsPage;
+  rootPage: any = DriverPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -40,7 +40,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       {title: 'Report', component: ReportsPage},
       { title: 'Landing V1', component: LandingV1Page },
-      { title: 'Landing V2', component: LandingV2Page },
+      { title: 'Component Demo', component: LandingV2Page },
       { title: 'Driver', component: DriverPage },
       { title: 'DriverInfo', component: DriverInfoPage },
       { title: 'Location', component: LocationPage },
