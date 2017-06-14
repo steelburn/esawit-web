@@ -88,8 +88,11 @@ getList()
                 self.drivers = drivers
                 console.log(self.drivers);
             });
+        // this.DriverEditform.setValue
+        // ({
+        //     fullname:this.drivers.filter(x=> x.fullname === "fullname")[0]
+        // });
 
-            
 }
 
 Edit(driver_GUID)
