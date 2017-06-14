@@ -33,8 +33,8 @@ export class DriverInfoPage {
       this.GenerateToken();
       this.Driverform = fb.group({
       
+      //fullname: ['', Validators.compose([Validators.maxLength(10),Validators.minLength(5), Validators.pattern('[a-zA-Z ]*'), Validators.required])],        
       driver_GUID:[ UUID.UUID()],
-      //fullname: ['', Validators.compose([Validators.maxLength(10),Validators.minLength(5), Validators.pattern('[a-zA-Z ]*'), Validators.required])],     
       fullname:'',
       identification_type: '',
       identification_no:'',
@@ -44,7 +44,6 @@ export class DriverInfoPage {
       phone_no:'',
       email:'',
       license_no:'',
-      start_year:'',
       employment_type:'',
       description:'',
       active:'',
