@@ -131,6 +131,7 @@ setFilteredItems()
 
 filterItems(searchTerm)
 {
+  alert(searchTerm);
    if(searchTerm!='')
    {
         return this.harvestreports.filter((harvestreport) => 
@@ -140,7 +141,7 @@ filterItems(searchTerm)
    } 
    else
    {
-     this.GetHarvestReport();
+     alert('hh');
    }
 }
 

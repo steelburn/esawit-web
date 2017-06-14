@@ -18,9 +18,14 @@ import { FormControlDirective, FormBuilder, Validators, FormGroup,FormControl } 
 })
 export class DriverPage {
 
+searchTerm: string = '';
+searchControl: FormControl;
+    items: any;
+
 DriverEditform: FormGroup;
 driver: Driver=new Driver();
 public drivers: Driver[] = [];   
+public filter_drivers= [];   
 
   @ViewChild('barCanvas') barCanvas;
   @ViewChild('doughnutCanvas') doughnutCanvas;
@@ -35,6 +40,7 @@ public drivers: Driver[] = [];
   constructor(private fb: FormBuilder,private driverservice: DriverService,
    private httpService: BaseHttpService,public navCtrl: NavController, public navParams: NavParams) 
   {
+      this.searchControl = new FormControl();
     this.GenerateToken();
     this.DriverEditform = fb.group
     ({
@@ -77,6 +83,42 @@ Updateinfo()
         }
 }
 
+
+setFilteredItems() 
+{
+        
+        this.drivers = this.filterItems(this.searchTerm);
+        var last_element =this.drivers[0];
+                console.log(last_element);
+                this.driver.driver_GUID = last_element.driver_GUID;
+                this.driver.tenant_GUID = last_element.tenant_GUID;
+                this.driver.fullname = last_element.fullname;
+                this.driver.email = last_element.email;
+                this.driver.phone_no = last_element.phone_no;
+                this.driver.identification_no = last_element.identification_no;
+                this.driver.license_no = last_element.license_no;
+                this.driver.employment_type = last_element.employment_type;
+ 
+}
+
+ filterItems(searchTerm)
+ {       
+  if(searchTerm!='')
+  {
+        return this.drivers.filter((driver) => 
+        {
+            return driver.fullname.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+        });      
+  }
+  else
+  {
+      console.log(this.drivers);
+      console.log(this.filter_drivers);
+      this.drivers=this.filter_drivers;
+      return this.drivers;
+  }
+ }
+
 getList() 
 {
         let self = this;
@@ -86,8 +128,24 @@ getList()
             .subscribe((drivers: Driver[]) => 
             {
                 self.drivers = drivers
+                this.filter_drivers = drivers;
                 console.log(self.drivers);
+
+                var last_element =drivers[0];
+                console.log(last_element);
+                this.driver.driver_GUID = last_element.driver_GUID;
+                this.driver.tenant_GUID = last_element.tenant_GUID;
+                this.driver.fullname = last_element.fullname;
+                this.driver.email = last_element.email;
+                this.driver.phone_no = last_element.phone_no;
+                this.driver.identification_no = last_element.identification_no;
+                this.driver.license_no = last_element.license_no;
+                this.driver.employment_type = last_element.employment_type;
+
             });
+           
+           
+
         // this.DriverEditform.setValue
         // ({
         //     fullname:this.drivers.filter(x=> x.fullname === "fullname")[0]
