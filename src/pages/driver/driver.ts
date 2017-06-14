@@ -1,21 +1,16 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild,Inject } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
-import {  FormBuilder, Validators, FormGroup } from '@angular/forms'; 
 
 import { DriverService } from '../../services/driverservice2';
 import {BaseHttpService} from '../../services/base-http';
 import {Http, Headers,RequestOptions, URLSearchParams} from '@angular/http';
 import { Driver } from '../../models/driver';
+import { FormControlDirective, FormBuilder, Validators, FormGroup,FormControl } from '@angular/forms';
 
 
 
-/**
- * Generated class for the DriverPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
 @IonicPage()
 @Component({
   selector: 'page-driver',
@@ -23,6 +18,8 @@ import { Driver } from '../../models/driver';
 })
 export class DriverPage {
 
+DriverEditform: FormGroup;
+driver: Driver=new Driver();
 public drivers: Driver[] = [];   
 
   @ViewChild('barCanvas') barCanvas;
@@ -35,26 +32,78 @@ public drivers: Driver[] = [];
   lineChart: any;
   driverDoughnutChart: any;
 
-  constructor(private driverservice: DriverService,public navCtrl: NavController, public navParams: NavParams) 
+  constructor(private fb: FormBuilder,private driverservice: DriverService,
+   private httpService: BaseHttpService,public navCtrl: NavController, public navParams: NavParams) 
   {
+    this.GenerateToken();
+    this.DriverEditform = fb.group
+    ({
+      
+      fullname:'',
+      driver_GUID:'',
+      tenant_GUID:'',
+      address1:'',
+      address2:'',
+      address3:'',
+      phone_no:'',
+      employment_type:''
+     
+    });
 
     this.getList();
-
-
   }
+
+
+private storeToken(data){localStorage.setItem('session_token', data.session_token);}
+private GenerateToken() 
+{ 
+  var queryHeaders = new Headers();
+  queryHeaders.append('Content-Type', 'application/json');
+  let options = new RequestOptions({ headers: queryHeaders });
+  this.httpService.http.post('http://api.zen.com.my/api/v2/user/session', '{"email":"sampath415@gmail.com","password":"sampath415"}',options)
+  .subscribe((data) => {this.storeToken(data.json());}, (error) => {console.log('error', JSON.parse(error._body).error.message);
+                });
+}
+
+Updateinfo()
+{
+    alert(JSON.stringify(this.DriverEditform.value));
+    console.log(this.driver.driver_GUID);
+    if (this.DriverEditform.valid) 
+        { 
+          var self = this;     
+          this.driverservice.Update(this.driver)
+                .subscribe((response) => {console.log(response.status) })
+        }
+}
+
 getList() 
 {
         let self = this;
         let params: URLSearchParams = new URLSearchParams();
         //params.set('order', 'last_name+ASC');
         self.driverservice.query(params)
-            .subscribe((drivers: Driver[]) => {
+            .subscribe((drivers: Driver[]) => 
+            {
                 self.drivers = drivers
                 console.log(self.drivers);
             });
+
+            
 }
 
+Edit(driver_GUID)
+{
+   var self = this;
+   this.driverservice.get(driver_GUID).subscribe((driver) => self.driver = driver);
+   //console.log(self);
+    // this.DriverEditform.setValue
+    // ({
+    //     fullname:'KUMARRR'
 
+
+    // });
+}
 remove(driver_GUID) 
 {
     alert(driver_GUID);
@@ -66,7 +115,7 @@ remove(driver_GUID)
                     return item.driver_GUID != driver_GUID
                 });
             });
-    }
+}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DriverPage');

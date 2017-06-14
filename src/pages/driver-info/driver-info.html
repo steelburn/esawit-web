@@ -88,6 +88,17 @@
             </ion-item>
 
             <ion-item>
+              <ion-label class="fontColor-green" stacked>Employment Type</ion-label>
+              <ion-select formControlName="employment_type" [(ngModel)]="driver.employment_type" class="editInput" interface="popover" placeholder="Please select identification type">
+                <ion-option value="0">N/A</ion-option>
+                <ion-option value="1">Permanent</ion-option>
+                <ion-option value="2">Probation</ion-option>
+                <ion-option value="3">Contract</ion-option>
+                <ion-option value="4">Temporary</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
               <ion-label class="fontColor-green" stacked>Description</ion-label>
               <ion-textarea type="text" formControlName="description"   class="editInput" placeholder="Description are ptional"></ion-textarea>
             </ion-item>

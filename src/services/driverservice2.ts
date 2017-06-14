@@ -51,6 +51,19 @@ export class DriverService
 			}).catch(this.handleError);
 	};
 	
+	get (id: string, params?: URLSearchParams): Observable<Driver> {
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.get(this.baseResourceUrl + '/' + id, { search: params ,headers: queryHeaders})
+			.map((response) => {
+				var result: any = response.json();
+				let driver: Driver = Driver.fromJson(result);
+				return driver;
+			}).catch(this.handleError);
+	};
 
 	save (master_driver: Driver): Observable<any> 
 	{
@@ -66,6 +79,26 @@ export class DriverService
 					return response;
 				});
 		
+	}
+
+	Update (driver: Driver) 
+	{
+		console.log(localStorage.getItem('session_token'));
+		console.log(driver.toJson(true));
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+    	
+    	let options = new RequestOptions({ headers: queryHeaders });
+
+		// if (driver.driver_GUID) 
+		// {
+			return this.httpService.http.patch(this.baseResourceUrl , driver.toJson(true),options)
+			.map((data) => {
+				return data;
+			});
+		// } 
 	}
 
 	remove (id: string) {
