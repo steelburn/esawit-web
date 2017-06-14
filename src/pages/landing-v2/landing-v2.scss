@@ -30,7 +30,7 @@ page-landing-v2 {
 .cb9 {width: calc(90% - 20px);float:left; margin:10px !important;}
 .cb10 {width: calc(100% - 20px);float:left; margin:10px !important;}
 
-.bgColor-black {background: #e4e4e4;}
+.bgColor-lightGrey {background: #f6f6f6;}
 .bgColor-lightblue {background: #a6bed2;}
 .bgColor-red {background: #ff6b6b; color: #fff;}
 .bgColor-purple {background: #9c27b0; color: #fff;}
@@ -57,6 +57,9 @@ page-landing-v2 {
 
 .floatRight {float: right !important;}
 .floatLeft {float: left !important;}
+
+.textLeft {text-align: left;}
+.textRight {text-align: right;}
 
 .leftZero {left: 0;}
 .topZero {top: 0;}

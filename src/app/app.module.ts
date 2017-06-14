@@ -23,7 +23,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { ReportsPage } from '../pages/reports/reports';
 import { HttpModule } from '@angular/http';
-
+//import { NgModule }      from '@angular/core';
+//import { FormsModule }   from '@angular/forms';
 
 
 @NgModule({
