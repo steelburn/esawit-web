@@ -124,122 +124,21 @@
       <ion-searchbar class="bgColor-grey"></ion-searchbar>
     </ion-row>
     <ion-card-content >
-
       <ion-list>
-        <ion-item class="tnUserRow">
+        <ion-item *ngFor="let driver of drivers" class="tnUserRow">
           <ion-icon name="ios-checkmark-circle" item-start class="fontColor-green"></ion-icon>
           <ion-thumbnail item-start>
             <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
           </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
+          <h2>{{driver.fullname}}</h2>
           <p>
             <ion-icon name="ios-card"></ion-icon> 900108-11-2235
           </p>
           <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
           <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon name="ios-checkmark-circle" item-start class="fontColor-green"></ion-icon>
-          <ion-thumbnail item-start>
-            <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
-          <p>
-            <ion-icon name="ios-card"></ion-icon> 900108-11-2235
-          </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon name="ios-close-circle" item-start class="fontColor-red"></ion-icon>
-          <ion-thumbnail item-start>
-            <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
-          <p>
-            <ion-icon name="ios-card"></ion-icon> 900108-11-2235
-          </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon name="ios-checkmark-circle" item-start class="fontColor-green"></ion-icon>
-          <ion-thumbnail item-start>
-            <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
-          <p>
-            <ion-icon name="ios-card"></ion-icon> 900108-11-2235
-          </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon name="ios-close-circle" item-start class="fontColor-red"></ion-icon>
-          <ion-thumbnail item-start>
-            <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
-          <p>
-            <ion-icon name="ios-card"></ion-icon> 900108-11-2235
-          </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon name="ios-close-circle" item-start class="fontColor-red"></ion-icon>
-          <ion-thumbnail item-start>
-            <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
-          <p>
-            <ion-icon name="ios-card"></ion-icon> 900108-11-2235
-          </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon name="ios-close-circle" item-start class="fontColor-red"></ion-icon>
-          <ion-thumbnail item-start>
-            <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
-          <p>
-            <ion-icon name="ios-card"></ion-icon> 900108-11-2235
-          </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon name="ios-close-circle" item-start class="fontColor-red"></ion-icon>
-          <ion-thumbnail item-start>
-            <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
-          <p>
-            <ion-icon name="ios-card"></ion-icon> 900108-11-2235
-          </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red" (click)="remove(driver.driver_GUID)"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>       
       </ion-list>
-
     </ion-card-content>
 
   </ion-card>
@@ -248,10 +147,9 @@
 <!--listing end-->
 
 <!--Profile start-->
-<div class="col3">
+<!--<div class="col3">
 
   <ion-card class="cb10">
-
     <ion-item>
       <ion-avatar item-start>
         <img src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
@@ -343,7 +241,7 @@
 
   </ion-card>
 
-</div>
+</div>-->
 <!--profile end-->
 
 </ion-content>

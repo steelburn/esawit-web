@@ -49,42 +49,42 @@
 
             <ion-item>
               <ion-label class="fontColor-green" stacked>Identification No.</ion-label>
-              <ion-input type="text" formControlName="identification_no" class="editInput" placeholder="please insert correct identification number"></ion-input>
+              <ion-input type="text" formControlName="identification_no" [(ngModel)]="driver.identification_no"  class="editInput" placeholder="please insert correct identification number"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label class="fontColor-green" stacked>Address 1</ion-label>
-              <ion-input type="text" formControlName="address1" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
+              <ion-input type="text" formControlName="address1"  [(ngModel)]="driver.address1" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label class="fontColor-green" stacked>Address 2</ion-label>
-              <ion-input type="text" formControlName="address2"  class="editInput" placeholder="eg: Block no, Property name"></ion-input>
+              <ion-input type="text" formControlName="address2" [(ngModel)]="driver.address2" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label class="fontColor-green" stacked>Address 3</ion-label>
-              <ion-input type="text"formControlName="address3"  class="editInput" placeholder="eg: City name"></ion-input>
+              <ion-input type="text"formControlName="address3" [(ngModel)]="driver.address3" class="editInput" placeholder="eg: City name"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label class="fontColor-green" stacked>Phone No.</ion-label>
-              <ion-input type="text" formControlName="phone_no"  class="editInput" placeholder="Please insert correct phone number"></ion-input>
+              <ion-input type="text" formControlName="phone_no" [(ngModel)]="driver.phone_no" class="editInput" placeholder="Please insert correct phone number"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label class="fontColor-green" stacked>Email</ion-label>
-              <ion-input type="text" formControlName="email"  class="editInput" placeholder="Please insert correct email address"></ion-input>
+              <ion-input type="text" formControlName="email" [(ngModel)]="driver.email" class="editInput" placeholder="Please insert correct email address"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label class="fontColor-green" stacked>License No.</ion-label>
-              <ion-input type="text" formControlName="license_no"  class="editInput" placeholder="Please insert correct license number"></ion-input>
+              <ion-input type="text" formControlName="license_no" [(ngModel)]="driver.license_no"  class="editInput" placeholder="Please insert correct license number"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label class="fontColor-green" stacked>Start Year</ion-label>
-              <ion-datetime displayFormat="MMM DD YYYY" class="editInput"  placeholder="Select start year"></ion-datetime>
+              <ion-datetime displayFormat="YYYY"  class="editInput"  placeholder="Select start year"></ion-datetime>
             </ion-item>
 
             <ion-item>
