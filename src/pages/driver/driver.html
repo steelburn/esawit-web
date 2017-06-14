@@ -146,7 +146,7 @@
 
   <ion-card class="cb10">
     <ion-row>
-      <ion-searchbar></ion-searchbar>
+      <ion-searchbar [(ngModel)]="searchTerm" [formControl]="searchControl" (ionInput)="setFilteredItems()"></ion-searchbar>
     </ion-row>
     <ion-card-content >
       <ion-list>
