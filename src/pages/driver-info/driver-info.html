@@ -39,11 +39,11 @@
 
             <ion-item>
               <ion-label class="fontColor-green" stacked>Identification Type</ion-label>
-              <ion-select formControlName="identification_type" class="editInput" interface="popover" placeholder="Please select identification type">
-                <ion-option value="NA">N/A</ion-option>
-                <ion-option value="MyKad">Mykad</ion-option>
-                <ion-option value="Passport">Passport</ion-option>
-                <ion-option value="EmployeeID">Employee ID</ion-option>
+              <ion-select formControlName="identification_type" [(ngModel)]="driver.identification_type" class="editInput" interface="popover" placeholder="Please select identification type">
+                <ion-option value="0">N/A</ion-option>
+                <ion-option value="1">Mykad</ion-option>
+                <ion-option value="2">Passport</ion-option>
+                <ion-option value="3">Employee ID</ion-option>
               </ion-select>
             </ion-item>
 
