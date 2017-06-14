@@ -44,8 +44,8 @@ export class DriverService
 			.map((response) => {
 				var result: any = response.json();
 				let drivers: Array<Driver> = [];
-				result.resource.forEach((contact) => {
-					drivers.push(Driver.fromJson(contact));
+				result.resource.forEach((driver) => {
+					drivers.push(Driver.fromJson(driver));
 				});
 				return drivers;
 			}).catch(this.handleError);
@@ -67,4 +67,19 @@ export class DriverService
 				});
 		
 	}
+
+	remove (id: string) {
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.delete(this.baseResourceUrl + '/' + id,{ headers: queryHeaders})
+			.map((response) => {
+				var result: any = response.json();
+				console.log(result.driver_GUID);
+				return result.driver_GUID;
+			});
+	}
+
 }

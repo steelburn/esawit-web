@@ -1,8 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
-import { Driver } from '../../models/driver';
 import {  FormBuilder, Validators, FormGroup } from '@angular/forms'; 
+
+import { DriverService } from '../../services/driverservice2';
+import {BaseHttpService} from '../../services/base-http';
+import {Http, Headers,RequestOptions, URLSearchParams} from '@angular/http';
+import { Driver } from '../../models/driver';
+
+
 
 /**
  * Generated class for the DriverPage page.
@@ -13,9 +19,11 @@ import {  FormBuilder, Validators, FormGroup } from '@angular/forms';
 @IonicPage()
 @Component({
   selector: 'page-driver',
-  templateUrl: 'driver.html',
+  templateUrl: 'driver.html',providers: [DriverService,BaseHttpService]
 })
 export class DriverPage {
+
+public drivers: Driver[] = [];   
 
   @ViewChild('barCanvas') barCanvas;
   @ViewChild('doughnutCanvas') doughnutCanvas;
@@ -27,14 +35,39 @@ export class DriverPage {
   lineChart: any;
   driverDoughnutChart: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) 
+  constructor(private driverservice: DriverService,public navCtrl: NavController, public navParams: NavParams) 
   {
 
-
+    this.getList();
 
 
   }
-  
+getList() 
+{
+        let self = this;
+        let params: URLSearchParams = new URLSearchParams();
+        //params.set('order', 'last_name+ASC');
+        self.driverservice.query(params)
+            .subscribe((drivers: Driver[]) => {
+                self.drivers = drivers
+                console.log(self.drivers);
+            });
+}
+
+
+remove(driver_GUID) 
+{
+    alert(driver_GUID);
+        var self = this;
+        this.driverservice.remove(driver_GUID)
+            .subscribe(() => {
+                self.drivers = self.drivers.filter((item) => 
+                {
+                    return item.driver_GUID != driver_GUID
+                });
+            });
+    }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad DriverPage');
 
