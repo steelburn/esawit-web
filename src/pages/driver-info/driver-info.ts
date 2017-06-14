@@ -36,7 +36,7 @@ export class DriverInfoPage {
       driver_GUID:[ UUID.UUID()],
       //fullname: ['', Validators.compose([Validators.maxLength(10),Validators.minLength(5), Validators.pattern('[a-zA-Z ]*'), Validators.required])],     
       fullname:'',
-      identification_type: [''],
+      identification_type: '',
       identification_no:'',
       address1:'',
       address2:'',
@@ -44,6 +44,8 @@ export class DriverInfoPage {
       phone_no:'',
       email:'',
       license_no:'',
+      start_year:'',
+      employment_type:'',
       description:'',
       active:'',
       tenant_GUID:[UUID.UUID()]
