@@ -170,3 +170,10 @@ page-landing-v2 {
 .hd {text-align: center;}
 
 .cbTitle {font-size: 22px;text-align: center;color: #aaa;margin-top: -30px;}
+
+.searchbar-md .searchbar-input {
+    color: #888 !important;
+    background-color: #f9f9f9 !important;
+    box-shadow: inset 0 0px 8px 0 rgba(0, 0, 0, 0.05), inset 0 1px 1px -2px rgba(0, 0, 0, 0.05), inset 0 1px 5px 0 rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid #e0e0e0;
+}
