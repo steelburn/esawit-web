@@ -12,6 +12,31 @@
     <ion-avatar class="logoSize" item-start>
       <img src="img/eSawitLogo.png">
     </ion-avatar>
+    <div class="headerInfo">
+      <!--<button ion-button color="secondary" class="headerButton bgColor-darkBlue">
+        <ion-icon name="md-arrow-dropdown" class="fontColor-white"></ion-icon>
+      </button>-->
+
+      <ion-fab top right edge class="topZero rightZero">
+        <button ion-fab mini>
+          <img class="headerImage" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+        </button>
+        <ion-fab-list side="left">
+          <button ion-fab class="bgColor-red"><ion-icon name="md-power"></ion-icon></button>
+          <button ion-fab class="bgColor-green"><ion-icon name="md-settings"></ion-icon></button>
+          <button ion-fab class="bgColor-yellow"><ion-icon name="md-help"></ion-icon></button>
+        </ion-fab-list>
+      </ion-fab>
+
+      <ion-thumbnail class="floatRight" item-start>
+        <img class="headerImage" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+      </ion-thumbnail>
+
+      <ion-label class="headerLabel floatRight fontColor-grey">
+        System Account
+      </ion-label>
+      
+    </div>
   </ion-navbar>
 </ion-header>
 
@@ -121,125 +146,24 @@
 
   <ion-card class="cb10">
     <ion-row>
-      <ion-searchbar class="bgColor-grey"></ion-searchbar>
+      <ion-searchbar></ion-searchbar>
     </ion-row>
     <ion-card-content >
-
       <ion-list>
-        <ion-item class="tnUserRow">
+        <ion-item *ngFor="let driver of drivers" class="tnUserRow">
           <ion-icon name="ios-checkmark-circle" item-start class="fontColor-green"></ion-icon>
           <ion-thumbnail item-start>
             <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
           </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
+          <h2>{{driver.fullname}}</h2>
           <p>
             <ion-icon name="ios-card"></ion-icon> 900108-11-2235
           </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="Edit(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
           <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon name="ios-checkmark-circle" item-start class="fontColor-green"></ion-icon>
-          <ion-thumbnail item-start>
-            <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
-          <p>
-            <ion-icon name="ios-card"></ion-icon> 900108-11-2235
-          </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon name="ios-close-circle" item-start class="fontColor-red"></ion-icon>
-          <ion-thumbnail item-start>
-            <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
-          <p>
-            <ion-icon name="ios-card"></ion-icon> 900108-11-2235
-          </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon name="ios-checkmark-circle" item-start class="fontColor-green"></ion-icon>
-          <ion-thumbnail item-start>
-            <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
-          <p>
-            <ion-icon name="ios-card"></ion-icon> 900108-11-2235
-          </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon name="ios-close-circle" item-start class="fontColor-red"></ion-icon>
-          <ion-thumbnail item-start>
-            <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
-          <p>
-            <ion-icon name="ios-card"></ion-icon> 900108-11-2235
-          </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon name="ios-close-circle" item-start class="fontColor-red"></ion-icon>
-          <ion-thumbnail item-start>
-            <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
-          <p>
-            <ion-icon name="ios-card"></ion-icon> 900108-11-2235
-          </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon name="ios-close-circle" item-start class="fontColor-red"></ion-icon>
-          <ion-thumbnail item-start>
-            <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
-          <p>
-            <ion-icon name="ios-card"></ion-icon> 900108-11-2235
-          </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon name="ios-close-circle" item-start class="fontColor-red"></ion-icon>
-          <ion-thumbnail item-start>
-            <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <h2>Ahmad Firdaus Bin Nor Azhar</h2>
-          <p>
-            <ion-icon name="ios-card"></ion-icon> 900108-11-2235
-          </p>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red" (click)="remove(driver.driver_GUID)"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>       
       </ion-list>
-
     </ion-card-content>
 
   </ion-card>
@@ -249,15 +173,13 @@
 
 <!--Profile start-->
 <div class="col3">
-
-  <ion-card class="cb10">
-
+ <ion-card class="cb10">
     <ion-item>
       <ion-avatar item-start>
         <img src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
       </ion-avatar>
-      <h2>Marty McFly</h2>
-      <p>fazhar90@gmail.com</p>
+      <h2>{{driver.fullname}}</h2>
+      <p>{{driver.email}}</p>
     </ion-item>
 
     <div [ngSwitch]="userInfo">
@@ -265,30 +187,30 @@
         <ion-card-content>
           <div class="">
             <div class="infoLabel bgColor-red floatLeft">Address</div>
-            <div class="infoText">B-5-10, Sri Teratai Apartment<br/>
-            Lebuhraya Bukit Jalil<br/>
-            Puchong jaya<br/>
-            Selangor</div>
+            <div class="infoText">{{driver.address1}}<br/>
+            {{driver.address2}}<br/>
+            {{driver.address3}}<br/>
+            </div>
           </div>
           
           <div class="">
             <div class="infoLabel bgColor-yellow floatLeft">Phone</div>
-            <div class="infoText">019-370 3745</div>
+            <div class="infoText">{{driver.phone_no}}</div>
           </div>
           
           <div class="">
             <div class="infoLabel bgColor-yellow floatLeft">ID No.</div>
-            <div class="infoText">900108-11-1111</div>
+            <div class="infoText">{{driver.identification_no}}</div>
           </div>
           
           <div class="">
             <div class="infoLabel bgColor-blue floatLeft">License</div>
-            <div class="infoText">9546545545-b</div>
+            <div class="infoText">{{driver.license_no}}</div>
           </div>
           
           <div class="">
             <div class="infoLabel bgColor-green floatLeft">Employment</div>
-            <div class="infoText">Permanent</div>
+            <div class="infoText">{{driver.employment_type}}</div>
           </div>
 
         </ion-card-content>
@@ -296,42 +218,58 @@
 
 
       <ion-list *ngSwitchCase="'Edit'">
+        <form [formGroup]="DriverEditform">
+
+        <input type="hidden"  ng-model="driver.fullname" value="{{driver.fullname}}"/>
+        <input type="hidden"  ng-model="driver.tenant_GUID" value="{{driver.tenant_GUID}}"/>
+        <input type="hidden"  ng-model="driver.driver_GUID" value="{{driver.driver_GUID}}"/>
         <ion-item>
           <ion-label class="fontColor-green" stacked>Address 1</ion-label>
-          <ion-input type="text" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
+          <ion-input type="text" formControlName="address1" [(ngModel)]="driver.address1" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label class="fontColor-green" stacked>Address 2</ion-label>
-          <ion-input type="text" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
+         <ion-input type="text" formControlName="address2" [(ngModel)]="driver.address2" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="fontColor-green" stacked>Address 3</ion-label>
+         <ion-input type="text" formControlName="address3" [(ngModel)]="driver.address3" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label class="fontColor-green" stacked>Phone No.</ion-label>
-          <ion-input type="text" class="editInput" placeholder="Please insert correct phone number"></ion-input>
+         <ion-input type="text" formControlName="phone_no" [(ngModel)]="driver.phone_no" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
+       </ion-item>
+
+        <ion-item>
+          <ion-label class="fontColor-green" stacked>Employment Type</ion-label>
+          <ion-select formControlName="employment_type" [(ngModel)]="driver.employment_type" class="editInput" interface="popover" placeholder="Please select identification type">
+                <ion-option value="0">N/A</ion-option>
+                <ion-option value="1">Permanent</ion-option>
+                <ion-option value="2">Probation</ion-option>
+                <ion-option value="3">Contract</ion-option>
+                <ion-option value="4">Temporary</ion-option>
+              </ion-select>
         </ion-item>
 
         <ion-item>
-          <ion-label class="fontColor-green" stacked>License No.</ion-label>
-          <ion-input type="text" class="editInput" placeholder="Please insert correct license number"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label class="fontColor-yellow" >Active</ion-label>
+          <ion-label class="fontColor-green" >Active</ion-label>
           <ion-toggle checked="false" color="secondary"></ion-toggle>
         </ion-item>
 
         <ion-card-content >
-          <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Save</button>
+          <button ion-button full class="bgColor-grey fontColor-white btnStyle1" (click)=Updateinfo()>Save</button>
         </ion-card-content>
-
+        </form>
       </ion-list>
       
 
     </div>
 
     <ion-row>
-        <ion-segment [(ngModel)]="userInfo" color="primary">
+        <ion-segment [(ngModel)]="userInfo" [ngModelOptions]="{standalone:true}" color="primary">
           <ion-segment-button value="Info" isActive>
             Info
           </ion-segment-button>
@@ -342,7 +280,7 @@
     </ion-row>
 
   </ion-card>
-
+ <!--</form>-->
 </div>
 <!--profile end-->
 
