@@ -12,6 +12,31 @@
     <ion-avatar class="logoSize" item-start>
       <img src="img/eSawitLogo.png">
     </ion-avatar>
+    <div class="headerInfo">
+      <!--<button ion-button color="secondary" class="headerButton bgColor-darkBlue">
+        <ion-icon name="md-arrow-dropdown" class="fontColor-white"></ion-icon>
+      </button>-->
+
+      <ion-fab top right edge class="topZero rightZero">
+        <button ion-fab mini>
+          <img class="headerImage" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+        </button>
+        <ion-fab-list side="left">
+          <button ion-fab class="bgColor-red"><ion-icon name="md-power"></ion-icon></button>
+          <button ion-fab class="bgColor-green"><ion-icon name="md-settings"></ion-icon></button>
+          <button ion-fab class="bgColor-yellow"><ion-icon name="md-help"></ion-icon></button>
+        </ion-fab-list>
+      </ion-fab>
+
+      <ion-thumbnail class="floatRight" item-start>
+        <img class="headerImage" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+      </ion-thumbnail>
+
+      <ion-label class="headerLabel floatRight fontColor-grey">
+        System Account
+      </ion-label>
+      
+    </div>
   </ion-navbar>
 </ion-header>
 
@@ -100,16 +125,19 @@
 
             <ion-item>
               <ion-label class="fontColor-green" stacked>Description</ion-label>
-              <ion-textarea type="text" formControlName="description"   class="editInput" placeholder="Description are ptional"></ion-textarea>
+              <ion-textarea type="text" formControlName="description" [(ngModel)]="driver.description" class="editInput" placeholder="Description are ptional"></ion-textarea>
             </ion-item>
 
             <ion-item>
               <ion-label class="fontColor-yellow" stacked>Active</ion-label>
-            <ion-toggle formControlName="active" checked="false" color="secondary"></ion-toggle>
+            <ion-toggle formControlName="active" checked="false" [(ngModel)]="driver.active" color="secondary"></ion-toggle>
             </ion-item>
-              <button ion-button color="primary" [disabled]="!Driverform.valid" (click)="save()">Save</button>
-            </form>
-          </ion-list>
+            
+            <button ion-button color="primary" [disabled]="!Driverform.valid" (click)="save()">Save</button>
+            
+          </form>
+
+        </ion-list>
 
          
           
