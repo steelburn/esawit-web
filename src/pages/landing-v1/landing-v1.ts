@@ -14,6 +14,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LandingV1Page {
 
+  items: any = new Array(5);
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
