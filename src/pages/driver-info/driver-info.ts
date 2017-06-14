@@ -36,7 +36,7 @@ export class DriverInfoPage {
       driver_GUID:[ UUID.UUID()],
       //fullname: ['', Validators.compose([Validators.maxLength(10),Validators.minLength(5), Validators.pattern('[a-zA-Z ]*'), Validators.required])],     
       fullname:'',
-      identification_type: ['',Validators.minLength(3)],
+      identification_type: [''],
       identification_no:'',
       address1:'',
       address2:'',
