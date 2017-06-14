@@ -1,5 +1,7 @@
-export class DriverModel {
+export class Driver {
 	constructor(
+		public tenant_GUID: string = null,
+		public driver_GUID: string = null,
 		public fullname: string = null,
 		public identification_no: string = null,
 		public identification_type: number = null,
@@ -19,7 +21,9 @@ export class DriverModel {
 	static fromJson(json: any) {
 		if (!json) return;
 
-		return new DriverModel(
+		return new Driver(
+			json.tenant_GUID,
+		    json.driver_GUID,
 			json.fullname,
 			json.identification_no,
 			json.identification_type,
@@ -39,6 +43,8 @@ export class DriverModel {
 
 	toJson(stringify?: boolean): any {
 		var doc = {
+			tenant_GUID:this.tenant_GUID,
+			driver_GUID:this.driver_GUID,
             fullname:this.fullname,
 			identification_no:this.identification_no,
 			identification_type:this.identification_type,

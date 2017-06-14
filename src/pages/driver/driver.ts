@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
-import { DriverModel } from '../../models/driver';
+import { Driver } from '../../models/driver';
 import {  FormBuilder, Validators, FormGroup } from '@angular/forms'; 
 
 /**

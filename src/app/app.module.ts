@@ -21,6 +21,12 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { ReportsPage } from '../pages/reports/reports';
+import { HttpModule } from '@angular/http';
+//import { NgModule }      from '@angular/core';
+//import { FormsModule }   from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -38,9 +44,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     UserPage,
     VehiclePage,
     TabsPage
+    ,ReportsPage
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -60,6 +67,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     UserPage,
     VehiclePage,
     TabsPage
+    ,ReportsPage
   ],
   providers: [
     StatusBar,
