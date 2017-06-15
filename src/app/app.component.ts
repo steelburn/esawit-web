@@ -27,7 +27,7 @@ import { ReportsPage } from '../pages/reports/reports';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = DriverPage;
+  rootPage: any = LocationPage;
 
   pages: Array<{title: string, component: any}>;
 

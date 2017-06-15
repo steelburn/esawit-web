@@ -40,83 +40,79 @@
   </ion-navbar>
 </ion-header>
 
-
-<ion-content padding>
+<ion-content padding class="posRelative">
 
 <!--form start-->
-<div class="col2">
+  <div class="col2">
+    <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="vehicleRegisterClick()">
+      <ion-icon name="md-car" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
+      <div class="portletColStyle2">
+        <div class="portletHeaderStyle2">Register New Vehicle</div>
+      </div>
+    </button>
 
-  <ion-card>
-    <ion-card-header class="icTitle headerColor-white posRelative">
-      <ion-icon name="ios-search" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon> 
-      <div class="icHeaderText">Search Vehicle</div>
-    </ion-card-header>
-    <ion-list>
-      <ion-item>
-        <ion-input type="text"  placeholder="Title"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input type="text" placeholder="Option"></ion-input>
-      </ion-item>
-    </ion-list>
-
-    <ion-card-content >
-      <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Search</button>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header class="icTitle headerColor-white posRelative">
-      <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon> 
-      <div class="icHeaderText">Register New Vehicle</div>
-    </ion-card-header>
-      <ion-list>
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>Title</ion-label>
-        <ion-input type="text" class="editInput" placeholder="Module name"></ion-input>
+    <ion-card class="cb10">
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
+          Total Vehicles
+        </ion-card-header>
+      </ion-row>
+      <ion-card-content >
+        <div class="graphContentStyle2 fontColor-red">127</div>
+        <ion-item class="fontColor-grey">
+          Active
+          <ion-badge item-end class="bgColor-green">109</ion-badge>
         </ion-item>
-
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>Description</ion-label>
-        <ion-input type="text" class="editInput" placeholder="Module description"></ion-input>
+        <div class="percentBar fullWidth">
+          <div class="percentBarValue bgColor-green" style="width: calc(100% * (109 / 127))"></div>
+        </div>
+        <ion-item class="fontColor-grey">
+          Inactive
+          <ion-badge item-end class="bgColor-red">18</ion-badge>
         </ion-item>
+        <div class="percentBar fullWidth">
+          <div class="percentBarValue bgColor-red" style="width: calc(100% * (18 / 127))"></div>
+        </div>
+      </ion-card-content>
+    </ion-card>
 
-        <ion-item>
-          <ion-label class="fontColor-yellow" >Active</ion-label>
-        <ion-toggle checked="false" color="secondary"></ion-toggle>
-        </ion-item>
-      </ion-list>
+  </div>
 
-    <ion-card-content >
-      <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Register</button>
-    </ion-card-content>
-  </ion-card>
-
-</div>
 <!--form end-->
 
 <!--listing start-->
-<div class="col8">
+<div class="col6">
 
   <ion-card class="cb10">
+    <ion-row>
+      <ion-searchbar></ion-searchbar>
+    </ion-row>
     <ion-card-content >
 
       <ion-list>
         <ion-item class="tnUserRow">
           <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark" >Vehicle 1</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <ion-label class="fontColor-dark" >ACS 1331</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="vehicleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
           <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
 
         <ion-item class="tnUserRow">
           <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark" >Vehicle 2</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <ion-label class="fontColor-dark" >ABC 1331</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="vehicleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
           <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
 
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark" >DFG 1331</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="vehicleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
       </ion-list>
 
     </ion-card-content>
@@ -126,9 +122,134 @@
 </div>
 <!--listing end-->
 
+<!--vehicle start-->
+<div class="col2">
+ <ion-card class="cb10">
+   
+    <ion-row>
+      <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
+        Selected Locations
+      </ion-card-header>
+    </ion-row>
+
+    <div [ngSwitch]="vehicle">
+
+      <ion-list *ngSwitchDefault>
+          <ion-item>
+            <ion-label>option 1</ion-label>
+            <ion-checkbox color="danger" checked="false" item-end></ion-checkbox>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label>option 2</ion-label>
+            <ion-checkbox color="danger" checked="false" item-end></ion-checkbox>
+          </ion-item>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'All'">
+          <ion-item>
+            <ion-label>option 4</ion-label>
+            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>option 3</ion-label>
+            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          </ion-item>
+      </ion-list>
+    </div>
+
+    <ion-row>
+        <ion-segment [(ngModel)]="vehicle" [ngModelOptions]="{standalone:true}" color="primary">
+
+          <ion-segment-button value="Selected" isActive>
+            Selected
+          </ion-segment-button>
+
+          <ion-segment-button value="All">
+            All
+          </ion-segment-button>
+        </ion-segment>
+    </ion-row>
+
+  </ion-card>
+ <!--</form>-->
+</div>
+<!--vehicle end-->
+
+<!--edit form start-->
+<div padding class="fb10 posAbsolute fullWidth leftZero topZero bgColor-blackOpa fullHeight" *ngIf="vehicleEditClicked">
+
+  <ion-card class="fb4 marginCenter fullHeight">
+
+    <ion-card-header class="icTitle headerColor-white posRelative">
+      <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon> 
+      <div class="icHeaderText">Update Vehicles</div>
+      <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="vehicleEditClick()">
+        <ion-icon name="md-close"></ion-icon> 
+      </button>
+    </ion-card-header>
+
+    <ion-list class="overflowTrue contentHeight">
+      <ion-item>
+        <ion-label class="fontColor-green" stacked>Vehicle No.</ion-label>
+      <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="fontColor-green" stacked>Vehicle Description</ion-label>
+      <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="fontColor-yellow" >Active</ion-label>
+      <ion-toggle checked="false" color="secondary"></ion-toggle>
+      </ion-item>
+    </ion-list>
+
+    <ion-card-content >
+      <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Register</button>
+    </ion-card-content>
+  </ion-card>
+</div>
+<!--edit form end-->
+
+<!--register form start-->
+<div padding class="fb10 posAbsolute fullWidth leftZero topZero bgColor-blackOpa fullHeight" *ngIf="vehicleRegisterClicked">
+
+  <ion-card class="fb4 marginCenter fullHeight">
+
+    <ion-card-header class="icTitle headerColor-white posRelative">
+      <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon> 
+      <div class="icHeaderText">Register New Vehicle</div>
+      <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="vehicleRegisterClick()">
+        <ion-icon name="md-close"></ion-icon> 
+      </button>
+    </ion-card-header>
+
+    <ion-list class="overflowTrue contentHeight">
+      <ion-item>
+        <ion-label class="fontColor-green" stacked>Vehicle No.</ion-label>
+      <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="fontColor-green" stacked>Vehicle Description</ion-label>
+      <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="fontColor-yellow" >Active</ion-label>
+      <ion-toggle checked="false" color="secondary"></ion-toggle>
+      </ion-item>
+    </ion-list>
+
+    <ion-card-content >
+      <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Register</button>
+    </ion-card-content>
+  </ion-card>
+</div>
+<!--registerform end-->
 </ion-content>
-
-
-
 
 
