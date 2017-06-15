@@ -129,6 +129,9 @@ page-landing-v2 {
 .btnStyle1 {box-shadow: none;border: 1px solid;border-radius: 3px;font-size: 13px;}
 .btnStyle2 {width: 38px;font-size: 22px;}
 
+.fabListStyle1 {min-height: 50px !important;}
+.fabBtnStyle1 {margin: 5px 15px !important;}
+
 .portletStyle1{height: 70px;}
 .portletColStyle1{margin-left: 65px;}
 .portletIconStyle1 {height: 100%;padding: 16px 0;font-size: 35px;width: 65px;text-align: center;}
@@ -144,6 +147,7 @@ page-landing-v2 {
 .graphLabelStyle1 {height: 25px !important; font-size: 15px !important;min-height: 0 !important;}
 .graphHeaderStyleRed {border-top: 5px solid #ff6b6b;border-bottom: 1px solid #d6d6d6;}
 .graphHeaderStyleGreen {border-top: 5px solid #6bc801;border-bottom: 1px solid #d6d6d6;}
+.graphHeaderStyleYellow {border-top: 5px solid #f8cb00;border-bottom: 1px solid #d6d6d6;}
 .graphContentStyle1 {font-size: 12px;padding: 0 10px;font-weight: 100;text-align: center;}
 .graphContentStyle2 {font-size: 35px;font-weight: 500;text-align: center;margin-bottom: -5px;margin-top: -10px;}
 
@@ -155,6 +159,13 @@ page-landing-v2 {
 
 .editInput {border-left: 2px solid #d16ae2 !important;padding-left: 5px !important;font-size: 14px !important;}
 
+.titleLabelStyle1 {padding: 0 10px !important}
+
+.tn {
+    min-width: 40px !important;
+    min-height: 40px !important;
+}
+
 .tnUser {
     width: 60px !important;
     height: 60px !important;
@@ -162,6 +173,14 @@ page-landing-v2 {
     min-width: 60px !important;
     min-height: 60px !important;   
 }
+.tnUser2 {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50%;
+    min-width: 40px !important;
+    min-height: 40px !important;
+}
+
 .item-md ion-thumbnail {min-width: 60px !important;min-height: 60px !important;}
 
 .tnUserRow {border-bottom: 2px solid #efefef;}
