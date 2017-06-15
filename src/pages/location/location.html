@@ -44,25 +44,48 @@
 
 <!--form start-->
   <div class="col2">
-
-    <ion-card class="cb10 posRelative portletStyle1">
-      <ion-icon name="ios-pin" class="portletIconStyle1 posAbsolute leftZero topZero bgColor-purple" item-start></ion-icon>
-      <div class="portletColStyle1">
-        <div class="portletHeaderStyle1 fontColor-purple">Total Location</div>
-        <div class="portletContentStyle2 fontColor-dark">99</div>
-        <div class="portletContentStyle1 fontColor-grey">05 April 2017</div>
+    <button class="btnColor-purple cb10 posRelative portletStyle2" full (click)="locationRegisterClick()">
+      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-purple" item-start></ion-icon>
+      <div class="portletColStyle2">
+        <div class="portletHeaderStyle2">Register New Location</div>
       </div>
+    </button>
+
+    <ion-card class="cb10">
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
+          Total Locations
+        </ion-card-header>
+      </ion-row>
+      <ion-card-content >
+        <div class="graphContentStyle2 fontColor-red">127</div>
+        <ion-item class="fontColor-grey">
+          Active
+          <ion-badge item-end class="bgColor-green">109</ion-badge>
+        </ion-item>
+        <div class="percentBar fullWidth">
+          <div class="percentBarValue bgColor-green" style="width: calc(100% * (109 / 127))"></div>
+        </div>
+        <ion-item class="fontColor-grey">
+          Inactive
+          <ion-badge item-end class="bgColor-red">18</ion-badge>
+        </ion-item>
+        <div class="percentBar fullWidth">
+          <div class="percentBarValue bgColor-red" style="width: calc(100% * (18 / 127))"></div>
+        </div>
+      </ion-card-content>
     </ion-card>
 
-</div>
+  </div>
+
 <!--form end-->
 
 <!--listing start-->
-<div class="col5">
+<div class="col6">
 
   <ion-card class="cb10">
     <ion-row>
-      <ion-searchbar class="bgColor-grey"></ion-searchbar>
+      <ion-searchbar></ion-searchbar>
     </ion-row>
     <ion-card-content >
 
@@ -70,70 +93,80 @@
         <ion-item class="tnUserRow">
           <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark" >Putrajaya, Kuala Lumpur</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="locationEditClick()"><ion-icon name="ios-create"></ion-icon></button>
           <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
 
         <ion-item class="tnUserRow">
           <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark" >Cyberjaya, Selangor</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="locationEditClick()"><ion-icon name="ios-create"></ion-icon></button>
           <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
 
         <ion-item class="tnUserRow">
           <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark" >Raub, Pahang</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="locationEditClick()"><ion-icon name="ios-create"></ion-icon></button>
           <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
 
         <ion-item class="tnUserRow">
           <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark" >Kuala Nerus, Terengganu</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="locationEditClick()"><ion-icon name="ios-create"></ion-icon></button>
           <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
 
         <ion-item class="tnUserRow">
           <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark" >Dungun, Terengganu</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="locationEditClick()"><ion-icon name="ios-create"></ion-icon></button>
           <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
 
         <ion-item class="tnUserRow">
           <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark" >Putrajaya, Kuala Lumpur</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="locationEditClick()"><ion-icon name="ios-create"></ion-icon></button>
           <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
 
         <ion-item class="tnUserRow">
           <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark" >Cyberjaya, Selangor</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="locationEditClick()"><ion-icon name="ios-create"></ion-icon></button>
           <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
 
         <ion-item class="tnUserRow">
           <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark" >Raub, Pahang</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="locationEditClick()"><ion-icon name="ios-create"></ion-icon></button>
           <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
 
         <ion-item class="tnUserRow">
           <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark" >Kuala Nerus, Terengganu</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="locationEditClick()"><ion-icon name="ios-create"></ion-icon></button>
           <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
 
         <ion-item class="tnUserRow">
           <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark" >Dungun, Terengganu</ion-label>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="locationEditClick()"><ion-icon name="ios-create"></ion-icon></button>
           <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
       </ion-list>
@@ -145,52 +178,163 @@
 </div>
 <!--listing end-->
 
+<!--vehicle start-->
+<div class="col2">
+ <ion-card class="cb10">
+   
+    <ion-row>
+      <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
+        Selected Locations
+      </ion-card-header>
+    </ion-row>
 
-<!--form start-->
-<div class="col3">
+    <div [ngSwitch]="vehicle">
 
-  <ion-card class="cb10">
+      <ion-list *ngSwitchDefault>
+          <ion-item>
+            <ion-label>option 1</ion-label>
+            <ion-checkbox color="danger" checked="false" item-end></ion-checkbox>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label>option 2</ion-label>
+            <ion-checkbox color="danger" checked="false" item-end></ion-checkbox>
+          </ion-item>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'All'">
+          <ion-item>
+            <ion-label>option 4</ion-label>
+            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>option 3</ion-label>
+            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          </ion-item>
+      </ion-list>
+    </div>
+
+    <ion-row>
+        <ion-segment [(ngModel)]="vehicle" [ngModelOptions]="{standalone:true}" color="primary">
+
+          <ion-segment-button value="Selected" isActive>
+            Selected
+          </ion-segment-button>
+
+          <ion-segment-button value="All">
+            All
+          </ion-segment-button>
+        </ion-segment>
+    </ion-row>
+
+  </ion-card>
+ <!--</form>-->
+</div>
+<!--vehicle end-->
+
+<!--edit form start-->
+<div padding class="fb10 posAbsolute fullWidth leftZero topZero bgColor-blackOpa fullHeight" *ngIf="locationEditClicked">
+
+  <ion-card class="fb4 marginCenter fullHeight">
+
     <ion-card-header class="icTitle headerColor-white posRelative">
       <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon> 
-      <div class="icHeaderText">Register New location</div>
+      <div class="icHeaderText">Update Location</div>
+      <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="locationEditClick()">
+        <ion-icon name="md-close"></ion-icon> 
+      </button>
     </ion-card-header>
-      <ion-list>
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>Location</ion-label>
-        <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
-        </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>State</ion-label>
-          <ion-select [(ngModel)]="State" interface="popover" class="editInput" placeholder="Select State">
-            <ion-option value="Johor">Johor</ion-option>
-            <ion-option value="Kedah">Kedah</ion-option>
-            <ion-option value="Kelantan">Kelantan</ion-option>
-            <ion-option value="Melaka">Melaka</ion-option>
-            <ion-option value="NegeriSembilan">Negeri Sembilan</ion-option>
-            <ion-option value="Pahang">Pahang</ion-option>
-            <ion-option value="Penang">Penang</ion-option>
-            <ion-option value="Perak">Perak</ion-option>
-            <ion-option value="Perlis">Perlis</ion-option>
-            <ion-option value="Sabah">Sabah</ion-option>
-            <ion-option value="Sarawak">Sarawak</ion-option>
-            <ion-option value="Selangor">Selangor</ion-option>
-            <ion-option value="Terengganu">Terengganu</ion-option>
-            <ion-option value="kualaLumpur">Kuala Lumpur</ion-option>
-          </ion-select>
-        </ion-item>
+    <ion-list class="overflowTrue contentHeight">
+      <ion-item>
+        <ion-label class="fontColor-green" stacked>Location</ion-label>
+      <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
+      </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-yellow" >Active</ion-label>
-        <ion-toggle checked="false" color="secondary"></ion-toggle>
-        </ion-item>
-      </ion-list>
+      <ion-item>
+        <ion-label class="fontColor-green" stacked>State</ion-label>
+        <ion-select [(ngModel)]="State" interface="popover" class="editInput" placeholder="Select State">
+          <ion-option value="Johor">Johor</ion-option>
+          <ion-option value="Kedah">Kedah</ion-option>
+          <ion-option value="Kelantan">Kelantan</ion-option>
+          <ion-option value="Melaka">Melaka</ion-option>
+          <ion-option value="NegeriSembilan">Negeri Sembilan</ion-option>
+          <ion-option value="Pahang">Pahang</ion-option>
+          <ion-option value="Penang">Penang</ion-option>
+          <ion-option value="Perak">Perak</ion-option>
+          <ion-option value="Perlis">Perlis</ion-option>
+          <ion-option value="Sabah">Sabah</ion-option>
+          <ion-option value="Sarawak">Sarawak</ion-option>
+          <ion-option value="Selangor">Selangor</ion-option>
+          <ion-option value="Terengganu">Terengganu</ion-option>
+          <ion-option value="kualaLumpur">Kuala Lumpur</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="fontColor-yellow" >Active</ion-label>
+      <ion-toggle checked="false" color="secondary"></ion-toggle>
+      </ion-item>
+    </ion-list>
 
     <ion-card-content >
       <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Register</button>
     </ion-card-content>
   </ion-card>
 </div>
-<!--form end-->
+<!--edit form end-->
+
+<!--register form start-->
+<div padding class="fb10 posAbsolute fullWidth leftZero topZero bgColor-blackOpa fullHeight" *ngIf="locationRegisterClicked">
+
+  <ion-card class="fb4 marginCenter fullHeight">
+
+    <ion-card-header class="icTitle headerColor-white posRelative">
+      <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon> 
+      <div class="icHeaderText">Register New Location</div>
+      <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="locationRegisterClick()">
+        <ion-icon name="md-close"></ion-icon> 
+      </button>
+    </ion-card-header>
+
+    <ion-list class="overflowTrue contentHeight">
+      <ion-item>
+        <ion-label class="fontColor-green" stacked>Location</ion-label>
+      <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="fontColor-green" stacked>State</ion-label>
+        <ion-select [(ngModel)]="State" interface="popover" class="editInput" placeholder="Select State">
+          <ion-option value="Johor">Johor</ion-option>
+          <ion-option value="Kedah">Kedah</ion-option>
+          <ion-option value="Kelantan">Kelantan</ion-option>
+          <ion-option value="Melaka">Melaka</ion-option>
+          <ion-option value="NegeriSembilan">Negeri Sembilan</ion-option>
+          <ion-option value="Pahang">Pahang</ion-option>
+          <ion-option value="Penang">Penang</ion-option>
+          <ion-option value="Perak">Perak</ion-option>
+          <ion-option value="Perlis">Perlis</ion-option>
+          <ion-option value="Sabah">Sabah</ion-option>
+          <ion-option value="Sarawak">Sarawak</ion-option>
+          <ion-option value="Selangor">Selangor</ion-option>
+          <ion-option value="Terengganu">Terengganu</ion-option>
+          <ion-option value="kualaLumpur">Kuala Lumpur</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="fontColor-yellow" >Active</ion-label>
+      <ion-toggle checked="false" color="secondary"></ion-toggle>
+      </ion-item>
+    </ion-list>
+
+    <ion-card-content >
+      <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Register</button>
+    </ion-card-content>
+  </ion-card>
+</div>
+<!--registerform end-->
 </ion-content>
 
