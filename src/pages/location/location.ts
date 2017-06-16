@@ -25,6 +25,7 @@ export class LocationPage {
   public locationEditClicked: boolean = false; //Whatever you want to initialise it as
   public addVehicleClicked: boolean = false; //Whatever you want to initialise it as
 
+
   public locationRegisterClick() {
 
       this.locationRegisterClicked = !this.locationRegisterClicked;
@@ -39,4 +40,5 @@ export class LocationPage {
 
       this.addVehicleClicked = !this.addVehicleClicked;
   }
+
 }
