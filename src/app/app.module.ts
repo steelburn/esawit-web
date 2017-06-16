@@ -23,8 +23,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { ReportsPage } from '../pages/reports/reports';
 import { HttpModule } from '@angular/http';
+import { VehicleTransactionPage } from '../pages/vehicle-transaction/vehicle-transaction';
 //import { NgModule }      from '@angular/core';
 //import { FormsModule }   from '@angular/forms';
+import { FilterData } from '../shared/filter';
 
 
 @NgModule({
@@ -45,6 +47,8 @@ import { HttpModule } from '@angular/http';
     VehiclePage,
     TabsPage
     ,ReportsPage
+   
+    ,VehicleTransactionPage ,FilterData
   ],
   imports: [
     BrowserModule,HttpModule,
@@ -68,6 +72,7 @@ import { HttpModule } from '@angular/http';
     VehiclePage,
     TabsPage
     ,ReportsPage
+    ,VehicleTransactionPage
   ],
   providers: [
     StatusBar,
