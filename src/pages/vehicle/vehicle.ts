@@ -21,4 +21,22 @@ export class VehiclePage {
     console.log('ionViewDidLoad VehiclePage');
   }
 
+  public vehicleRegisterClicked: boolean = false; //Whatever you want to initialise it as
+  public vehicleEditClicked: boolean = false; //Whatever you want to initialise it as
+  public addLocationClicked: boolean = false; //Whatever you want to initialise it as
+
+  public vehicleRegisterClick() {
+
+      this.vehicleRegisterClicked = !this.vehicleRegisterClicked;
+  }
+
+  public vehicleEditClick() {
+
+      this.vehicleEditClicked = !this.vehicleEditClicked;
+  }
+
+  public addLocationClick() {
+
+      this.addLocationClicked = !this.addLocationClicked;
+  }
 }

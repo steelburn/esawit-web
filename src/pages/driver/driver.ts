@@ -18,6 +18,19 @@ import { FormControlDirective, FormBuilder, Validators, FormGroup,FormControl } 
 })
 export class DriverPage {
 
+    public driverRegisterClicked: boolean = false; //Whatever you want to initialise it as
+    public addVehicleClicked: boolean = false; //Whatever you want to initialise it as
+
+    public driverRegisterClick() {
+
+      this.driverRegisterClicked = !this.driverRegisterClicked;
+    }
+    public addVehicleClick() {
+
+      this.addVehicleClicked = !this.addVehicleClicked;
+    }
+
+
 searchTerm: string = '';
 searchControl: FormControl;
     items: any;
@@ -48,11 +61,18 @@ public filter_drivers= [];
       fullname:'',
       driver_GUID:'',
       tenant_GUID:'',
+      identification_no:'',
+      identification_type:'',
       address1:'',
       address2:'',
       address3:'',
       phone_no:'',
-      employment_type:''
+      email:'',
+      license_no:'',
+      start_year:'',
+      description:'',
+      employment_type:'',
+      active:''
      
     });
 
@@ -143,7 +163,6 @@ getList()
                 this.driver.employment_type = last_element.employment_type;
 
             });
-           
            
 
         // this.DriverEditform.setValue

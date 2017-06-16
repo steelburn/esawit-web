@@ -21,4 +21,23 @@ export class RolePage {
     console.log('ionViewDidLoad RolePage');
   }
 
+  public roleRegisterClicked: boolean = false; //Whatever you want to initialise it as
+  public roleEditClicked: boolean = false; //Whatever you want to initialise it as
+  public addUserClicked: boolean = false; //Whatever you want to initialise it as
+
+  public roleRegisterClick() {
+
+      this.roleRegisterClicked = !this.roleRegisterClicked;
+  }
+
+  public roleEditClick() {
+
+      this.roleEditClicked = !this.roleEditClicked;
+  }
+
+  public addUserClick() {
+
+      this.addUserClicked = !this.addUserClicked;
+  }
+
 }

@@ -45,10 +45,10 @@ import { FilterData } from '../shared/filter';
     TenantPage,
     UserPage,
     VehiclePage,
-    TabsPage
-    ,ReportsPage
-   
-    ,VehicleTransactionPage ,FilterData
+    TabsPage,
+    ReportsPage,
+    VehicleTransactionPage,
+    FilterData
   ],
   imports: [
     BrowserModule,HttpModule,
@@ -70,9 +70,9 @@ import { FilterData } from '../shared/filter';
     TenantPage,
     UserPage,
     VehiclePage,
-    TabsPage
-    ,ReportsPage
-    ,VehicleTransactionPage
+    TabsPage,
+    ReportsPage,
+    VehicleTransactionPage
   ],
   providers: [
     StatusBar,
