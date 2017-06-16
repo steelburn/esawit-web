@@ -19,6 +19,8 @@ import { VehiclePage } from '../pages/vehicle/vehicle';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { ReportsPage } from '../pages/reports/reports';
+import { VehicleTransactionPage } from '../pages/vehicle-transaction/vehicle-transaction';
+
 
 
 @Component({
