@@ -59,7 +59,7 @@ export class DriverInfoPage {
       alert(JSON.stringify(this.driver));
     }
 
-save()
+  save()
  {
         if (this.Driverform.valid) 
         {

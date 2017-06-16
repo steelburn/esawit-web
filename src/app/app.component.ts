@@ -27,11 +27,22 @@ import { VehicleTransactionPage } from '../pages/vehicle-transaction/vehicle-tra
   templateUrl: 'app.html'
 })
 export class MyApp {
+
+  public processPageClicked: boolean = false; //Whatever you want to initialise it as
+  public reportingPageClicked: boolean = false; //Whatever you want to initialise it as
+  public othersPageClicked: boolean = false; //Whatever you want to initialise it as
+
+  public processPageClick() { this.processPageClicked = !this.processPageClicked; }
+  public reportingPageClick() { this.reportingPageClicked = !this.reportingPageClicked; }
+  public othersPageClick() { this.othersPageClicked = !this.othersPageClicked; }
+
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = TabsPage;
 
   pages: Array<{title: string, component: any}>;
+  reportingPages: Array<{title: string, component: any}>;
+  processPages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen)
    {
@@ -39,22 +50,28 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
+      { title: 'Home', component: HomePage},
+      { title: 'Landing V1', component: LandingV1Page},
+      { title: 'Component Demo', component: LandingV2Page},
+      { title: 'Tabs', component: TabsPage}
+    ];
+
+    this.reportingPages = [
       {title: 'Report', component: ReportsPage},
-      { title: 'Landing V1', component: LandingV1Page },
-      { title: 'Component Demo', component: LandingV2Page },
+      {title: 'Vehicle Transaction', component: VehicleTransactionPage}
+    ];
+
+    this.processPages = [
       { title: 'Driver', component: DriverPage },
-      { title: 'DriverInfo', component: DriverInfoPage },
       { title: 'Location', component: LocationPage },
-      { title: 'LocationInfo', component: LocationInfoPage },
       { title: 'Module', component: ModulePage },
       { title: 'Role', component: RolePage },
       { title: 'Sector', component: SectorPage },
       { title: 'Tenant', component: TenantPage },
       { title: 'User', component: UserPage },
-      { title: 'Vehicle', component: VehiclePage },
-      { title: 'Tabs', component: TabsPage }
+      { title: 'Vehicle', component: VehiclePage }
     ];
+
 
   }
 

@@ -23,6 +23,7 @@ export class VehiclePage {
 
   public vehicleRegisterClicked: boolean = false; //Whatever you want to initialise it as
   public vehicleEditClicked: boolean = false; //Whatever you want to initialise it as
+  public addLocationClicked: boolean = false; //Whatever you want to initialise it as
 
   public vehicleRegisterClick() {
 
@@ -32,5 +33,10 @@ export class VehiclePage {
   public vehicleEditClick() {
 
       this.vehicleEditClicked = !this.vehicleEditClicked;
+  }
+
+  public addLocationClick() {
+
+      this.addLocationClicked = !this.addLocationClicked;
   }
 }

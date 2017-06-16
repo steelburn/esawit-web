@@ -23,7 +23,7 @@ export class RolePage {
 
   public roleRegisterClicked: boolean = false; //Whatever you want to initialise it as
   public roleEditClicked: boolean = false; //Whatever you want to initialise it as
-  public roleUserClicked: boolean = false; //Whatever you want to initialise it as
+  public addUserClicked: boolean = false; //Whatever you want to initialise it as
 
   public roleRegisterClick() {
 
@@ -35,9 +35,9 @@ export class RolePage {
       this.roleEditClicked = !this.roleEditClicked;
   }
 
-  public roleUserClick() {
+  public addUserClick() {
 
-      this.roleUserClicked = !this.roleUserClicked;
+      this.addUserClicked = !this.addUserClicked;
   }
 
 }
