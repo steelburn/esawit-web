@@ -13,6 +13,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {Observable} from 'rxjs/Observable';
 import { FormControl } from '@angular/forms';
+import { VehicleTransactionPage } from '../vehicle-transaction/vehicle-transaction';
+
 
 
 class ServerResponse {
@@ -65,6 +67,11 @@ presentLoading()
     loader.present();
 
     //this.GetHarvestReport();
+}
+
+VehicleReport()
+{
+  this.navCtrl.push(VehicleTransactionPage);
 }
 
 private storeToken(data){localStorage.setItem('session_token', data.session_token);}
