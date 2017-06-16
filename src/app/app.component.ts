@@ -57,7 +57,8 @@ export class MyApp {
     ];
 
     this.reportingPages = [
-      {title: 'Report', component: ReportsPage}
+      {title: 'Report', component: ReportsPage},
+      {title: 'Vehicle Transaction', component: VehicleTransactionPage}
     ];
 
     this.processPages = [
@@ -87,6 +88,5 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
-    this.
   }
 }
