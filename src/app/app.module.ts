@@ -27,6 +27,7 @@ import { VehicleTransactionPage } from '../pages/vehicle-transaction/vehicle-tra
 //import { NgModule }      from '@angular/core';
 //import { FormsModule }   from '@angular/forms';
 import { FilterData } from '../shared/filter';
+import { LocationTransactionPage } from '../pages/location-transaction/location-transaction';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { FilterData } from '../shared/filter';
     TabsPage,
     ReportsPage,
     VehicleTransactionPage,
-    FilterData
+    FilterData,
+    LocationTransactionPage
   ],
   imports: [
     BrowserModule,HttpModule,
@@ -72,7 +74,7 @@ import { FilterData } from '../shared/filter';
     VehiclePage,
     TabsPage,
     ReportsPage,
-    VehicleTransactionPage
+    VehicleTransactionPage,LocationTransactionPage
   ],
   providers: [
     StatusBar,

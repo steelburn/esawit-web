@@ -14,6 +14,8 @@ import 'rxjs/add/operator/catch';
 import {Observable} from 'rxjs/Observable';
 import { FormControl } from '@angular/forms';
 import { VehicleTransactionPage } from '../vehicle-transaction/vehicle-transaction';
+import { LocationTransactionPage } from '../location-transaction/location-transaction';
+
 
 
 
@@ -72,6 +74,11 @@ presentLoading()
 VehicleReport()
 {
   this.navCtrl.push(VehicleTransactionPage);
+}
+
+LocationReport()
+{
+  this.navCtrl.push(LocationTransactionPage);
 }
 
 private storeToken(data){localStorage.setItem('session_token', data.session_token);}
