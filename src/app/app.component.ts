@@ -68,7 +68,7 @@ export class MyApp {
       { title: 'Sector', component: SectorPage },
       { title: 'Tenant', component: TenantPage },
       { title: 'User', component: UserPage },
-      { title: 'Vehicle', component: VehiclePage }
+      { title: 'Vehicle', component: TabsPage }
     ];
 
 
