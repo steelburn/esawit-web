@@ -38,18 +38,18 @@ export class ReportService
     	queryHeaders.append('Content-Type', 'application/json');
     	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
     	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
-         console.log('calling request');    	
+         //console.log('calling request');    	
 		return this.httpService.http
 			.get(this.baseResourceUrl, { search: params, headers: queryHeaders})
 			.map((response) => {
-                console.log(response);
+                //console.log(response);
 				var result: any = response.json();
-                console.log(result);
+                //console.log(result);
 				let harvestreports: Array<Harvestreport> = [];
 				result.resource.forEach((harvestreport) => {
 					harvestreports.push(Harvestreport.fromJson(harvestreport));
 				});
-                console.log(harvestreports);
+                //console.log(harvestreports);
 				return harvestreports;
 
 			}).catch(this.handleError);

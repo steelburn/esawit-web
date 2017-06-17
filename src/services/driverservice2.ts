@@ -67,7 +67,7 @@ export class DriverService
 
 	save (master_driver: Driver): Observable<any> 
 	{
-		console.log(localStorage.getItem('session_token'));
+		//console.log(localStorage.getItem('session_token'));
 		var queryHeaders = new Headers();
     	queryHeaders.append('Content-Type', 'application/json');
     	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
@@ -83,8 +83,8 @@ export class DriverService
 
 	Update (driver: Driver) 
 	{
-		console.log(localStorage.getItem('session_token'));
-		console.log(driver.toJson(true));
+		// console.log(localStorage.getItem('session_token'));
+		// console.log(driver.toJson(true));
 		var queryHeaders = new Headers();
     	queryHeaders.append('Content-Type', 'application/json');
     	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
@@ -110,7 +110,7 @@ export class DriverService
 			.delete(this.baseResourceUrl + '/' + id,{ headers: queryHeaders})
 			.map((response) => {
 				var result: any = response.json();
-				console.log(result.driver_GUID);
+				//console.log(result.driver_GUID);
 				return result.driver_GUID;
 			});
 	}

@@ -40,25 +40,24 @@ export class MyApp {
 
   rootPage: any = TabsPage;
 
-  pages: Array<{title: string, component: any}>;
-  reportingPages: Array<{title: string, component: any}>;
-  processPages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
+  reportingPages: Array<{ title: string, component: any }>;
+  processPages: Array<{ title: string, component: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen)
-   {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage},
-      { title: 'Landing V1', component: LandingV1Page},
-      { title: 'Component Demo', component: LandingV2Page},
-      { title: 'Tabs', component: TabsPage}
+      { title: 'Home', component: HomePage },
+      { title: 'Landing V1', component: LandingV1Page },
+      { title: 'Component Demo', component: LandingV2Page },
+      { title: 'Tabs', component: TabsPage }
     ];
 
     this.reportingPages = [
-      {title: 'Report', component: ReportsPage},
-      {title: 'Vehicle Transaction', component: VehicleTransactionPage}
+      { title: 'Report', component: ReportsPage },
+      { title: 'Vehicle Transaction', component: VehicleTransactionPage }
     ];
 
     this.processPages = [
@@ -69,7 +68,7 @@ export class MyApp {
       { title: 'Sector', component: SectorPage },
       { title: 'Tenant', component: TenantPage },
       { title: 'User', component: UserPage },
-      { title: 'Vehicle', component: VehiclePage }
+      { title: 'Vehicle', component: TabsPage }
     ];
 
 

@@ -27,6 +27,10 @@ import { VehicleTransactionPage } from '../pages/vehicle-transaction/vehicle-tra
 //import { NgModule }      from '@angular/core';
 //import { FormsModule }   from '@angular/forms';
 import { FilterData } from '../shared/filter';
+import { LocationTransactionPage } from '../pages/location-transaction/location-transaction';
+import { HarvestlistPage } from '../pages/harvestlist/harvestlist';
+import { MandorlistPage } from '../pages/mandorlist/mandorlist';
+import { FactorylistPage } from '../pages/factorylist/factorylist';
 
 
 @NgModule({
@@ -48,10 +52,13 @@ import { FilterData } from '../shared/filter';
     TabsPage,
     ReportsPage,
     VehicleTransactionPage,
-    FilterData
+    FilterData,
+    LocationTransactionPage,HarvestlistPage
+    ,MandorlistPage
+    ,FactorylistPage
   ],
   imports: [
-    BrowserModule,HttpModule,
+    BrowserModule, HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -72,12 +79,14 @@ import { FilterData } from '../shared/filter';
     VehiclePage,
     TabsPage,
     ReportsPage,
-    VehicleTransactionPage
+    VehicleTransactionPage,LocationTransactionPage,HarvestlistPage
+    ,MandorlistPage
+ ,FactorylistPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

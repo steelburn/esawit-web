@@ -16,11 +16,13 @@ export class FilterData implements PipeTransform {
 
             else {
                 for (let item of items) {
-                    if(
-                        
+                    if
+                    (                       
                         (item.Location != null && item.Location.match(new RegExp(''+args, 'i')))
                         ||
-                    (item.bunch_ts != null && item.bunch_ts.match(new RegExp(''+args, 'i')))
+                        (item.bunch_ts != null && item.bunch_ts.match(new RegExp(''+args, 'i')))
+                        ||
+                        (item.Vehicle != null && item.Vehicle.match(new RegExp(''+args, 'i')))
                     ) 
                     {
                         resultArray.push(item);
