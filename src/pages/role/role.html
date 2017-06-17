@@ -35,379 +35,378 @@
       <ion-label class="headerLabel floatRight fontColor-grey">
         System Account
       </ion-label>
-      
+
     </div>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="posRelative">
 
-<!--Role Left pane start-->
-<div class="col2">
+  <!--Role Left pane start-->
+  <div class="col2">
 
-  <button class="btnColor-yellow cb10 posRelative portletStyle2" full (click)="roleRegisterClick()">
+    <button class="btnColor-yellow cb10 posRelative portletStyle2" full (click)="roleRegisterClick()">
     <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-yellow" item-start></ion-icon>
     <div class="portletColStyle2">
       <div class="portletHeaderStyle2">Register New Role</div>
     </div>
   </button>
 
-  <ion-card class="cb10">
-    <ion-row>
-      <ion-card-header class="fullWidth graphHeaderStyleYellow fontColor-dark">
-        Total Roles
-      </ion-card-header>
-    </ion-row>
-    <ion-card-content >
-      <div class="graphContentStyle2 fontColor-yellow">127</div>
-      <ion-item class="fontColor-grey">
-        Active
-        <ion-badge item-end class="bgColor-green">109</ion-badge>
-      </ion-item>
-      <div class="percentBar fullWidth">
-        <div class="percentBarValue bgColor-green" style="width: calc(100% * (109 / 127))"></div>
-      </div>
-      <ion-item class="fontColor-grey">
-        Inactive
-        <ion-badge item-end class="bgColor-red">18</ion-badge>
-      </ion-item>
-      <div class="percentBar fullWidth">
-        <div class="percentBarValue bgColor-red" style="width: calc(100% * (18 / 127))"></div>
-      </div>
-    </ion-card-content>
-  </ion-card>
-
-</div>
-<!--Role Left Pane end-->
-
-<!--Role listing start-->
-<div class="col4">
-
-  <ion-card class="cb10">
-
-    <ion-row>
-      <ion-card-header class="fullWidth graphHeaderStyleYellow fontColor-dark">
-        Roles
-      </ion-card-header>
-    </ion-row>
-
-    <ion-row>
-      <ion-searchbar></ion-searchbar>
-    </ion-row>
-
-    <ion-list>
-      <ion-item class="tnUserRow">
-        <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
-        <ion-label class="fontColor-dark" >Administrator</ion-label>
-        <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-        <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="roleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-        <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-      </ion-item>
-
-      <ion-item class="tnUserRow">
-        <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
-        <ion-label class="fontColor-dark" >Human Resource</ion-label>
-        <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-        <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="roleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-        <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-      </ion-item>
-
-      <ion-item class="tnUserRow">
-        <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
-        <ion-label class="fontColor-dark" >Manager</ion-label>
-        <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-        <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="roleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-        <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-      </ion-item>
-
-      <ion-item class="tnUserRow">
-        <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
-        <ion-label class="fontColor-dark" >Mandor</ion-label>
-        <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-        <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="roleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-        <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-      </ion-item>
-
-      <ion-item class="tnUserRow">
-        <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
-        <ion-label class="fontColor-dark" >Account</ion-label>
-        <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-        <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="roleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-        <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-      </ion-item>
-    </ion-list>
-
-  </ion-card>
-
-</div>
-
-<!--Role Listing end-->
-
-<!--User listing start-->
-<div class="col4">
-
-  <ion-card class="cb10">
-    <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
-      Administrator
-      <!--<button class="posAbsolute fullHeight topZero rightZero btnStyle2 bgColor-green">
-        <ion-icon name="md-add"></ion-icon> 
-      </button>-->
-      <ion-fab top right edge class="topZero rightZero">
-        <button ion-fab mini class="fabBtnStyle1" color="secondary">
-          <ion-icon name="ios-settings"></ion-icon> 
-        </button>
-        <ion-fab-list side="left" class="fabListStyle1">
-
-          <button ion-fab class="btnColor-yellow" (click)="addUserClick()"><ion-icon name="md-add"></ion-icon></button>
-          <button ion-fab class="btnColor-yellow"><ion-icon name="md-cloud-upload"></ion-icon></button>
-        </ion-fab-list>
-      </ion-fab>
-    </ion-card-header>
-
-    <ion-row>
-      <ion-searchbar></ion-searchbar>
-    </ion-row>
-
-    <ion-row class="fullWidth">
-      <ion-list class="fullWidth">
-        <ion-item class="tnUserRow">
-          <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
-            <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <ion-label class="fontColor-dark" >Ahmad Firdaus Bin Nor Azhar</ion-label>
-
-          <ion-icon name="ios-close-circle" item-end class="fontColor-red"></ion-icon>
+    <ion-card class="cb10">
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleYellow fontColor-dark">
+          Total Roles
+        </ion-card-header>
+      </ion-row>
+      <ion-card-content>
+        <div class="graphContentStyle2 fontColor-yellow">127</div>
+        <ion-item class="fontColor-grey">
+          Active
+          <ion-badge item-end class="bgColor-green">109</ion-badge>
         </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
-            <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <ion-label class="fontColor-dark" >Muhammad Amin Bin Marzuki</ion-label>
-          <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
+        <div class="percentBar fullWidth">
+          <div class="percentBarValue bgColor-green" style="width: calc(100% * (109 / 127))"></div>
+        </div>
+        <ion-item class="fontColor-grey">
+          Inactive
+          <ion-badge item-end class="bgColor-red">18</ion-badge>
         </ion-item>
+        <div class="percentBar fullWidth">
+          <div class="percentBarValue bgColor-red" style="width: calc(100% * (18 / 127))"></div>
+        </div>
+      </ion-card-content>
+    </ion-card>
 
-        <ion-item class="tnUserRow">
-          <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
-            <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <ion-label class="fontColor-dark" >Mariam Binti Sulaiman</ion-label>
-          <ion-icon name="ios-close-circle" item-end class="fontColor-red"></ion-icon>
-        </ion-item>
+  </div>
+  <!--Role Left Pane end-->
 
-        <ion-item class="tnUserRow">
-          <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
-            <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <ion-label class="fontColor-dark" >Mariam Binti Sulaiman</ion-label>
-          <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
-        </ion-item>
+  <!--Role listing start-->
+  <div class="col4">
 
-        <ion-item class="tnUserRow">
-          <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
-            <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <ion-label class="fontColor-dark" >Mariam Binti Sulaiman</ion-label>
-          <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
-            <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <ion-label class="fontColor-dark" >Mariam Binti Sulaiman</ion-label>
-          <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
-            <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <ion-label class="fontColor-dark" >Mariam Binti Sulaiman</ion-label>
-          <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
-            <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <ion-label class="fontColor-dark" >Mariam Binti Sulaiman</ion-label>
-          <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
-            <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <ion-label class="fontColor-dark" >Mariam Binti Sulaiman</ion-label>
-          <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
-            <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <ion-label class="fontColor-dark" >Mariam Binti Sulaiman</ion-label>
-          <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
-            <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-          </ion-thumbnail>
-          <ion-label class="fontColor-dark" >Mariam Binti Sulaiman</ion-label>
-          <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
-        </ion-item>
-        
-      </ion-list>
-    </ion-row>
-  </ion-card>
-</div>
-<!--User listing end-->
-
-<!--edit form start-->
-<div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="roleEditClicked">
-
-  <ion-card class="fb4 marginCenter popupFormCard">
-
-    <ion-card-header class="icTitle headerColor-white posRelative">
-      <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon> 
-      <div class="icHeaderText">Update Role</div>
-      <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="roleEditClick()">
-        <ion-icon name="md-close"></ion-icon> 
-      </button>
-    </ion-card-header>
-
-    <ion-list class="overflowTrue contentHeight">
-      <ion-item>
-        <ion-label class="fontColor-green" stacked>Role</ion-label>
-      <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label class="fontColor-green" stacked>Description</ion-label>
-      <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label class="fontColor-yellow" >Active</ion-label>
-      <ion-toggle checked="false" color="secondary"></ion-toggle>
-      </ion-item>
-    </ion-list>
-
-    <ion-card-content >
-      <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Register</button>
-    </ion-card-content>
-  </ion-card>
-</div>
-<!--edit form end-->
-
-<!--register form start-->
-<div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="roleRegisterClicked">
-
-  <ion-card class="fb4 marginCenter popupFormCard">
-
-    <ion-card-header class="icTitle headerColor-white posRelative">
-      <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon> 
-      <div class="icHeaderText">Register New Location</div>
-      <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="roleRegisterClick()">
-        <ion-icon name="md-close"></ion-icon> 
-      </button>
-    </ion-card-header>
-
-    <ion-list class="overflowTrue contentHeight">
-      <ion-item>
-        <ion-label class="fontColor-green" stacked>Role</ion-label>
-      <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label class="fontColor-green" stacked>Description</ion-label>
-      <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label class="fontColor-yellow" >Active</ion-label>
-      <ion-toggle checked="false" color="secondary"></ion-toggle>
-      </ion-item>
-    </ion-list>
-
-    <ion-card-content >
-      <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Register</button>
-    </ion-card-content>
-  </ion-card>
-</div>
-<!--registerform end-->
-
-
-<!--add User form start-->
-<div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="addUserClicked" >
-
-  <ion-card class="fb6 marginCenter popupFormCard">
-
-    <ion-card-header class="icTitle headerColor-white posRelative">
-      <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon> 
-      <div class="icHeaderText">Add New User to <b>Administrator</b></div>
-      <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="addUserClick()">
-        <ion-icon name="md-close"></ion-icon> 
-      </button>
-    </ion-card-header>
-
-    <ion-card class="cb5 contentHeight3">
+    <ion-card class="cb10">
 
       <ion-row>
-        <ion-item class="bgColor-lightGrey posRelative">
-          <ion-label item-start>Available Users</ion-label>
-          <button item-end ion-button color="primary" class="posAbsolute fullHeight topZero rightZero btnStyle2 marginZero"><ion-icon name="ios-arrow-forward"></ion-icon> </button>
-        </ion-item>
+        <ion-card-header class="fullWidth graphHeaderStyleYellow fontColor-dark">
+          Roles
+        </ion-card-header>
       </ion-row>
 
-      <div class="contentHeight3 overflowTrue">
-        <ion-list>
-          <ion-item>
-            <ion-label>Ahmad Firdaus Bin Nor Azhar</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+      <ion-row>
+        <ion-searchbar></ion-searchbar>
+      </ion-row>
+
+      <ion-list>
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark">Administrator</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="roleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark">Human Resource</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="roleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark">Manager</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="roleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark">Mandor</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="roleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
+          <ion-label class="fontColor-dark">Account</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="roleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+        </ion-item>
+      </ion-list>
+
+    </ion-card>
+
+  </div>
+
+  <!--Role Listing end-->
+
+  <!--User listing start-->
+  <div class="col4">
+
+    <ion-card class="cb10">
+      <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
+        Administrator
+        <!--<button class="posAbsolute fullHeight topZero rightZero btnStyle2 bgColor-green">
+        <ion-icon name="md-add"></ion-icon> 
+      </button>-->
+        <ion-fab top right edge class="topZero rightZero">
+          <button ion-fab mini class="fabBtnStyle1" color="secondary">
+          <ion-icon name="ios-settings"></ion-icon> 
+        </button>
+          <ion-fab-list side="left" class="fabListStyle1">
+
+            <button ion-fab class="btnColor-yellow" (click)="addUserClick()"><ion-icon name="md-add"></ion-icon></button>
+            <button ion-fab class="btnColor-yellow"><ion-icon name="md-cloud-upload"></ion-icon></button>
+          </ion-fab-list>
+        </ion-fab>
+      </ion-card-header>
+
+      <ion-row>
+        <ion-searchbar></ion-searchbar>
+      </ion-row>
+
+      <ion-row class="fullWidth">
+        <ion-list class="fullWidth">
+          <ion-item class="tnUserRow">
+            <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
+              <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+            </ion-thumbnail>
+            <ion-label class="fontColor-dark">Ahmad Firdaus Bin Nor Azhar</ion-label>
+            <ion-icon name="ios-close-circle" item-end class="fontColor-red"></ion-icon>
           </ion-item>
 
-          <ion-item>
-            <ion-label>Angela J. Lederman</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          <ion-item class="tnUserRow">
+            <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
+              <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+            </ion-thumbnail>
+            <ion-label class="fontColor-dark">Muhammad Amin Bin Marzuki</ion-label>
+            <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
           </ion-item>
 
-          <ion-item>
-            <ion-label>Thelma D. Allen</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          <ion-item class="tnUserRow">
+            <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
+              <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+            </ion-thumbnail>
+            <ion-label class="fontColor-dark">Mariam Binti Sulaiman</ion-label>
+            <ion-icon name="ios-close-circle" item-end class="fontColor-red"></ion-icon>
           </ion-item>
 
-          <ion-item>
-            <ion-label>Dwight M. Taylor</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          <ion-item class="tnUserRow">
+            <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
+              <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+            </ion-thumbnail>
+            <ion-label class="fontColor-dark">Mariam Binti Sulaiman</ion-label>
+            <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
           </ion-item>
 
-          <ion-item>
-            <ion-label>Joey D. Williams</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          <ion-item class="tnUserRow">
+            <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
+              <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+            </ion-thumbnail>
+            <ion-label class="fontColor-dark">Mariam Binti Sulaiman</ion-label>
+            <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
           </ion-item>
 
-          <ion-item>
-            <ion-label>David E. Gonzales</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          <ion-item class="tnUserRow">
+            <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
+              <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+            </ion-thumbnail>
+            <ion-label class="fontColor-dark">Mariam Binti Sulaiman</ion-label>
+            <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
           </ion-item>
 
-          <ion-item>
-            <ion-label>Michael R. Sigala</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          <ion-item class="tnUserRow">
+            <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
+              <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+            </ion-thumbnail>
+            <ion-label class="fontColor-dark">Mariam Binti Sulaiman</ion-label>
+            <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
           </ion-item>
 
-          <ion-item>
-            <ion-label>Christina R. Marker</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          <ion-item class="tnUserRow">
+            <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
+              <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+            </ion-thumbnail>
+            <ion-label class="fontColor-dark">Mariam Binti Sulaiman</ion-label>
+            <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
+          </ion-item>
+
+          <ion-item class="tnUserRow">
+            <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
+              <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+            </ion-thumbnail>
+            <ion-label class="fontColor-dark">Mariam Binti Sulaiman</ion-label>
+            <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
+          </ion-item>
+
+          <ion-item class="tnUserRow">
+            <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
+              <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+            </ion-thumbnail>
+            <ion-label class="fontColor-dark">Mariam Binti Sulaiman</ion-label>
+            <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
+          </ion-item>
+
+          <ion-item class="tnUserRow">
+            <ion-thumbnail item-start style="min-height: 40px !important;min-width: 40px !important;">
+              <img class="tnUser2" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+            </ion-thumbnail>
+            <ion-label class="fontColor-dark">Mariam Binti Sulaiman</ion-label>
+            <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
           </ion-item>
 
         </ion-list>
-      </div>
+      </ion-row>
     </ion-card>
-    <ion-card class="cb5 contentHeight3">
+  </div>
+  <!--User listing end-->
+
+  <!--edit form start-->
+  <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="roleEditClicked">
+
+    <ion-card class="fb4 marginCenter popupFormCard">
+
+      <ion-card-header class="icTitle headerColor-white posRelative">
+        <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
+        <div class="icHeaderText">Update Role</div>
+        <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="roleEditClick()">
+        <ion-icon name="md-close"></ion-icon> 
+      </button>
+      </ion-card-header>
+
+      <ion-list class="overflowTrue contentHeight">
+        <ion-item>
+          <ion-label class="fontColor-green" stacked>Role</ion-label>
+          <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="fontColor-green" stacked>Description</ion-label>
+          <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="fontColor-yellow">Active</ion-label>
+          <ion-toggle checked="false" color="secondary"></ion-toggle>
+        </ion-item>
+      </ion-list>
+
+      <ion-card-content>
+        <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Register</button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <!--edit form end-->
+
+  <!--register form start-->
+  <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="roleRegisterClicked">
+
+    <ion-card class="fb4 marginCenter popupFormCard">
+
+      <ion-card-header class="icTitle headerColor-white posRelative">
+        <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
+        <div class="icHeaderText">Register New Location</div>
+        <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="roleRegisterClick()">
+        <ion-icon name="md-close"></ion-icon> 
+      </button>
+      </ion-card-header>
+
+      <ion-list class="overflowTrue contentHeight">
+        <ion-item>
+          <ion-label class="fontColor-green" stacked>Role</ion-label>
+          <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="fontColor-green" stacked>Description</ion-label>
+          <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="fontColor-yellow">Active</ion-label>
+          <ion-toggle checked="false" color="secondary"></ion-toggle>
+        </ion-item>
+      </ion-list>
+
+      <ion-card-content>
+        <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Register</button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <!--registerform end-->
+
+
+  <!--add User form start-->
+  <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="addUserClicked">
+
+    <ion-card class="fb6 marginCenter popupFormCard">
+
+      <ion-card-header class="icTitle headerColor-white posRelative">
+        <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
+        <div class="icHeaderText">Add New User to <b>Administrator</b></div>
+        <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="addUserClick()">
+        <ion-icon name="md-close"></ion-icon> 
+      </button>
+      </ion-card-header>
+
+      <ion-card class="cb5 contentHeight3">
+
+        <ion-row>
+          <ion-item class="bgColor-lightGrey posRelative">
+            <ion-label item-start>Available Users</ion-label>
+            <button item-end ion-button color="primary" class="posAbsolute fullHeight topZero rightZero btnStyle2 marginZero"><ion-icon name="ios-arrow-forward"></ion-icon> </button>
+          </ion-item>
+        </ion-row>
+
+        <div class="contentHeight3 overflowTrue">
+          <ion-list>
+            <ion-item>
+              <ion-label>Ahmad Firdaus Bin Nor Azhar</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Angela J. Lederman</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Thelma D. Allen</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Dwight M. Taylor</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Joey D. Williams</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>David E. Gonzales</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Michael R. Sigala</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Christina R. Marker</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+          </ion-list>
+        </div>
+      </ion-card>
+      <ion-card class="cb5 contentHeight3">
 
         <ion-row>
           <ion-item class="bgColor-lightGrey posRelative">
@@ -416,35 +415,35 @@
           </ion-item>
         </ion-row>
 
-      <div class="contentHeight3 overflowTrue">
-        <ion-list>
+        <div class="contentHeight3 overflowTrue">
+          <ion-list>
 
-          <ion-item>
-            <ion-label>Linda D. Crawford</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-          </ion-item>
+            <ion-item>
+              <ion-label>Linda D. Crawford</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
 
-          <ion-item>
-            <ion-label>Anna C. Cook</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-          </ion-item>
+            <ion-item>
+              <ion-label>Anna C. Cook</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
 
-          <ion-item>
-            <ion-label>Brandy G. Hodge</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-          </ion-item>
+            <ion-item>
+              <ion-label>Brandy G. Hodge</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
 
-          <ion-item>
-            <ion-label>Victor J. Massey</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-          </ion-item>
+            <ion-item>
+              <ion-label>Victor J. Massey</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
 
-        </ion-list>
-      </div>
+          </ion-list>
+        </div>
 
+      </ion-card>
     </ion-card>
-  </ion-card>
-</div>
-<!--add User form end-->
+  </div>
+  <!--add User form end-->
 
 </ion-content>

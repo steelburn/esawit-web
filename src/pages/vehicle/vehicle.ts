@@ -27,16 +27,16 @@ export class VehiclePage {
 
   public vehicleRegisterClick() {
 
-      this.vehicleRegisterClicked = !this.vehicleRegisterClicked;
+    this.vehicleRegisterClicked = !this.vehicleRegisterClicked;
   }
 
   public vehicleEditClick() {
 
-      this.vehicleEditClicked = !this.vehicleEditClicked;
+    this.vehicleEditClicked = !this.vehicleEditClicked;
   }
 
   public addLocationClick() {
 
-      this.addLocationClicked = !this.addLocationClicked;
+    this.addLocationClicked = !this.addLocationClicked;
   }
 }

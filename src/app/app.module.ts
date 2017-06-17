@@ -51,7 +51,7 @@ import { FilterData } from '../shared/filter';
     FilterData
   ],
   imports: [
-    BrowserModule,HttpModule,
+    BrowserModule, HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -77,7 +77,7 @@ import { FilterData } from '../shared/filter';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

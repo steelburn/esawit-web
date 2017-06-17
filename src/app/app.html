@@ -15,7 +15,7 @@
         </button>
       </ion-row>
       <ion-row *ngIf="processPageClicked">
-        <button ion-item menuClose *ngFor="let p of processPages" (click)="openPage(p)"  class="bgColor-white menuButton">
+        <button ion-item menuClose *ngFor="let p of processPages" (click)="openPage(p)" class="bgColor-white menuButton">
           <ion-icon item-start [name]="p.icon"></ion-icon>
           {{p.title}}
         </button>
@@ -30,7 +30,7 @@
         </button>
       </ion-row>
       <ion-row *ngIf="reportingPageClicked">
-        <button ion-item menuClose *ngFor="let p of reportingPages" (click)="openPage(p)"  class="bgColor-white menuButton">
+        <button ion-item menuClose *ngFor="let p of reportingPages" (click)="openPage(p)" class="bgColor-white menuButton">
           <ion-icon item-start [name]="p.icon"></ion-icon>
           {{p.title}}
         </button>
@@ -45,7 +45,7 @@
         </button>
       </ion-row>
       <ion-row *ngIf="othersPageClicked">
-        <button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)"  class="bgColor-white menuButton">
+        <button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)" class="bgColor-white menuButton">
           <ion-icon item-start [name]="p.icon"></ion-icon>
           {{p.title}}
         </button>
