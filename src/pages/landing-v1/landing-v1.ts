@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController,ModalController } from 'ionic-angular';
 
 import { ReportService } from '../../services/reportservice';
 
@@ -16,7 +16,9 @@ import { FormControl } from '@angular/forms';
 import { VehicleTransactionPage } from '../vehicle-transaction/vehicle-transaction';
 import { LocationTransactionPage } from '../location-transaction/location-transaction';
 
-
+import { HarvestlistPage } from '../harvestlist/harvestlist';
+import { MandorlistPage } from '../mandorlist/mandorlist';
+import { FactorylistPage } from '../factorylist/factorylist';
 
 
 class ServerResponse {
@@ -43,7 +45,8 @@ export class LandingV1Page {
 
 baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitdb/_table/HarvestReport?api_key='+constants.DREAMFACTORY_API_KEY;
   constructor(private reportservice: ReportService,private httpService: BaseHttpService,public navCtrl: NavController, 
-  public navParams: NavParams,public loadingCtrl: LoadingController) 
+  public navParams: NavParams,public loadingCtrl: LoadingController
+  ,public modalCtrl: ModalController) 
   {
     this.searchControl = new FormControl();
     this.GenerateToken() ;
@@ -70,6 +73,38 @@ presentLoading()
 
     //this.GetHarvestReport();
 }
+
+harvestlist() 
+{
+    let addModal = this.modalCtrl.create(HarvestlistPage);
+    addModal.onDidDismiss(item => {
+      if (item) {
+        this.items.add(item);
+      }
+    })
+    addModal.present();
+  }
+mandorlist() 
+{
+    let addModal = this.modalCtrl.create(MandorlistPage);
+    addModal.onDidDismiss(item => {
+      if (item) {
+        this.items.add(item);
+      }
+    })
+    addModal.present();
+  }
+factorylist() 
+{
+    let addModal = this.modalCtrl.create(FactorylistPage);
+    addModal.onDidDismiss(item => {
+      if (item) {
+        this.items.add(item);
+      }
+    })
+    addModal.present();
+  }
+
 
 VehicleReport()
 {

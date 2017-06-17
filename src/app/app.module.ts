@@ -28,6 +28,9 @@ import { VehicleTransactionPage } from '../pages/vehicle-transaction/vehicle-tra
 //import { FormsModule }   from '@angular/forms';
 import { FilterData } from '../shared/filter';
 import { LocationTransactionPage } from '../pages/location-transaction/location-transaction';
+import { HarvestlistPage } from '../pages/harvestlist/harvestlist';
+import { MandorlistPage } from '../pages/mandorlist/mandorlist';
+import { FactorylistPage } from '../pages/factorylist/factorylist';
 
 
 @NgModule({
@@ -50,7 +53,9 @@ import { LocationTransactionPage } from '../pages/location-transaction/location-
     ReportsPage,
     VehicleTransactionPage,
     FilterData,
-    LocationTransactionPage
+    LocationTransactionPage,HarvestlistPage
+    ,MandorlistPage
+    ,FactorylistPage
   ],
   imports: [
     BrowserModule,HttpModule,
@@ -74,7 +79,9 @@ import { LocationTransactionPage } from '../pages/location-transaction/location-
     VehiclePage,
     TabsPage,
     ReportsPage,
-    VehicleTransactionPage,LocationTransactionPage
+    VehicleTransactionPage,LocationTransactionPage,HarvestlistPage
+    ,MandorlistPage
+ ,FactorylistPage
   ],
   providers: [
     StatusBar,
