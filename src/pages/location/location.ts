@@ -28,17 +28,17 @@ export class LocationPage {
 
   public locationRegisterClick() {
 
-      this.locationRegisterClicked = !this.locationRegisterClicked;
+    this.locationRegisterClicked = !this.locationRegisterClicked;
   }
 
   public locationEditClick() {
 
-      this.locationEditClicked = !this.locationEditClicked;
+    this.locationEditClicked = !this.locationEditClicked;
   }
 
   public addVehicleClick() {
 
-      this.addVehicleClicked = !this.addVehicleClicked;
+    this.addVehicleClicked = !this.addVehicleClicked;
   }
 
 }
