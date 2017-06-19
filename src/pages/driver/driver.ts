@@ -6,6 +6,8 @@ import { DriverService } from '../../services/driverservice2';
 import {BaseHttpService} from '../../services/base-http';
 import {Http, Headers,RequestOptions, URLSearchParams} from '@angular/http';
 import { Driver } from '../../models/driver';
+import {GETVEHICLE} from '../../models/driver';
+
 import { FormControlDirective, FormBuilder, Validators, FormGroup,FormControl } from '@angular/forms';
 
 
@@ -30,6 +32,7 @@ export class DriverPage {
       this.addVehicleClicked = !this.addVehicleClicked;
     }
 
+  AvailableVehicleform: FormGroup;
 
 searchTerm: string = '';
 searchControl: FormControl;
@@ -37,6 +40,13 @@ searchControl: FormControl;
 
 DriverEditform: FormGroup;
 driver: Driver=new Driver();
+
+getvehicle: GETVEHICLE=new GETVEHICLE();
+public getvehicles: GETVEHICLE[] = []; 
+
+get_selectvehicle: GETVEHICLE=new GETVEHICLE();
+public get_selectvehicles: GETVEHICLE[] = []; 
+
 public drivers: Driver[] = [];   
 public filter_drivers= [];   
 
@@ -53,8 +63,7 @@ public filter_drivers= [];
   constructor(private fb: FormBuilder,private driverservice: DriverService,
    private httpService: BaseHttpService,public navCtrl: NavController, public navParams: NavParams) 
   {
-      this.searchControl = new FormControl();
-    this.GenerateToken();
+      this.searchControl = new FormControl();this.GenerateToken();
     this.DriverEditform = fb.group
     ({
       
@@ -76,10 +85,12 @@ public filter_drivers= [];
      
     });
 
+    this.AvailableVehicleform = fb.group({availablevehicles:''});
+
     this.getList();
   }
 
-
+//#region Main Genreate Token
 private storeToken(data){localStorage.setItem('session_token', data.session_token);}
 private GenerateToken() 
 { 
@@ -90,6 +101,43 @@ private GenerateToken()
   .subscribe((data) => {this.storeToken(data.json());}, (error) => {console.log('error', JSON.parse(error._body).error.message);
                 });
 }
+//#endregion
+
+
+//#region Select and Remove Vehicles
+AvailableSelection(e:any,getvehicle)
+{
+    console.log(e);
+    console.log(e.checked);
+    console.log(getvehicle.vehicle_Gid);
+    console.log(getvehicle.registration_no);
+    
+    
+    var index_num = this.getvehicles.findIndex(x => x.vehicle_Gid==getvehicle.vehicle_Gid);
+    console.log("NUM IS "+index_num);
+    this.getvehicles.splice(index_num, 1);
+    
+    this.get_selectvehicles.push(new GETVEHICLE(getvehicle.vehicle_Gid,getvehicle.registration_no));
+}
+
+RemoveSelection(e:any,getselectvehicle)
+{
+    console.log(e);
+    console.log(e.checked);
+    console.log(getselectvehicle.vehicle_Gid);
+    console.log(getselectvehicle.registration_no);
+    
+    
+    var index_num = this.get_selectvehicles.findIndex(x => x.vehicle_Gid==getselectvehicle.vehicle_Gid);
+    console.log("NUM IS "+index_num);
+    this.get_selectvehicles.splice(index_num, 1);
+    
+    this.getvehicles.push(new GETVEHICLE(getselectvehicle.vehicle_Gid,getselectvehicle.registration_no));
+}
+//#endregion
+
+
+
 
 Updateinfo()
 {
@@ -103,7 +151,7 @@ Updateinfo()
         }
 }
 
-
+//#region User Search
 setFilteredItems() 
 {
         
@@ -138,6 +186,9 @@ setFilteredItems()
       return this.drivers;
   }
  }
+//#endregion
+
+
 
 getList() 
 {
@@ -163,39 +214,57 @@ getList()
                 this.driver.employment_type = last_element.employment_type;
 
             });
-           
-
-        // this.DriverEditform.setValue
-        // ({
-        //     fullname:this.drivers.filter(x=> x.fullname === "fullname")[0]
-        // });
-
 }
-
-Edit(driver_GUID)
+getVehicleList() 
 {
-   var self = this;
-   this.driverservice.get(driver_GUID).subscribe((driver) => self.driver = driver);
-   //console.log(self);
-    // this.DriverEditform.setValue
-    // ({
-    //     fullname:'KUMARRR'
-
-
-    // });
-}
-remove(driver_GUID) 
-{
-    alert(driver_GUID);
-        var self = this;
-        this.driverservice.remove(driver_GUID)
-            .subscribe(() => {
-                self.drivers = self.drivers.filter((item) => 
-                {
-                    return item.driver_GUID != driver_GUID
-                });
+        let self = this;
+        let params: URLSearchParams = new URLSearchParams();
+        //params.set('order', 'last_name+ASC');
+        self.driverservice.getVehicles(params)
+            .subscribe((getvehicles: GETVEHICLE[]) => 
+            {
+                self.getvehicles = getvehicles                
             });
 }
+
+//#region View Driver Info
+View(driver_GUID)
+{
+    console.log(driver_GUID);
+   var self = this;
+   this.driverservice.get(driver_GUID).subscribe((driver) => self.driver = driver);
+
+  this.getVehicleList();
+
+  let self2 = this;
+        let params: URLSearchParams = new URLSearchParams();
+        //params.set('order', 'last_name+ASC');
+        self2.driverservice.getVehicles_byDriver(driver_GUID,params)
+            .subscribe((get_selectvehicles: GETVEHICLE[]) => 
+            {
+                self2.get_selectvehicles = get_selectvehicles                
+            });
+}
+//#endregion
+
+
+
+//#region Remove Driver
+    remove(driver_GUID) 
+    {
+        alert(driver_GUID);
+            var self = this;
+            this.driverservice.remove(driver_GUID)
+                .subscribe(() => {
+                    self.drivers = self.drivers.filter((item) => 
+                    {
+                        return item.driver_GUID != driver_GUID
+                    });
+                });
+    }
+//#endregion
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DriverPage');
