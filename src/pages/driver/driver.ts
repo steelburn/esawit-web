@@ -9,6 +9,7 @@ import { Driver } from '../../models/driver';
 import {GETVEHICLE} from '../../models/driver';
 
 import { FormControlDirective, FormBuilder, Validators, FormGroup,FormControl } from '@angular/forms';
+import { UUID } from 'angular2-uuid';
 
 
 
@@ -38,6 +39,10 @@ searchTerm: string = '';
 searchControl: FormControl;
     items: any;
 
+  Driverform: FormGroup;
+  driver_entry: Driver=new Driver();
+
+
 DriverEditform: FormGroup;
 driver: Driver=new Driver();
 
@@ -60,10 +65,10 @@ public filter_drivers= [];
   lineChart: any;
   driverDoughnutChart: any;
 
-  constructor(private fb: FormBuilder,private driverservice: DriverService,
+  constructor(private fb: FormBuilder,@Inject(FormBuilder) fb2: FormBuilder, private driverservice: DriverService,
    private httpService: BaseHttpService,public navCtrl: NavController, public navParams: NavParams) 
   {
-      this.searchControl = new FormControl();this.GenerateToken();
+    this.searchControl = new FormControl();this.GenerateToken();
     this.DriverEditform = fb.group
     ({
       
@@ -84,11 +89,64 @@ public filter_drivers= [];
       active:''
      
     });
+    
+      this.driver_entry.driver_GUID=UUID.UUID(); this.driver_entry.tenant_GUID=UUID.UUID();
+      //this.GenerateToken();
+      this.Driverform = fb2.group({
+      
+      //fullname: ['', Validators.compose([Validators.maxLength(10),Validators.minLength(5), Validators.pattern('[a-zA-Z ]*'), Validators.required])],        
+      driver_GUID:[ UUID.UUID()],
+      fullname:'',
+      identification_type: '',
+      identification_no:'',
+      address1:'',
+      address2:'',
+      address3:'',
+      phone_no:'',
+      email:'',
+      license_no:'',
+      employment_type:'',
+      description:'',
+      active:1,
+      tenant_GUID:[UUID.UUID()]
+    });
+    
 
     this.AvailableVehicleform = fb.group({availablevehicles:''});
-
     this.getList();
   }
+
+
+ save()
+ {
+        if (this.Driverform.valid) 
+        {
+           //this.register();
+          var self = this;     
+          // this.driver.driver_GUID=UUID.UUID.toString();  this.driver.tenant_GUID=UUID.UUID.toString();       
+            this.driverservice.save(this.driver_entry)
+                .subscribe((response) => 
+                { 
+                    if(response.status==200)
+                    {
+                        this.getList();
+                        alert('User Reqistered successfully');
+                        location.reload();
+                    }
+                
+            })
+        }
+    }
+
+register() 
+    {
+      alert(JSON.stringify(this.Driverform.value));
+      alert(JSON.stringify(this.driver_entry));
+    }
+
+
+
+
 
 //#region Main Genreate Token
 private storeToken(data){localStorage.setItem('session_token', data.session_token);}
@@ -268,7 +326,15 @@ View(driver_GUID)
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DriverPage');
-
+        // let params: URLSearchParams = new URLSearchParams();               
+        // var self2 = this;
+        // this.driverservice.getTotalReport(params)
+        //     .subscribe((response) => 
+        //     {
+        //                 self2=   response.json();
+                      	
+        //     });
+           
         this.driverDoughnutChart = new Chart(this.driverDoughnutCanvas.nativeElement, {
             type: 'doughnut',
             data: {

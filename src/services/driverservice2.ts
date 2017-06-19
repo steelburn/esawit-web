@@ -89,6 +89,24 @@ export class DriverService
 			}).catch(this.handleError);
 	};
 	
+	getTotalReport (params?: URLSearchParams) 
+	{
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+		
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.get(this.baseResource_Url+'totaldriver_view', { search: params ,headers: queryHeaders})
+			.map((response) => 
+			{
+				var result: any = response.json();	
+				//console.log(response);			
+				return response;
+
+			});
+	};
+
 	getVehicles_byDriver (id:string,params?: URLSearchParams): Observable<GETVEHICLE[]> 
 	{
 		var queryHeaders = new Headers();
