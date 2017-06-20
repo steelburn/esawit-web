@@ -31,9 +31,15 @@ export class TabsPage {
   tab6Root = TenantPage;
   tab7Root = UserPage;
   tab8Root = VehiclePage;
-
+tabToShow : number;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    let pid = navParams.get('pid');
+    this.tabToShow=pid;
+    console.log(pid);
+    
   }
+  
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TabsPage');

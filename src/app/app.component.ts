@@ -42,9 +42,9 @@ export class MyApp {
 
   rootPage: any = TabsPage;
 
-  pages: Array<{ title: string, component: any }>;
+  pages: Array<{ title: string, component: any}>;
   reportingPages: Array<{ title: string, component: any }>;
-  processPages: Array<{ title: string, component: any }>;
+  processPages: Array<{ title: string, component: any, pid: any }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public translate: TranslateService, public translateService: TranslateService) {
     this.initializeApp();
@@ -54,11 +54,11 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Login', component: LoginPage },
-      { title: 'Home', component: HomePage },
-      { title: 'Landing V1', component: LandingV1Page },
-      { title: 'Component Demo', component: LandingV2Page },
-      { title: 'Tabs', component: TabsPage }
+      { title: 'Login', component: LoginPage},
+      { title: 'Home', component: HomePage},
+      { title: 'Landing V1', component: LandingV1Page},
+      { title: 'Component Demo', component: LandingV2Page},
+      { title: 'Tabs', component: TabsPage}
     ];
 
     this.reportingPages = [
@@ -67,14 +67,14 @@ export class MyApp {
     ];
 
     this.processPages = [
-      { title: 'Driver', component: TabsPage },
-      { title: 'Location', component: TabsPage },
+      { title: 'Driver', component: TabsPage, pid: 0 },
+      { title: 'Location', component: TabsPage, pid: 1 },
       // { title: 'Module', component: ModulePage },
       // { title: 'Role', component: RolePage },
       // { title: 'Sector', component: SectorPage },
       // { title: 'Tenant', component: TenantPage },
-      { title: 'User', component: TabsPage },
-      { title: 'Vehicle', component: TabsPage }
+      { title: 'User', component: TabsPage, pid: 2 },
+      { title: 'Vehicle', component: TabsPage, pid: 3 }
     ];
 
 
@@ -99,7 +99,9 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    this.nav.push(page.component, {
+      pid: page.pid
+    });
   }
 
   translateToEnglish(){
