@@ -21,7 +21,8 @@ import { VehiclePage } from '../vehicle/vehicle';
   templateUrl: 'tabs.html',
 })
 export class TabsPage {
-
+  
+  //tabs
   tab1Root = DriverPage;
   tab2Root = LocationPage;
   tab3Root = ModulePage;

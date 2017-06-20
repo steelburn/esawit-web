@@ -1,47 +1,4 @@
-<!--
-  Generated template for the DriverPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-  <ion-navbar class="bgColor-darkBlue">
-    <button ion-button menuToggle>
-      <ion-icon name="menu" class="fontColor-white"></ion-icon>
-    </button>
-    <ion-avatar class="logoSize" item-start>
-      <img src="img/eSawitLogo.png">
-    </ion-avatar>
-    <div class="headerInfo">
-      <!--<button ion-button color="secondary" class="headerButton bgColor-darkBlue">
-        <ion-icon name="md-arrow-dropdown" class="fontColor-white"></ion-icon>
-      </button>-->
-
-      <ion-fab top right edge class="topZero rightZero">
-        <button ion-fab mini>
-          <img class="headerImage" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-        </button>
-        <ion-fab-list side="left">
-          <button ion-fab class="bgColor-red"><ion-icon name="md-power"></ion-icon></button>
-          <button ion-fab class="bgColor-green"><ion-icon name="md-settings"></ion-icon></button>
-          <button ion-fab class="bgColor-yellow"><ion-icon name="md-help"></ion-icon></button>
-        </ion-fab-list>
-      </ion-fab>
-
-      <ion-thumbnail class="floatRight" item-start>
-        <img class="headerImage" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-      </ion-thumbnail>
-
-      <ion-label class="headerLabel floatRight fontColor-grey">
-        System Account
-      </ion-label>
-
-    </div>
-  </ion-navbar>
-</ion-header>
-
-
-<ion-content padding>
+<ion-content padding class="contentMarginTop">
 
   <!--form start-->
   <div class="col2">
@@ -49,36 +6,36 @@
     <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="driverRegisterClick()">
     <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
     <div class="portletColStyle2">
-      <div class="portletHeaderStyle2">Register New Driver</div>
+      <div class="portletHeaderStyle2">{{"REGISTER_NEW_DRIVER" | translate}}</div>
     </div>
   </button>
 
     <ion-card class="cb10">
       <ion-row>
         <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
-          Total Driver
+          {{"TOTAL_DRIVER" | translate}}
         </ion-card-header>
       </ion-row>
       <ion-card-content>
         <div class="graphContentStyle2 fontColor-green">112</div>
-        <div class="graphContentStyle1 fontColor-grey">Updated on 13 March 2017</div>
+        <div class="graphContentStyle1 fontColor-grey">{{"UPDATE_ON" | translate}} 13 March 2017</div>
         <ion-item>
           <canvas #driverDoughnutCanvas></canvas>
         </ion-item>
         <ion-item class="graphLabelStyle1 fontColor-grey">
-          Permanent
+          {{"PERMANENT" | translate}}
           <ion-badge item-end class="bgColor-blue">75</ion-badge>
         </ion-item>
         <ion-item class="graphLabelStyle1 fontColor-grey">
-          Temporary
+          {{"TEMPORARY" | translate}}
           <ion-badge item-end class="bgColor-red">27</ion-badge>
         </ion-item>
         <ion-item class="graphLabelStyle1 fontColor-grey">
-          Probation
+          {{"PROBATION" | translate}}
           <ion-badge item-end class="bgColor-yellow">5</ion-badge>
         </ion-item>
         <ion-item class="graphLabelStyle1 fontColor-grey">
-          Contract
+          {{"CONTRACT" | translate}}
           <ion-badge item-end class="bgColor-green">19</ion-badge>
         </ion-item>
       </ion-card-content>
@@ -132,7 +89,7 @@
         <ion-list *ngSwitchDefault>
           <ion-card-content>
             <div class="">
-              <div class="infoLabel bgColor-red floatLeft">Address</div>
+              <div class="infoLabel bgColor-red floatLeft">{{"ADDRESS" | translate}}</div>
               <div class="infoText">{{driver.address1}}<br/> {{driver.address2}}
                 <br/> {{driver.address3}}
                 <br/>
@@ -140,22 +97,22 @@
             </div>
 
             <div class="">
-              <div class="infoLabel bgColor-yellow floatLeft">Phone</div>
+              <div class="infoLabel bgColor-yellow floatLeft">{{"PHONE" | translate}}</div>
               <div class="infoText">{{driver.phone_no}}</div>
             </div>
 
             <div class="">
-              <div class="infoLabel bgColor-yellow floatLeft">ID No.</div>
+              <div class="infoLabel bgColor-yellow floatLeft">{{"ID_NO" | translate}}</div>
               <div class="infoText">{{driver.identification_no}}</div>
             </div>
 
             <div class="">
-              <div class="infoLabel bgColor-blue floatLeft">License</div>
+              <div class="infoLabel bgColor-blue floatLeft">{{"LICENSE" | translate}}</div>
               <div class="infoText">{{driver.license_no}}</div>
             </div>
 
             <div class="">
-              <div class="infoLabel bgColor-green floatLeft">Employment</div>
+              <div class="infoLabel bgColor-green floatLeft">{{"EMPLOYMENT" | translate}}</div>
               <div class="infoText">{{driver.employment_type}}</div>
             </div>
 
@@ -200,10 +157,10 @@
       <ion-row>
         <ion-segment [(ngModel)]="userInfo" [ngModelOptions]="{standalone:true}" color="primary">
           <ion-segment-button value="Info" isActive>
-            Info
+            {{"INFO" | translate}}
           </ion-segment-button>
           <ion-segment-button value="Vehicle">
-            <ion-icon ios="ios-create"></ion-icon> Vehicle
+            {{"VEHICLE" | translate}}
           </ion-segment-button>
         </ion-segment>
       </ion-row>
@@ -332,7 +289,7 @@
 
       <ion-card-header class="icTitle headerColor-white posRelative">
         <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
-        <div class="icHeaderText">Register New Driver</div>
+        <div class="icHeaderText">{{"REGISTER_NEW_DRIVER" | translate}}</div>
         <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="driverRegisterClick()">
         <ion-icon name="md-close"></ion-icon> 
       </button>
@@ -344,12 +301,12 @@
           <!--<ion-input type="text" formControlName="driver_GUID" [(ngModel)]="driver.driver_GUID"  class="editInput" ></ion-input>
         <ion-input type="text" formControlName="tenant_GUID" [(ngModel)]="driver.tenant_GUID"  class="editInput"></ion-input>
         -->
-          <ion-label class="fontColor-green" stacked>Full Name</ion-label>
+          <ion-label class="fontColor-green" stacked>{{"FULLNAME" | translate}}</ion-label>
           <ion-input type="text" class="editInput" placeholder="Please insert full name"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label class="fontColor-green" stacked>Identification Type</ion-label>
+          <ion-label class="fontColor-green" stacked>{{"ID_TYPE" | translate}}</ion-label>
           <ion-select class="editInput" interface="popover" placeholder="Please select identification type">
             <ion-option value="0">N/A</ion-option>
             <ion-option value="1">Mykad</ion-option>
@@ -359,47 +316,47 @@
         </ion-item>
 
         <ion-item>
-          <ion-label class="fontColor-green" stacked>Identification No.</ion-label>
+          <ion-label class="fontColor-green" stacked>{{"ID_NO" | translate}}</ion-label>
           <ion-input type="text" class="editInput" placeholder="please insert correct identification number"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label class="fontColor-green" stacked>Address 1</ion-label>
+          <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 1</ion-label>
           <ion-input type="text" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label class="fontColor-green" stacked>Address 2</ion-label>
+          <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 2</ion-label>
           <ion-input type="text" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label class="fontColor-green" stacked>Address 3</ion-label>
+          <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 3</ion-label>
           <ion-input type="text" class="editInput" placeholder="eg: City name"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label class="fontColor-green" stacked>Phone No.</ion-label>
+          <ion-label class="fontColor-green" stacked>{{"PHONE" | translate}}</ion-label>
           <ion-input type="text" class="editInput" placeholder="Please insert correct phone number"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label class="fontColor-green" stacked>Email</ion-label>
+          <ion-label class="fontColor-green" stacked>{{"EMAIL" | translate}}</ion-label>
           <ion-input type="text" class="editInput" placeholder="Please insert correct email address"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label class="fontColor-green" stacked>License No.</ion-label>
+          <ion-label class="fontColor-green" stacked>{{"LICENSE" | translate}}</ion-label>
           <ion-input type="text" class="editInput" placeholder="Please insert correct license number"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label class="fontColor-green" stacked>Start Year</ion-label>
+          <ion-label class="fontColor-green" stacked>{{"START_YEAR" | translate}}</ion-label>
           <ion-datetime displayFormat="YYYY" class="editInput" placeholder="Select start year"></ion-datetime>
         </ion-item>
 
         <ion-item>
-          <ion-label class="fontColor-green" stacked>Employment Type</ion-label>
+          <ion-label class="fontColor-green" stacked>{{"EMPLOYMENT" | translate}}</ion-label>
           <ion-select class="editInput" interface="popover" placeholder="Please select identification type">
             <ion-option value="0">N/A</ion-option>
             <ion-option value="1">Permanent</ion-option>
@@ -410,19 +367,19 @@
         </ion-item>
 
         <ion-item>
-          <ion-label class="fontColor-green" stacked>Description</ion-label>
+          <ion-label class="fontColor-green" stacked>{{"DESCRIPTION" | translate}}</ion-label>
           <ion-textarea type="text" class="editInput" placeholder="Description are ptional"></ion-textarea>
         </ion-item>
 
         <ion-item>
-          <ion-label class="fontColor-yellow" stacked>Active</ion-label>
+          <ion-label class="fontColor-yellow" stacked>{{"ACTIVE" | translate}}</ion-label>
           <ion-toggle color="secondary"></ion-toggle>
         </ion-item>
 
       </ion-list>
 
       <ion-card-content>
-        <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Register</button>
+        <button ion-button full class="bgColor-grey fontColor-white btnStyle1">{{"REGISTER" | translate}}</button>
       </ion-card-content>
     </ion-card>
   </div>
@@ -435,7 +392,7 @@
 
       <ion-card-header class="icTitle headerColor-white posRelative">
         <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
-        <div class="icHeaderText">Register New Vehicles to <b>Ahmad Firdaus Bin Nor Azhar</b></div>
+        <div class="icHeaderText">{{"REGISTER_NEW_VEHICLE" | translate}} (<b>Ahmad Firdaus Bin Nor Azhar</b>)</div>
         <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="addVehicleClick()">
         <ion-icon name="md-close"></ion-icon> 
       </button>

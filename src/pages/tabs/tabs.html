@@ -5,13 +5,13 @@
   Ionic pages and navigation.
 -->
 
-<ion-tabs color="darkblue" selectedIndex="0">
-  <ion-tab [root]="tab1Root" tabTitle="Driver" tabIcon="ios-contact"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Location" tabIcon="ios-pin-outline"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Module" tabIcon="ios-document-outline"></ion-tab>
-  <ion-tab [root]="tab4Root" tabTitle="Role" tabIcon="ios-contacts-outline"></ion-tab>
-  <ion-tab [root]="tab5Root" tabTitle="Sector" tabIcon="ios-navigate-outline"></ion-tab>
-  <ion-tab [root]="tab6Root" tabTitle="Tenant" tabIcon="ios-people-outline"></ion-tab>
-  <ion-tab [root]="tab7Root" tabTitle="User" tabIcon="ios-contact"></ion-tab>
-  <ion-tab [root]="tab8Root" tabTitle="Vehicle" tabIcon="ios-bus-outline"></ion-tab>
+<ion-tabs color="darkblue" selectedIndex="5">
+  <ion-tab [root]="tab1Root" tabTitle="{{ 'DRIVER' | translate }}" tabIcon="ios-contact"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle='{{ "LOCATION" | translate }}' tabIcon="ios-pin-outline"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle='{{ "MODULE" | translate }}' tabIcon="ios-document-outline"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle='{{ "ROLE" | translate }}' tabIcon="ios-contacts-outline"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle='{{ "SECTOR" | translate }}' tabIcon="ios-navigate-outline"></ion-tab>
+  <ion-tab [root]="tab6Root" tabTitle='{{ "TENANT" | translate }}' tabIcon="ios-people-outline"></ion-tab>
+  <ion-tab [root]="tab7Root" tabTitle='{{ "USER" | translate }}' tabIcon="ios-contact"></ion-tab>
+  <ion-tab [root]="tab8Root" tabTitle='{{ "VEHICLE" | translate }}' tabIcon="ios-bus-outline"></ion-tab>
 </ion-tabs>

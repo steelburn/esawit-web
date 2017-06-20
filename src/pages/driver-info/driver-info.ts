@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Driver} from '../../models/driver'
 import { FormControlDirective, FormBuilder, Validators, FormGroup,FormControl } from '@angular/forms';
 import { UUID } from 'angular2-uuid';
+import { TranslateService } from '@ngx-translate/core';
 
 import { BaseHttpService } from '../../services/base-http';
 import { DriverService } from '../../services/driverservice2';
