@@ -1,6 +1,7 @@
 import { Component, ViewChild, Inject } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
+import { TranslateService } from '@ngx-translate/core';
 
 import { DriverService } from '../../services/driverservice2';
 import { BaseHttpService } from '../../services/base-http';
