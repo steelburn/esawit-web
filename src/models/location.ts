@@ -47,3 +47,38 @@ export class LocationModel
 	}
 
 }
+
+
+
+export class GETLOCATION {
+	constructor(
+		public vehicle_GUID: string = null,
+		public registration_no: string = null,
+		public location_GUID: string = null,
+		public is_checked: boolean = null,
+	) { }
+
+
+	static fromJson(json: any) {
+		if (!json) return;
+
+		return new GETLOCATION(
+			json.vehicle_GUID,
+		    json.registration_no,
+			json.location_GUID,
+			json.is_checked
+		);
+	}
+
+
+	toJson(stringify?: boolean): any {
+		var doc = {
+			vehicle_GUID:this.vehicle_GUID,
+			registration_no:this.registration_no,
+			location_GUID:this.location_GUID,is_checked:this.is_checked
+		};
+
+		return stringify ? JSON.stringify({ resource: [doc] }) : doc;
+	}
+
+}
