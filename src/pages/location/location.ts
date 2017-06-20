@@ -6,6 +6,8 @@ import { LocationService } from '../../services/locationservice';
 import { BaseHttpService } from '../../services/base-http';
 import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { LocationModel } from '../../models/location';
+import { GETLOCATION } from '../../models/location';
+
 import { FormControlDirective, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { UUID } from 'angular2-uuid';
 
@@ -26,6 +28,7 @@ export class LocationPage {
   location: LocationModel=new LocationModel();
 
   public locations: LocationModel[] = [];   
+  public get_selectvehicles: GETLOCATION[] = [];
 
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, private location_service: LocationService,
@@ -88,7 +91,13 @@ View(location_GUID)
    this.location_service.get(location_GUID).subscribe((location) => self.location = location);
 
 
-  
+  let self2 = this;
+        let params: URLSearchParams = new URLSearchParams();
+        //params.set('order', 'last_name+ASC');
+        self2.location_service.getVehicles_bylocation(location_GUID, params)
+            .subscribe((get_selectvehicles: GETLOCATION[]) => {
+                self2.get_selectvehicles = get_selectvehicles
+            });
 }
 //#endregion
 
