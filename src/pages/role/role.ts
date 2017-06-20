@@ -27,17 +27,17 @@ export class RolePage {
 
   public roleRegisterClick() {
 
-      this.roleRegisterClicked = !this.roleRegisterClicked;
+    this.roleRegisterClicked = !this.roleRegisterClicked;
   }
 
   public roleEditClick() {
 
-      this.roleEditClicked = !this.roleEditClicked;
+    this.roleEditClicked = !this.roleEditClicked;
   }
 
   public addUserClick() {
 
-      this.addUserClicked = !this.addUserClicked;
+    this.addUserClicked = !this.addUserClicked;
   }
 
 }

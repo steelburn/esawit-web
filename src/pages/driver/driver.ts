@@ -1,10 +1,10 @@
-import { Component, ViewChild,Inject } from '@angular/core';
+import { Component, ViewChild, Inject } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
 
 import { DriverService } from '../../services/driverservice2';
-import {BaseHttpService} from '../../services/base-http';
-import {Http, Headers,RequestOptions, URLSearchParams} from '@angular/http';
+import { BaseHttpService } from '../../services/base-http';
+import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Driver } from '../../models/driver';
 import {GETVEHICLE} from '../../models/driver';
 
@@ -16,8 +16,8 @@ import { UUID } from 'angular2-uuid';
 
 @IonicPage()
 @Component({
-  selector: 'page-driver',
-  templateUrl: 'driver.html',providers: [DriverService,BaseHttpService]
+    selector: 'page-driver',
+    templateUrl: 'driver.html', providers: [DriverService, BaseHttpService]
 })
 export class DriverPage {
 
@@ -26,17 +26,17 @@ export class DriverPage {
 
     public driverRegisterClick() {
 
-      this.driverRegisterClicked = !this.driverRegisterClicked;
+        this.driverRegisterClicked = !this.driverRegisterClicked;
     }
     public addVehicleClick() {
 
-      this.addVehicleClicked = !this.addVehicleClicked;
+        this.addVehicleClicked = !this.addVehicleClicked;
     }
 
   AvailableVehicleform: FormGroup;
 
-searchTerm: string = '';
-searchControl: FormControl;
+    searchTerm: string = '';
+    searchControl: FormControl;
     items: any;
 
   Driverform: FormGroup;
@@ -55,15 +55,10 @@ public get_selectvehicles: GETVEHICLE[] = [];
 public drivers: Driver[] = [];   
 public filter_drivers= [];   
 
-  @ViewChild('barCanvas') barCanvas;
-  @ViewChild('doughnutCanvas') doughnutCanvas;
-  @ViewChild('lineCanvas') lineCanvas;
-  @ViewChild('driverDoughnutCanvas') driverDoughnutCanvas;
- 
-  barChart: any;
-  doughnutChart: any;
-  lineChart: any;
-  driverDoughnutChart: any;
+    @ViewChild('barCanvas') barCanvas;
+    @ViewChild('doughnutCanvas') doughnutCanvas;
+    @ViewChild('lineCanvas') lineCanvas;
+    @ViewChild('driverDoughnutCanvas') driverDoughnutCanvas;
 
   constructor(private fb: FormBuilder,@Inject(FormBuilder) fb2: FormBuilder, private driverservice: DriverService,
    private httpService: BaseHttpService,public navCtrl: NavController, public navParams: NavParams) 
@@ -116,6 +111,21 @@ public filter_drivers= [];
     this.getList();
   }
 
+                fullname: '',
+                driver_GUID: '',
+                tenant_GUID: '',
+                identification_no: '',
+                identification_type: '',
+                address1: '',
+                address2: '',
+                address3: '',
+                phone_no: '',
+                email: '',
+                license_no: '',
+                start_year: '',
+                description: '',
+                employment_type: '',
+                active: ''
 
  save()
  {
@@ -207,25 +217,23 @@ Updateinfo()
           this.driverservice.Update(this.driver)
                 .subscribe((response) => {console.log(response.status) })
         }
-}
+    }
 
 //#region User Search
 setFilteredItems() 
 {
         
         this.drivers = this.filterItems(this.searchTerm);
-        var last_element =this.drivers[0];
-                console.log(last_element);
-                this.driver.driver_GUID = last_element.driver_GUID;
-                this.driver.tenant_GUID = last_element.tenant_GUID;
-                this.driver.fullname = last_element.fullname;
-                this.driver.email = last_element.email;
-                this.driver.phone_no = last_element.phone_no;
-                this.driver.identification_no = last_element.identification_no;
-                this.driver.license_no = last_element.license_no;
-                this.driver.employment_type = last_element.employment_type;
- 
-}
+        var last_element = this.drivers[0];
+        console.log(last_element);
+        this.driver.driver_GUID = last_element.driver_GUID;
+        this.driver.tenant_GUID = last_element.tenant_GUID;
+        this.driver.fullname = last_element.fullname;
+        this.driver.email = last_element.email;
+        this.driver.phone_no = last_element.phone_no;
+        this.driver.identification_no = last_element.identification_no;
+        this.driver.license_no = last_element.license_no;
+        this.driver.employment_type = last_element.employment_type;
 
  filterItems(searchTerm)
  {       
@@ -254,13 +262,12 @@ getList()
         let params: URLSearchParams = new URLSearchParams();
         //params.set('order', 'last_name+ASC');
         self.driverservice.query(params)
-            .subscribe((drivers: Driver[]) => 
-            {
+            .subscribe((drivers: Driver[]) => {
                 self.drivers = drivers
                 this.filter_drivers = drivers;
                 console.log(self.drivers);
 
-                var last_element =drivers[0];
+                var last_element = drivers[0];
                 console.log(last_element);
                 this.driver.driver_GUID = last_element.driver_GUID;
                 this.driver.tenant_GUID = last_element.tenant_GUID;
@@ -361,9 +368,9 @@ View(driver_GUID)
                     display: false
                 }
             }
- 
+
         });
 
-  }
+    }
 
 }

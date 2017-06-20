@@ -18,7 +18,7 @@
       </button>-->
 
       <ion-fab top right edge class="topZero rightZero">
-        <button ion-fab mini >
+        <button ion-fab mini>
           <img class="headerImage" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
         </button>
         <ion-fab-list side="left">
@@ -35,7 +35,7 @@
       <ion-label class="headerLabel floatRight fontColor-grey">
         System Account
       </ion-label>
-      
+
     </div>
   </ion-navbar>
 </ion-header>
@@ -43,52 +43,52 @@
 
 <ion-content padding>
 
-<!--form start-->
-<div class="col2">
+  <!--form start-->
+  <div class="col2">
 
-  <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="driverRegisterClick()">
+    <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="driverRegisterClick()">
     <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
     <div class="portletColStyle2">
       <div class="portletHeaderStyle2">Register New Driver</div>
     </div>
   </button>
 
-  <ion-card class="cb10">
-    <ion-row>
-      <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark" >
-        Total Driver
-      </ion-card-header>
-    </ion-row>
-    <ion-card-content >
-      <div class="graphContentStyle2 fontColor-green">127</div>
-      <div class="graphContentStyle1 fontColor-grey">Updated on 13 March 2017</div>
-      <ion-item>
+    <ion-card class="cb10">
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
+          Total Driver
+        </ion-card-header>
+      </ion-row>
+      <ion-card-content>
+        <div class="graphContentStyle2 fontColor-green">112</div>
+        <div class="graphContentStyle1 fontColor-grey">Updated on 13 March 2017</div>
+        <ion-item>
           <canvas #driverDoughnutCanvas></canvas>
-      </ion-item>
-      <ion-item class="graphLabelStyle1 fontColor-grey">
-        Permanent
-        <ion-badge item-end class="bgColor-blue">75</ion-badge>
-      </ion-item>
-      <ion-item class="graphLabelStyle1 fontColor-grey">
-        Temporary
-        <ion-badge item-end class="bgColor-red">27</ion-badge>
-      </ion-item>
-      <ion-item class="graphLabelStyle1 fontColor-grey">
-        Probation
-        <ion-badge item-end class="bgColor-yellow">5</ion-badge>
-      </ion-item>
-      <ion-item class="graphLabelStyle1 fontColor-grey">
-        Contract
-        <ion-badge item-end class="bgColor-green">19</ion-badge>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
+        </ion-item>
+        <ion-item class="graphLabelStyle1 fontColor-grey">
+          Permanent
+          <ion-badge item-end class="bgColor-blue">75</ion-badge>
+        </ion-item>
+        <ion-item class="graphLabelStyle1 fontColor-grey">
+          Temporary
+          <ion-badge item-end class="bgColor-red">27</ion-badge>
+        </ion-item>
+        <ion-item class="graphLabelStyle1 fontColor-grey">
+          Probation
+          <ion-badge item-end class="bgColor-yellow">5</ion-badge>
+        </ion-item>
+        <ion-item class="graphLabelStyle1 fontColor-grey">
+          Contract
+          <ion-badge item-end class="bgColor-green">19</ion-badge>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
 
-</div>
-<!--form end-->
+  </div>
+  <!--form end-->
 
-<!--listing start-->
-<div class="col5">
+  <!--listing start-->
+  <div class="col5">
 
   <ion-card class="cb10">
     <ion-row>
@@ -112,58 +112,47 @@
       </ion-list>
     </ion-card-content>
 
-  </ion-card>
+    </ion-card>
 
-</div>
-<!--listing end-->
+  </div>
+  <!--listing end-->
 
-<!--Profile start-->
-<div class="col3">
- <ion-card class="cb10">
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-      </ion-avatar>
-      <h2>{{driver.fullname}}</h2>
-      <p>{{driver.email}}</p>
-    </ion-item>
+  <!--Profile start-->
+  <div class="col3">
+    <ion-card class="cb10">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
+        </ion-avatar>
+        <h2>{{driver.fullname}}</h2>
+        <p>{{driver.email}}</p>
+      </ion-item>
 
-    <div [ngSwitch]="userInfo">
-      <ion-list *ngSwitchDefault>
-        <ion-card-content>
-          <div class="">
-            <div class="infoLabel bgColor-red floatLeft">Address</div>
-            <div class="infoText">{{driver.address1}}<br/>
-            {{driver.address2}}<br/>
-            {{driver.address3}}<br/>
+      <div [ngSwitch]="userInfo">
+        <ion-list *ngSwitchDefault>
+          <ion-card-content>
+            <div class="">
+              <div class="infoLabel bgColor-red floatLeft">Address</div>
+              <div class="infoText">{{driver.address1}}<br/> {{driver.address2}}
+                <br/> {{driver.address3}}
+                <br/>
+              </div>
             </div>
-          </div>
-          
-          <div class="">
-            <div class="infoLabel bgColor-yellow floatLeft">Phone</div>
-            <div class="infoText">{{driver.phone_no}}</div>
-          </div>
-          
-          <div class="">
-            <div class="infoLabel bgColor-yellow floatLeft">ID No.</div>
-            <div class="infoText">{{driver.identification_no}}</div>
-          </div>
-          
-          <div class="">
-            <div class="infoLabel bgColor-blue floatLeft">License</div>
-            <div class="infoText">{{driver.license_no}}</div>
-          </div>
-          
-          <div class="">
-            <div class="infoLabel bgColor-green floatLeft">Employment</div>
-            <div class="infoText">{{driver.employment_type}}</div>
-          </div>
 
-        </ion-card-content>
-      </ion-list>
+            <div class="">
+              <div class="infoLabel bgColor-yellow floatLeft">Phone</div>
+              <div class="infoText">{{driver.phone_no}}</div>
+            </div>
 
+            <div class="">
+              <div class="infoLabel bgColor-yellow floatLeft">ID No.</div>
+              <div class="infoText">{{driver.identification_no}}</div>
+            </div>
 
-      <ion-list *ngSwitchCase="'Vehicle'">
+            <div class="">
+              <div class="infoLabel bgColor-blue floatLeft">License</div>
+              <div class="infoText">{{driver.license_no}}</div>
+            </div>
 
       <ion-list>
         
@@ -186,7 +175,25 @@
       </ion-list>
     </div>
 
-    <ion-row>
+          <ion-item>
+            <ion-label>ABC 1234</ion-label>
+            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>ABC 1234</ion-label>
+            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          </ion-item>
+
+          <ion-card-content>
+            <button ion-button full class="bgColor-grey fontColor-white btnStyle1" (click)=addVehicleClick()>Update Vehicle</button>
+          </ion-card-content>
+
+        </ion-list>
+
+      </div>
+
+      <ion-row>
         <ion-segment [(ngModel)]="userInfo" [ngModelOptions]="{standalone:true}" color="primary">
           <ion-segment-button value="Info" isActive>
             Info
@@ -195,14 +202,14 @@
             <ion-icon ios="ios-create"></ion-icon> Vehicle
           </ion-segment-button>
         </ion-segment>
-    </ion-row>
+      </ion-row>
 
-  </ion-card>
-</div>
-<!--profile end-->
+    </ion-card>
+  </div>
+  <!--profile end-->
 
-<!--Profile start BACKUP-->
-<!--<div class="col3">
+  <!--Profile start BACKUP-->
+  <!--<div class="col3">
  <ion-card class="cb10">
     <ion-item>
       <ion-avatar item-start>
@@ -312,17 +319,17 @@
   </ion-card>
  </form>
 </div>-->
-<!--profile end-->
+  <!--profile end-->
 
-<!--add Driver form start-->
-<div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="driverRegisterClicked" >
+  <!--add Driver form start-->
+  <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="driverRegisterClicked">
 
-  <ion-card class="fb4 marginCenter popupFormCard">
+    <ion-card class="fb4 marginCenter popupFormCard">
 
-    <ion-card-header class="icTitle headerColor-white posRelative">
-      <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon> 
-      <div class="icHeaderText">Register New Driver</div>
-      <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="driverRegisterClick()">
+      <ion-card-header class="icTitle headerColor-white posRelative">
+        <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
+        <div class="icHeaderText">Register New Driver</div>
+        <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="driverRegisterClick()">
         <ion-icon name="md-close"></ion-icon> 
       </button>
     </ion-card-header>
@@ -424,8 +431,12 @@
 </div>
 <!--add Driver form end-->
 
-<!--add Vehicle form start-->
-<div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="addVehicleClicked" >
+      <ion-card-content>
+        <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Register</button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <!--add Driver form end-->
 
   <ion-card class="fb6 marginCenter popupFormCard">
     <ion-card-header class="icTitle headerColor-white posRelative">
@@ -434,7 +445,7 @@
       <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="addVehicleClick()">
         <ion-icon name="md-close"></ion-icon> 
       </button>
-    </ion-card-header>
+      </ion-card-header>
 
     <ion-card class="cb5 contentHeight3">
       <form [formGroup]="AvailableVehicleform" (ngSubmit)="onSubmit(AvailableVehicleform.value)">
@@ -472,8 +483,7 @@
         </ion-list>
       </div>
     </ion-card>
-  </ion-card>
-</div>
-<!--add Vehicle form end-->
+  </div>
+  <!--add Vehicle form end-->
 
 </ion-content>
