@@ -40,7 +40,7 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = TabsPage;
 
   pages: Array<{ title: string, component: any }>;
   reportingPages: Array<{ title: string, component: any }>;
