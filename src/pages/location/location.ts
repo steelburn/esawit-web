@@ -82,8 +82,8 @@ getList()
 //#region View Driver Info
 View(location_GUID)
 {
-  alert(location_GUID);
-    console.log(location_GUID);
+  // alert(location_GUID);
+  //   console.log(location_GUID);
    var self = this;
    this.location_service.get(location_GUID).subscribe((location) => self.location = location);
 

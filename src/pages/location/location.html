@@ -57,7 +57,7 @@
         <ion-item *ngFor="let location of locations" class="tnUserRow">
           <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark">{{location.name}}</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (clik)="View(location.location_GUID)"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(location.location_GUID)"><ion-icon name="md-eye"></ion-icon></button>
           <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="locationEditClick(location.location_GUID)"><ion-icon name="ios-create"></ion-icon></button>
           <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
