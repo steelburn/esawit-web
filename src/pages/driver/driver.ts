@@ -60,6 +60,8 @@ public filter_drivers= [];
     @ViewChild('lineCanvas') lineCanvas;
     @ViewChild('driverDoughnutCanvas') driverDoughnutCanvas;
 
+    driverDoughnutChart:any;
+
   constructor(private fb: FormBuilder,@Inject(FormBuilder) fb2: FormBuilder, private driverservice: DriverService,
    private httpService: BaseHttpService,public navCtrl: NavController, public navParams: NavParams) 
   {
@@ -111,21 +113,21 @@ public filter_drivers= [];
     this.getList();
   }
 
-                fullname: '',
-                driver_GUID: '',
-                tenant_GUID: '',
-                identification_no: '',
-                identification_type: '',
-                address1: '',
-                address2: '',
-                address3: '',
-                phone_no: '',
-                email: '',
-                license_no: '',
-                start_year: '',
-                description: '',
-                employment_type: '',
-                active: ''
+                // fullname: '',
+                // driver_GUID: '',
+                // tenant_GUID: '',
+                // identification_no: '',
+                // identification_type: '',
+                // address1: '',
+                // address2: '',
+                // address3: '',
+                // phone_no: '',
+                // email: '',
+                // license_no: '',
+                // start_year: '',
+                // description: '',
+                // employment_type: '',
+                // active: ''
 
  save()
  {
@@ -234,7 +236,7 @@ setFilteredItems()
         this.driver.identification_no = last_element.identification_no;
         this.driver.license_no = last_element.license_no;
         this.driver.employment_type = last_element.employment_type;
-
+}
  filterItems(searchTerm)
  {       
   if(searchTerm!='')
