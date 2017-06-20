@@ -2,14 +2,13 @@
 
   <!--form start-->
   <div class="col2">
-
     <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="driverRegisterClick()">
-    <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
-    <div class="portletColStyle2">
-      <div class="portletHeaderStyle2">{{"REGISTER_NEW_DRIVER" | translate}}</div>
-    </div>
+      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
+      <div class="portletColStyle2">
+        <div class="portletHeaderStyle2">{{"REGISTER_NEW_DRIVER" | translate}}</div>
+      </div>
   </button>
-
+    
     <ion-card class="cb10">
       <ion-row>
         <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
@@ -62,7 +61,7 @@
             <p>
               <ion-icon name="ios-card"></ion-icon> {{driver.identification_no}}
             </p>
-            <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="Edit(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
+            <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
             <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
             <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red" (click)="remove(driver.driver_GUID)"><ion-icon name="md-close"></ion-icon></button>
           </ion-item>
@@ -119,30 +118,14 @@
           </ion-card-content>
         </ion-list>
 
-
         <ion-list *ngSwitchCase="'Vehicle'">
 
           <ion-row>
             <ion-searchbar></ion-searchbar>
           </ion-row>
 
-          <ion-item>
-            <ion-label>ABC 1234</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>ABC 1234</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>ABC 1234</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>ABC 1234</ion-label>
+          <ion-item *ngFor="let get_selectvehicle of get_selectvehicles">
+            <ion-label>{{get_selectvehicle.registration_no}}</ion-label>
             <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
           </ion-item>
 
@@ -167,120 +150,6 @@
 
     </ion-card>
   </div>
-  <!--profile end-->
-
-  <!--Profile start BACKUP-->
-  <!--<div class="col3">
- <ion-card class="cb10">
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-      </ion-avatar>
-      <h2>{{driver.fullname}}</h2>
-      <p>{{driver.email}}</p>
-    </ion-item>
-
-    <div [ngSwitch]="userInfo">
-      <ion-list *ngSwitchDefault>
-        <ion-card-content>
-          <div class="">
-            <div class="infoLabel bgColor-red floatLeft">Address</div>
-            <div class="infoText">{{driver.address1}}<br/>
-            {{driver.address2}}<br/>
-            {{driver.address3}}<br/>
-            </div>
-          </div>
-          
-          <div class="">
-            <div class="infoLabel bgColor-yellow floatLeft">Phone</div>
-            <div class="infoText">{{driver.phone_no}}</div>
-          </div>
-          
-          <div class="">
-            <div class="infoLabel bgColor-yellow floatLeft">ID No.</div>
-            <div class="infoText">{{driver.identification_no}}</div>
-          </div>
-          
-          <div class="">
-            <div class="infoLabel bgColor-blue floatLeft">License</div>
-            <div class="infoText">{{driver.license_no}}</div>
-          </div>
-          
-          <div class="">
-            <div class="infoLabel bgColor-green floatLeft">Employment</div>
-            <div class="infoText">{{driver.employment_type}}</div>
-          </div>
-
-        </ion-card-content>
-      </ion-list>
-
-
-      <ion-list *ngSwitchCase="'Edit'">
-        <form [formGroup]="DriverEditform">
-
-        <input type="hidden"  ng-model="driver.fullname" value="{{driver.fullname}}"/>
-        <input type="hidden"  ng-model="driver.tenant_GUID" value="{{driver.tenant_GUID}}"/>
-        <input type="hidden"  ng-model="driver.driver_GUID" value="{{driver.driver_GUID}}"/>
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>Address 1</ion-label>
-          <ion-input type="text" formControlName="address1" [(ngModel)]="driver.address1" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>Address 2</ion-label>
-         <ion-input type="text" formControlName="address2" [(ngModel)]="driver.address2" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>Address 3</ion-label>
-         <ion-input type="text" formControlName="address3" [(ngModel)]="driver.address3" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>Phone No.</ion-label>
-         <ion-input type="text" formControlName="phone_no" [(ngModel)]="driver.phone_no" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
-       </ion-item>
-
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>Employment Type</ion-label>
-          <ion-select formControlName="employment_type" [(ngModel)]="driver.employment_type" class="editInput" interface="popover" placeholder="Please select identification type">
-                <ion-option value="0">N/A</ion-option>
-                <ion-option value="1">Permanent</ion-option>
-                <ion-option value="2">Probation</ion-option>
-                <ion-option value="3">Contract</ion-option>
-                <ion-option value="4">Temporary</ion-option>
-              </ion-select>
-        </ion-item>
-
-        <ion-item>
-          <ion-label class="fontColor-green" >Active</ion-label>
-          <ion-toggle checked="false" color="secondary"></ion-toggle>
-        </ion-item>
-
-        <ion-card-content >
-          <button ion-button full class="bgColor-grey fontColor-white btnStyle1" (click)=Updateinfo()>Save</button>
-        </ion-card-content>
-        </form>
-      </ion-list>
-      
-
-    </div>
-
-    <ion-row>
-        <ion-segment [(ngModel)]="userInfo" [ngModelOptions]="{standalone:true}" color="primary">
-          <ion-segment-button value="Info" isActive>
-            Info
-          </ion-segment-button>
-          <ion-segment-button value="Edit">
-            <ion-icon ios="ios-create"></ion-icon> Quick Edit
-          </ion-segment-button>
-        </ion-segment>
-    </ion-row>
-
-  </ion-card>
- </form>
-</div>-->
-  <!--profile end-->
 
   <!--add Driver form start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="driverRegisterClicked">
@@ -291,218 +160,161 @@
         <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
         <div class="icHeaderText">{{"REGISTER_NEW_DRIVER" | translate}}</div>
         <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="driverRegisterClick()">
-        <ion-icon name="md-close"></ion-icon> 
-      </button>
+          <ion-icon name="md-close"></ion-icon> 
+        </button>
       </ion-card-header>
 
       <ion-list class="overflowTrue contentHeight">
+        <form [formGroup]="Driverform">
+          <ion-item>
+            <!--<ion-input type="text" formControlName="driver_GUID" [(ngModel)]="driver.driver_GUID"  class="editInput" ></ion-input>
+              <ion-input type="text" formControlName="tenant_GUID" [(ngModel)]="driver.tenant_GUID"  class="editInput"></ion-input>
+              -->
+            <ion-label class="fontColor-green" stacked>{{"FULLNAME" | translate}}</ion-label>
+            <ion-input type="text" formControlName="fullname" [(ngModel)]="driver_entry.fullname" class="editInput" placeholder="Please insert full name"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <!--<ion-input type="text" formControlName="driver_GUID" [(ngModel)]="driver.driver_GUID"  class="editInput" ></ion-input>
-        <ion-input type="text" formControlName="tenant_GUID" [(ngModel)]="driver.tenant_GUID"  class="editInput"></ion-input>
-        -->
-          <ion-label class="fontColor-green" stacked>{{"FULLNAME" | translate}}</ion-label>
-          <ion-input type="text" class="editInput" placeholder="Please insert full name"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"ID_TYPE" | translate}}</ion-label>
+            <ion-select formControlName="identification_type" [(ngModel)]="driver_entry.identification_type" class="editInput" interface="popover"
+              placeholder="Please select identification type">
+              <ion-option value="0">N/A</ion-option>
+              <ion-option value="1">Mykad</ion-option>
+              <ion-option value="2">Passport</ion-option>
+              <ion-option value="3">Employee ID</ion-option>
+            </ion-select>
+          </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>{{"ID_TYPE" | translate}}</ion-label>
-          <ion-select class="editInput" interface="popover" placeholder="Please select identification type">
-            <ion-option value="0">N/A</ion-option>
-            <ion-option value="1">Mykad</ion-option>
-            <ion-option value="2">Passport</ion-option>
-            <ion-option value="3">Employee ID</ion-option>
-          </ion-select>
-        </ion-item>
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"ID_NO" | translate}}</ion-label>
+            <ion-input type="text" formControlName="identification_no" [(ngModel)]="driver_entry.identification_no" class="editInput"
+              placeholder="please insert correct identification number"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>{{"ID_NO" | translate}}</ion-label>
-          <ion-input type="text" class="editInput" placeholder="please insert correct identification number"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 1</ion-label>
+            <ion-input type="text" formControlName="address1" [(ngModel)]="driver_entry.address1" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 1</ion-label>
-          <ion-input type="text" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 2</ion-label>
+            <ion-input type="text" formControlName="address2" [(ngModel)]="driver_entry.address2" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 2</ion-label>
-          <ion-input type="text" class="editInput" placeholder="eg: Block no, Property name"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 3</ion-label>
+            <ion-input type="text" formControlName="address3" [(ngModel)]="driver_entry.address3" class="editInput" placeholder="eg: City name"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 3</ion-label>
-          <ion-input type="text" class="editInput" placeholder="eg: City name"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"PHONE" | translate}}</ion-label>
+            <ion-input type="text" formControlName="phone_no" [(ngModel)]="driver_entry.phone_no" class="editInput" placeholder="Please insert correct phone number"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>{{"PHONE" | translate}}</ion-label>
-          <ion-input type="text" class="editInput" placeholder="Please insert correct phone number"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"EMAIL" | translate}}</ion-label>
+            <ion-input type="text" formControlName="email" [(ngModel)]="driver_entry.email" class="editInput" placeholder="Please insert correct email address"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>{{"EMAIL" | translate}}</ion-label>
-          <ion-input type="text" class="editInput" placeholder="Please insert correct email address"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"LICENSE" | translate}}</ion-label>
+            <ion-input type="text" formControlName="license_no" [(ngModel)]="driver_entry.license_no" class="editInput" placeholder="Please insert correct license number"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>{{"LICENSE" | translate}}</ion-label>
-          <ion-input type="text" class="editInput" placeholder="Please insert correct license number"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"START_YEAR" | translate}}</ion-label>
+            <ion-datetime displayFormat="YYYY" class="editInput" placeholder="Select start year"></ion-datetime>
+          </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>{{"START_YEAR" | translate}}</ion-label>
-          <ion-datetime displayFormat="YYYY" class="editInput" placeholder="Select start year"></ion-datetime>
-        </ion-item>
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"EMPLOYMENT" | translate}}</ion-label>
+            <ion-select formControlName="employment_type" [(ngModel)]="driver_entry.employment_type" class="editInput" interface="popover"
+              placeholder="Please select identification type">
+              <ion-option value="0">N/A</ion-option>
+              <ion-option value="1">Permanent</ion-option>
+              <ion-option value="2">Probation</ion-option>
+              <ion-option value="3">Contract</ion-option>
+              <ion-option value="4">Temporary</ion-option>
+            </ion-select>
+          </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>{{"EMPLOYMENT" | translate}}</ion-label>
-          <ion-select class="editInput" interface="popover" placeholder="Please select identification type">
-            <ion-option value="0">N/A</ion-option>
-            <ion-option value="1">Permanent</ion-option>
-            <ion-option value="2">Probation</ion-option>
-            <ion-option value="3">Contract</ion-option>
-            <ion-option value="4">Temporary</ion-option>
-          </ion-select>
-        </ion-item>
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"DESCRIPTION" | translate}} </ion-label>
+            <ion-textarea type="text" formControlName="description" [(ngModel)]="driver_entry.description" class="editInput" placeholder="Description are ptional"></ion-textarea>
+          </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>{{"DESCRIPTION" | translate}}</ion-label>
-          <ion-textarea type="text" class="editInput" placeholder="Description are ptional"></ion-textarea>
-        </ion-item>
+          <ion-item>
+            <ion-label class="fontColor-yellow" stacked>{{"ACTIVE" | translate}} </ion-label>
+            <ion-toggle formControlName="active" checked="false" [(ngModel)]="driver_entry.active" color="secondary"></ion-toggle>
+          </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-yellow" stacked>{{"ACTIVE" | translate}}</ion-label>
-          <ion-toggle color="secondary"></ion-toggle>
-        </ion-item>
+          <!--<button ion-button color="primary" [disabled]="!Driverform.valid" (click)="save()">Save</button>-->
+
+        </form>
 
       </ion-list>
 
       <ion-card-content>
-        <button ion-button full class="bgColor-grey fontColor-white btnStyle1">{{"REGISTER" | translate}}</button>
+        <button ion-button full class="bgColor-grey fontColor-white btnStyle1" [disabled]="!Driverform.valid" (click)="save()">{{"REGISTER" | translate}}</button>
       </ion-card-content>
+      
     </ion-card>
+
   </div>
+
   <!--add Driver form end-->
 
-  <!--add Vehicle form start-->
+  <!--Add vehicle start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="addVehicleClicked">
 
-    <ion-card class="fb6 marginCenter popupFormCard">
-
-      <ion-card-header class="icTitle headerColor-white posRelative">
-        <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
-        <div class="icHeaderText">{{"REGISTER_NEW_VEHICLE" | translate}} (<b>Ahmad Firdaus Bin Nor Azhar</b>)</div>
-        <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="addVehicleClick()">
+  <ion-card class="fb6 marginCenter popupFormCard">
+    
+    <ion-card-header class="icTitle headerColor-white posRelative">
+      <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
+      <div class="icHeaderText">{{"REGISTER_NEW_VEHICLE" | translate}} (<b>Ahmad Firdaus Bin Nor Azhar</b>)</div>
+      <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="addVehicleClick()">
         <ion-icon name="md-close"></ion-icon> 
       </button>
-      </ion-card-header>
+    </ion-card-header>
 
-      <ion-card class="cb5 contentHeight3">
-
+    <ion-card class="cb5 contentHeight3">
+      <form [formGroup]="AvailableVehicleform" (ngSubmit)="onSubmit(AvailableVehicleform.value)">
         <ion-row>
           <ion-item class="bgColor-lightGrey posRelative">
             <ion-label item-start>Available Vehicles</ion-label>
             <button item-end ion-button color="primary" class="posAbsolute fullHeight topZero rightZero btnStyle2 marginZero"><ion-icon name="ios-arrow-forward"></ion-icon> </button>
           </ion-item>
         </ion-row>
-
         <div class="contentHeight3 overflowTrue">
           <ion-list>
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            <ion-item *ngFor="let getvehicle of getvehicles">
+              <ion-label>{{getvehicle.registration_no}}</ion-label>
+              <!--<ion-checkbox  color="secondary"  formControlName="availablevehicles" [(ngModel)]="tetst" item-end></ion-checkbox>                       -->
+              <ion-checkbox color="secondary" checked="false" (ionChange)="AvailableSelection($event,getvehicle)" item-end></ion-checkbox>
+              <!--<ion-checkbox color="dark" checked="true" (ionChange)="datachanged($event,getvehicle)" ></ion-checkbox>-->
             </ion-item>
           </ion-list>
         </div>
-      </ion-card>
-      <ion-card class="cb5 contentHeight3">
-
-        <ion-row>
-          <ion-item class="bgColor-lightGrey posRelative">
-            <button item-start ion-button color="primary" class="posAbsolute fullHeight topZero leftZero btnStyle2 marginZero"><ion-icon name="ios-arrow-back"></ion-icon> </button>
-            <ion-label class="textAllignRight">Selected Vehicles</ion-label>
-          </ion-item>
-        </ion-row>
-
-        <div class="contentHeight3 overflowTrue">
-          <ion-list>
-            <ion-item>
-              <ion-label>ABC 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>ABC 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>ABC 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>ABC 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-          </ion-list>
-        </div>
-
-      </ion-card>
+      </form>
     </ion-card>
+    <ion-card class="cb5 contentHeight3">
+      <ion-row>
+        <ion-item class="bgColor-lightGrey posRelative">
+          <button item-start ion-button color="primary" class="posAbsolute fullHeight topZero leftZero btnStyle2 marginZero"><ion-icon name="ios-arrow-back"></ion-icon> </button>
+          <ion-label class="textAllignRight">Selected Vehicles</ion-label>
+        </ion-item>
+      </ion-row>
+      <div class="contentHeight3 overflowTrue">
+        <ion-list>
+          <ion-item *ngFor="let get_selectvehicle of get_selectvehicles">
+            <ion-label>{{get_selectvehicle.registration_no}}</ion-label>
+            <ion-checkbox color="secondary" checked="false" (ionChange)="RemoveSelection($event,get_selectvehicle)" item-end></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-card>
+  </ion-card>
   </div>
-  <!--add Vehicle form end-->
+    <!--add Vehicle form end-->
 
 </ion-content>
