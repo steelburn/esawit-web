@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {Http, Headers,RequestOptions, URLSearchParams} from '@angular/http';
 
 import {LocationModel} from '../models/location';
+import {GETLOCATION} from '../models/location';
+
 
 
 
@@ -88,7 +90,28 @@ export class LocationService
 	};
 	
 	
+	getVehicles_bylocation (id:string,params?: URLSearchParams): Observable<GETLOCATION[]> 
+	{
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+		
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.get(this.baseResource_Url+'getvehiclesbylocation_view?filter=location_GUID='+id, { search: params ,headers: queryHeaders})
+			.map((response) => 
+			{
+				var result: any = response.json();
+				console.log(result);
+				let get_selectvehicles: Array<GETLOCATION> = [];
+				result.resource.forEach((get_selectvehicle) => {
+					get_selectvehicles.push(GETLOCATION.fromJson(get_selectvehicle));
+				});
+				//console.log(getVehicles);
+				return get_selectvehicles;
 
+			}).catch(this.handleError);
+	};
 	
 
 	
