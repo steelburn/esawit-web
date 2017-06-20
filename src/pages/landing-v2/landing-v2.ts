@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Generated class for the LandingV2Page page.
@@ -10,29 +11,29 @@ import { Chart } from 'chart.js';
  */
 @IonicPage()
 @Component({
-  selector: 'page-landing-v2',
-  templateUrl: 'landing-v2.html',
+    selector: 'page-landing-v2',
+    templateUrl: 'landing-v2.html',
 })
 export class LandingV2Page {
 
-  @ViewChild('barCanvas') barCanvas;
-  @ViewChild('doughnutCanvas') doughnutCanvas;
-  @ViewChild('lineCanvas') lineCanvas;
-  @ViewChild('vehicleDoughnutCanvas') vehicleDoughnutCanvas;
- 
-  barChart: any;
-  doughnutChart: any;
-  lineChart: any;
-  vehicleDoughnutChart: any;
- 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    @ViewChild('barCanvas') barCanvas;
+    @ViewChild('doughnutCanvas') doughnutCanvas;
+    @ViewChild('lineCanvas') lineCanvas;
+    @ViewChild('vehicleDoughnutCanvas') vehicleDoughnutCanvas;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LandingV2Page');
+    barChart: any;
+    doughnutChart: any;
+    lineChart: any;
+    vehicleDoughnutChart: any;
 
-    this.barChart = new Chart(this.barCanvas.nativeElement, {
- 
+    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    }
+
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad LandingV2Page');
+
+        this.barChart = new Chart(this.barCanvas.nativeElement, {
+
             type: 'bar',
             data: {
                 labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -62,16 +63,16 @@ export class LandingV2Page {
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero:true
+                            beginAtZero: true
                         }
                     }]
                 }
             }
- 
+
         });
- 
+
         this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
- 
+
             type: 'doughnut',
             data: {
                 labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -96,11 +97,11 @@ export class LandingV2Page {
                     ]
                 }]
             }
- 
+
         });
- 
+
         this.lineChart = new Chart(this.lineCanvas.nativeElement, {
- 
+
             type: 'line',
             data: {
                 labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -129,12 +130,12 @@ export class LandingV2Page {
                     }
                 ]
             }
- 
+
         });
 
 
         this.vehicleDoughnutChart = new Chart(this.vehicleDoughnutCanvas.nativeElement, {
- 
+
             type: 'doughnut',
             data: {
                 labels: ["Active", "Inactive"],
@@ -156,9 +157,9 @@ export class LandingV2Page {
                     display: false
                 }
             }
- 
+
         });
 
-  }
+    }
 
 }

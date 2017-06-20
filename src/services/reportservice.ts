@@ -3,6 +3,8 @@ import {Http, Headers, URLSearchParams,RequestOptions} from '@angular/http';
 import {Harvestreport} from '../models/harvestreport';
 import {Mandorreport} from '../models/mandorreport';
 import {Factoryreport} from '../models/factoryreport';
+import {VehicleTransactionReport} from '../models/reportmodel';
+
 import * as constants from '../app/config/constants';
 import {BaseHttpService} from './base-http';
 import 'rxjs/add/operator/map';
@@ -18,7 +20,10 @@ class ServerObj {
 };
 
 @Injectable()
-export class ReportService {
+export class ReportService 
+{
+	baseResourceUrl_VehicleTransaction: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitdb/_table/vehicle_transactionview';
+
 	baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitdb/_table/HarvestReport';
 	baseResourceUrl_mandor: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitdb/_table/mandorreport';
 	baseResourceUrl_factory: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitdb/_table/factoryreport';
@@ -27,27 +32,84 @@ export class ReportService {
 	};
 
 
-    query (params?:URLSearchParams): Observable<Harvestreport[]> {
+    query (params?:URLSearchParams): Observable<Harvestreport[]> 
+	{
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+         //console.log('calling request');    	
+		return this.httpService.http
+			.get(this.baseResourceUrl, { search: params, headers: queryHeaders})
+			.map((response) => {
+                //console.log(response);
+				var result: any = response.json();
+                //console.log(result);
+				let harvestreports: Array<Harvestreport> = [];
+				result.resource.forEach((harvestreport) => {
+					harvestreports.push(Harvestreport.fromJson(harvestreport));
+				});
+                //console.log(harvestreports);
+				return harvestreports;
+
+			}).catch(this.handleError);
+	};
+
+	VehicleTranactionquery (params?:URLSearchParams) : Observable<VehicleTransactionReport[]> 
+	{
+		
 		var queryHeaders = new Headers();
     	queryHeaders.append('Content-Type', 'application/json');
     	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
     	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
          console.log('calling request');    	
 		return this.httpService.http
-			.get(this.baseResourceUrl, { search: params, headers: queryHeaders})
+			.get(this.baseResourceUrl_VehicleTransaction, { search: params, headers: queryHeaders})
 			.map((response) => {
-                console.log(response);
+                //console.log(response);
 				var result: any = response.json();
-                console.log(result);
-				let harvestreports: Array<Harvestreport> = [];
-				result.resource.forEach((harvestreport) => {
-					harvestreports.push(Harvestreport.fromJson(harvestreport));
+                //console.log(result);
+				let vehicleTransactionReports: Array<VehicleTransactionReport> = [];
+				result.resource.forEach((vehicle_transactionReport) => {
+					vehicleTransactionReports.push(VehicleTransactionReport.fromJson(vehicle_transactionReport));
 				});
-                console.log(harvestreports);
-				return harvestreports;
+                //console.log(vehicleTransactionReports);
+				return vehicleTransactionReports;
 
 			}).catch(this.handleError);
 	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	Mandoryquery (params?:URLSearchParams): Observable<Mandorreport[]> {
 		var queryHeaders = new Headers();

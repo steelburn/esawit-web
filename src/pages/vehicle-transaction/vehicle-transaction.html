@@ -1,0 +1,99 @@
+<ion-content padding class="contentMarginTop">
+  <div class="col10">
+    <ion-card>
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
+          Vehicle Transaction Report
+          <button ion-button class="bgColor-grey fontColor-white btnStyle1" (click)="print()">Print Page</button>
+        </ion-card-header>
+        <ion-item>
+
+          <!--<input type="text" #filter (keyup)="0">-->
+          <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by Location,Loaded Time"></ion-searchbar>
+        </ion-item>
+      </ion-row>
+      <!--<ion-item class="bgColor-lightGrey">
+            <ion-label item-start>No</ion-label>
+            <ion-label item-start>Location</ion-label>
+            <ion-label class="textRight" item-start>Loaded Quantity</ion-label>
+            <ion-label class="textRight" item-start>Loaded Time</ion-label>
+            <ion-label class="textRight" item-start>UnLoaded Quantity</ion-label>
+            <ion-label class="textRight" item-start>UnLoaded Time</ion-label>
+            <ion-label class="textRight" item-start>Factory</ion-label>
+            <ion-label class="textRight" item-end>Status</ion-label>
+          </ion-item>-->
+
+      <ion-grid>
+        <ion-item class="bgColor-lightGrey">
+          <ion-row>
+            <ion-col col-1>No</ion-col>
+            <ion-col col-3>Location</ion-col>
+            <ion-col col-1>Loaded Qty</ion-col>
+            <ion-col col-2>Loaded Time</ion-col>
+            <ion-col col-1>Unloaded Qty</ion-col>
+            <ion-col col-2>Unloaded Time</ion-col>
+            <ion-col col-1>Factory</ion-col>
+            <ion-col col-1>Status</ion-col>
+          </ion-row>
+        </ion-item>
+
+        <ion-item>
+          <ion-row *ngFor="let vehicle_transactionReport of (vehicle_transactionReports | filterData: filter.value : 'name');let i = index">
+            <ion-col col-1>
+              <ion-badge class="bgColor-red" item-start>{{ i + 1 }}</ion-badge>
+            </ion-col>
+            <ion-col col-3>{{vehicle_transactionReport.Location}}</ion-col>
+            <ion-col col-1>{{vehicle_transactionReport.load_count}}</ion-col>
+            <ion-col col-2>{{vehicle_transactionReport.bunch_ts}}</ion-col>
+            <ion-col col-1>{{vehicle_transactionReport.unload_count}}</ion-col>
+            <ion-col col-2>{{vehicle_transactionReport.unbunch_ts}}</ion-col>
+            <ion-col col-1>NA</ion-col>
+            <ion-col col-1>
+              <ion-icon name="ios-checkmark-circle" item-start class="fontColor-green"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+
+      </ion-grid>
+
+
+      <!--<ion-item  *ngFor="let vehicle_transactionReport of (vehicle_transactionReports | filterData: filter.value : 'name');let i = index" >
+            <ion-badge class="bgColor-red" item-start>{{ i + 1 }}</ion-badge>
+            <ion-label item-start>{{vehicle_transactionReport.Location}}</ion-label>
+            <ion-label item-start>{{vehicle_transactionReport.load_count}}</ion-label>
+            <ion-label item-start>{{vehicle_transactionReport.bunch_ts}}</ion-label>
+            <ion-label item-start>{{vehicle_transactionReport.unload_count}}</ion-label>
+            <ion-label item-start>{{vehicle_transactionReport.unbunch_ts}}</ion-label>
+            <ion-label item-start>_______</ion-label>
+            <ion-badge item-end class="bgColor-yellow">_______</ion-badge>
+          </ion-item>-->
+
+      <!--<ion-item>
+            <ion-badge class="bgColor-red" item-start>2</ion-badge>
+            <ion-label item-start>Firdaus</ion-label>
+            <ion-label item-end>BNF1234</ion-label>
+            <ion-badge item-end class="bgColor-yellow">123</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-badge class="bgColor-red" item-start>3</ion-badge>
+            <ion-label item-start>Bala</ion-label>
+            <ion-label item-end>BNF1234</ion-label>
+            <ion-badge item-end class="bgColor-yellow">552</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-badge class="bgColor-red" item-start>4</ion-badge>
+            <ion-label item-start>Khairul</ion-label>
+            <ion-label item-end>BNF1234</ion-label>
+            <ion-badge item-end class="bgColor-yellow">123</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-badge class="bgColor-red" item-start>5</ion-badge>
+            <ion-label item-start>Allan</ion-label>
+            <ion-label item-end>BNF1234</ion-label>
+            <ion-badge item-end class="bgColor-yellow">552</ion-badge>
+          </ion-item>-->
+
+
+    </ion-card>
+  </div>
+</ion-content>

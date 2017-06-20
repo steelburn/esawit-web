@@ -21,7 +21,8 @@ import { VehiclePage } from '../vehicle/vehicle';
   templateUrl: 'tabs.html',
 })
 export class TabsPage {
-
+  
+  //tabs
   tab1Root = DriverPage;
   tab2Root = LocationPage;
   tab3Root = ModulePage;
@@ -30,9 +31,15 @@ export class TabsPage {
   tab6Root = TenantPage;
   tab7Root = UserPage;
   tab8Root = VehiclePage;
-
+tabToShow : number;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    let pid = navParams.get('pid');
+    this.tabToShow=pid;
+    console.log(pid);
+    
   }
+  
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TabsPage');

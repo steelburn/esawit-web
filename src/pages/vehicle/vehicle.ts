@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Generated class for the VehiclePage page.
@@ -23,14 +24,20 @@ export class VehiclePage {
 
   public vehicleRegisterClicked: boolean = false; //Whatever you want to initialise it as
   public vehicleEditClicked: boolean = false; //Whatever you want to initialise it as
+  public addLocationClicked: boolean = false; //Whatever you want to initialise it as
 
   public vehicleRegisterClick() {
 
-      this.vehicleRegisterClicked = !this.vehicleRegisterClicked;
+    this.vehicleRegisterClicked = !this.vehicleRegisterClicked;
   }
 
   public vehicleEditClick() {
 
-      this.vehicleEditClicked = !this.vehicleEditClicked;
+    this.vehicleEditClicked = !this.vehicleEditClicked;
+  }
+
+  public addLocationClick() {
+
+    this.addLocationClicked = !this.addLocationClicked;
   }
 }
