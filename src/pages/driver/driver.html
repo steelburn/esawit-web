@@ -2,13 +2,14 @@
 
   <!--form start-->
   <div class="col2">
+
     <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="driverRegisterClick()">
-      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
-      <div class="portletColStyle2">
-        <div class="portletHeaderStyle2">{{"REGISTER_NEW_DRIVER" | translate}}</div>
-      </div>
+    <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
+    <div class="portletColStyle2">
+      <div class="portletHeaderStyle2">{{"REGISTER_NEW_DRIVER" | translate}}</div>
+    </div>
   </button>
-    
+
     <ion-card class="cb10">
       <ion-row>
         <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
@@ -61,7 +62,7 @@
             <p>
               <ion-icon name="ios-card"></ion-icon> {{driver.identification_no}}
             </p>
-            <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
+            <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="Edit(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
             <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue"><ion-icon name="ios-create"></ion-icon></button>
             <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red" (click)="remove(driver.driver_GUID)"><ion-icon name="md-close"></ion-icon></button>
           </ion-item>
@@ -124,8 +125,23 @@
             <ion-searchbar></ion-searchbar>
           </ion-row>
 
-          <ion-item *ngFor="let get_selectvehicle of get_selectvehicles">
-            <ion-label>{{get_selectvehicle.registration_no}}</ion-label>
+          <ion-item>
+            <ion-label>ABC 1234</ion-label>
+            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>ABC 1234</ion-label>
+            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>ABC 1234</ion-label>
+            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>ABC 1234</ion-label>
             <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
           </ion-item>
 
@@ -150,8 +166,9 @@
 
     </ion-card>
   </div>
+  <!--profile end-->
 
-  <!--add Driver form start-->
+<!--add Driver form start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="driverRegisterClicked">
 
     <ion-card class="fb4 marginCenter popupFormCard">
@@ -262,59 +279,126 @@
 
   </div>
 
-  <!--add Driver form end-->
+<!--add Driver form end-->
 
-  <!--Add vehicle start-->
+  <!--add Vehicle form start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="addVehicleClicked">
 
-  <ion-card class="fb6 marginCenter popupFormCard">
-    
-    <ion-card-header class="icTitle headerColor-white posRelative">
-      <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
-      <div class="icHeaderText">{{"REGISTER_NEW_VEHICLE" | translate}} (<b>Ahmad Firdaus Bin Nor Azhar</b>)</div>
-      <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="addVehicleClick()">
+    <ion-card class="fb6 marginCenter popupFormCard">
+
+      <ion-card-header class="icTitle headerColor-white posRelative">
+        <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
+        <div class="icHeaderText">{{"REGISTER_NEW_VEHICLE" | translate}} (<b>Ahmad Firdaus Bin Nor Azhar</b>)</div>
+        <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="addVehicleClick()">
         <ion-icon name="md-close"></ion-icon> 
       </button>
-    </ion-card-header>
+      </ion-card-header>
 
-    <ion-card class="cb5 contentHeight3">
-      <form [formGroup]="AvailableVehicleform" (ngSubmit)="onSubmit(AvailableVehicleform.value)">
+      <ion-card class="cb5 contentHeight3">
+
         <ion-row>
           <ion-item class="bgColor-lightGrey posRelative">
             <ion-label item-start>Available Vehicles</ion-label>
             <button item-end ion-button color="primary" class="posAbsolute fullHeight topZero rightZero btnStyle2 marginZero"><ion-icon name="ios-arrow-forward"></ion-icon> </button>
           </ion-item>
         </ion-row>
+
         <div class="contentHeight3 overflowTrue">
           <ion-list>
-            <ion-item *ngFor="let getvehicle of getvehicles">
-              <ion-label>{{getvehicle.registration_no}}</ion-label>
-              <!--<ion-checkbox  color="secondary"  formControlName="availablevehicles" [(ngModel)]="tetst" item-end></ion-checkbox>                       -->
-              <ion-checkbox color="secondary" checked="false" (ionChange)="AvailableSelection($event,getvehicle)" item-end></ion-checkbox>
-              <!--<ion-checkbox color="dark" checked="true" (ionChange)="datachanged($event,getvehicle)" ></ion-checkbox>-->
+            <ion-item>
+              <ion-label>EEE 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>EEE 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>EEE 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>EEE 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>EEE 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>EEE 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>EEE 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>EEE 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>EEE 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>EEE 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>EEE 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
             </ion-item>
           </ion-list>
         </div>
-      </form>
-    </ion-card>
-    <ion-card class="cb5 contentHeight3">
-      <ion-row>
-        <ion-item class="bgColor-lightGrey posRelative">
-          <button item-start ion-button color="primary" class="posAbsolute fullHeight topZero leftZero btnStyle2 marginZero"><ion-icon name="ios-arrow-back"></ion-icon> </button>
-          <ion-label class="textAllignRight">Selected Vehicles</ion-label>
-        </ion-item>
-      </ion-row>
-      <div class="contentHeight3 overflowTrue">
-        <ion-list>
-          <ion-item *ngFor="let get_selectvehicle of get_selectvehicles">
-            <ion-label>{{get_selectvehicle.registration_no}}</ion-label>
-            <ion-checkbox color="secondary" checked="false" (ionChange)="RemoveSelection($event,get_selectvehicle)" item-end></ion-checkbox>
+      </ion-card>
+      <ion-card class="cb5 contentHeight3">
+
+        <ion-row>
+          <ion-item class="bgColor-lightGrey posRelative">
+            <button item-start ion-button color="primary" class="posAbsolute fullHeight topZero leftZero btnStyle2 marginZero"><ion-icon name="ios-arrow-back"></ion-icon> </button>
+            <ion-label class="textAllignRight">Selected Vehicles</ion-label>
           </ion-item>
-        </ion-list>
-      </div>
+        </ion-row>
+
+        <div class="contentHeight3 overflowTrue">
+          <ion-list>
+            <ion-item>
+              <ion-label>ABC 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>ABC 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>ABC 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>ABC 1234</ion-label>
+              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            </ion-item>
+
+          </ion-list>
+        </div>
+
+      </ion-card>
     </ion-card>
-  </ion-card>
   </div>
-    <!--add Vehicle form end-->
+  <!--add Vehicle form end-->
 
 </ion-content>
