@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController,ModalController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
 
 import { ReportService } from '../../services/reportservice';
 

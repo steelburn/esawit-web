@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Generated class for the LandingV2Page page.

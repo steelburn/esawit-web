@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { TranslateService } from '@ngx-translate/core';
 
 import { HomePage } from '../pages/home/home';
 import { LandingV1Page } from '../pages/landing-v1/landing-v1';
@@ -17,6 +18,7 @@ import { TenantPage } from '../pages/tenant/tenant';
 import { UserPage } from '../pages/user/user';
 import { VehiclePage } from '../pages/vehicle/vehicle';
 import { TabsPage } from '../pages/tabs/tabs';
+import { LoginPage } from '../pages/login/login';
 
 import { ReportsPage } from '../pages/reports/reports';
 import { VehicleTransactionPage } from '../pages/vehicle-transaction/vehicle-transaction';
@@ -38,17 +40,21 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = TabsPage;
+  rootPage: any = LoginPage;
 
   pages: Array<{ title: string, component: any }>;
   reportingPages: Array<{ title: string, component: any }>;
   processPages: Array<{ title: string, component: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public translate: TranslateService, public translateService: TranslateService) {
     this.initializeApp();
+    this.initializeLang();
+    this.translateToMalay();
+    this.translateToEnglish();
 
     // used for an example of ngFor and navigation
     this.pages = [
+      { title: 'Login', component: LoginPage },
       { title: 'Home', component: HomePage },
       { title: 'Landing V1', component: LandingV1Page },
       { title: 'Component Demo', component: LandingV2Page },
@@ -61,17 +67,24 @@ export class MyApp {
     ];
 
     this.processPages = [
-      { title: 'Driver', component: DriverPage },
-      { title: 'Location', component: LocationPage },
-      { title: 'Module', component: ModulePage },
-      { title: 'Role', component: RolePage },
-      { title: 'Sector', component: SectorPage },
-      { title: 'Tenant', component: TenantPage },
-      { title: 'User', component: UserPage },
+      { title: 'Driver', component: TabsPage },
+      { title: 'Location', component: TabsPage },
+      // { title: 'Module', component: ModulePage },
+      // { title: 'Role', component: RolePage },
+      // { title: 'Sector', component: SectorPage },
+      // { title: 'Tenant', component: TenantPage },
+      { title: 'User', component: TabsPage },
       { title: 'Vehicle', component: TabsPage }
     ];
 
 
+  }
+
+  initializeLang() {
+    this.platform.ready().then(() => {
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+    });
   }
 
   initializeApp() {
@@ -88,4 +101,13 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  translateToEnglish(){
+    this.translateService.use('en');
+  }
+
+  translateToMalay(){
+    this.translateService.use('bm');
+  }
+
 }

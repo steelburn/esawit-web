@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController  } from 'ionic-angular';
 import { ReportService } from '../../services/reportservice';
+import { TranslateService } from '@ngx-translate/core';
 
 import {BaseHttpService} from '../../services/base-http';
 import {Http, Headers,RequestOptions, URLSearchParams} from '@angular/http';
