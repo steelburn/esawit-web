@@ -2,12 +2,12 @@
 
   <!--form start-->
   <div class="col2">
-
     <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="driverRegisterClick()">
       <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
       <div class="portletColStyle2">
         <div class="portletHeaderStyle2">{{"REGISTER_NEW_DRIVER" | translate}}</div>
       </div>
+
     </button>
 
     <ion-card class="cb10">
@@ -266,12 +266,12 @@
   <!--Add vehicle start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="addVehicleClicked">
 
-    <ion-card class="fb6 marginCenter popupFormCard">
-
-      <ion-card-header class="icTitle headerColor-white posRelative">
-        <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
-        <div class="icHeaderText">{{"REGISTER_NEW_VEHICLE" | translate}} (<b>Ahmad Firdaus Bin Nor Azhar</b>)</div>
-        <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="addVehicleClick()">
+  <ion-card class="fb6 marginCenter popupFormCard">
+    
+    <ion-card-header class="icTitle headerColor-white posRelative">
+      <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
+      <div class="icHeaderText">{{"REGISTER_NEW_VEHICLE" | translate}} (<b>Ahmad Firdaus Bin Nor Azhar</b>)</div>
+      <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="addVehicleClick()">
         <ion-icon name="md-close"></ion-icon> 
       </button>
       </ion-card-header>
@@ -313,7 +313,8 @@
         </div>
       </ion-card>
     </ion-card>
+  </ion-card>
   </div>
-  <!--add Vehicle form end-->
+    <!--add Vehicle form end-->
 
 </ion-content>
