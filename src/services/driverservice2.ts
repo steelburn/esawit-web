@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Headers,RequestOptions, URLSearchParams} from '@angular/http';
 
 import {Driver} from '../models/driver';
+import {GETVEHICLE} from '../models/driver';
 
 
 import * as constants from '../app/config/constants';
@@ -22,6 +23,7 @@ class ServerResponse {
 export class DriverService 
 {
 	baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/master_driver';
+	baseResource_Url: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/';
 	constructor(private httpService: BaseHttpService, private nav: NavController) {};
 
 
@@ -62,6 +64,69 @@ export class DriverService
 				var result: any = response.json();
 				let driver: Driver = Driver.fromJson(result);
 				return driver;
+			}).catch(this.handleError);
+	};
+	
+	getVehicles (params?: URLSearchParams): Observable<GETVEHICLE[]> 
+	{
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+		
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.get(this.baseResource_Url+'getvehicles_view', { search: params ,headers: queryHeaders})
+			.map((response) => 
+			{
+				var result: any = response.json();
+				let getVehicles: Array<GETVEHICLE> = [];
+				result.resource.forEach((getVehicle) => {
+					getVehicles.push(GETVEHICLE.fromJson(getVehicle));
+				});
+				console.log(getVehicles);
+				return getVehicles;
+
+			}).catch(this.handleError);
+	};
+	
+	getTotalReport (params?: URLSearchParams) 
+	{
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+		
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.get(this.baseResource_Url+'totaldriver_view', { search: params ,headers: queryHeaders})
+			.map((response) => 
+			{
+				var result: any = response.json();	
+				//console.log(response);			
+				return response;
+
+			});
+	};
+
+	getVehicles_byDriver (id:string,params?: URLSearchParams): Observable<GETVEHICLE[]> 
+	{
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+		
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.get(this.baseResource_Url+'getvehiclesbydriver_view?filter=driver_GUID='+id, { search: params ,headers: queryHeaders})
+			.map((response) => 
+			{
+				var result: any = response.json();
+				console.log(result);
+				let get_selectvehicles: Array<GETVEHICLE> = [];
+				result.resource.forEach((get_selectvehicle) => {
+					get_selectvehicles.push(GETVEHICLE.fromJson(get_selectvehicle));
+				});
+				//console.log(getVehicles);
+				return get_selectvehicles;
+
 			}).catch(this.handleError);
 	};
 

@@ -7,7 +7,10 @@ import { DriverService } from '../../services/driverservice2';
 import { BaseHttpService } from '../../services/base-http';
 import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Driver } from '../../models/driver';
+import { GETVEHICLE } from '../../models/driver';
+
 import { FormControlDirective, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { UUID } from 'angular2-uuid';
 
 
 
@@ -31,13 +34,25 @@ export class DriverPage {
         this.addVehicleClicked = !this.addVehicleClicked;
     }
 
+    AvailableVehicleform: FormGroup;
 
     searchTerm: string = '';
     searchControl: FormControl;
     items: any;
 
+    Driverform: FormGroup;
+    driver_entry: Driver = new Driver();
+
+
     DriverEditform: FormGroup;
     driver: Driver = new Driver();
+
+    getvehicle: GETVEHICLE = new GETVEHICLE();
+    public getvehicles: GETVEHICLE[] = [];
+
+    get_selectvehicle: GETVEHICLE = new GETVEHICLE();
+    public get_selectvehicles: GETVEHICLE[] = [];
+
     public drivers: Driver[] = [];
     public filter_drivers = [];
 
@@ -46,15 +61,11 @@ export class DriverPage {
     @ViewChild('lineCanvas') lineCanvas;
     @ViewChild('driverDoughnutCanvas') driverDoughnutCanvas;
 
-    barChart: any;
-    doughnutChart: any;
-    lineChart: any;
     driverDoughnutChart: any;
 
-    constructor(private fb: FormBuilder, private driverservice: DriverService,
+    constructor(private fb: FormBuilder, @Inject(FormBuilder) fb2: FormBuilder, private driverservice: DriverService,
         private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) {
-        this.searchControl = new FormControl();
-        this.GenerateToken();
+        this.searchControl = new FormControl(); this.GenerateToken();
         this.DriverEditform = fb.group
             ({
 
@@ -76,10 +87,75 @@ export class DriverPage {
 
             });
 
+        this.driver_entry.driver_GUID = UUID.UUID(); this.driver_entry.tenant_GUID = UUID.UUID();
+        //this.GenerateToken();
+        this.Driverform = fb2.group({
+
+            //fullname: ['', Validators.compose([Validators.maxLength(10),Validators.minLength(5), Validators.pattern('[a-zA-Z ]*'), Validators.required])],        
+            driver_GUID: [UUID.UUID()],
+            fullname: '',
+            identification_type: '',
+            identification_no: '',
+            address1: '',
+            address2: '',
+            address3: '',
+            phone_no: '',
+            email: '',
+            license_no: '',
+            employment_type: '',
+            description: '',
+            active: 1,
+            tenant_GUID: [UUID.UUID()]
+        });
+
+
+        this.AvailableVehicleform = fb.group({ availablevehicles: '' });
         this.getList();
     }
 
+    // fullname: '',
+    // driver_GUID: '',
+    // tenant_GUID: '',
+    // identification_no: '',
+    // identification_type: '',
+    // address1: '',
+    // address2: '',
+    // address3: '',
+    // phone_no: '',
+    // email: '',
+    // license_no: '',
+    // start_year: '',
+    // description: '',
+    // employment_type: '',
+    // active: ''
 
+    save() {
+        if (this.Driverform.valid) {
+            //this.register();
+            var self = this;
+            // this.driver.driver_GUID=UUID.UUID.toString();  this.driver.tenant_GUID=UUID.UUID.toString();       
+            this.driverservice.save(this.driver_entry)
+                .subscribe((response) => {
+                    if (response.status == 200) {
+                        this.getList();
+                        alert('User Reqistered successfully');
+                        location.reload();
+                    }
+
+                })
+        }
+    }
+
+    register() {
+        alert(JSON.stringify(this.Driverform.value));
+        alert(JSON.stringify(this.driver_entry));
+    }
+
+
+
+
+
+    //#region Main Genreate Token
     private storeToken(data) { localStorage.setItem('session_token', data.session_token); }
     private GenerateToken() {
         var queryHeaders = new Headers();
@@ -90,6 +166,41 @@ export class DriverPage {
                 console.log('error', JSON.parse(error._body).error.message);
             });
     }
+    //#endregion
+
+
+    //#region Select and Remove Vehicles
+    AvailableSelection(e: any, getvehicle) {
+        console.log(e);
+        console.log(e.checked);
+        console.log(getvehicle.vehicle_Gid);
+        console.log(getvehicle.registration_no);
+
+
+        var index_num = this.getvehicles.findIndex(x => x.vehicle_Gid == getvehicle.vehicle_Gid);
+        console.log("NUM IS " + index_num);
+        this.getvehicles.splice(index_num, 1);
+
+        this.get_selectvehicles.push(new GETVEHICLE(getvehicle.vehicle_Gid, getvehicle.registration_no));
+    }
+
+    RemoveSelection(e: any, getselectvehicle) {
+        console.log(e);
+        console.log(e.checked);
+        console.log(getselectvehicle.vehicle_Gid);
+        console.log(getselectvehicle.registration_no);
+
+
+        var index_num = this.get_selectvehicles.findIndex(x => x.vehicle_Gid == getselectvehicle.vehicle_Gid);
+        console.log("NUM IS " + index_num);
+        this.get_selectvehicles.splice(index_num, 1);
+
+        this.getvehicles.push(new GETVEHICLE(getselectvehicle.vehicle_Gid, getselectvehicle.registration_no));
+    }
+    //#endregion
+
+
+
 
     Updateinfo() {
         alert(JSON.stringify(this.DriverEditform.value));
@@ -101,6 +212,7 @@ export class DriverPage {
         }
     }
 
+    //#region User Search
     setFilteredItems() {
 
         this.drivers = this.filterItems(this.searchTerm);
@@ -114,9 +226,7 @@ export class DriverPage {
         this.driver.identification_no = last_element.identification_no;
         this.driver.license_no = last_element.license_no;
         this.driver.employment_type = last_element.employment_type;
-
     }
-
     filterItems(searchTerm) {
         if (searchTerm != '') {
             return this.drivers.filter((driver) => {
@@ -130,6 +240,9 @@ export class DriverPage {
             return this.drivers;
         }
     }
+    //#endregion
+
+
 
     getList() {
         let self = this;
@@ -153,27 +266,38 @@ export class DriverPage {
                 this.driver.employment_type = last_element.employment_type;
 
             });
-
-
-        // this.DriverEditform.setValue
-        // ({
-        //     fullname:this.drivers.filter(x=> x.fullname === "fullname")[0]
-        // });
-
+    }
+    getVehicleList() {
+        let self = this;
+        let params: URLSearchParams = new URLSearchParams();
+        //params.set('order', 'last_name+ASC');
+        self.driverservice.getVehicles(params)
+            .subscribe((getvehicles: GETVEHICLE[]) => {
+                self.getvehicles = getvehicles
+            });
     }
 
-    Edit(driver_GUID) {
+    //#region View Driver Info
+    View(driver_GUID) {
+        console.log(driver_GUID);
         var self = this;
         this.driverservice.get(driver_GUID).subscribe((driver) => self.driver = driver);
-        //console.log(self);
-        // this.DriverEditform.setValue
-        // ({
-        //     fullname:'KUMARRR'
 
+        this.getVehicleList();
 
-        // });
+        let self2 = this;
+        let params: URLSearchParams = new URLSearchParams();
+        //params.set('order', 'last_name+ASC');
+        self2.driverservice.getVehicles_byDriver(driver_GUID, params)
+            .subscribe((get_selectvehicles: GETVEHICLE[]) => {
+                self2.get_selectvehicles = get_selectvehicles
+            });
     }
+    //#endregion
 
+
+
+    //#region Remove Driver
     remove(driver_GUID) {
         alert(driver_GUID);
         var self = this;
@@ -184,9 +308,20 @@ export class DriverPage {
                 });
             });
     }
+    //#endregion
+
+
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad DriverPage');
+        // let params: URLSearchParams = new URLSearchParams();               
+        // var self2 = this;
+        // this.driverservice.getTotalReport(params)
+        //     .subscribe((response) => 
+        //     {
+        //                 self2=   response.json();
+
+        //     });
 
         this.driverDoughnutChart = new Chart(this.driverDoughnutCanvas.nativeElement, {
             type: 'doughnut',
