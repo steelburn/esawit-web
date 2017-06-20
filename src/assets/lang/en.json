@@ -24,6 +24,9 @@
   "ADDRESS": "Address",
   "EMAIL": "Email",
   "PHONE": "Phone",
+  "MYKAD": "MyKad",
+  "PASSPORT": "Passport",
+  "EMPLOYEE_ID": "Employee ID",
   "ID_TYPE": "ID Type",
   "ID_NO": "ID No.",
   "LICENSE": "License",
@@ -49,5 +52,18 @@
   "SELECTED_LOCATION": "Selected Location",
   "UPDATE_ROLE": "Update Role",
   "UPDATE_VEHICLE": "Update Vehicle",
-  "UPDATE_LOCATION": "Update Location"
+  "UPDATE_LOCATION": "Update Location",
+
+  "FORM_FULLNAME": "Please insert full name",
+  "FORM_ID_TYPE": "Please select identification type",
+  "FORM_ID_NO": "please insert correct identification number",
+  "FORM_ADDRESS_1": "eg: Block no, Property name",
+  "FORM_ADDRESS_2": "eg: Road / highway name",
+  "FORM_ADDRESS_3": "eg: Postcode & City name",
+  "FORM_PHONE": "Please insert correct phone number",
+  "FORM_EMAIL": "Please insert correct email address",
+  "FORM_LICENSE": "Please insert correct license number",
+  "FORM_SELECT_YEAR": "Select start year",
+  "FORM_DESCRIPTION": "Description are optional",
+  "FORM_EMPLOYEMENT_TYPE": "Please select employment type"
 }
