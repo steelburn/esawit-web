@@ -25,10 +25,13 @@ import { UUID } from 'angular2-uuid';
 export class LocationPage {
   Locationform: FormGroup;
   location_entry: LocationModel = new LocationModel();
-  location: LocationModel=new LocationModel();
+  location: LocationModel = new LocationModel();
 
-  public locations: LocationModel[] = [];   
+  public locations: LocationModel[] = [];
   public get_selectvehicles: GETLOCATION[] = [];
+  public getvehicles: GETLOCATION[] = [];
+  public _filter_getvehicles: GETLOCATION[] = [];
+
 
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, private location_service: LocationService,
@@ -36,29 +39,26 @@ export class LocationPage {
 
     this.Locationform = fb.group
       ({ locationname: '', locationactive: '' });
-    
+
     this.getList();
   }
 
 
 
-  RegisterLocation() 
-  {
+  RegisterLocation() {
     if (this.Locationform.valid) {
-     
-      this.location_entry.ID=0;
-      this.location_entry.location_GUID=UUID.UUID();
-      this.location_entry.tenant_GUID=UUID.UUID();
+
+      this.location_entry.ID = 0;
+      this.location_entry.location_GUID = UUID.UUID();
+      this.location_entry.tenant_GUID = UUID.UUID();
       var self = this;
       let params: URLSearchParams = new URLSearchParams();
-      if(this.Locationform.controls['locationactive'])
-      {
-        this.location_entry.active=1;
-      }else{ this.location_entry.active=0;}
+      if (this.Locationform.controls['locationactive']) {
+        this.location_entry.active = 1;
+      } else { this.location_entry.active = 0; }
 
       this.location_service.save_location(this.location_entry)
-        .subscribe((response) => 
-        {
+        .subscribe((response) => {
           if (response.status == 200) {
             alert('Location Reqistered successfully');
             location.reload();
@@ -69,41 +69,80 @@ export class LocationPage {
   }
 
 
-getList() 
+  getList() {
+    let self = this;
+    let params: URLSearchParams = new URLSearchParams();
+    //params.set('order', 'last_name+ASC');
+    self.location_service.get_locationss(params)
+      .subscribe((locations: LocationModel[]) => {
+        self.locations = locations;
+        console.log(locations);
+      });
+  }
+
+  //#region View Driver Info
+  View(location_GUID) {
+
+    //Get Location
+    var self = this;
+    this.location_service.get(location_GUID).subscribe((location) => self.location = location);
+
+
+    //Get Selected Vehicles by location
+    let self2 = this;
+    let params: URLSearchParams = new URLSearchParams();
+    //params.set('order', 'last_name+ASC');
+    self2.location_service.getVehicles_bylocation(location_GUID, params)
+      .subscribe((get_selectvehicles: GETLOCATION[]) => {
+        self2.get_selectvehicles = get_selectvehicles
+      });
+
+    //Get Available Vehicles
+    let self_GetAllVehicles = this;
+
+    self_GetAllVehicles.location_service.getVehicles(params)
+      .subscribe((getvehicles: GETLOCATION[]) => 
+      {
+        console.log('Getting Available Vehicles');
+        console.log(getvehicles);
+        self_GetAllVehicles.getvehicles= getvehicles.filter(getvehicle => getvehicle.location_GUID !== location_GUID);
+        console.log('After some time');
+        console.log(this.getvehicles);
+
+      });
+
+  }
+  //#endregion
+
+AvailableSelection(e:any,getvehicle)
 {
-        let self = this;
-        let params: URLSearchParams = new URLSearchParams();
-        //params.set('order', 'last_name+ASC');
-        self.location_service.get_locationss(params)
-            .subscribe((locations: LocationModel[]) => 
-            {
-                self.locations = locations;
-                console.log(locations);
-            });
+    console.log(e);
+    console.log(e.checked);
+    console.log(getvehicle.vehicle_GUID);
+    console.log(getvehicle.registration_no);
+    
+    
+    var index_num = this.getvehicles.findIndex(x => x.vehicle_GUID==getvehicle.vehicle_GUID);
+    console.log("NUM IS "+index_num);
+    this.getvehicles.splice(index_num, 1);
+    
+    this.get_selectvehicles.push(new GETLOCATION(getvehicle.vehicle_GUID,getvehicle.registration_no));
 }
 
-//#region View Driver Info
-View(location_GUID)
+RemoveSelection(e:any,getselectvehicle)
 {
-  // alert(location_GUID);
-  //   console.log(location_GUID);
-   var self = this;
-   this.location_service.get(location_GUID).subscribe((location) => self.location = location);
-
-
-  let self2 = this;
-        let params: URLSearchParams = new URLSearchParams();
-        //params.set('order', 'last_name+ASC');
-        self2.location_service.getVehicles_bylocation(location_GUID, params)
-            .subscribe((get_selectvehicles: GETLOCATION[]) => {
-                self2.get_selectvehicles = get_selectvehicles
-            });
+    console.log(e);
+    console.log(e.checked);
+    console.log(getselectvehicle.vehicle_Gid);
+    console.log(getselectvehicle.registration_no);
+    
+    
+    var index_num = this.get_selectvehicles.findIndex(x => x.vehicle_GUID==getselectvehicle.vehicle_GUID);
+    console.log("NUM IS "+index_num);
+    this.get_selectvehicles.splice(index_num, 1);
+    
+    this.getvehicles.push(new GETLOCATION(getselectvehicle.vehicle_GUID,getselectvehicle.registration_no));
 }
-//#endregion
-
-
-
-
 
 
   ionViewDidLoad() { console.log('ionViewDidLoad LocationPage'); }

@@ -84,8 +84,8 @@
       </ion-row>
 
       <ion-list>
-        <ion-item>
-          <ion-label>option 1</ion-label>
+        <ion-item *ngFor="let get_selectvehicle of get_selectvehicles">
+          <ion-label>{{get_selectvehicle.registration_no}}</ion-label>
           <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
         </ion-item>
       </ion-list>
@@ -203,60 +203,11 @@
 
         <div class="contentHeight3 overflowTrue">
           <ion-list>
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>EEE 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
+            <ion-item *ngFor="let getvehicle of getvehicles">
+              <ion-label>{{getvehicle.registration_no}}</ion-label>
+              <!--<ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>-->
+              <ion-checkbox color="secondary" checked="false" (ionChange)="AvailableSelection($event,getvehicle)" item-end></ion-checkbox>
+            </ion-item>           
           </ion-list>
         </div>
       </ion-card>
@@ -271,26 +222,12 @@
 
         <div class="contentHeight3 overflowTrue">
           <ion-list>
-            <ion-item>
-              <ion-label>ABC 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
+            <ion-item *ngFor="let get_selectvehicle of get_selectvehicles">
+              <ion-label>{{get_selectvehicle.registration_no}}</ion-label>
+              <!--<ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>-->
+                            <ion-checkbox color="secondary" checked="false" (ionChange)="RemoveSelection($event,get_selectvehicle)" item-end></ion-checkbox>
 
-            <ion-item>
-              <ion-label>ABC 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>ABC 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>ABC 1234</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
+            </ion-item>           
           </ion-list>
         </div>
 
