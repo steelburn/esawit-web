@@ -54,85 +54,14 @@
       </ion-row>
 
       <ion-list>
-        <ion-item class="tnUserRow">
+        <ion-item *ngFor="let vehicle of vehicles" class="tnUserRow">
           <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark">ABC 123</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="vehicleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
+          <ion-label class="fontColor-dark">{{vehicle.registration_no}}</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(vehicle.vehicle_GUID)"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="VehicleEditClick(vehicle.vehicle_GUID)"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red" (click)="remove(vehicle.vehicle_GUID)"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
 
-        <ion-item class="tnUserRow">
-          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark">ABC 123</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="vehicleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark">ABC 123</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="vehicleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark">ABC 123</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="vehicleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark">ABC 123</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="vehicleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark">ABC 123</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="vehicleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark">ABC 123</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="vehicleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark">ABC 123</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="vehicleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark">ABC 123</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="vehicleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-toggle checked="false" color="secondary" item-start></ion-toggle>
-          <ion-label class="fontColor-dark">ABC 123</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="vehicleEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-          <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
-        </ion-item>
       </ion-list>
 
     </ion-card>
@@ -145,7 +74,7 @@
     <ion-card class="cb10">
 
       <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
-        ABC 123
+        {{vehicle.registration_no}}
         <button class="posAbsolute fullHeight topZero rightZero btnStyle2 bgColor-darkBlue" (click)="addLocationClick()">
         <ion-icon name="md-add"></ion-icon> 
       </button>
@@ -156,6 +85,13 @@
       </ion-row>
 
       <ion-list>
+        <ion-item *ngFor="let get_selectlocation of get_selectlocations">
+          <ion-label>{{get_selectlocation.name}}</ion-label>
+          <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
+        </ion-item>
+      </ion-list>
+
+      <!--<ion-list>
         <ion-item>
           <ion-label>option 1</ion-label>
           <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
@@ -170,7 +106,7 @@
           <ion-label>option 3</ion-label>
           <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
         </ion-item>
-      </ion-list>
+      </ion-list>-->
 
     </ion-card>
     <!--</form>-->
@@ -211,33 +147,35 @@
 
   <!--register form start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="vehicleRegisterClicked">
+    <form [formGroup]="Vehicleform">
 
-    <ion-card class="fb4 marginCenter popupFormCard">
-
-      <ion-card-header class="icTitle headerColor-white posRelative">
-        <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
-        <div class="icHeaderText">{{"REGISTER_NEW_VEHICLE" | translate}}</div>
-        <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="vehicleRegisterClick()">
+      <ion-card class="fb4 marginCenter popupFormCard">
+        <ion-card-header class="icTitle headerColor-white posRelative">
+          <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
+          <div class="icHeaderText">{{"REGISTER_NEW_VEHICLE" | translate}}</div>
+          <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="vehicleRegisterClick()">
         <ion-icon name="md-close"></ion-icon> 
       </button>
-      </ion-card-header>
+        </ion-card-header>
 
-      <ion-list class="overflowTrue contentHeight">
+        <ion-list class="overflowTrue contentHeight">
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"VEHICLE" | translate}}</ion-label>
+            <!--<ion-input type="text" class="editInput" placeholder="Location name"></ion-input>-->
+            <ion-input type="text" class="editInput" formControlName="vehiclename" [(ngModel)]="vehicle_entry.registration_no" placeholder="Location name"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label class="fontColor-yellow">{{"ACTIVE" | translate}}</ion-label>
+            <ion-toggle color="secondary" formControlName="vehicleactive" [(ngModel)]="vehicle_entry.active"></ion-toggle>
+          </ion-item>
+        </ion-list>
+
         <ion-item>
-          <ion-label class="fontColor-green" stacked>{{"VEHICLE" | translate}}</ion-label>
-          <ion-input type="text" class="editInput" placeholder="Location name"></ion-input>
+          <button ion-button full class="bgColor-grey fontColor-white btnStyle1" (click)="RegisterVehicle()">Register</button>
         </ion-item>
-
-        <ion-item>
-          <ion-label class="fontColor-yellow">{{"ACTIVE" | translate}}</ion-label>
-          <ion-toggle checked="false" color="secondary"></ion-toggle>
-        </ion-item>
-      </ion-list>
-
-      <ion-item>
-        <button ion-button full class="bgColor-grey fontColor-white btnStyle1">Register</button>
-      </ion-item>
-    </ion-card>
+      </ion-card>
+    </form>
   </div>
   <!--register form end-->
 
@@ -265,68 +203,13 @@
         </ion-row>
 
         <div class="contentHeight3 overflowTrue">
-          <ion-list>
-            <ion-item>
-              <ion-label>Putrajaya</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Behrang</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Cyberjaya</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Pulau Ketam</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Kemaman</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Kemaman</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Kemaman</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Kemaman</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Kemaman</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Kemaman</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Kemaman</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Kemaman</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-          </ion-list>
+           <ion-list>
+            <ion-item *ngFor="let getlocation of getlocations">
+              <ion-label>{{getlocation.name}}</ion-label>
+              <!--<ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>-->
+              <ion-checkbox color="secondary" checked="false" (ionChange)="AvailableSelection($event,getlocation)" item-end></ion-checkbox>
+            </ion-item>           
+          </ion-list>        
         </div>
       </ion-card>
       <ion-card class="cb5 contentHeight3">
@@ -340,27 +223,13 @@
 
         <div class="contentHeight3 overflowTrue">
           <ion-list>
-            <ion-item>
-              <ion-label>Petaling Jaya</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            <ion-item *ngFor="let get_selectlocation of get_selectlocations">
+              <ion-label>{{get_selectlocation.name}}</ion-label>
+              <ion-checkbox color="secondary" checked="false" (ionChange)="RemoveSelection($event,get_selectvehicle)" item-end></ion-checkbox>
             </ion-item>
-
-            <ion-item>
-              <ion-label>Damansara</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Sepang</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Perlis</ion-label>
-              <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
-            </ion-item>
-
           </ion-list>
+
+
         </div>
 
       </ion-card>

@@ -8,6 +8,8 @@ import { BaseHttpService } from '../../services/base-http';
 import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Driver } from '../../models/driver';
 import {GETVEHICLE} from '../../models/driver';
+import {VEHICLEDRIVER_MODEL} from '../../models/vehicle';
+
 
 import { FormControlDirective, FormBuilder, Validators, FormGroup,FormControl } from '@angular/forms';
 import { UUID } from 'angular2-uuid';
@@ -36,7 +38,7 @@ export class DriverPage {
 
   AvailableVehicleform: FormGroup;
 
-    searchTerm: string = '';
+    searchTerm: string = '';    current_driverGUID: string = '';
     searchControl: FormControl;
     items: any;
 
@@ -46,6 +48,7 @@ export class DriverPage {
 
     DriverEditform: FormGroup;
     driver: Driver = new Driver();
+    vehicle_driver:VEHICLEDRIVER_MODEL=new VEHICLEDRIVER_MODEL();
 
     getvehicle: GETVEHICLE = new GETVEHICLE();
     public getvehicles: GETVEHICLE[] = [];
@@ -190,6 +193,19 @@ AvailableSelection(e:any,getvehicle)
     console.log("NUM IS "+index_num);
     this.getvehicles.splice(index_num, 1);
     
+    this.vehicle_driver.ID=0,
+    this.vehicle_driver.driver_GUID=this.current_driverGUID,
+    this.vehicle_driver.vehicle_GUID=getvehicle.vehicle_Gid
+
+    // this.driverservice.save_DriverVehicle(this.vehicle_driver)
+    //             .subscribe((response) => {
+    //                 if (response.status == 200) {
+    //                     this.View(this.current_driverGUID);
+    //                     alert('Driver Vehicle Reqistered successfully');
+    //                     //location.reload();
+    //                 }
+
+    //             })
     this.get_selectvehicles.push(new GETVEHICLE(getvehicle.vehicle_Gid,getvehicle.registration_no));
 }
 
@@ -300,7 +316,8 @@ getVehicleList()
 //#region View Driver Info
 View(driver_GUID)
 {
-    console.log(driver_GUID);
+    this.current_driverGUID=driver_GUID;
+    alert(this.current_driverGUID);
    var self = this;
    this.driverservice.get(driver_GUID).subscribe((driver) => self.driver = driver);
 

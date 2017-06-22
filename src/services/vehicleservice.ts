@@ -4,6 +4,7 @@ import {Http, Headers,RequestOptions, URLSearchParams} from '@angular/http';
 import {LocationModel} from '../models/location';
 import {GETLOCATION} from '../models/location';
 
+import {VehicleModel} from '../models/vehicle';
 import {GET_VEHICLE_LOCATION} from '../models/vehicle';
 
 
@@ -24,9 +25,9 @@ class ServerResponse {
 };
 
 @Injectable()
-export class LocationService 
+export class VehicleService 
 {
-	baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/master_location';
+	baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/master_vehicle';
 	baseResource_Url: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/';
 	constructor(private httpService: BaseHttpService, private nav: NavController) {};
 
@@ -40,7 +41,7 @@ export class LocationService
 	  return Observable.throw(errMsg);
 	}
 	
-	save_location (master_location: LocationModel): Observable<any> 
+	save_vehicle (master_vehicle: VehicleModel): Observable<any> 
 	{
 		//console.log(localStorage.getItem('session_token'));
 		var queryHeaders = new Headers();
@@ -48,14 +49,14 @@ export class LocationService
     	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
     	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
     	let options = new RequestOptions({ headers: queryHeaders });		
-			return this.httpService.http.post(this.baseResourceUrl, master_location.toJson(true),options)
+			return this.httpService.http.post(this.baseResourceUrl, master_vehicle.toJson(true),options)
 				.map((response) => {
 					return response;
 				});
 		
 	}
 	
-	get_locationss (params?: URLSearchParams): Observable<LocationModel[]> 
+	get_vehicles (params?: URLSearchParams): Observable<VehicleModel[]> 
 	{
 		var queryHeaders = new Headers();
     	queryHeaders.append('Content-Type', 'application/json');
@@ -67,17 +68,17 @@ export class LocationService
 			.map((response) => 
 			{
 				var result: any = response.json();
-				let locations: Array<LocationModel> = [];
-				result.resource.forEach((location) => {
-					locations.push(LocationModel.fromJson(location));
+				let vehicles: Array<VehicleModel> = [];
+				result.resource.forEach((vehicle) => {
+					vehicles.push(VehicleModel.fromJson(vehicle));
 				});
-				console.log(locations);
-				return locations;
+				//console.log(vehicles);
+				return vehicles;
 
 			}).catch(this.handleError);
 	};
 	
-	get (id: string, params?: URLSearchParams): Observable<LocationModel> {
+	get (id: string, params?: URLSearchParams): Observable<VehicleModel> {
 		var queryHeaders = new Headers();
     	queryHeaders.append('Content-Type', 'application/json');
     	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
@@ -86,13 +87,14 @@ export class LocationService
 			.get(this.baseResourceUrl + '/' + id, { search: params ,headers: queryHeaders})
 			.map((response) => {
 				var result: any = response.json();
-				let location: LocationModel = LocationModel.fromJson(result);
-				return location;
+				let vehicle: VehicleModel = VehicleModel.fromJson(result);
+                //console.log(vehicle);
+				return vehicle;
 			}).catch(this.handleError);
 	};
 	
 	
-	getVehicles_bylocation (id:string,params?: URLSearchParams): Observable<GETLOCATION[]> 
+	getLocations_byvehicle (id:string,params?: URLSearchParams): Observable<GET_VEHICLE_LOCATION[]> 
 	{
 		var queryHeaders = new Headers();
     	queryHeaders.append('Content-Type', 'application/json');
@@ -100,22 +102,22 @@ export class LocationService
     	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
     	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
 		return this.httpService.http
-			.get(this.baseResource_Url+'getlocationbyGUID_view?filter=vehicle_GUID='+id, { search: params ,headers: queryHeaders})
+			.get(this.baseResource_Url+'getlocationbyguid_view?filter=vehicle_GUID='+id, { search: params ,headers: queryHeaders})
 			.map((response) => 
 			{
 				var result: any = response.json();
 				console.log(result);
-				let get_selectvehicles: Array<GETLOCATION> = [];
-				result.resource.forEach((get_selectvehicle) => {
-					get_selectvehicles.push(GETLOCATION.fromJson(get_selectvehicle));
+				let get_selectlocations: Array<GET_VEHICLE_LOCATION> = [];
+				result.resource.forEach((get_selectlocation) => {
+					get_selectlocations.push(GET_VEHICLE_LOCATION.fromJson(get_selectlocation));
 				});
-				//console.log(getVehicles);
-				return get_selectvehicles;
+				console.log(get_selectlocations);
+				return get_selectlocations;
 
 			}).catch(this.handleError);
 	};
 	
-	getVehicles (params?: URLSearchParams): Observable<GETLOCATION[]> 
+	getLocations (params?: URLSearchParams): Observable<GET_VEHICLE_LOCATION[]> 
 	{
 		var queryHeaders = new Headers();
     	queryHeaders.append('Content-Type', 'application/json');
@@ -123,19 +125,33 @@ export class LocationService
     	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
     	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
 		return this.httpService.http
-			.get(this.baseResource_Url+'getallvehicles_view', { search: params ,headers: queryHeaders})
+			.get(this.baseResource_Url+'getalllocations_view', { search: params ,headers: queryHeaders})
 			.map((response) => 
 			{
 				var result: any = response.json();
-				let getvehicles: Array<GETLOCATION> = [];
-				result.resource.forEach((getVehicle) => {
-					getvehicles.push(GETLOCATION.fromJson(getVehicle));
+				let getlocations: Array<GET_VEHICLE_LOCATION> = [];
+				result.resource.forEach((getlocation) => {
+					getlocations.push(GET_VEHICLE_LOCATION.fromJson(getlocation));
 				});
 				//console.log(getvehicles);
-				return getvehicles;
+				return getlocations;
 
 			}).catch(this.handleError);
 	};
 	
+    remove (id: string) {
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.delete(this.baseResourceUrl + '/' + id,{ headers: queryHeaders})
+			.map((response) => {
+				var result: any = response.json();
+				//console.log(result.driver_GUID);
+				return result.vehicle_GUID;
+			});
+	}
 
+    
 }

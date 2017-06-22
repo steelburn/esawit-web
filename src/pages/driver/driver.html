@@ -2,12 +2,12 @@
 
   <!--form start-->
   <div class="col2">
-
     <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="driverRegisterClick()">
       <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
       <div class="portletColStyle2">
         <div class="portletHeaderStyle2">{{"REGISTER_NEW_DRIVER" | translate}}</div>
       </div>
+
     </button>
 
     <ion-card class="cb10">
@@ -177,7 +177,8 @@
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ID_TYPE" | translate}}</ion-label>
-            <ion-select formControlName="identification_type" [(ngModel)]="driver_entry.identification_type" class="editInput" interface="popover" placeholder="{{'FORM_ID_TYPE' | translate}}">
+            <ion-select formControlName="identification_type" [(ngModel)]="driver_entry.identification_type" class="editInput" interface="popover"
+              placeholder="{{'FORM_ID_TYPE' | translate}}">
               <ion-option value="0">N/A</ion-option>
               <ion-option value="1">{{"MYKAD" | translate}}</ion-option>
               <ion-option value="2">{{"PASSPORT" | translate}}</ion-option>
@@ -228,7 +229,8 @@
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"EMPLOYMENT" | translate}}</ion-label>
-            <ion-select formControlName="employment_type" [(ngModel)]="driver_entry.employment_type" class="editInput" interface="popover" placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
+            <ion-select formControlName="employment_type" [(ngModel)]="driver_entry.employment_type" class="editInput" interface="popover"
+              placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
               <ion-option value="0">N/A</ion-option>
               <ion-option value="1">{{"PERMANENT" | translate}}</ion-option>
               <ion-option value="2">{{"PROBATION" | translate}}</ion-option>
@@ -296,6 +298,7 @@
           </div>
         </form>
       </ion-card>
+
       <ion-card class="cb5 contentHeight3">
         <ion-row>
           <ion-item class="bgColor-lightGrey posRelative">
@@ -312,6 +315,7 @@
           </ion-list>
         </div>
       </ion-card>
+
     </ion-card>
   </div>
   <!--add Vehicle form end-->

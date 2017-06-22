@@ -4,6 +4,7 @@ import {Http, Headers,RequestOptions, URLSearchParams} from '@angular/http';
 import {Driver} from '../models/driver';
 import {GETVEHICLE} from '../models/driver';
 
+import {VEHICLEDRIVER_MODEL} from '../models/vehicle';
 
 import * as constants from '../app/config/constants';
 import {BaseHttpService} from './base-http';
@@ -24,6 +25,9 @@ export class DriverService
 {
 	baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/master_driver';
 	baseResource_Url: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/';
+
+    baseResourceUrl_VehicleDriver: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/vehicle_driver';
+
 	constructor(private httpService: BaseHttpService, private nav: NavController) {};
 
 
@@ -178,6 +182,24 @@ export class DriverService
 				//console.log(result.driver_GUID);
 				return result.driver_GUID;
 			});
+	}
+
+	/*	Driver Vehicel */
+	save_DriverVehicle (vehicel_driver: VEHICLEDRIVER_MODEL): Observable<any> 
+	{
+		//console.log(localStorage.getItem('session_token'));
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+    	let options = new RequestOptions({ headers: queryHeaders });
+		
+			return this.httpService.http.post(this.baseResourceUrl_VehicleDriver, vehicel_driver.toJson(true),options)
+				.map((response) => {
+					console.log(response);
+					return response;
+				});
+		
 	}
 
 }
