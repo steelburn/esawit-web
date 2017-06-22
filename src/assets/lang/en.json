@@ -65,5 +65,7 @@
   "FORM_LICENSE": "Please insert correct license number",
   "FORM_SELECT_YEAR": "Select start year",
   "FORM_DESCRIPTION": "Description are optional",
-  "FORM_EMPLOYEMENT_TYPE": "Please select employment type"
+  "FORM_EMPLOYEMENT_TYPE": "Please select employment type",
+  "FORM_LOCATION_NAME": "Please insert location name",
+  "SEARCH": "Search"
 }

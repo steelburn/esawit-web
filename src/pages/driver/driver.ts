@@ -56,9 +56,6 @@ export class DriverPage {
     public drivers: Driver[] = [];
     public filter_drivers = [];
 
-    @ViewChild('barCanvas') barCanvas;
-    @ViewChild('doughnutCanvas') doughnutCanvas;
-    @ViewChild('lineCanvas') lineCanvas;
     @ViewChild('driverDoughnutCanvas') driverDoughnutCanvas;
 
     driverDoughnutChart:any;

@@ -66,5 +66,7 @@
   "FORM_LICENSE": "Sila masukkan nombor lesen",
   "FORM_SELECT_YEAR": "Sila pilih tahun mula",
   "FORM_DESCRIPTION": "Keterangan adalah pilihan",
-  "FORM_EMPLOYEMENT_TYPE": "Sila pilih jenis pekerjaan"
+  "FORM_EMPLOYEMENT_TYPE": "Sila pilih jenis pekerjaan",
+  "FORM_LOCATION_NAME": "Sila masukkan nama lokasi",
+  "SEARCH": "Carian"
 }
