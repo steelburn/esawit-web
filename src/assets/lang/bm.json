@@ -20,6 +20,7 @@
   "TEMPORARY": "Sementara",
   "PROBATION": "Percubaan",
   "CONTRACT": "Kontrak",
+  "PROFILEPHOTO": "Gambar Profil",
   "FULLNAME": "Nama Penuh",
   "ADDRESS": "Alamat",
   "EMAIL": "Emel",
@@ -50,10 +51,11 @@
   "SELECTED_USER": "Pengguna Dipilih",
   "AVAILABLE_LOCATION": "Pilihan Lokasi",
   "SELECTED_LOCATION": "Lokasi Dipilih",
+  "UPDATE": "Kemaskini",
   "UPDATE_ROLE": "Kemaskini Pengguna",
   "UPDATE_VEHICLE": "Kemaskini Kenderaan",
   "UPDATE_LOCATION": "Kemaskini Lokasi",
-  "PH_FULLNAME": "Sila masukkan nama penuh",
+  "UPDATE_DRIVER": "kemaskini Pemandu",
 
   "FORM_FULLNAME": "Sila masukkan nama penuh",
   "FORM_ID_TYPE": "Sila pilih jenis pengenalan",
@@ -66,5 +68,7 @@
   "FORM_LICENSE": "Sila masukkan nombor lesen",
   "FORM_SELECT_YEAR": "Sila pilih tahun mula",
   "FORM_DESCRIPTION": "Keterangan adalah pilihan",
-  "FORM_EMPLOYEMENT_TYPE": "Sila pilih jenis pekerjaan"
+  "FORM_EMPLOYEMENT_TYPE": "Sila pilih jenis pekerjaan",
+  "FORM_LOCATION_NAME": "Sila masukkan nama lokasi",
+  "SEARCH": "Carian"
 }
