@@ -8,19 +8,16 @@ import { BaseHttpService } from '../../services/base-http';
 import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Driver } from '../../models/driver';
 import { GETVEHICLE } from '../../models/driver';
+import { VEHICLEDRIVER_MODEL } from '../../models/vehicle';
+
 
 import { FormControlDirective, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { UUID } from 'angular2-uuid';
-/**
- * Generated class for the UserPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
 @IonicPage()
 @Component({
   selector: 'page-user',
-  templateUrl: 'user.html',
+  templateUrl: 'user.html', providers: [DriverService, BaseHttpService]
 })
 export class UserPage {
 
@@ -38,7 +35,7 @@ export class UserPage {
 
     AvailableVehicleform: FormGroup;
 
-    searchTerm: string = '';
+    searchTerm: string = ''; current_driverGUID: string = '';
     searchControl: FormControl;
     items: any;
 
@@ -48,6 +45,7 @@ export class UserPage {
 
     DriverEditform: FormGroup;
     driver: Driver = new Driver();
+    vehicle_driver: VEHICLEDRIVER_MODEL = new VEHICLEDRIVER_MODEL();
 
     getvehicle: GETVEHICLE = new GETVEHICLE();
     public getvehicles: GETVEHICLE[] = [];
@@ -58,9 +56,6 @@ export class UserPage {
     public drivers: Driver[] = [];
     public filter_drivers = [];
 
-    @ViewChild('barCanvas') barCanvas;
-    @ViewChild('doughnutCanvas') doughnutCanvas;
-    @ViewChild('lineCanvas') lineCanvas;
     @ViewChild('driverDoughnutCanvas') driverDoughnutCanvas;
 
     driverDoughnutChart: any;
@@ -115,22 +110,6 @@ export class UserPage {
         this.getList();
     }
 
-    // fullname: '',
-    // driver_GUID: '',
-    // tenant_GUID: '',
-    // identification_no: '',
-    // identification_type: '',
-    // address1: '',
-    // address2: '',
-    // address3: '',
-    // phone_no: '',
-    // email: '',
-    // license_no: '',
-    // start_year: '',
-    // description: '',
-    // employment_type: '',
-    // active: ''
-
     save() {
         if (this.Driverform.valid) {
             //this.register();
@@ -152,9 +131,6 @@ export class UserPage {
         alert(JSON.stringify(this.Driverform.value));
         alert(JSON.stringify(this.driver_entry));
     }
-
-
-
 
 
     //#region Main Genreate Token
@@ -183,6 +159,19 @@ export class UserPage {
         console.log("NUM IS " + index_num);
         this.getvehicles.splice(index_num, 1);
 
+        this.vehicle_driver.ID = 0,
+            this.vehicle_driver.driver_GUID = this.current_driverGUID,
+            this.vehicle_driver.vehicle_GUID = getvehicle.vehicle_Gid
+
+        // this.driverservice.save_DriverVehicle(this.vehicle_driver)
+        //             .subscribe((response) => {
+        //                 if (response.status == 200) {
+        //                     this.View(this.current_driverGUID);
+        //                     alert('Driver Vehicle Reqistered successfully');
+        //                     //location.reload();
+        //                 }
+
+        //             })
         this.get_selectvehicles.push(new GETVEHICLE(getvehicle.vehicle_Gid, getvehicle.registration_no));
     }
 
@@ -265,10 +254,12 @@ export class UserPage {
                 this.driver.phone_no = last_element.phone_no;
                 this.driver.identification_no = last_element.identification_no;
                 this.driver.license_no = last_element.license_no;
-                this.driver.employment_type = last_element.employment_type;
-
+                this.driver.active = last_element.active;
+                
+                
             });
     }
+
     getVehicleList() {
         let self = this;
         let params: URLSearchParams = new URLSearchParams();
@@ -281,7 +272,8 @@ export class UserPage {
 
     //#region View Driver Info
     View(driver_GUID) {
-        console.log(driver_GUID);
+        this.current_driverGUID = driver_GUID;
+        alert(this.current_driverGUID);
         var self = this;
         this.driverservice.get(driver_GUID).subscribe((driver) => self.driver = driver);
 
@@ -297,6 +289,7 @@ export class UserPage {
     }
     //#endregion
 
+    //this.getVehicleList();
 
 
     //#region Remove Driver
@@ -309,21 +302,14 @@ export class UserPage {
                     return item.driver_GUID != driver_GUID
                 });
             });
+
+        
+        this.navCtrl.setRoot(this.navCtrl.getActive().component);
     }
     //#endregion
 
-
-
     ionViewDidLoad() {
         console.log('ionViewDidLoad DriverPage');
-        // let params: URLSearchParams = new URLSearchParams();               
-        // var self2 = this;
-        // this.driverservice.getTotalReport(params)
-        //     .subscribe((response) => 
-        //     {
-        //                 self2=   response.json();
-
-        //     });
 
         this.driverDoughnutChart = new Chart(this.driverDoughnutCanvas.nativeElement, {
             type: 'doughnut',
