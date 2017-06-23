@@ -31,6 +31,8 @@ import { VehicleTransactionPage } from '../pages/vehicle-transaction/vehicle-tra
 //import { NgModule }      from '@angular/core';
 //import { FormsModule }   from '@angular/forms';
 import { FilterData } from '../shared/filter';
+import { FilterVehicle } from '../shared/vehiclefilter';
+
 //import { UniquePipe } from '../shared/unique';
 
 import { LocationTransactionPage } from '../pages/location-transaction/location-transaction';
@@ -46,6 +48,7 @@ import { FactorylistPage } from '../pages/factorylist/factorylist';
     HomePage,
     LandingV1Page,
     LandingV2Page,
+    
     DriverPage,
     DriverInfoPage,
     LocationPage,
@@ -59,7 +62,9 @@ import { FactorylistPage } from '../pages/factorylist/factorylist';
     TabsPage,
     ReportsPage,
     VehicleTransactionPage,
-    FilterData,
+
+    FilterData,FilterVehicle,
+
     LocationTransactionPage,
     HarvestlistPage,
     MandorlistPage,
