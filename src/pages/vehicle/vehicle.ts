@@ -8,6 +8,7 @@ import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { VehicleModel } from '../../models/vehicle';
 import { GET_VEHICLE_LOCATION } from '../../models/vehicle';
 import { LocationModel } from '../../models/location';
+import { LOCATION_VEHICLE_MODEL } from '../../models/location';
 
 
 import { FormControlDirective, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
@@ -28,13 +29,17 @@ export class VehiclePage {
   Vehicleform: FormGroup;
   vehicle_entry: VehicleModel = new VehicleModel();
   vehicle: VehicleModel = new VehicleModel();
+  location_vehicle: LOCATION_VEHICLE_MODEL = new LOCATION_VEHICLE_MODEL();
 
   public vehicles: VehicleModel[] = [];
-  //public get_selectlocations: GET_VEHICLE_LOCATION[] = [];
-    public get_selectlocations: VehicleModel[] = [];
+  public get_selectlocations: GET_VEHICLE_LOCATION[] = [];
+  public getlocations: LocationModel[] = [];
 
-  public getlocations: GET_VEHICLE_LOCATION[] = [];
+  //public getlocations: GET_VEHICLE_LOCATION[] = [];
   public _filter_getloctions: GET_VEHICLE_LOCATION[] = [];
+
+  public current_vehicle_GUID: string = '';
+
   constructor( @Inject(FormBuilder) fb: FormBuilder, private vehicle_service: VehicleService,
     private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) {
 
@@ -67,6 +72,29 @@ export class VehiclePage {
 
         })
     }
+  }
+  
+  AvailableSelection(e: any, getlocation) {
+
+    var index_num = this.getlocations.findIndex(x => x.location_GUID == getlocation.location_GUID);
+    this.getlocations.splice(index_num, 1);
+    
+     this.location_vehicle.ID = 0,
+     this.location_vehicle.location_GUID = getlocation.location_GUID;
+     this.location_vehicle.vehicle_GUID =  this.current_vehicle_GUID;
+
+        this.vehicle_service.save_LocationVehicle(this.location_vehicle)
+            .subscribe((response) => {
+                if (response.status == 200) 
+                {
+                    //this.View(this.current_driverGUID);
+                    alert('Location Vehicle Reqistered successfully');
+                    //location.reload();
+                }
+
+            });
+
+    this.get_selectlocations.push(new GET_VEHICLE_LOCATION(getlocation.location_GUID, getlocation.name));
   }
 
   getList() {
@@ -105,7 +133,9 @@ export class VehiclePage {
   }
 
   View(vehicle_GUID) {
-  alert(vehicle_GUID);
+
+   this.current_vehicle_GUID=vehicle_GUID;
+  //alert(vehicle_GUID);
     //Get Location
     var self = this;
     this.vehicle_service.get(vehicle_GUID).subscribe((vehicle) => self.vehicle = vehicle);
@@ -117,7 +147,8 @@ export class VehiclePage {
     //params.set('order', 'last_name+ASC');
     self2.vehicle_service.getLocations_byvehicle(vehicle_GUID, params)
       .subscribe((get_selectlocations: GET_VEHICLE_LOCATION[]) => {
-        self2.get_selectlocations = get_selectlocations
+        self2.get_selectlocations = get_selectlocations;
+        this.GetAvailableVehicles();
       });
 
     //Get Available Vehicles
@@ -125,21 +156,29 @@ export class VehiclePage {
 
   }
 
-GetAvailableVehicles(location_GUID,_row) 
+GetAvailableVehicles() 
 {
     let self_GetAllLocations = this;   
     let params: URLSearchParams = new URLSearchParams();
-    self_GetAllLocations.vehicle_service.getLocations(params)
-      .subscribe((getlocations: GET_VEHICLE_LOCATION[]) => {
+    self_GetAllLocations.vehicle_service.getLocations2(params)
+      .subscribe((getlocations: LocationModel[]) => {
        
-        self_GetAllLocations.getlocations = getlocations.filter(getlocation => getlocation.vehicle_GUID !== vehicle_GUID);
-       
+        self_GetAllLocations.getlocations = getlocations;
+        console.log(this.getlocations);
+        this.vehiclesby_locations();
       });
-
-
-
   }
+vehiclesby_locations() 
+{
+        for (var _i = 0; _i < this.get_selectlocations.length; _i++) {
+            var item = this.get_selectlocations[_i].location_GUID;
+            if (item != null) {
 
+                var index_num = this.getlocations.findIndex(x => x.location_GUID == item);
+                this.getlocations.splice(index_num, 1);
+            }
+        }
+    }
 
   ionViewDidLoad() { console.log('ionViewDidLoad VehiclePage'); }
   public vehicleRegisterClicked: boolean = false; //Whatever you want to initialise it as

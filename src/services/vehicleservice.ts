@@ -8,6 +8,7 @@ import {VehicleModel} from '../models/vehicle';
 import {GET_VEHICLE_LOCATION} from '../models/vehicle';
 import {GETVEHICLE2} from '../models/driver';
 
+import { LOCATION_VEHICLE_MODEL } from '../models/location';
 
 
 
@@ -30,6 +31,9 @@ export class VehicleService
 {
 	baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/master_vehicle';
 	baseResource_Url: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/';
+	baseResourceUrl_masterlocation: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/master_location';
+	baseResourceUrl_vehicle_location: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/vehicle_location';
+
 	constructor(private httpService: BaseHttpService, private nav: NavController) {};
 
 
@@ -140,7 +144,7 @@ export class VehicleService
 			}).catch(this.handleError);
 	};
 	
-	getLocations2 (params?: URLSearchParams): Observable<GET_VEHICLE_LOCATION[]> 
+	getLocations2 (params?: URLSearchParams): Observable<LocationModel[]> 
 	{
 		var queryHeaders = new Headers();
     	queryHeaders.append('Content-Type', 'application/json');
@@ -148,20 +152,19 @@ export class VehicleService
     	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
     	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
 		return this.httpService.http
-			.get(this.baseResource_Url+'getalllocations_view', { search: params ,headers: queryHeaders})
+			.get(this.baseResourceUrl_masterlocation, { search: params ,headers: queryHeaders})
 			.map((response) => 
 			{
 				var result: any = response.json();
-				let getlocations: Array<GET_VEHICLE_LOCATION> = [];
+				let getlocations: Array<LocationModel> = [];
 				result.resource.forEach((getlocation) => {
-					getlocations.push(GET_VEHICLE_LOCATION.fromJson(getlocation));
+					getlocations.push(LocationModel.fromJson(getlocation));
 				});
 				//console.log(getvehicles);
 				return getlocations;
 
 			}).catch(this.handleError);
 	};
-
 
 	getVehicles2 (params?: URLSearchParams): Observable<GETVEHICLE2[]> 
 	{
@@ -200,5 +203,21 @@ export class VehicleService
 			});
 	}
 
-    
+    save_LocationVehicle (vehicel_location: LOCATION_VEHICLE_MODEL): Observable<any> 
+	{
+		//console.log(localStorage.getItem('session_token'));
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+    	let options = new RequestOptions({ headers: queryHeaders });
+		
+			return this.httpService.http.post(this.baseResourceUrl_vehicle_location, vehicel_location.toJson(true),options)
+				.map((response) => {
+					console.log(response);
+					return response;
+				});
+		
+	}
+
 }
