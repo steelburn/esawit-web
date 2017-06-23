@@ -30,7 +30,9 @@ export class VehiclePage {
   vehicle: VehicleModel = new VehicleModel();
 
   public vehicles: VehicleModel[] = [];
-  public get_selectlocations: GET_VEHICLE_LOCATION[] = [];
+  //public get_selectlocations: GET_VEHICLE_LOCATION[] = [];
+    public get_selectlocations: VehicleModel[] = [];
+
   public getlocations: GET_VEHICLE_LOCATION[] = [];
   public _filter_getloctions: GET_VEHICLE_LOCATION[] = [];
   constructor( @Inject(FormBuilder) fb: FormBuilder, private vehicle_service: VehicleService,
