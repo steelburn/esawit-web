@@ -6,6 +6,7 @@ import {GETLOCATION} from '../models/location';
 
 import {VehicleModel} from '../models/vehicle';
 import {GET_VEHICLE_LOCATION} from '../models/vehicle';
+import {GETVEHICLE2} from '../models/driver';
 
 
 
@@ -139,6 +140,29 @@ export class VehicleService
 			}).catch(this.handleError);
 	};
 	
+	getVehicles2 (params?: URLSearchParams): Observable<GETVEHICLE2[]> 
+	{
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+		
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.get(this.baseResourceUrl, { search: params ,headers: queryHeaders})
+			.map((response) => 
+			{
+				var result: any = response.json();
+				let getvehicles: Array<GETVEHICLE2> = [];
+				result.resource.forEach((getvehicle) => {
+					getvehicles.push(GETVEHICLE2.fromJson(getvehicle));
+				});
+				console.log(getvehicles);
+				return getvehicles;
+
+			}).catch(this.handleError);
+	};
+
+
     remove (id: string) {
 		var queryHeaders = new Headers();
     	queryHeaders.append('Content-Type', 'application/json');

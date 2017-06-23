@@ -31,6 +31,8 @@ import { VehicleTransactionPage } from '../pages/vehicle-transaction/vehicle-tra
 //import { NgModule }      from '@angular/core';
 //import { FormsModule }   from '@angular/forms';
 import { FilterData } from '../shared/filter';
+//import { UniquePipe } from '../shared/unique';
+
 import { LocationTransactionPage } from '../pages/location-transaction/location-transaction';
 import { HarvestlistPage } from '../pages/harvestlist/harvestlist';
 import { MandorlistPage } from '../pages/mandorlist/mandorlist';
