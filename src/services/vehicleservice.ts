@@ -140,6 +140,29 @@ export class VehicleService
 			}).catch(this.handleError);
 	};
 	
+	getLocations2 (params?: URLSearchParams): Observable<GET_VEHICLE_LOCATION[]> 
+	{
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+		
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.get(this.baseResource_Url+'getalllocations_view', { search: params ,headers: queryHeaders})
+			.map((response) => 
+			{
+				var result: any = response.json();
+				let getlocations: Array<GET_VEHICLE_LOCATION> = [];
+				result.resource.forEach((getlocation) => {
+					getlocations.push(GET_VEHICLE_LOCATION.fromJson(getlocation));
+				});
+				//console.log(getvehicles);
+				return getlocations;
+
+			}).catch(this.handleError);
+	};
+
+
 	getVehicles2 (params?: URLSearchParams): Observable<GETVEHICLE2[]> 
 	{
 		var queryHeaders = new Headers();

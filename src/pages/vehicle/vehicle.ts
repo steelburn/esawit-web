@@ -7,6 +7,8 @@ import { BaseHttpService } from '../../services/base-http';
 import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { VehicleModel } from '../../models/vehicle';
 import { GET_VEHICLE_LOCATION } from '../../models/vehicle';
+import { LocationModel } from '../../models/location';
+
 
 import { FormControlDirective, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { UUID } from 'angular2-uuid';
@@ -79,21 +81,24 @@ export class VehiclePage {
   FillTopRecordView(_row: number) 
   {
 
-    var last_element = this.vehicle[_row];
+    var last_element = this.vehicles[_row];
     console.log(last_element);
-    // this.vehicle.registration_no = last_element.registration_no;
-    // this.vehicle.vehicle_GUID = last_element.vehicle_GUID;
-    // this.View(this.vehicle.vehicle_GUID);
+    this.vehicle.registration_no = last_element.registration_no;
+    this.vehicle.vehicle_GUID = last_element.vehicle_GUID;
+    this.View(this.vehicle.vehicle_GUID);
   }
 
-  remove(vehicle_GUID) {
+  remove(vehicle_GUID) 
+  {
     alert(vehicle_GUID);
     var self = this;
     this.vehicle_service.remove(vehicle_GUID)
       .subscribe(() => {
-        self.vehicles = self.vehicles.filter((item) => {
+        self.vehicles = self.vehicles.filter((item) => 
+        {
           return item.vehicle_GUID != vehicle_GUID
         });
+        this.FillTopRecordView(0);
       });
   }
 
@@ -114,21 +119,24 @@ export class VehiclePage {
       });
 
     //Get Available Vehicles
-    let self_GetAllLocations = this;
-
-    self_GetAllLocations.vehicle_service.getLocations(params)
-      .subscribe((getlocations: GET_VEHICLE_LOCATION[]) => {
-        console.log('Getting Available Vehicles');
-        console.log(getlocations);
-        self_GetAllLocations.getlocations = getlocations.filter(getlocation => getlocation.vehicle_GUID !== vehicle_GUID);
-        console.log('After some time');
-        console.log(this.getlocations);
-
-      });
+    
 
   }
 
+GetAvailableVehicles(location_GUID,_row) 
+{
+    let self_GetAllLocations = this;   
+    let params: URLSearchParams = new URLSearchParams();
+    self_GetAllLocations.vehicle_service.getLocations(params)
+      .subscribe((getlocations: GET_VEHICLE_LOCATION[]) => {
+       
+        self_GetAllLocations.getlocations = getlocations.filter(getlocation => getlocation.vehicle_GUID !== vehicle_GUID);
+       
+      });
 
+
+
+  }
 
 
   ionViewDidLoad() { console.log('ionViewDidLoad VehiclePage'); }
