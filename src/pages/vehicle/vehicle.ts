@@ -72,8 +72,18 @@ export class VehiclePage {
     self.vehicle_service.get_vehicles(params)
       .subscribe((vehicles: VehicleModel[]) => {
         self.vehicles = vehicles;
-        console.log(vehicles);
+        this.FillTopRecordView(0);
       });
+  }
+  
+  FillTopRecordView(_row: number) 
+  {
+
+    var last_element = this.vehicle[_row];
+    console.log(last_element);
+    // this.vehicle.registration_no = last_element.registration_no;
+    // this.vehicle.vehicle_GUID = last_element.vehicle_GUID;
+    // this.View(this.vehicle.vehicle_GUID);
   }
 
   remove(vehicle_GUID) {
@@ -88,7 +98,7 @@ export class VehiclePage {
   }
 
   View(vehicle_GUID) {
-alert(vehicle_GUID);
+  alert(vehicle_GUID);
     //Get Location
     var self = this;
     this.vehicle_service.get(vehicle_GUID).subscribe((vehicle) => self.vehicle = vehicle);

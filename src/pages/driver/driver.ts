@@ -8,8 +8,9 @@ import { BaseHttpService } from '../../services/base-http';
 import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Driver } from '../../models/driver';
 import { GETVEHICLE } from '../../models/driver';
-import { VEHICLEDRIVER_MODEL } from '../../models/vehicle';
 
+import { GETVEHICLE2 } from '../../models/driver';
+import { VEHICLEDRIVER_MODEL } from '../../models/vehicle';
 
 import { FormControlDirective, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { UUID } from 'angular2-uuid';
@@ -53,8 +54,8 @@ export class DriverPage {
     driver: Driver = new Driver();
     vehicle_driver: VEHICLEDRIVER_MODEL = new VEHICLEDRIVER_MODEL();
 
-    getvehicle: GETVEHICLE = new GETVEHICLE();
-    public getvehicles: GETVEHICLE[] = [];
+    getvehicle: GETVEHICLE2 = new GETVEHICLE2();
+    public getvehicles: GETVEHICLE2[] = [];
 
     get_selectvehicle: GETVEHICLE = new GETVEHICLE();
     public get_selectvehicles: GETVEHICLE[] = [];
@@ -88,6 +89,34 @@ export class DriverPage {
                 employment_type: '',
                 active: ''
 
+            });
+
+        this.driver_entry.driver_GUID = UUID.UUID(); this.driver_entry.tenant_GUID = UUID.UUID();
+        //this.GenerateToken();
+        this.Driverform = fb2.group({
+
+            //fullname: ['', Validators.compose([Validators.maxLength(10),Validators.minLength(5), Validators.pattern('[a-zA-Z ]*'), Validators.required])],        
+            driver_GUID: [UUID.UUID()],
+            fullname: '',
+            identification_type: '',
+            identification_no: '',
+            address1: '',
+            address2: '',
+            address3: '',
+            phone_no: '',
+            email: '',
+            license_no: '',
+            employment_type: '',
+            description: '',
+            active: 1,
+            tenant_GUID: [UUID.UUID()]
+        });
+
+
+        this.AvailableVehicleform = fb.group({ availablevehicles: '' });
+        this.getList();
+        //this.getVehicleList();
+    }
             });
 
         this.driver_entry.driver_GUID = UUID.UUID(); this.driver_entry.tenant_GUID = UUID.UUID();
@@ -160,7 +189,6 @@ export class DriverPage {
         console.log(getvehicle.vehicle_Gid);
         console.log(getvehicle.registration_no);
 
-
         var index_num = this.getvehicles.findIndex(x => x.vehicle_Gid == getvehicle.vehicle_Gid);
         console.log("NUM IS " + index_num);
         this.getvehicles.splice(index_num, 1);
@@ -186,8 +214,7 @@ export class DriverPage {
         console.log(e.checked);
         console.log(getselectvehicle.vehicle_Gid);
         console.log(getselectvehicle.registration_no);
-
-
+      
         var index_num = this.get_selectvehicles.findIndex(x => x.vehicle_Gid == getselectvehicle.vehicle_Gid);
         console.log("NUM IS " + index_num);
         this.get_selectvehicles.splice(index_num, 1);
@@ -197,7 +224,61 @@ export class DriverPage {
     //#endregion
 
 
+    //#region Main Genreate Token
+    private storeToken(data) { localStorage.setItem('session_token', data.session_token); }
+    private GenerateToken() {
+        var queryHeaders = new Headers();
+        queryHeaders.append('Content-Type', 'application/json');
+        let options = new RequestOptions({ headers: queryHeaders });
+        this.httpService.http.post('http://api.zen.com.my/api/v2/user/session', '{"email":"sampath415@gmail.com","password":"sampath415"}', options)
+            .subscribe((data) => { this.storeToken(data.json()); }, (error) => {
+                console.log('error', JSON.parse(error._body).error.message);
+            });
+    }
+    //#endregion
 
+
+    //#region Select and Remove Vehicles
+    AvailableSelection(e: any, getvehicle) {
+        console.log(e);
+        console.log(e.checked);
+        console.log(getvehicle.vehicle_Gid);
+        console.log(getvehicle.registration_no);
+
+        var index_num = this.getvehicles.findIndex(x => x.vehicle_GUID == getvehicle.vehicle_GUID);
+        console.log("NUM IS " + index_num);
+        this.getvehicles.splice(index_num, 1);
+
+        this.vehicle_driver.ID = 0,
+            this.vehicle_driver.driver_GUID = this.current_driverGUID,
+            this.vehicle_driver.vehicle_GUID = getvehicle.vehicle_GUID
+
+        this.driverservice.save_DriverVehicle(this.vehicle_driver)
+            .subscribe((response) => {
+                if (response.status == 200) {
+                    this.View(this.current_driverGUID);
+                    alert('Driver Vehicle Reqistered successfully');
+                    //location.reload();
+                }
+
+            })
+        //this.get_selectvehicles.push(new GETVEHICLE(getvehicle.vehicle_Gid,getvehicle.registration_no));
+    }
+
+    RemoveSelection(e: any, getselectvehicle) {
+        console.log(e);
+        console.log(e.checked);
+        console.log(getselectvehicle.vehicle_Gid);
+        console.log(getselectvehicle.registration_no);
+
+
+        var index_num = this.get_selectvehicles.findIndex(x => x.vehicle_Gid == getselectvehicle.vehicle_Gid);
+        console.log("NUM IS " + index_num);
+        this.get_selectvehicles.splice(index_num, 1);
+
+        this.getvehicles.push(new GETVEHICLE2(getselectvehicle.vehicle_GUID, getselectvehicle.registration_no));
+    }
+    //#endregion
 
     Updateinfo() {
         alert(JSON.stringify(this.DriverEditform.value));
@@ -249,51 +330,64 @@ export class DriverPage {
             .subscribe((drivers: Driver[]) => {
                 self.drivers = drivers
                 this.filter_drivers = drivers;
-                console.log(self.drivers);
+                //console.log(self.drivers);
 
-                var last_element = drivers[0];
-                console.log(last_element);
-                this.driver.driver_GUID = last_element.driver_GUID;
-                this.driver.tenant_GUID = last_element.tenant_GUID;
-                this.driver.fullname = last_element.fullname;
-                this.driver.email = last_element.email;
-                this.driver.phone_no = last_element.phone_no;
-                this.driver.identification_no = last_element.identification_no;
-                this.driver.license_no = last_element.license_no;
-                this.driver.active = last_element.active;
-                
-                
+                this.FillTopRecordView();
             });
     }
+
+    FillTopRecordView() {
+
+        var last_element = this.drivers[0];
+        console.log(last_element);
+        this.View(last_element.driver_GUID);
+    }
+
 
     getVehicleList() {
         let self = this;
         let params: URLSearchParams = new URLSearchParams();
         //params.set('order', 'last_name+ASC');
-        self.driverservice.getVehicles(params)
-            .subscribe((getvehicles: GETVEHICLE[]) => {
-                self.getvehicles = getvehicles
+
+        self.driverservice.getVehicles2(params)
+            .subscribe((getvehicles: GETVEHICLE2[]) => {
+                self.getvehicles = getvehicles;
+                this.vehiclesby_driver();
             });
+        //console.log(this.getvehicles);
     }
 
     //#region View Driver Info
     View(driver_GUID) {
-        this.current_driverGUID = driver_GUID;
-        alert(this.current_driverGUID);
+
+        this.current_driverGUID = driver_GUID; //alert(this.current_driverGUID);
         var self = this;
         this.driverservice.get(driver_GUID).subscribe((driver) => self.driver = driver);
-
-        this.getVehicleList();
 
         let self2 = this;
         let params: URLSearchParams = new URLSearchParams();
         //params.set('order', 'last_name+ASC');
+
         self2.driverservice.getVehicles_byDriver(driver_GUID, params)
             .subscribe((get_selectvehicles: GETVEHICLE[]) => {
-                self2.get_selectvehicles = get_selectvehicles
+                self2.get_selectvehicles = get_selectvehicles;
+                this.getVehicleList();
+                //this.vehiclesby_driver();
+
             });
     }
-    //#endregion
+   
+    vehiclesby_driver() {
+        console.log("ALL" + this.getVehicleList.length);
+        console.log("Selected" + this.get_selectvehicles.length);
+        for (var _i = 0; _i < this.get_selectvehicles.length; _i++) {
+            var item = this.get_selectvehicles[_i].registration_no;
+            if (item != null) {
+
+                var index_num = this.getvehicles.findIndex(x => x.registration_no == item);
+                this.getvehicles.splice(index_num, 1);
+            }
+        }
 
     //#region View Driver Info
     Edit(driver_GUID) {
@@ -318,6 +412,9 @@ export class DriverPage {
                     return item.driver_GUID != driver_GUID
                 });
             });
+    }
+    //#endregion
+
 
         
         this.navCtrl.setRoot(this.navCtrl.getActive().component);
@@ -326,6 +423,17 @@ export class DriverPage {
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad DriverPage');
+
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad DriverPage');
+        // let params: URLSearchParams = new URLSearchParams();               
+        // var self2 = this;
+        // this.driverservice.getTotalReport(params)
+        //     .subscribe((response) => 
+        //     {
+        //                 self2=   response.json();
+
+        //     });
 
         this.driverDoughnutChart = new Chart(this.driverDoughnutCanvas.nativeElement, {
             type: 'doughnut',

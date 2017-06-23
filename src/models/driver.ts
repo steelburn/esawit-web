@@ -99,3 +99,38 @@ export class GETVEHICLE {
 	}
 
 }
+
+/////////////////
+
+export class GETVEHICLE2 {
+	constructor(
+		public vehicle_GUID: string = null,
+		public registration_no: string = null,
+		public driver_GUID: string = null,
+		public is_checked: boolean = null,
+	) { }
+
+
+	static fromJson(json: any) {
+		if (!json) return;
+
+		return new GETVEHICLE2(
+			json.vehicle_GUID,
+		    json.registration_no,
+			json.driver_GUID,
+			json.is_checked
+		);
+	}
+
+
+	toJson(stringify?: boolean): any {
+		var doc = {
+			vehicle_Gid:this.vehicle_GUID,
+			registration_no:this.registration_no,
+			driver_GUID:this.driver_GUID,is_checked:this.is_checked
+		};
+
+		return stringify ? JSON.stringify({ resource: [doc] }) : doc;
+	}
+
+}
