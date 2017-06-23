@@ -427,7 +427,7 @@
         </ion-row>
         <div class="contentHeight3 overflowTrue">
           <ion-list>
-            <ion-item *ngFor="let get_selectvehicle of (get_selectvehicles| filtervehicle : filter.value : 'name');let i = index">
+            <ion-item *ngFor="let get_selectvehicle of get_selectvehicles">
               <ion-label>{{get_selectvehicle.registration_no}}</ion-label>
               <ion-checkbox color="secondary" checked="false" (ionChange)="RemoveSelection($event,get_selectvehicle)" item-end></ion-checkbox>
             </ion-item>
