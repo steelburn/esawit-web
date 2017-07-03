@@ -161,13 +161,13 @@ export class DriverPage {
         console.log(getvehicle.vehicle_Gid);
         console.log(getvehicle.registration_no);
 
-        var index_num = this.getvehicles.findIndex(x => x.vehicle_GUID == getvehicle.vehicle_Gid);
+        var index_num = this.getvehicles.findIndex(x => x.vehicle_GUID == getvehicle.vehicle_GUID);
         console.log("NUM IS " + index_num);
         this.getvehicles.splice(index_num, 1);
 
         this.vehicle_driver.ID = 0,
         this.vehicle_driver.driver_GUID = this.current_driverGUID,
-        this.vehicle_driver.vehicle_GUID = getvehicle.vehicle_Gid,
+        this.vehicle_driver.vehicle_GUID = getvehicle.vehicle_GUID,
 
         this.get_selectvehicles.push(new GETVEHICLE(getvehicle.vehicle_Gid, getvehicle.registration_no));
     }
