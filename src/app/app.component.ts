@@ -50,7 +50,7 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = DriverPage;
+  rootPage: any = UserPage;
   activePage: any;
 
   pages: Array<{ title: string, component: any }>;

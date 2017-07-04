@@ -21,16 +21,16 @@ import { UUID } from 'angular2-uuid';
 })
 export class UserPage {
 
-    public driverRegisterClicked: boolean = false; //Whatever you want to initialise it as
-    public addVehicleClicked: boolean = false; //Whatever you want to initialise it as
+    public userRegisterClicked: boolean = false; //Whatever you want to initialise it as
+    public userEditClicked: boolean = false; //Whatever you want to initialise it as
 
-    public driverRegisterClick() {
+    public userRegisterClick() {
 
-        this.driverRegisterClicked = !this.driverRegisterClicked;
+        this.userRegisterClicked = !this.userRegisterClicked;
     }
-    public addVehicleClick() {
+    public userEditClick() {
 
-        this.addVehicleClicked = !this.addVehicleClicked;
+        this.userEditClicked = !this.userEditClicked;
     }
 
     AvailableVehicleform: FormGroup;

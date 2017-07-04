@@ -13,6 +13,7 @@
   "TOTAL_ROLE": "Jumlah Peranan",
   "TOTAL_VEHICLE": "Jumlah Kenderaan",
   "TOTAL_LOCATION": "Jumlah Lokasi",
+  "TOTAL_USER": "Jumlah Pengguna",
   "USERNAME": "Nama Pengguna",
   "PASSWORD": "Katalaluan",
   "LOGIN": "Log Masuk",
@@ -58,6 +59,8 @@
   "UPDATE_DRIVER": "kemaskini Pemandu",
 
   "FORM_FULLNAME": "Sila masukkan nama penuh",
+  "FORM_USERNAME": "Sila masukkan nama pengguna",
+  "FORM_PASSWORD": "Sila masukkan katalaluan",
   "FORM_ID_TYPE": "Sila pilih jenis pengenalan",
   "FORM_ID_NO": "Sila masukkan nombor pengenalan",
   "FORM_ADDRESS_1": "cth: Blok no, nama bangunan",

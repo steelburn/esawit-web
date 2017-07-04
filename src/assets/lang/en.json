@@ -13,6 +13,7 @@
   "TOTAL_ROLE": "Total Role",
   "TOTAL_VEHICLE": "Total Vehicle",
   "TOTAL_LOCATION": "Total Location",
+  "TOTAL_USER": "Total User",
   "USERNAME": "Username",
   "PASSWORD": "Password",
   "LOGIN": "Login",
@@ -58,6 +59,8 @@
   "UPDATE_DRIVER": "Update Driver",
 
   "FORM_FULLNAME": "Please insert full name",
+  "FORM_USERNAME": "Please insert username",
+  "FORM_PASSWORD": "Please insert password",
   "FORM_ID_TYPE": "Please select identification type",
   "FORM_ID_NO": "please insert correct identification number",
   "FORM_ADDRESS_1": "eg: Block no, Property name",
