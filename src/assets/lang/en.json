@@ -57,6 +57,7 @@
   "UPDATE_VEHICLE": "Update Vehicle",
   "UPDATE_LOCATION": "Update Location",
   "UPDATE_DRIVER": "Update Driver",
+  "UPDATE_USER": "Update User",
 
   "FORM_FULLNAME": "Please insert full name",
   "FORM_USERNAME": "Please insert username",

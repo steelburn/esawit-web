@@ -53,10 +53,11 @@
   "AVAILABLE_LOCATION": "Pilihan Lokasi",
   "SELECTED_LOCATION": "Lokasi Dipilih",
   "UPDATE": "Kemaskini",
-  "UPDATE_ROLE": "Kemaskini Pengguna",
+  "UPDATE_ROLE": "Kemaskini Peranan",
   "UPDATE_VEHICLE": "Kemaskini Kenderaan",
   "UPDATE_LOCATION": "Kemaskini Lokasi",
   "UPDATE_DRIVER": "kemaskini Pemandu",
+  "UPDATE_USER": "Kemaskini Pengguna",
 
   "FORM_FULLNAME": "Sila masukkan nama penuh",
   "FORM_USERNAME": "Sila masukkan nama pengguna",
