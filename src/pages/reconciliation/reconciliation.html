@@ -1,0 +1,52 @@
+<ion-content padding class="contentMarginTop">
+  <div class="col10">
+    <ion-card>
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
+          Reconciliation Report
+          <button ion-button class="bgColor-grey fontColor-white btnStyle1" (click)="print()">Print Page</button>
+        </ion-card-header>
+        <ion-item>
+          <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by Location,Loaded Time"></ion-searchbar>
+        </ion-item>
+      </ion-row>
+      <ion-grid>
+
+        <ion-item class="bgColor-lightGrey">
+          <ion-row>
+            <ion-col col-1>No</ion-col>
+            <ion-col col-2>Location</ion-col>
+            <ion-col col-1>Loaded Qty</ion-col>
+            <ion-col col-2>Loaded Time</ion-col>
+            <ion-col col-1>Unloaded Qty</ion-col>
+            <ion-col col-2>Unloaded Time</ion-col>
+            <ion-col col-1>Factory</ion-col>
+            <ion-col col-1>Status</ion-col>
+            <ion-col col-1>Action</ion-col>
+          </ion-row>
+        </ion-item>
+
+        <ion-item>
+          <ion-row *ngFor="let item_ReconciliationReport of (item_ReconciliationReports | filterData: filter.value : 'name');let i = index">
+            <ion-col col-1>
+              <ion-badge class="bgColor-red" item-start>{{ i + 1 }}</ion-badge>
+            </ion-col>
+            <ion-col col-2>{{item_ReconciliationReport.Location}}</ion-col>
+            <ion-col col-1>{{item_ReconciliationReport.load_count}}</ion-col>
+            <ion-col col-2>{{item_ReconciliationReport.bunch_ts}}</ion-col>
+            <ion-col col-1>{{item_ReconciliationReport.unload_count}}</ion-col>
+            <ion-col col-2>{{item_ReconciliationReport.unbunch_ts}}</ion-col>
+            <ion-col col-1>NA</ion-col>
+            <ion-col col-1>
+              <ion-icon name="ios-checkmark-circle" item-start class="fontColor-green"></ion-icon>
+            </ion-col>
+            <ion-col col-1>
+              <ion-icon ios="ios-redo" md="md-redo" (click)="UpdateInfo(item_ReconciliationReport)"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+
+      </ion-grid>
+    </ion-card>
+  </div>
+</ion-content>
