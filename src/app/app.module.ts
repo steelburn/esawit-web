@@ -28,6 +28,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { ReportsPage } from '../pages/reports/reports';
 import { VehicleTransactionPage } from '../pages/vehicle-transaction/vehicle-transaction';
+import { ReconciliationPage } from '../pages/reconciliation/reconciliation';
+import { ReconciliationupdatePage } from '../pages/reconciliationupdate/reconciliationupdate';
+
+
 //import { NgModule }      from '@angular/core';
 //import { FormsModule }   from '@angular/forms';
 import { FilterData } from '../shared/filter';
@@ -62,7 +66,7 @@ import { FactorylistPage } from '../pages/factorylist/factorylist';
     TabsPage,
     ReportsPage,
     VehicleTransactionPage,
-
+ReconciliationPage,ReconciliationupdatePage,
     FilterData,FilterVehicle,
 
     LocationTransactionPage,
@@ -101,7 +105,7 @@ import { FactorylistPage } from '../pages/factorylist/factorylist';
     VehiclePage,
     TabsPage,
     ReportsPage,
-    VehicleTransactionPage,
+    VehicleTransactionPage,ReconciliationPage,ReconciliationupdatePage,
     LocationTransactionPage,
     HarvestlistPage,
     MandorlistPage,

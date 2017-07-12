@@ -22,6 +22,8 @@ import { LoginPage } from '../pages/login/login';
 
 import { ReportsPage } from '../pages/reports/reports';
 import { VehicleTransactionPage } from '../pages/vehicle-transaction/vehicle-transaction';
+import { ReconciliationPage } from '../pages/reconciliation/reconciliation';
+import { ReconciliationupdatePage } from '../pages/reconciliationupdate/reconciliationupdate';
 
 
 
@@ -74,7 +76,8 @@ export class MyApp {
 
     this.reportingPages = [
       { title: 'Report', component: ReportsPage },
-      { title: 'Vehicle Transaction', component: VehicleTransactionPage }
+      { title: 'Vehicle Transaction', component: VehicleTransactionPage },
+      {title: 'Reconciliation', component: ReconciliationPage}
     ];
 
     this.processPages = [
