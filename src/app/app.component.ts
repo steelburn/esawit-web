@@ -32,19 +32,30 @@ import { ReconciliationupdatePage } from '../pages/reconciliationupdate/reconcil
 })
 export class MyApp {
 
+  public headerButtonClicked: boolean = true; //Whatever you want to initialise it as
   public processPageClicked: boolean = false; //Whatever you want to initialise it as
   public reportingPageClicked: boolean = false; //Whatever you want to initialise it as
   public othersPageClicked: boolean = false; //Whatever you want to initialise it as
 
-  public processPageClick() { this.processPageClicked = !this.processPageClicked; }
-  public reportingPageClick() { this.reportingPageClicked = !this.reportingPageClicked; }
-  public othersPageClick() { this.othersPageClicked = !this.othersPageClicked; }
+  public headerButtonClick() {
+    this.headerButtonClicked = !this.headerButtonClicked;
+  }
+  public processPageClick() {
+    this.processPageClicked = !this.processPageClicked;
+  }
+  public reportingPageClick() {
+    this.reportingPageClicked = !this.reportingPageClicked;
+  }
+  public othersPageClick() {
+    this.othersPageClicked = !this.othersPageClicked;
+  }
 
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = TabsPage;
+  rootPage: any = UserPage;
+  activePage: any;
 
-  pages: Array<{ title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
   reportingPages: Array<{ title: string, component: any }>;
   processPages: Array<{ title: string, component: any, pid: any }>;
 
@@ -56,11 +67,11 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Login', component: LoginPage},
-      { title: 'Home', component: HomePage},
-      { title: 'Landing V1', component: LandingV1Page},
-      { title: 'Component Demo', component: LandingV2Page},
-      { title: 'Tabs', component: TabsPage}
+      { title: 'Login', component: LoginPage },
+      { title: 'Home', component: HomePage },
+      { title: 'Landing V1', component: LandingV1Page },
+      { title: 'Component Demo', component: LandingV2Page },
+      { title: 'Tabs', component: TabsPage }
     ];
 
     this.reportingPages = [
@@ -72,13 +83,15 @@ export class MyApp {
     this.processPages = [
       { title: 'Driver', component: TabsPage, pid: 0 },
       { title: 'Location', component: TabsPage, pid: 1 },
+      { title: 'User', component: TabsPage, pid: 2 },
+      { title: 'Vehicle', component: TabsPage, pid: 3 }
       // { title: 'Module', component: ModulePage },
       // { title: 'Role', component: RolePage },
       // { title: 'Sector', component: SectorPage },
-      // { title: 'Tenant', component: TenantPage },
-      { title: 'User', component: TabsPage, pid: 2 },
-      { title: 'Vehicle', component: TabsPage, pid: 3 }
+      // { title: 'Tenant', component: TenantPage }
     ];
+
+    this.activePage = this.pages[1];
 
 
   }
@@ -105,14 +118,33 @@ export class MyApp {
     this.nav.push(page.component, {
       pid: page.pid
     });
+    this.activePage = page;
   }
 
-  translateToEnglish(){
+  checkActivePage(page) {
+    return page == this.activePage;
+  }
+
+
+  //---------------------header button start---------------------//
+  public translateToEnglishClicked: boolean = true; //Whatever you want to initialise it as
+  public translateToMalayClicked: boolean =false; //Whatever you want to initialise it as
+
+  public translateToEnglish() {
     this.translateService.use('en');
+    this.translateToMalayClicked = !this.translateToMalayClicked;
+    this.translateToEnglishClicked = !this.translateToEnglishClicked;
+    console.log("bm : " + this.translateToMalayClicked);
+    console.log("en : " + this.translateToEnglishClicked);
   }
 
-  translateToMalay(){
+  public translateToMalay() {
     this.translateService.use('bm');
+    this.translateToEnglishClicked = !this.translateToEnglishClicked;
+    this.translateToMalayClicked = !this.translateToMalayClicked;
+    console.log("bm : " + this.translateToMalayClicked);
+    console.log("en : " + this.translateToEnglishClicked);
   }
+  //---------------------header button end---------------------//
 
 }
