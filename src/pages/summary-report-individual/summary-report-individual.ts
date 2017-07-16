@@ -20,13 +20,22 @@ import 'rxjs/add/operator/map';
 })
 export class SummaryReportIndividualPage {
   posts1:any;items: any; location_param:string;
+  class_color:string="#427feb";
+  //#6bc801----Green
+  //#427feb----Blue
+  //#ff6b6b----Red
+
+  // class_color:any = {
+  //   color_green:"fontColor-green"
+  // };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) {
     this.location_param = navParams.get('location_param');
-    console.log(navParams.get('location_param'));
+    //console.log(navParams.get('location_param'));
+
 
    this.http.get('http://api.zen.com.my/api/v2/esawitdb/_table/summary_report_individual?filter=location_id=' + this.location_param + '&api_key=b34c8b6e26a41f07dee48513714a534920f647cd48f299e9f28410a86d8a2cb4').map(res => res.json()).subscribe(data => {
-        this.posts1 = data.resource; 
+        this.posts1 = data.resource;          
          });
   }
 

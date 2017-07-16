@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
-import { TranslateService } from '@ngx-translate/core';
+//import { TranslateService } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
 
 // import { Http } from '@angular/http';
@@ -25,16 +25,16 @@ export class SummaryReportPage {
 
   posts: any; posts1:any;items: any;
   shownGroup = null;
-  searchLocationString: string = '';
-
+  searchLocationString: string = '';  
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController, public modalCtrl: ModalController) {    
    let self = this;
-    let params: URLSearchParams = new URLSearchParams();
+    let params: URLSearchParams = new URLSearchParams();   
    
-   
-    this.http.get('http://api.zen.com.my/api/v2/esawitdb/_table/summary_report?api_key=b34c8b6e26a41f07dee48513714a534920f647cd48f299e9f28410a86d8a2cb4').map(res => res.json()).subscribe(data => {      
-            this.posts = data.resource;
-        });
+    // this.http.get('http://api.zen.com.my/api/v2/esawitdb/_table/summary_report?api_key=b34c8b6e26a41f07dee48513714a534920f647cd48f299e9f28410a86d8a2cb4').map(res => res.json()).subscribe(data => {      
+    //         this.posts = data.resource;
+    //     });
+    this.searchLocation(this.searchLocationString);
   }
 
   ionViewDidLoad() {
@@ -66,18 +66,17 @@ isGroupShown(group) {
     return this.shownGroup === group; 
 };
 
-searchLocation(searchLocationString1) {
-    if (searchLocationString1 != '') 
-    {      
-      return this.posts.filter((post) => 
-      {
-          return post.Location.toLowerCase().indexOf(searchLocationString1.toLowerCase()) > -1;
-      });
+searchLocation(searchLocationString) {    
+    let val = this.searchLocationString;    
+    if (val && val.trim() != '') {
+      this.posts = this.posts.filter((post) => {
+         return (post.Location.toLowerCase().indexOf(val.toLowerCase()) > -1);        
+      })
     }
     else {
       this.http.get('http://api.zen.com.my/api/v2/esawitdb/_table/summary_report?api_key=b34c8b6e26a41f07dee48513714a534920f647cd48f299e9f28410a86d8a2cb4').map(res => res.json()).subscribe(data => {      
             this.posts = data.resource;
         });
+    }        
     }
-}
 }

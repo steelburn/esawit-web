@@ -91,7 +91,7 @@
         <ion-label class="textRight" item-end>Status (KPI)</ion-label>
       </ion-item>
                                                                           
-      <ion-item *ngFor="let post of posts | slice:0:15; let i=index" text-wrap (click)="toggleGroup(post.location_GUID)" [ngClass]="{active: isGroupShown(post.location_GUID)}">
+      <ion-item *ngFor="let post of posts; let i=index" text-wrap (click)="toggleGroup(post.location_GUID)">
         
         <ion-label item-start>{{i+1}}</ion-label>
         <ion-label item-start class="textRight"><a>{{post.Location}}</a></ion-label>
@@ -102,7 +102,7 @@
         <!--<ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>-->
         
         <!--{{i+1}}, <a>{{post.Location}}</a>, {{post.Harvested}}, {{post.Loaded}}, {{post.Unloaded}}, {{post.Factory}}-->
-        <div *ngIf="isGroupShown(post.location_GUID)">
+        <!--<div *ngIf="isGroupShown(post.location_GUID)">-->-->
           <!--<ion-item class="bgColor-lightGrey">
             <ion-label>No</ion-label>
             <ion-label class="textRight" item-end>No</ion-label>            
@@ -113,7 +113,7 @@
             <ion-label class="textRight" item-end>Unloaded Time Stamp</ion-label>            
             <ion-label class="textRight" item-end>Status (KPI)</ion-label>
           </ion-item>-->
-          <h1 *ngFor="let item of posts1; let j=index">{{j+1}}, {{item.registration_no}}, {{item.Loaded}}, {{item.Unloaded}}</h1>
+          <!--<h1 *ngFor="let item of posts1; let j=index">{{j+1}}, {{item.registration_no}}, {{item.Loaded}}, {{item.Unloaded}}</h1>-->
           
           <!--<ion-item *ngFor="let item of posts1">            
             <ion-label class="textRight" item-end>1</ion-label>
@@ -124,12 +124,12 @@
             <ion-badge item-end class="bgColor-yellow"></ion-badge>
             <ion-label class="textRight" item-end>A</ion-label>
           </ion-item>-->
-        </div>
+        <!--</div>-->
         
       </ion-item>
-      <ion-item>
+      <!--<ion-item>
         <button ion-button class="bgColor-grey fontColor-white btnStyle1">View All</button>
-      </ion-item>
+      </ion-item>-->
     </ion-card>    
   </div>
 </ion-content>

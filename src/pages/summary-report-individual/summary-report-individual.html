@@ -49,9 +49,17 @@
         <ion-col col-2>{{item.bunch_ts}}</ion-col>
         <ion-col col-2>{{item.unload_count}}</ion-col>
         <ion-col col-2>{{item.unbunch_ts}}</ion-col>
-        <ion-col col-1>
+                
+        <ion-col col-1 *ngIf="(item.unload_count/item.load_count)*100 >=20">
+          <ion-icon name="ios-checkmark-circle" item-start class="fontColor-blue"></ion-icon>
+        </ion-col>
+        <ion-col col-1 *ngIf="(item.unload_count/item.load_count)*100 <=50">
+          <ion-icon name="ios-checkmark-circle" item-start class="fontColor-red"></ion-icon>
+        </ion-col>
+        <ion-col col-1 *ngIf="(item.unload_count/item.load_count)*100 >=90">
           <ion-icon name="ios-checkmark-circle" item-start class="fontColor-green"></ion-icon>
         </ion-col>
+
       </ion-row>
     </ion-item>
   <!--</ion-grid>-->
