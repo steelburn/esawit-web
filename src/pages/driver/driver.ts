@@ -45,6 +45,7 @@ export class DriverPage {
     searchTerm: string = ''; current_driverGUID: string = '';
     searchControl: FormControl;
     items: any;
+    public chart_items =[];
 
     Driverform: FormGroup;
     driver_entry: Driver = new Driver();
@@ -114,7 +115,10 @@ export class DriverPage {
 
 
         this.AvailableVehicleform = fb.group({ availablevehicles: '' });
-        this.getList();
+
+        this.getList(); this.get_chartData();
+        //this.getVehicleList();
+
     }
 
     save() {
@@ -325,12 +329,38 @@ export class DriverPage {
     }
     //#endregion
 
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad DriverPage');
+   get_chartData()
+   {
+       let self2 = this;
+        let params: URLSearchParams = new URLSearchParams();
+        //params.set('order', 'last_name+ASC');
 
-        this.driverDoughnutChart = new Chart(this.driverDoughnutCanvas.nativeElement, {
+        self2.driverservice.getTotalReport(params).subscribe(
+            result=>
+            {
+               
+                console.log(result);
+                //this.chart_items=result;
+                 //console.log('filled chart_items');
+                 this.fillChart2();
+                 
+            }
+        );
+            
+   }
+   fillChart2()
+   {
+       //console.log('Size of Data' +this.chart_items.length);
+   }
+
+    fillChart() 
+    {
+       this.driverDoughnutChart = new Chart(this.driverDoughnutCanvas.nativeElement, 
+        {
+
             type: 'doughnut',
-            data: {
+            data: 
+            {
                 labels: ["Permanent", "Temporary", "Probation", "Contract"],
                 datasets: [{
                     label: '# of Votes',

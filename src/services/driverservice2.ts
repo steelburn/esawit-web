@@ -121,6 +121,7 @@ export class DriverService
 
 	getTotalReport (params?: URLSearchParams) 
 	{
+		console.log('getTotalReport');
 		var queryHeaders = new Headers();
     	queryHeaders.append('Content-Type', 'application/json');
 		
@@ -130,9 +131,10 @@ export class DriverService
 			.get(this.baseResource_Url+'totaldriver_view', { search: params ,headers: queryHeaders})
 			.map((response) => 
 			{
+				console.log('Getting result');
 				var result: any = response.json();	
-				//console.log(response);			
-				return response;
+				console.log(result);			
+				return result;
 
 			});
 	};
