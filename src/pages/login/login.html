@@ -4,12 +4,14 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-content padding class="posRelative contentMarginTop marginAuto bgColor-darkBlue">
+<ion-content class="posRelative contentMarginTop marginAuto bgColor-darkBlue">
 
   <!--register form start-->
-  <ion-card class="cbLogin marginAuto">
-    <ion-card-header>
-      Login page
+  <ion-card class="cbLogin">
+    <ion-card-header class="bgColor-darkBlue">
+      <ion-thumbnail item-start>
+        <img class="marginAuto" style="width:150px;" src="../assets/img/eSawitLogo.png">
+      </ion-thumbnail>
     </ion-card-header>
     <ion-card-content>
       <ion-item>
@@ -21,10 +23,10 @@
         <ion-input type="password" class="loginBar" placeholder="Please insert password"></ion-input>
       </ion-item>
       <ion-item>
-      <button ion-button full color="secondary">{{"LOGIN" | translate}}</button>
+        <button ion-button full color="secondary">{{"LOGIN" | translate}}</button>
       </ion-item>
       <ion-item>
-      <ion-label><a link="#">Forgot ID</a></ion-label>
+        <ion-label><a link="#">Forgot ID</a></ion-label>
       </ion-item>
     </ion-card-content>
   </ion-card>
