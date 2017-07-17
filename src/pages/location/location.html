@@ -50,14 +50,14 @@
       </ion-row>
 
       <ion-row>
-        <ion-searchbar></ion-searchbar>
+        <ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
       </ion-row>
 
       <ion-list>
-        <ion-item *ngFor="let location of locations" class="tnUserRow">
+        <ion-item *ngFor="let location of locations;let i = index" class="tnUserRow">
           <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark">{{location.name}}</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(location.location_GUID)"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(location.location_GUID,i)"><ion-icon name="md-eye"></ion-icon></button>
           <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="locationEditClick(location.location_GUID)"><ion-icon name="ios-create"></ion-icon></button>
           <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red"><ion-icon name="md-close"></ion-icon></button>
         </ion-item>
@@ -80,7 +80,7 @@
       </ion-card-header>
 
       <ion-row>
-        <ion-searchbar></ion-searchbar>
+        <ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
       </ion-row>
 
       <ion-list>
@@ -162,7 +162,7 @@
         <ion-list class="overflowTrue contentHeight">
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"LOCATION" | translate}}</ion-label>
-            <ion-input type="text" class="editInput" formControlName="locationname" [(ngModel)]="location_entry.name" placeholder="Location name"></ion-input>
+            <ion-input type="text" class="editInput" formControlName="locationname" [(ngModel)]="location_entry.name" placeholder="{{'FORM_LOCATION_NAME' | translate}}"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label class="fontColor-yellow">{{"ACTIVE" | translate}}</ion-label>

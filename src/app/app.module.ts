@@ -28,9 +28,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { ReportsPage } from '../pages/reports/reports';
 import { VehicleTransactionPage } from '../pages/vehicle-transaction/vehicle-transaction';
+import { ReconciliationPage } from '../pages/reconciliation/reconciliation';
+import { ReconciliationupdatePage } from '../pages/reconciliationupdate/reconciliationupdate';
+
+
 //import { NgModule }      from '@angular/core';
 //import { FormsModule }   from '@angular/forms';
 import { FilterData } from '../shared/filter';
+import { FilterVehicle } from '../shared/vehiclefilter';
+
+//import { UniquePipe } from '../shared/unique';
+
 import { LocationTransactionPage } from '../pages/location-transaction/location-transaction';
 import { HarvestlistPage } from '../pages/harvestlist/harvestlist';
 import { MandorlistPage } from '../pages/mandorlist/mandorlist';
@@ -47,6 +55,7 @@ import { SummaryReportIndividualPage } from '../pages/summary-report-individual/
     HomePage,
     LandingV1Page,
     LandingV2Page,
+    
     DriverPage,
     DriverInfoPage,
     LocationPage,
@@ -60,7 +69,9 @@ import { SummaryReportIndividualPage } from '../pages/summary-report-individual/
     TabsPage,
     ReportsPage,
     VehicleTransactionPage,
-    FilterData,
+ReconciliationPage,ReconciliationupdatePage,
+    FilterData,FilterVehicle,
+
     LocationTransactionPage,
     HarvestlistPage,
     MandorlistPage,
@@ -99,7 +110,7 @@ import { SummaryReportIndividualPage } from '../pages/summary-report-individual/
     VehiclePage,
     TabsPage,
     ReportsPage,
-    VehicleTransactionPage,
+    VehicleTransactionPage,ReconciliationPage,ReconciliationupdatePage,
     LocationTransactionPage,
     HarvestlistPage,
     MandorlistPage,

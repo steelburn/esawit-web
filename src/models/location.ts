@@ -82,3 +82,47 @@ export class GETLOCATION {
 	}
 
 }
+
+
+
+///////
+export class LOCATION_VEHICLE_MODEL {
+	constructor(
+		public ID: number = null,
+        public vehicle_GUID: string = null,
+		public location_GUID: string = null,
+		public active: string = null,
+		public createdby_GUID: string = null,
+		public created_ts: Date = null,
+		public updatedby_GUID:string=null,
+		public updated_ts :Date=null
+	) { }
+
+
+	static fromJson(json: any) {
+		if (!json) return;
+
+		return new LOCATION_VEHICLE_MODEL(
+			json.ID,
+		    json.vehicle_GUID,
+			json.location_GUID,json.active,json.createdby_GUID,
+			json.created_ts,json.updatedby_GUID,json.updated_ts
+			
+		);
+	}
+
+
+	toJson(stringify?: boolean): any {
+		var doc = {
+			ID:this.ID,
+			vehicle_GUID:this.vehicle_GUID,
+			location_GUID:this.location_GUID,active:this.active,
+			createdby_GUID:this.createdby_GUID,created_ts:this.created_ts,
+			updatedby_GUID:this.updatedby_GUID,updated_ts:this.updated_ts
+
+		};
+
+		return stringify ? JSON.stringify({ resource: [doc] }) : doc;
+	}
+
+}

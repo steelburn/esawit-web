@@ -22,6 +22,11 @@ import { MandorlistPage } from '../mandorlist/mandorlist';
 import { FactorylistPage } from '../factorylist/factorylist';
 
 
+import { ReconciliationReport } from '../../models/reconciliation';
+import { ReconciliationPage } from '../../pages/reconciliation/reconciliation';
+
+import { ReconciliationupdatePage } from '../reconciliationupdate/reconciliationupdate';
+
 class ServerResponse {
   constructor(public resource: any) {
   }
@@ -43,10 +48,11 @@ export class LandingV1Page {
 
   public mandorreports: Mandorreport[] = [];
   public factoryreports: Factoryreport[] = [];
+public item_ReconciliationReports: ReconciliationReport[] = [];
 
 baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitdb/_table/HarvestReport?api_key='+constants.DREAMFACTORY_API_KEY;
-  constructor(private reportservice: ReportService,private httpService: BaseHttpService,public navCtrl: NavController, 
-  public navParams: NavParams,public loadingCtrl: LoadingController
+  constructor(private reportservice: ReportService,private httpService: BaseHttpService,
+  public navCtrl: NavController,public navParams: NavParams,public loadingCtrl: LoadingController
   ,public modalCtrl: ModalController) 
   {
 
@@ -61,8 +67,8 @@ baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitd
     { console.log(token); }
 
     this.getList(); this.getMandorList(); this.getFactoryList();
-    this.presentLoading();
-
+    //this.presentLoading();
+    this.get_ReconciliationReport() ;
   }
 
   presentLoading() {
@@ -74,6 +80,24 @@ baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitd
 
     //this.GetHarvestReport();
   }
+
+get_ReconciliationReport() 
+  {
+    let self = this;
+    let params: URLSearchParams = new URLSearchParams();
+    //params.set('order', 'last_name+ASC');
+    self.reportservice.Reconsilation_Tranactionquery(params)
+      .subscribe((item_ReconciliationReports: ReconciliationReport[]) => 
+      {
+        self.item_ReconciliationReports = item_ReconciliationReports
+        console.log(self.item_ReconciliationReports);
+      });
+  }
+
+ViewReconciliation()
+{
+  this.navCtrl.push(ReconciliationPage);
+}
 
 harvestlist() 
 {
