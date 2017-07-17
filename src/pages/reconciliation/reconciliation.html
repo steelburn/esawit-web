@@ -36,9 +36,19 @@
             <ion-col col-2>{{item_ReconciliationReport.bunch_ts}}</ion-col>
             <ion-col col-1>{{item_ReconciliationReport.unload_count}}</ion-col>
             <ion-col col-2>{{item_ReconciliationReport.unbunch_ts}}</ion-col>
-            <ion-col col-1>NA</ion-col>
-            <ion-col col-1>
-              <ion-icon name="ios-checkmark-circle" item-start class="fontColor-green"></ion-icon>
+            <ion-col col-1>NA,{{item_ReconciliationReport.resolved}}</ion-col>
+
+            <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==null">
+              <ion-icon name="ios-checkmark-circle" item-start class="fontColor-red"></ion-icon>
+            </ion-col>
+            <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==0">
+              <ion-icon name="ios-checkmark-circle" item-start class="fontColor-red"></ion-icon>
+            </ion-col>
+            <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==1">
+              <ion-icon name="ios-checkmark-circle" item-start class="fontColor-yellow"></ion-icon>
+            </ion-col>
+            <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==2">
+              <ion-icon name="ios-checkmark-circle" item-start class="fontColor-red"></ion-icon>
             </ion-col>
             <ion-col col-1>
               <ion-icon ios="ios-redo" md="md-redo" (click)="UpdateInfo(item_ReconciliationReport)"></ion-icon>

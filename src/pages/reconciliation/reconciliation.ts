@@ -45,7 +45,7 @@ export class ReconciliationPage {
     let self = this;
     let params: URLSearchParams = new URLSearchParams();
     //params.set('order', 'last_name+ASC');
-    self.reportservice.VehicleTranactionquery(params)
+    self.reportservice.Reconsilation_Tranactionquery(params)
       .subscribe((item_ReconciliationReports: ReconciliationReport[]) => 
       {
         self.item_ReconciliationReports = item_ReconciliationReports
@@ -55,8 +55,9 @@ export class ReconciliationPage {
 
   UpdateInfo(data)
   {
-     let addModal = this.modalCtrl.create(ReconciliationupdatePage,{deviceNum: 'KUMAR'});
-    addModal.onDidDismiss(item => {
+    let addModal = this.modalCtrl.create(ReconciliationupdatePage,{ID: data.ID});
+    addModal.onDidDismiss(item => 
+    {
       if (item) {
         this.items.add(item);
       }

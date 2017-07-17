@@ -2,6 +2,7 @@
 export class VehicleTransactionReport 
 {
 	constructor(
+		public ID: number = null,
 		public vehicle_id: string = null,
 		public Vehicle: string = null,
         public location_id: string = null,
@@ -18,6 +19,7 @@ export class VehicleTransactionReport
 		if (!json) return;
 
 		return new VehicleTransactionReport(
+			json.ID,
 			json.vehicle_id,json.Vehicle,json.location_id,json.Location,
             json.load_count,json.bunch_ts,json.unload_count,json.unbunch_ts
 		);
@@ -27,6 +29,7 @@ export class VehicleTransactionReport
 	toJson(stringify?: boolean): any {
 		var doc = 
         {
+			ID:this.ID,
     		 vehicle_id: this.vehicle_id,
     		 Vehicle: this.Vehicle,
              location_id: this.location_id,

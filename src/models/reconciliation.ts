@@ -2,6 +2,9 @@
 export class ReconciliationReport 
 {
 	constructor(
+		public ID: number = null,
+		public Description: string = null,
+		public resolved: number = null,
 		public vehicle_id: string = null,
 		public Vehicle: string = null,
         public location_id: string = null,
@@ -9,7 +12,8 @@ export class ReconciliationReport
         public load_count: number = null,
         public bunch_ts: string = null,
 		public unload_count: number = null,
-        public unbunch_ts: string = null
+        public unbunch_ts: string = null,
+		
 	) { }
 
 
@@ -18,6 +22,7 @@ export class ReconciliationReport
 		if (!json) return;
 
 		return new ReconciliationReport(
+			json.ID,json.Description,json.resolved,
 			json.vehicle_id,json.Vehicle,json.location_id,json.Location,
             json.load_count,json.bunch_ts,json.unload_count,json.unbunch_ts
 		);
@@ -27,6 +32,7 @@ export class ReconciliationReport
 	toJson(stringify?: boolean): any {
 		var doc = 
         {
+			 ID:this.ID,Description:this.Description,resolved:this.resolved,
     		 vehicle_id: this.vehicle_id,
     		 Vehicle: this.Vehicle,
              location_id: this.location_id,
