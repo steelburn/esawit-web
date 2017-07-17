@@ -23,6 +23,8 @@ import { FactorylistPage } from '../factorylist/factorylist';
 
 
 import { ReconciliationReport } from '../../models/reconciliation';
+import { ReconciliationPage } from '../../pages/reconciliation/reconciliation';
+
 import { ReconciliationupdatePage } from '../reconciliationupdate/reconciliationupdate';
 
 class ServerResponse {
@@ -49,8 +51,8 @@ export class LandingV1Page {
 public item_ReconciliationReports: ReconciliationReport[] = [];
 
 baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitdb/_table/HarvestReport?api_key='+constants.DREAMFACTORY_API_KEY;
-  constructor(private reportservice: ReportService,private httpService: BaseHttpService,public navCtrl: NavController, 
-  public navParams: NavParams,public loadingCtrl: LoadingController
+  constructor(private reportservice: ReportService,private httpService: BaseHttpService,
+  public navCtrl: NavController,public navParams: NavParams,public loadingCtrl: LoadingController
   ,public modalCtrl: ModalController) 
   {
 
@@ -91,6 +93,11 @@ get_ReconciliationReport()
         console.log(self.item_ReconciliationReports);
       });
   }
+
+ViewReconciliation()
+{
+  this.navCtrl.push(ReconciliationPage);
+}
 
 harvestlist() 
 {

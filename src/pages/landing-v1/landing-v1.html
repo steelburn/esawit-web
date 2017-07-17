@@ -13,9 +13,9 @@
         <ion-label>Location</ion-label>
         <ion-label class="textRight" item-end>bunches</ion-label>
       </ion-item>
-      <ion-item *ngFor="let harvestreport of harvestreports |  slice:0:2">
+      <ion-item *ngFor="let harvestreport of harvestreports |  slice:0:5">
         <!--<ion-badge class="bgColor-green" item-start>1</ion-badge>-->
-        <ion-label>{{harvestreport.name}},{{harvestreport.created_ts|date:"dd/MM/yy"}}</ion-label>
+        <ion-label>{{harvestreport.name}}</ion-label>
         <ion-badge item-end class="bgColor-purple">{{harvestreport.bunch_count}}</ion-badge>
       </ion-item>
 
@@ -37,7 +37,7 @@
             <ion-label class="textRight" item-end>Lorry</ion-label>
             <ion-label class="textRight" item-end>Bunches</ion-label>
           </ion-item>
-          <ion-item *ngFor="let mandorreport of mandorreports |  slice:0:9">
+          <ion-item *ngFor="let mandorreport of mandorreports |  slice:0:5">
             <!--<ion-badge class="bgColor-red" item-start>1</ion-badge>-->
             <ion-label item-start>{{mandorreport.mandor}}</ion-label>
             <ion-label item-end>{{mandorreport.lorry}}</ion-label>
@@ -62,7 +62,7 @@
             <ion-label class="textRight" item-end>Location</ion-label>
             <ion-label class="textRight" item-end>Bunches</ion-label>
           </ion-item>
-          <ion-item *ngFor="let factoryreport of factoryreports |  slice:0:9">
+          <ion-item *ngFor="let factoryreport of factoryreports |  slice:0:5">
             <!--<ion-badge class="bgColor-red" item-start>1</ion-badge>-->
             <ion-label item-start>{{factoryreport.lorry}}</ion-label>
             <ion-label item-end>{{factoryreport.location}}</ion-label>
@@ -76,7 +76,7 @@
       <ion-row>
         <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
           Reconciliation Report
-          <button ion-button class="bgColor-grey fontColor-white btnStyle1" (click)="print()">Print Page</button>
+          <button ion-button class="bgColor-grey fontColor-white btnStyle1" (click)="ViewReconciliation()">View All</button>
         </ion-card-header>
        </ion-row>
       <ion-grid>
@@ -96,7 +96,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-row *ngFor="let item_ReconciliationReport of item_ReconciliationReports;let i = index">
+          <ion-row *ngFor="let item_ReconciliationReport of item_ReconciliationReports | slice:0:5;let i = index">
             <ion-col col-1>
               <ion-badge class="bgColor-red" item-start>{{ i + 1 }}</ion-badge>
             </ion-col>
