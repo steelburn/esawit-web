@@ -44,6 +44,9 @@ import { HarvestlistPage } from '../pages/harvestlist/harvestlist';
 import { MandorlistPage } from '../pages/mandorlist/mandorlist';
 import { FactorylistPage } from '../pages/factorylist/factorylist';
 
+import { SummaryReportPage } from '../pages/summary-report/summary-report';
+import { SummaryReportIndividualPage } from '../pages/summary-report-individual/summary-report-individual';
+
 
 @NgModule({
   declarations: [
@@ -73,7 +76,9 @@ ReconciliationPage,ReconciliationupdatePage,
     HarvestlistPage,
     MandorlistPage,
     FactorylistPage,
-    LoginPage
+    LoginPage,
+    SummaryReportPage,
+    SummaryReportIndividualPage
   ],
   imports: [
     BrowserModule, HttpModule,
@@ -110,7 +115,9 @@ ReconciliationPage,ReconciliationupdatePage,
     HarvestlistPage,
     MandorlistPage,
     FactorylistPage,
-    LoginPage
+    LoginPage,
+    SummaryReportPage,
+    SummaryReportIndividualPage
   ],
   providers: [
     StatusBar,

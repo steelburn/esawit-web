@@ -1,0 +1,135 @@
+<!--
+  Generated template for the SummaryReportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="bgColor-darkBlue">
+    <button ion-button menuToggle>
+      <ion-icon name="menu" class="fontColor-white"></ion-icon>
+    </button>
+    <ion-avatar class="logoSize" item-start>
+      <img src="img/eSawitLogo.png">
+    </ion-avatar>
+  </ion-navbar>
+</ion-header>
+
+ 
+<ion-content padding>
+  <div class="col12">
+    <ion-card>
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
+          Summary Report
+          <ion-list>
+            <ion-item>
+              <ion-searchbar type="text" placeholder="Search by Location" [(ngModel)]="searchLocationString" (ionInput)="searchLocation($event)"></ion-searchbar>
+              <!--<ion-searchbar [(ngModel)]="searchLocationString" (input)="searchLocation($event)" placeholder="Search by Location"></ion-searchbar>-->
+            </ion-item>
+            <!--<ion-item>
+              <ion-label class="fontColor-green" stacked>Year</ion-label>
+              <ion-select [(ngModel)]="Rep_Year" class="editInput" interface="popover" placeholder="Select Year">
+                <ion-option value="2000">2000</ion-option>
+                <ion-option value="2001">2001</ion-option>
+                <ion-option value="2002">2002</ion-option>
+                <ion-option value="2003">2003</ion-option>
+                <ion-option value="2004">2004</ion-option>
+                <ion-option value="2005">2005</ion-option>
+                <ion-option value="2006">2006</ion-option>
+                <ion-option value="2007">2007</ion-option>
+                <ion-option value="2008">2008</ion-option>
+                <ion-option value="2009">2009</ion-option>
+                <ion-option value="2010">2010</ion-option>
+                <ion-option value="2011">2011</ion-option>
+                <ion-option value="2012">2012</ion-option>
+                <ion-option value="2013">2013</ion-option>
+                <ion-option value="2014">2014</ion-option>
+                <ion-option value="2015">2015</ion-option>
+                <ion-option value="2016">2016</ion-option>
+                <ion-option value="2017">2017</ion-option>
+              </ion-select>
+            </ion-item>-->
+            <!--<ion-item>
+              <ion-label class="fontColor-green" stacked>Month</ion-label>
+              <ion-select [(ngModel)]="Rep_Month" class="editInput" interface="popover" placeholder="Select Month">
+                <ion-option value="Jan">January</ion-option>
+                <ion-option value="Feb">February</ion-option>
+                <ion-option value="Mar">March</ion-option>
+                <ion-option value="Apr">April</ion-option>
+                <ion-option value="May">May</ion-option>
+                <ion-option value="Jun">June</ion-option>
+                <ion-option value="Jul">July</ion-option>
+                <ion-option value="Aug">August</ion-option>
+                <ion-option value="Sep">September</ion-option>
+                <ion-option value="Oct">October</ion-option>
+                <ion-option value="Nov">November</ion-option>
+                <ion-option value="Dec">December</ion-option>
+              </ion-select>
+            </ion-item>-->
+            <!--<ion-item>
+              <ion-label class="fontColor-green" stacked>Start Date</ion-label>
+              <ion-input type="text" class="editInput" placeholder="Start Date (dd/MM/yyyy)"></ion-input>
+            </ion-item>-->
+            <!--<ion-item>
+              <ion-label class="fontColor-green" stacked>End Date</ion-label>
+              <ion-input type="text" class="editInput" placeholder="End Date (dd/MM/yyyy)"></ion-input>
+            </ion-item>-->
+          </ion-list>
+          <!--<button ion-button color="primary">Search</button>
+          <button ion-button color="primary">Print</button>
+          <button ion-button color="primary">Export to Excel</button>-->
+        </ion-card-header>
+      </ion-row>
+      <ion-item class="bgColor-lightGrey">
+        <ion-label>No</ion-label>
+        <ion-label class="textRight" item-end>Location</ion-label>
+        <ion-label class="textRight" item-end>Harvested</ion-label>
+        <ion-label class="textRight" item-end>Loaded</ion-label>
+        <ion-label class="textRight" item-end>Unloaded</ion-label>
+        <ion-label class="textRight" item-end>Factory</ion-label>
+        <ion-label class="textRight" item-end>Status (KPI)</ion-label>
+      </ion-item>
+                                                                          
+      <ion-item *ngFor="let post of posts; let i=index" text-wrap (click)="toggleGroup(post.location_GUID)">
+        
+        <ion-label item-start>{{i+1}}</ion-label>
+        <ion-label item-start class="textRight"><a>{{post.Location}}</a></ion-label>
+        <ion-label item-start class="textRight">{{post.Harvested}}</ion-label>
+        <ion-label item-start class="textRight">{{post.Loaded}}</ion-label>
+        <ion-label item-start class="textRight">{{post.Unloaded}}</ion-label>
+        <ion-label item-start class="textRight">{{post.Factory}}</ion-label> 
+        <!--<ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>-->
+        
+        <!--{{i+1}}, <a>{{post.Location}}</a>, {{post.Harvested}}, {{post.Loaded}}, {{post.Unloaded}}, {{post.Factory}}-->
+        <!--<div *ngIf="isGroupShown(post.location_GUID)">-->-->
+          <!--<ion-item class="bgColor-lightGrey">
+            <ion-label>No</ion-label>
+            <ion-label class="textRight" item-end>No</ion-label>            
+            <ion-label class="textRight" item-end>Vehicle No</ion-label>
+            <ion-label class="textRight" item-end>Loaded Qty</ion-label>
+            <ion-label class="textRight" item-end>Loaded Time Stamp</ion-label>
+            <ion-label class="textRight" item-end>Unloaded Qty</ion-label>
+            <ion-label class="textRight" item-end>Unloaded Time Stamp</ion-label>            
+            <ion-label class="textRight" item-end>Status (KPI)</ion-label>
+          </ion-item>-->
+          <!--<h1 *ngFor="let item of posts1; let j=index">{{j+1}}, {{item.registration_no}}, {{item.Loaded}}, {{item.Unloaded}}</h1>-->
+          
+          <!--<ion-item *ngFor="let item of posts1">            
+            <ion-label class="textRight" item-end>1</ion-label>
+            <ion-label item-start>{{item.registration_no}}</ion-label>
+            <ion-label item-end>{{item.Loaded}}</ion-label>
+            <ion-badge item-end class="bgColor-yellow"></ion-badge>
+            <ion-badge item-end class="bgColor-red">{{item.Unloaded}}</ion-badge>
+            <ion-badge item-end class="bgColor-yellow"></ion-badge>
+            <ion-label class="textRight" item-end>A</ion-label>
+          </ion-item>-->
+        <!--</div>-->
+        
+      </ion-item>
+      <!--<ion-item>
+        <button ion-button class="bgColor-grey fontColor-white btnStyle1">View All</button>
+      </ion-item>-->
+    </ion-card>    
+  </div>
+</ion-content>
