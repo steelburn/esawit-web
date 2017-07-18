@@ -10,6 +10,7 @@ import { HeaderPage } from '../pages/header/header';
 import { HomePage } from '../pages/home/home';
 import { LandingV1Page } from '../pages/landing-v1/landing-v1';
 import { LandingV2Page } from '../pages/landing-v2/landing-v2';
+import { LandingV3Page } from '../pages/landing-v3/landing-v3';
 import { DriverPage } from '../pages/driver/driver';
 import { DriverInfoPage } from '../pages/driver-info/driver-info';
 import { LocationPage } from '../pages/location/location';
@@ -59,6 +60,7 @@ import { FactorylistPage } from '../pages/factorylist/factorylist';
     LandingV1Page,
     LandingV2Page,
     FilterData,FilterVehicle,FilterLocation,FilterUser,FilterDriver,
+    LandingV3Page,
     DriverPage,
     DriverInfoPage,
     LocationPage,
@@ -100,6 +102,7 @@ ReconciliationPage,ReconciliationupdatePage,
     HomePage,
     LandingV1Page,
     LandingV2Page,
+    LandingV3Page,
     DriverPage,
     DriverInfoPage,
     LocationPage,

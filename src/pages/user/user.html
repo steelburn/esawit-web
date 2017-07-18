@@ -55,6 +55,7 @@
       </ion-row>
       <ion-card-content>
         <ion-list>
+
           <ion-item *ngFor="let user of (users| filteruser: filter.value : 'name');" class="tnUserRow">
 
             <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
@@ -74,6 +75,7 @@
   <!--Profile start-->
   <div class="col3">
     <ion-card class="cb10">
+
       <ion-item>
         <h2>{{user.fullname}}</h2>
       </ion-item>
@@ -103,10 +105,10 @@
 
           </ion-card-content>
 
+
     </ion-card>
   </div>
   <!--Profile end-->
-
 
   <!--register User form start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="userRegisterClicked">
@@ -122,6 +124,7 @@
       </ion-card-header>
 
       <ion-list class="overflowTrue contentHeight">
+
         <form [formGroup]="Userform">
 
           <ion-item>
@@ -186,6 +189,7 @@
   <!--register User form end-->
 
   <!--edit User form start-->
+
   <!--<div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="userEditClicked">
 
     <ion-card class="fb4 marginCenter popupFormCard">
@@ -249,6 +253,7 @@
 
     </ion-card>
   </div>-->
+
   <!--edit User form end-->
 
 

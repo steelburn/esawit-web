@@ -39,7 +39,7 @@
   <!--form end-->
 
   <!--listing start-->
-  <div class="col4">
+  <div class="col5">
 
     <ion-card class="cb10">
 
@@ -50,8 +50,9 @@
       </ion-row>
 
       <ion-row>
+
        <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by Location Name"></ion-searchbar>
-        
+
       </ion-row>
 
       <ion-list>
@@ -70,7 +71,7 @@
   <!--listing end-->
 
   <!--vehicle listing start-->
-  <div class="col4">
+  <div class="col3">
     <ion-card class="cb10">
 
       <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
@@ -81,7 +82,7 @@
       </ion-card-header>
 
       <ion-row>
-        <ion-searchbar></ion-searchbar>
+        <ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
       </ion-row>
 
       <ion-list>
@@ -163,7 +164,7 @@
         <ion-list class="overflowTrue contentHeight">
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"LOCATION" | translate}}</ion-label>
-            <ion-input type="text" class="editInput" formControlName="locationname" [(ngModel)]="location_entry.name" placeholder="Location name"></ion-input>
+            <ion-input type="text" class="editInput" formControlName="locationname" [(ngModel)]="location_entry.name" placeholder="{{'FORM_LOCATION_NAME' | translate}}"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label class="fontColor-yellow">{{"ACTIVE" | translate}}</ion-label>
