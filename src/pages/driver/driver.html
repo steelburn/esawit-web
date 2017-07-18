@@ -85,15 +85,7 @@
         <ion-icon name="md-add"></ion-icon>
       </button>
       </ion-card-header>
-
-      <!--<ion-item>
-        <ion-avatar item-start class="menuHide">
-          <img src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-        </ion-avatar>
-        <h2>{{driver.fullname}}</h2>
-        <p>{{driver.email}}</p>
-      </ion-item>-->
-
+      
       <div [ngSwitch]="userInfo">
         <ion-list *ngSwitchDefault>
           <ion-card-content>
@@ -160,6 +152,7 @@
 
     </ion-card>
   </div>
+  <!--Profile end-->
 
   <!--add Driver form start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="driverRegisterClicked">

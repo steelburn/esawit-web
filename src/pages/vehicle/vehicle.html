@@ -39,7 +39,7 @@
   <!--form end-->
 
   <!--listing start-->
-  <div class="col4">
+  <div class="col5">
 
     <ion-card class="cb10">
 
@@ -70,7 +70,7 @@
   <!--listing end-->
 
   <!--location listing start-->
-  <div class="col4">
+  <!--<div class="col4">
     <ion-card class="cb10">
 
       <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
@@ -91,27 +91,82 @@
         </ion-item>
       </ion-list>
 
-      <!--<ion-list>
-        <ion-item>
-          <ion-label>option 1</ion-label>
+    </ion-card>
+  </div>-->
+  <!--vehicle listing end-->
+
+<!--Profile start-->
+  <div class="col3">
+    <ion-card class="cb10">
+
+      <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
+        {{vehicle.registration_no}}
+        <button class="posAbsolute fullHeight topZero rightZero btnStyle2 bgColor-darkBlue" (click)="addLocationClick()">
+        <ion-icon name="md-add"></ion-icon>
+      </button>
+      </ion-card-header>
+
+      <div [ngSwitch]="userInfo">
+        <ion-list *ngSwitchDefault>
+          <ion-card-content>
+            <div class="">
+              <div class="infoLabel bgColor-red floatLeft">{{"BRAND" | translate}}</div>
+              <div class="infoText">{{vehicle.make}}</div>
+            </div>
+
+            <div class="">
+              <div class="infoLabel bgColor-yellow floatLeft">{{"MODEL" | translate}}</div>
+              <div class="infoText">{{vehicle.model}}</div>
+            </div>
+
+            <div class="">
+              <div class="infoLabel bgColor-yellow floatLeft">{{"YEAR" | translate}}</div>
+              <div class="infoText">{{vehicle.manufacturing_year}}</div>
+            </div>
+
+            <div class="">
+              <div class="infoLabel bgColor-blue floatLeft">{{"CAPACITY" | translate}}</div>
+              <div class="infoText">{{vehicle.capacity_tonne}}</div>
+            </div>
+
+            <div class="">
+              <div class="infoLabel bgColor-green floatLeft">{{"DESCRIPTION" | translate}}</div>
+              <div class="infoText">{{vehicle.description}}</div>
+            </div>
+
+          </ion-card-content>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Location'">
+
+          <ion-row>
+            <ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
+          </ion-row>
+
+          <ion-item *ngFor="let get_selectlocation of get_selectlocations">
+          <ion-label>{{get_selectlocation.name}}</ion-label>
           <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
         </ion-item>
 
-        <ion-item>
-          <ion-label>option 2</ion-label>
-          <ion-icon name="ios-close-circle" item-end class="fontColor-red"></ion-icon>
-        </ion-item>
+        </ion-list>
 
-        <ion-item>
-          <ion-label>option 3</ion-label>
-          <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
-        </ion-item>
-      </ion-list>-->
+      </div>
+
+      <ion-row>
+        <ion-segment [(ngModel)]="userInfo" [ngModelOptions]="{standalone:true}" color="primary">
+          <ion-segment-button value="Info" isActive>
+            {{"INFO" | translate}}
+          </ion-segment-button>
+          <ion-segment-button value="Location">
+            {{"LOCATION" | translate}}
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
 
     </ion-card>
-    <!--</form>-->
   </div>
-  <!--vehicle listing end-->
+  <!--Profile end-->
+
 
   <!--edit form start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="vehicleEditClicked">

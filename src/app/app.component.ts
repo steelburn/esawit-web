@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { HomePage } from '../pages/home/home';
 import { LandingV1Page } from '../pages/landing-v1/landing-v1';
 import { LandingV2Page } from '../pages/landing-v2/landing-v2';
+import { LandingV3Page } from '../pages/landing-v3/landing-v3';
 import { DriverPage } from '../pages/driver/driver';
 import { DriverInfoPage } from '../pages/driver-info/driver-info';
 import { LocationPage } from '../pages/location/location';
@@ -70,6 +71,7 @@ export class MyApp {
       { title: 'Login', component: LoginPage },
       { title: 'Home', component: HomePage },
       { title: 'Landing V1', component: LandingV1Page },
+      { title: 'Landing V3', component: LandingV3Page },
       { title: 'Component Demo', component: LandingV2Page },
       { title: 'Tabs', component: TabsPage }
     ];
