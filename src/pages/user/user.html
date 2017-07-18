@@ -45,20 +45,21 @@
   <!--form end-->
 
   <!--listing start-->
-  <div class="col8">
+  <div class="col5">
 
     <ion-card class="cb10">
       <ion-row>
         <!--<ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>-->
-       <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by name"></ion-searchbar>
-       
+        <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by name"></ion-searchbar>
+
       </ion-row>
       <ion-card-content>
         <ion-list>
           <ion-item *ngFor="let user of (users| filteruser: filter.value : 'name');" class="tnUserRow">
-            
+
             <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
             <ion-label class="fontColor-dark">{{user.fullname}}</ion-label>
+            <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(user.user_GUID)"><ion-icon name="md-eye"></ion-icon></button>
             <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="userEditClick()"><ion-icon name="ios-create"></ion-icon></button>
             <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red" (click)="remove(user.user_GUID)"><ion-icon name="md-close"></ion-icon></button>
           </ion-item>
@@ -69,6 +70,43 @@
 
   </div>
   <!--listing end-->
+
+  <!--Profile start-->
+  <div class="col3">
+    <ion-card class="cb10">
+      <ion-item>
+        <h2>{{user.fullname}}</h2>
+      </ion-item>
+
+      <!--<ion-card-content>
+        <div class="">
+          <div class="infoLabel bgColor-red floatLeft">{{"ADDRESS" | translate}}</div>
+          <div class="infoText">{{user.address1}}<br/> ADDRESS
+          </div>
+        </div>
+      </ion-card-content>-->
+
+       <ion-card-content>
+            <div class="">
+              <div class="infoLabel bgColor-red floatLeft">{{"ADDRESS" | translate}}</div>
+              <div class="infoText">{{user.address1}}<br/> {{user.address2}}
+                <br/> {{user.address3}}
+                <br/>
+              </div>
+            </div>
+
+      
+            <div class="">
+              <div class="infoLabel bgColor-green floatLeft">{{"EMAIL" | translate}}</div>
+              <div class="infoText">{{user.email}}</div>
+            </div>
+
+          </ion-card-content>
+
+    </ion-card>
+  </div>
+  <!--Profile end-->
+
 
   <!--register User form start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="userRegisterClicked">
@@ -118,8 +156,7 @@
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ROLE" | translate}}</ion-label>
-            <ion-select formControlName="role_GUID" [(ngModel)]="user_entry.role_GUID" class="editInput" interface="popover"
-              placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
+            <ion-select formControlName="role_GUID" [(ngModel)]="user_entry.role_GUID" class="editInput" interface="popover" placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
               <ion-option value="0">N/A</ion-option>
               <ion-option value="1">{{"ADMINISTRATOR" | translate}}</ion-option>
               <ion-option value="2">{{"CARELINE" | translate}}</ion-option>

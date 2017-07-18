@@ -38,7 +38,7 @@ export class UserPage {
     }
     Userform: FormGroup; user_entry: User = new User();
     UserEditform: FormGroup; User: User = new User();
-
+    user: User = new User();
     public users: User[] = [];
 
     @ViewChild('driverDoughnutCanvas') driverDoughnutCanvas;
@@ -61,18 +61,15 @@ export class UserPage {
             });
     }
 
-    save() 
-    {
-        if (this.Userform.valid)
-        {
+    save() {
+        if (this.Userform.valid) {
             alert(this.Userform.value['active']);
 
-            if(this.Userform.value['active']==true)
-            {
-                this.user_entry.active=1;
-            }else{this.user_entry.active=0;}
-            this.user_entry.user_GUID = UUID.UUID.toString();    
-            this.user_entry.tenant_GUID = UUID.UUID.toString();           
+            if (this.Userform.value['active'] == true) {
+                this.user_entry.active = 1;
+            } else { this.user_entry.active = 0; }
+            this.user_entry.user_GUID = UUID.UUID.toString();
+            this.user_entry.tenant_GUID = UUID.UUID.toString();
             this.register();
             var self = this;
             //if(this.Userform)
@@ -93,16 +90,32 @@ export class UserPage {
         alert(JSON.stringify(this.user_entry));
     }
 
-    getList() {
+    getList() 
+    {
         let self = this;
         let params: URLSearchParams = new URLSearchParams();
         //params.set('order', 'last_name+ASC');
         self.userservice.getall_users(params)
-            .subscribe((users: User[]) => {
+            .subscribe((users: User[]) => 
+            {
                 self.users = users;
+                this.FillTopRecordView();
             });
     }
 
+    FillTopRecordView() 
+    {
+        var last_element = this.users[0];
+        console.log(last_element);
+        this.View(last_element.user_GUID);
+    }
+
+    View(user_GUID) {
+
+        //this.current_driverGUID = driver_GUID; //alert(this.current_driverGUID);
+        var self = this;
+        this.userservice.get_userinfo(user_GUID).subscribe((user) => self.user = user);
+    }
     //#region Main Genreate Token
     private storeToken(data) { localStorage.setItem('session_token', data.session_token); }
     private GenerateToken() {

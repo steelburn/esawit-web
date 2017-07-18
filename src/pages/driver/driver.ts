@@ -329,9 +329,7 @@ export class DriverPage {
     }
 
     vehiclesby_driver() {
-        console.log("ALL" + this.getVehicleList.length);
-        console.log("Selected" + this.get_selectvehicles.length);
-        for (var _i = 0; _i < this.get_selectvehicles.length; _i++) {
+      for (var _i = 0; _i < this.get_selectvehicles.length; _i++) {
             var item = this.get_selectvehicles[_i].registration_no;
             if (item != null) {
 
@@ -347,7 +345,7 @@ export class DriverPage {
 
     //#region Remove Driver
     remove(driver_GUID) {
-        alert(driver_GUID);
+        //alert(driver_GUID);
         var self = this;
         this.driverservice.remove(driver_GUID)
             .subscribe(() => {
@@ -405,7 +403,7 @@ export class DriverPage {
     }
     
     fillChart(label_items,data_items,chart_background,chart_hover) {
-        alert(label_items); alert(data_items);
+        //alert(label_items); alert(data_items);
         this.driverDoughnutChart = new Chart(this.driverDoughnutCanvas.nativeElement,
             {
                 type: 'doughnut',
