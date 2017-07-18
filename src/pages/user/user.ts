@@ -20,8 +20,10 @@ import { UUID } from 'angular2-uuid';
 
 @IonicPage()
 @Component({
+
     selector: 'page-user',
     templateUrl: 'user.html', providers: [UserService, BaseHttpService]
+
 })
 export class UserPage {
 
@@ -74,6 +76,7 @@ export class UserPage {
             this.user_entry.user_GUID = UUID.UUID.toString();    
             this.user_entry.tenant_GUID = UUID.UUID.toString();           
             this.register();
+
             var self = this;
             //if(this.Userform)
             this.userservice.save(this.user_entry)
@@ -102,7 +105,7 @@ export class UserPage {
                 self.users = users;
             });
     }
-
+    
     //#region Main Genreate Token
     private storeToken(data) { localStorage.setItem('session_token', data.session_token); }
     private GenerateToken() {
@@ -115,16 +118,6 @@ export class UserPage {
             });
     }
     //#endregion
-
-
-
-
-
-
-
-
-
-
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad DriverPage');

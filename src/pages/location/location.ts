@@ -91,6 +91,7 @@ export class LocationPage {
     var last_element = this.locations[_row];
     console.log(last_element);
     this.location.name = last_element.name;
+    this.location.location_type = last_element.location_type;
     this.location.location_GUID = last_element.location_GUID;
     this.View(this.location.location_GUID,_row);
   }

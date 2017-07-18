@@ -45,7 +45,7 @@
   <!--form end-->
 
   <!--listing start-->
-  <div class="col8">
+  <div class="col5">
 
     <ion-card class="cb10">
       <ion-row>
@@ -55,10 +55,12 @@
       </ion-row>
       <ion-card-content>
         <ion-list>
+
           <ion-item *ngFor="let user of (users| filteruser: filter.value : 'name');" class="tnUserRow">
-            
+
             <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
             <ion-label class="fontColor-dark">{{user.fullname}}</ion-label>
+            <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
             <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="userEditClick()"><ion-icon name="ios-create"></ion-icon></button>
             <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red" (click)="remove(user.user_GUID)"><ion-icon name="md-close"></ion-icon></button>
           </ion-item>
@@ -69,6 +71,27 @@
 
   </div>
   <!--listing end-->
+
+  <!--Profile start-->
+  <div class="col3">
+    <ion-card class="cb10">
+
+      <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
+        name here
+      </ion-card-header>
+
+      <ion-card-content padding>
+          <div class="infoLabel bgColor-red floatLeft">{{"ADDRESS" | translate}}</div>
+          <div class="infoText">address1<br/> address2</div>
+
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+  <!--Profile end-->
+
+
+
 
   <!--register User form start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="userRegisterClicked">
@@ -84,6 +107,7 @@
       </ion-card-header>
 
       <ion-list class="overflowTrue contentHeight">
+
         <form [formGroup]="Userform">
 
           <ion-item>
@@ -118,8 +142,7 @@
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ROLE" | translate}}</ion-label>
-            <ion-select formControlName="role_GUID" [(ngModel)]="user_entry.role_GUID" class="editInput" interface="popover"
-              placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
+            <ion-select formControlName="role_GUID" [(ngModel)]="user_entry.role_GUID" class="editInput" interface="popover" placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
               <ion-option value="0">N/A</ion-option>
               <ion-option value="1">{{"ADMINISTRATOR" | translate}}</ion-option>
               <ion-option value="2">{{"CARELINE" | translate}}</ion-option>
@@ -149,6 +172,7 @@
   <!--register User form end-->
 
   <!--edit User form start-->
+
   <!--<div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="userEditClicked">
 
     <ion-card class="fb4 marginCenter popupFormCard">
@@ -212,6 +236,7 @@
 
     </ion-card>
   </div>-->
+
   <!--edit User form end-->
 
 
