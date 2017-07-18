@@ -27,7 +27,8 @@
         <ion-item class="bgColor-lightGrey">
           <ion-row>
             <ion-col col-1>No</ion-col>
-            <ion-col col-3>Location</ion-col>
+            <ion-col col-2>Location</ion-col>
+            <ion-col col-1>Vehicle</ion-col>
             <ion-col col-1>Loaded Qty</ion-col>
             <ion-col col-2>Loaded Time</ion-col>
             <ion-col col-1>Unloaded Qty</ion-col>
@@ -42,7 +43,8 @@
             <ion-col col-1>
               <ion-badge class="bgColor-red" item-start>{{ i + 1 }}</ion-badge>
             </ion-col>
-            <ion-col col-3>{{vehicle_transactionReport.Location}}</ion-col>
+            <ion-col col-2>{{vehicle_transactionReport.Location}}</ion-col>
+             <ion-col col-1>{{vehicle_transactionReport.Vehicle}}</ion-col>
             <ion-col col-1>{{vehicle_transactionReport.load_count}}</ion-col>
             <ion-col col-2>{{vehicle_transactionReport.bunch_ts}}</ion-col>
             <ion-col col-1>{{vehicle_transactionReport.unload_count}}</ion-col>
