@@ -81,7 +81,8 @@ export class LocationPage {
     self.location_service.get_locationss(params)
       .subscribe((locations: LocationModel[]) => {
         self.locations = locations;
-        console.log(locations); this.FillTopRecordView(0);
+        console.log(locations); 
+        this.FillTopRecordView(0);
       });
   }
 
@@ -90,8 +91,7 @@ export class LocationPage {
 
     var last_element = this.locations[_row];
     console.log(last_element);
-    this.location.name = last_element.name;
-    this.location.location_type = last_element.location_type;
+    //this.location.name = last_element.name;
     this.location.location_GUID = last_element.location_GUID;
     this.View(this.location.location_GUID,_row);
   }

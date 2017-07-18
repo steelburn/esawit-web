@@ -35,7 +35,19 @@ export class UserService
 	  return Observable.throw(errMsg);
 	}
 	
-	
+	get_userinfo (id: string, params?: URLSearchParams): Observable<User> {
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.get(this.baseResourceUrl + '/' + id, { search: params ,headers: queryHeaders})
+			.map((response) => {
+				var result: any = response.json();
+				let user: User = User.fromJson(result);
+				return user;
+			}).catch(this.handleError);
+	};
 
 	save (master_user: User): Observable<any> 
 	{
