@@ -4,6 +4,8 @@ import {Http, Headers,RequestOptions, URLSearchParams} from '@angular/http';
 import {Driver} from '../models/driver';
 import {GETVEHICLE} from '../models/driver';
 import {GETVEHICLE2} from '../models/driver';
+import {GETDRIVER_CHART} from '../models/driver';
+
 
 
 import {VEHICLEDRIVER_MODEL} from '../models/vehicle';
@@ -60,6 +62,26 @@ export class DriverService
 			}).catch(this.handleError);
 	};
 	
+	GetDriver_Chart (params?:URLSearchParams): Observable<GETDRIVER_CHART[]> {
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);    	
+		return this.httpService.http
+			.get(this.baseResource_Url+'totaldriver_view', { search: params, headers: queryHeaders})
+			.map((response) => {
+				var result: any = response.json();
+				let drivercharts: Array<GETDRIVER_CHART> = [];
+				result.resource.forEach((driverchart) => {
+					drivercharts.push(GETDRIVER_CHART.fromJson(driverchart));
+				});
+				
+				return drivercharts;
+			}).catch(this.handleError);
+	};
+	
+
+
 	get (id: string, params?: URLSearchParams): Observable<Driver> {
 		var queryHeaders = new Headers();
     	queryHeaders.append('Content-Type', 'application/json');

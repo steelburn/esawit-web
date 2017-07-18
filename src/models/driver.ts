@@ -102,7 +102,8 @@ export class GETVEHICLE {
 
 /////////////////
 
-export class GETVEHICLE2 {
+export class GETVEHICLE2 
+{
 	constructor(
 		public vehicle_GUID: string = null,
 		public registration_no: string = null,
@@ -128,6 +129,35 @@ export class GETVEHICLE2 {
 			vehicle_Gid:this.vehicle_GUID,
 			registration_no:this.registration_no,
 			driver_GUID:this.driver_GUID,is_checked:this.is_checked
+		};
+
+		return stringify ? JSON.stringify({ resource: [doc] }) : doc;
+	}
+
+}
+
+export class GETDRIVER_CHART
+{
+	constructor(
+		public Employment: string = null,
+		public TOTAL: number = null
+	) { }
+
+
+	static fromJson(json: any) {
+		if (!json) return;
+
+		return new GETDRIVER_CHART(
+			json.Employment,
+		    json.TOTAL
+		);
+	}
+
+
+	toJson(stringify?: boolean): any {
+		var doc = {
+			Employment:this.Employment,
+			TOTAL:this.TOTAL
 		};
 
 		return stringify ? JSON.stringify({ resource: [doc] }) : doc;

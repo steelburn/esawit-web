@@ -22,22 +22,37 @@
         <ion-item>
           <canvas #driverDoughnutCanvas></canvas>
         </ion-item>
-        <ion-item class="graphLabelStyle1 fontColor-grey">
-          {{"PERMANENT" | translate}}
-          <ion-badge item-end class="bgColor-blue">75</ion-badge>
+
+        <ion-item>
+          <ion-row *ngFor="let driverchart of drivercharts">
+            <ion-item *ngIf="driverchart.Employment==1" class="graphLabelStyle1 fontColor-grey">
+              {{"TEMPORARY" | translate}}
+              <ion-badge item-end class="bgColor-red">{{driverchart.TOTAL}}</ion-badge>
+            </ion-item>
+          </ion-row>
+          <ion-row *ngFor="let driverchart of drivercharts">
+            <ion-item *ngIf="driverchart.Employment==2" class="graphLabelStyle1 fontColor-grey">
+              {{"PERMANENT" | translate}}
+              <ion-badge item-end class="bgColor-red">{{driverchart.TOTAL}}</ion-badge>
+            </ion-item>
+          </ion-row>
+          <ion-row *ngFor="let driverchart of drivercharts">
+            <ion-item *ngIf="driverchart.Employment==3" class="graphLabelStyle1 fontColor-grey">
+              {{"CONTRACT" | translate}}
+              <ion-badge item-end class="bgColor-red">{{driverchart.TOTAL}}</ion-badge>
+            </ion-item>
+          </ion-row>
+          <ion-row *ngFor="let driverchart of drivercharts">
+            <ion-item *ngIf="driverchart.Employment==4" class="graphLabelStyle1 fontColor-grey">
+              {{"PROBATION" | translate}}
+              <ion-badge item-end class="bgColor-red">{{driverchart.TOTAL}}</ion-badge>
+            </ion-item>
+          </ion-row>     
         </ion-item>
-        <ion-item class="graphLabelStyle1 fontColor-grey">
-          {{"TEMPORARY" | translate}}
-          <ion-badge item-end class="bgColor-red">27</ion-badge>
-        </ion-item>
-        <ion-item class="graphLabelStyle1 fontColor-grey">
-          {{"PROBATION" | translate}}
-          <ion-badge item-end class="bgColor-yellow">5</ion-badge>
-        </ion-item>
-        <ion-item class="graphLabelStyle1 fontColor-grey">
-          {{"CONTRACT" | translate}}
-          <ion-badge item-end class="bgColor-green">19</ion-badge>
-        </ion-item>
+
+       
+
+
       </ion-card-content>
     </ion-card>
 
@@ -50,8 +65,8 @@
     <ion-card class="cb10">
       <ion-row>
         <!--<ion-searchbar [(ngModel)]="searchTerm" [formControl]="searchControl" (ionInput)="setFilteredItems()"></ion-searchbar>-->
-         <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by name"></ion-searchbar>
-       
+        <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by name"></ion-searchbar>
+
       </ion-row>
       <ion-card-content>
         <ion-list>
@@ -79,7 +94,7 @@
   <!--Profile start-->
   <div class="col3">
     <ion-card class="cb10">
-      <ion-item >
+      <ion-item>
         <ion-avatar item-start>
           <img src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
         </ion-avatar>
