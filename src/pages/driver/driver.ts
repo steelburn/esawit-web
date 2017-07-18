@@ -327,7 +327,8 @@ export class DriverPage {
     }
     //#endregion
 
-    fillChart_items() {
+    fillChart_items() 
+    {
         let self = this; let chart_label_items = []; 
         let chart_label_data = []; let chart_label_color = [];
         let chart_backgroundcolor=[];let chart_hovercolor=[];
