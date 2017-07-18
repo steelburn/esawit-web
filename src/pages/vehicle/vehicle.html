@@ -50,11 +50,11 @@
       </ion-row>
 
       <ion-row>
-        <ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
+           <ion-searchbar type="text" #filter (keyup)="0" placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
       </ion-row>
 
       <ion-list>
-        <ion-item *ngFor="let vehicle of vehicles" class="tnUserRow">
+        <ion-item *ngFor="let vehicle of (vehicles | filtervehicle: filter.value : 'name');" class="tnUserRow">
           <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark">{{vehicle.registration_no}}</ion-label>
           <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(vehicle.vehicle_GUID)"><ion-icon name="md-eye"></ion-icon></button>

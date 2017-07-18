@@ -8,6 +8,9 @@ import { BaseHttpService } from '../../services/base-http';
 import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Driver } from '../../models/driver';
 import { GETVEHICLE } from '../../models/driver';
+import { GETVEHICLE2 } from '../../models/driver';
+import { GETDRIVER_CHART } from '../../models/driver';
+
 
 import { GETVEHICLE2 } from '../../models/driver';
 import { VEHICLEDRIVER_MODEL } from '../../models/vehicle';
@@ -45,7 +48,7 @@ export class DriverPage {
     searchTerm: string = ''; current_driverGUID: string = '';
     searchControl: FormControl;
     items: any;
-    public chart_items =[];
+    public chart_items = [];
 
     Driverform: FormGroup;
     driver_entry: Driver = new Driver();
@@ -61,8 +64,8 @@ export class DriverPage {
     get_selectvehicle: GETVEHICLE = new GETVEHICLE();
     public get_selectvehicles: GETVEHICLE[] = [];
 
-    public drivers: Driver[] = [];
-    public filter_drivers = [];
+    public drivers: Driver[] = []; public drivercharts: GETDRIVER_CHART[] = [];
+    public filter_drivers = []; public label_items = [];
 
     @ViewChild('driverDoughnutCanvas') driverDoughnutCanvas;
 
@@ -115,8 +118,7 @@ export class DriverPage {
 
 
         this.AvailableVehicleform = fb.group({ availablevehicles: '' });
-
-        this.getList(); this.get_chartData();
+        this.getList(); this.fillChart_items();
         //this.getVehicleList();
 
     }
@@ -125,7 +127,8 @@ export class DriverPage {
         if (this.Driverform.valid) {
             //this.register();
             var self = this;
-            // this.driver.driver_GUID=UUID.UUID.toString();  this.driver.tenant_GUID=UUID.UUID.toString();       
+            // this.driver.driver_GUID=UUID.UUID.toString();  this.driver.tenant_GUID=UUID.UUID.toString();
+            this.driver_entry.active = 1;
             this.driverservice.save(this.driver_entry)
                 .subscribe((response) => {
                     if (response.status == 200) {
@@ -287,7 +290,7 @@ export class DriverPage {
 
             });
     }
-   
+
     vehiclesby_driver() {
         console.log("ALL" + this.getVehicleList.length);
         console.log("Selected" + this.get_selectvehicles.length);
@@ -329,63 +332,75 @@ export class DriverPage {
     }
     //#endregion
 
-   get_chartData()
-   {
-       let self2 = this;
+    fillChart_items() {
+        let self = this; let chart_label_items = []; 
+        let chart_label_data = []; let chart_label_color = [];
+        let chart_backgroundcolor=[];let chart_hovercolor=[];
         let params: URLSearchParams = new URLSearchParams();
         //params.set('order', 'last_name+ASC');
 
-        self2.driverservice.getTotalReport(params).subscribe(
-            result=>
-            {
-               
-                console.log(result);
-                //this.chart_items=result;
-                 //console.log('filled chart_items');
-                 this.fillChart2();
-                 
-            }
-        );
-            
-   }
-   fillChart2()
-   {
-       //console.log('Size of Data' +this.chart_items.length);
-   }
+        self.driverservice.GetDriver_Chart(params)
+            .subscribe((drivercharts: GETDRIVER_CHART[]) => {
+                self.drivercharts = drivercharts;
 
-    fillChart() 
-    {
-       this.driverDoughnutChart = new Chart(this.driverDoughnutCanvas.nativeElement, 
-        {
+                
+                // console.log('Chart Detail.');
+                // var index_num = this.drivercharts.findIndex(x => x.Employment == null);
+                // this.drivercharts.splice(index_num, 1);
+                // console.log(this.drivercharts);
+                // console.log('End chart Detail.');
 
-            type: 'doughnut',
-            data: 
+                this.drivercharts.forEach((item, index) => 
+                {
+                    if(item.Employment=="1")
+                    {
+                        chart_label_items.push('Temporary');chart_label_data.push(item.TOTAL);
+                        chart_backgroundcolor.push('rgba(54, 162, 235, 0.8)');
+                        chart_hovercolor.push( "#36A2EB");
+                    }
+                    if(item.Employment=="2")
+                     {
+                         chart_label_items.push('Permanent');chart_label_data.push(item.TOTAL);
+                         chart_backgroundcolor.push('rgba(255, 99, 132, 0.8)');
+                         chart_hovercolor.push("#FF6384");
+                     }
+                    if(item.Employment=="3"){
+                         chart_label_items.push('Contract');chart_label_data.push(item.TOTAL);
+                        chart_backgroundcolor.push('rgba(248, 203, 0, 0.8)');
+                        chart_hovercolor.push("#f8cb00");
+                    }
+                    if(item.Employment=="4"){
+                         chart_label_items.push('Probation');chart_label_data.push(item.TOTAL);
+                         chart_backgroundcolor.push('rgba(69, 183, 175, 0.8)');
+                         chart_hovercolor.push("#45b7af");
+                    }
+                });
+                this.fillChart(chart_label_items,chart_label_data,chart_backgroundcolor,chart_hovercolor);
+            });
+    }
+    
+    fillChart(label_items,data_items,chart_background,chart_hover) {
+        alert(label_items); alert(data_items);
+        this.driverDoughnutChart = new Chart(this.driverDoughnutCanvas.nativeElement,
             {
-                labels: ["Permanent", "Temporary", "Probation", "Contract"],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [75, 29, 5, 19],
-                    backgroundColor: [
-                        'rgba(54, 162, 235, 0.8)',
-                        'rgba(255, 99, 132, 0.8)',
-                        'rgba(248, 203, 0, 0.8)',
-                        'rgba(69, 183, 175, 0.8)'
-                    ],
-                    hoverBackgroundColor: [
-                        "#36A2EB",
-                        "#FF6384",
-                        "#f8cb00",
-                        "#45b7af"
-                    ]
-                }]
-            },
-            options: {
-                legend: {
-                    display: false
+                type: 'doughnut',
+                data:
+                {
+                    labels: label_items,
+                    datasets: [{
+                        label: '# of Votes',
+                        data: data_items,
+                        backgroundColor: chart_background,
+                        hoverBackgroundColor: chart_hover
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    }
                 }
-            }
 
-        });
+            });
 
     }
 

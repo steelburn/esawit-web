@@ -27,7 +27,6 @@ import { ReconciliationPage } from '../pages/reconciliation/reconciliation';
 import { ReconciliationupdatePage } from '../pages/reconciliationupdate/reconciliationupdate';
 
 
-
 @Component({
   templateUrl: 'app.html'
 })

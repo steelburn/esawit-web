@@ -1,11 +1,11 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-    name: 'filterData'
+    name: 'filterlocation'
     //pure: false
 })
 
-export class FilterData implements PipeTransform {
+export class FilterLocation implements PipeTransform {
     transform(items:any[], args:string[]):any[] 
     {
         if (typeof items === 'object') {
@@ -18,12 +18,7 @@ export class FilterData implements PipeTransform {
                 for (let item of items) {
                     if
                     (                       
-                        (item.Location != null && item.Location.match(new RegExp(''+args, 'i')))
-                        ||
-                        (item.bunch_ts != null && item.bunch_ts.match(new RegExp(''+args, 'i')))
-                        ||
-                        (item.Vehicle != null && item.Vehicle.match(new RegExp(''+args, 'i')))
-                        
+                        (item.registration_no != null && item.registration_no.match(new RegExp(''+args, 'i')))
                     ) 
                     {
                         resultArray.push(item);

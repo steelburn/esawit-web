@@ -141,10 +141,12 @@
             </ion-col>
             <ion-col col-3>{{item_ReconciliationReport.Location}}</ion-col>
             <ion-col col-1>{{item_ReconciliationReport.load_count}}</ion-col>
-            <ion-col col-2>{{item_ReconciliationReport.bunch_ts}}</ion-col>
+            <ion-col col-2>{{item_ReconciliationReport.bunch_ts | date: 'dd/MM/yyyy H:mm'}}</ion-col>
             <ion-col col-1>{{item_ReconciliationReport.unload_count}}</ion-col>
-            <ion-col col-2>{{item_ReconciliationReport.unbunch_ts}}</ion-col>
+
+            <ion-col col-2>{{item_ReconciliationReport.unbunch_ts | date: 'dd/MM/yyyy H:mm'}}</ion-col>
             <ion-col col-1>N/A</ion-col>
+
 
             <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==null">
               <ion-icon name="ios-checkmark-circle" item-start class="fontColor-red"></ion-icon>

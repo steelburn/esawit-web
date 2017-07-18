@@ -50,11 +50,13 @@
       </ion-row>
 
       <ion-row>
-        <ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
+
+       <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by Location Name"></ion-searchbar>
+
       </ion-row>
 
       <ion-list>
-        <ion-item *ngFor="let location of locations;let i = index" class="tnUserRow">
+        <ion-item *ngFor="let location of (locations| filtervehicle: filter.value : 'name');let i = index" class="tnUserRow">
           <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark">{{location.name}}</ion-label>
           <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(location.location_GUID,i)"><ion-icon name="md-eye"></ion-icon></button>
