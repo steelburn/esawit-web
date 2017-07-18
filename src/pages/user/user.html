@@ -76,9 +76,10 @@
   <div class="col3">
     <ion-card class="cb10">
 
-      <ion-item>
-        <h2>{{user.fullname}}</h2>
-      </ion-item>
+
+      <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
+        {{user.fullname}}
+      </ion-card-header>
 
       <!--<ion-card-content>
         <div class="">
@@ -88,7 +89,7 @@
         </div>
       </ion-card-content>-->
 
-       <ion-card-content>
+       <ion-card-content padding>
             <div class="">
               <div class="infoLabel bgColor-red floatLeft">{{"ADDRESS" | translate}}</div>
               <div class="infoText">{{user.address1}}<br/> {{user.address2}}
