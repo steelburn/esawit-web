@@ -10,9 +10,6 @@ import { Driver } from '../../models/driver';
 import { GETVEHICLE } from '../../models/driver';
 import { GETVEHICLE2 } from '../../models/driver';
 import { GETDRIVER_CHART } from '../../models/driver';
-
-
-import { GETVEHICLE2 } from '../../models/driver';
 import { VEHICLEDRIVER_MODEL } from '../../models/vehicle';
 
 import { FormControlDirective, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';

@@ -18,7 +18,7 @@ export class FilterVehicle implements PipeTransform {
                 for (let item of items) {
                     if
                     (                       
-                        (item.registration_no != null && item.registration_no.match(new RegExp(''+args, 'i')))
+                        (item.name != null && item.name.match(new RegExp(''+args, 'i')))
                     ) 
                     {
                         resultArray.push(item);
