@@ -36,6 +36,12 @@ import { ReconciliationupdatePage } from '../pages/reconciliationupdate/reconcil
 //import { FormsModule }   from '@angular/forms';
 import { FilterData } from '../shared/filter';
 import { FilterVehicle } from '../shared/vehiclefilter';
+import { FilterLocation } from '../shared/locationfilter';
+import { FilterUser } from '../shared/userfilter';
+import { FilterDriver } from '../shared/driverfilter';
+
+
+
 
 //import { UniquePipe } from '../shared/unique';
 
@@ -52,7 +58,7 @@ import { FactorylistPage } from '../pages/factorylist/factorylist';
     HomePage,
     LandingV1Page,
     LandingV2Page,
-    
+    FilterData,FilterVehicle,FilterLocation,FilterUser,FilterDriver,
     DriverPage,
     DriverInfoPage,
     LocationPage,
@@ -67,13 +73,14 @@ import { FactorylistPage } from '../pages/factorylist/factorylist';
     ReportsPage,
     VehicleTransactionPage,
 ReconciliationPage,ReconciliationupdatePage,
-    FilterData,FilterVehicle,
+    
 
     LocationTransactionPage,
     HarvestlistPage,
     MandorlistPage,
     FactorylistPage,
     LoginPage
+    
   ],
   imports: [
     BrowserModule, HttpModule,

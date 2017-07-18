@@ -131,9 +131,9 @@ export class DriverService
 			.get(this.baseResource_Url+'totaldriver_view', { search: params ,headers: queryHeaders})
 			.map((response) => 
 			{
-				console.log('Getting result');
+				//console.log('Getting result');
 				var result: any = response.json();	
-				console.log(result);			
+				//console.log(result);			
 				return result;
 
 			});

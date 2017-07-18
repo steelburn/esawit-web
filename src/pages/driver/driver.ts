@@ -43,7 +43,7 @@ export class DriverPage {
     searchTerm: string = ''; current_driverGUID: string = '';
     searchControl: FormControl;
     items: any;
-    public chart_items =[];
+    public chart_items = [];
 
     Driverform: FormGroup;
     driver_entry: Driver = new Driver();
@@ -141,7 +141,8 @@ export class DriverPage {
         if (this.Driverform.valid) {
             //this.register();
             var self = this;
-            // this.driver.driver_GUID=UUID.UUID.toString();  this.driver.tenant_GUID=UUID.UUID.toString();       
+            // this.driver.driver_GUID=UUID.UUID.toString();  this.driver.tenant_GUID=UUID.UUID.toString();
+            this.driver_entry.active = 1;
             this.driverservice.save(this.driver_entry)
                 .subscribe((response) => {
                     if (response.status == 200) {
@@ -325,7 +326,7 @@ export class DriverPage {
 
             });
     }
-   
+
     vehiclesby_driver() {
         console.log("ALL" + this.getVehicleList.length);
         console.log("Selected" + this.get_selectvehicles.length);
@@ -356,62 +357,74 @@ export class DriverPage {
     }
     //#endregion
 
-   get_chartData()
-   {
-       let self2 = this;
+    get_chartData() {
+        let self2 = this;
         let params: URLSearchParams = new URLSearchParams();
         //params.set('order', 'last_name+ASC');
 
         self2.driverservice.getTotalReport(params).subscribe(
-            result=>
-            {
-               
-                console.log(result);
-                //this.chart_items=result;
-                 //console.log('filled chart_items');
-                 this.fillChart2();
-                 
+            result => 
+            {             
+                // for (var key in result) {
+                //     var arr = result[key];
+                //     for (var i = 0; i < arr.length; i++) {
+                //         var obj = arr[i];
+                //         for (var prop in obj) 
+                //         {
+                //             if (obj.hasOwnProperty(prop)) 
+                //             {
+                //                  if(prop=="TOTAL")
+                //                  {
+                //                     alert(prop + " = " + obj[prop]);                              
+                //                  }
+                                  
+                //             }
+                //         }
+                //     }
+                // }
+
+
+               this.fillChart2();
+
             }
         );
-            
-   }
-   fillChart2()
-   {
-       //console.log('Size of Data' +this.chart_items.length);
-   }
 
-    fillChart() 
-    {
-       this.driverDoughnutChart = new Chart(this.driverDoughnutCanvas.nativeElement, 
-        {
-            type: 'doughnut',
-            data: 
+    }
+    fillChart2() {
+        //console.log('Size of Data' +this.chart_items.length);
+    }
+
+    fillChart() {
+        this.driverDoughnutChart = new Chart(this.driverDoughnutCanvas.nativeElement,
             {
-                labels: ["Permanent", "Temporary", "Probation", "Contract"],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [75, 29, 5, 19],
-                    backgroundColor: [
-                        'rgba(54, 162, 235, 0.8)',
-                        'rgba(255, 99, 132, 0.8)',
-                        'rgba(248, 203, 0, 0.8)',
-                        'rgba(69, 183, 175, 0.8)'
-                    ],
-                    hoverBackgroundColor: [
-                        "#36A2EB",
-                        "#FF6384",
-                        "#f8cb00",
-                        "#45b7af"
-                    ]
-                }]
-            },
-            options: {
-                legend: {
-                    display: false
+                type: 'doughnut',
+                data:
+                {
+                    labels: ["Permanent", "Temporary", "Probation", "Contract"],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [75, 29, 5, 19],
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.8)',
+                            'rgba(255, 99, 132, 0.8)',
+                            'rgba(248, 203, 0, 0.8)',
+                            'rgba(69, 183, 175, 0.8)'
+                        ],
+                        hoverBackgroundColor: [
+                            "#36A2EB",
+                            "#FF6384",
+                            "#f8cb00",
+                            "#45b7af"
+                        ]
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    }
                 }
-            }
 
-        });
+            });
 
     }
 
