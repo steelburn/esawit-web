@@ -2,7 +2,7 @@
 
   <!--form start-->
   <div class="col2">
-    <button class="btnColor-red cb10 posRelative portletStyle2" full (click)="userRegisterClick()">
+    <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="userRegisterClick()">
       <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-red" item-start></ion-icon>
       <div class="portletColStyle2">
         <div class="portletHeaderStyle2">{{"REGISTER_NEW_USER" | translate}}</div>
@@ -17,7 +17,7 @@
         </ion-card-header>
       </ion-row>
       <ion-card-content>
-        <div class="graphContentStyle2 fontColor-red">25</div>
+        <div class="graphContentStyle2 fontColor-grey">25</div>
         <div class="graphContentStyle1 fontColor-grey">{{"UPDATE_ON" | translate}} 13 March 2017</div>
         <ion-item>
           <canvas #driverDoughnutCanvas></canvas>
@@ -117,7 +117,7 @@
 
        <ion-card-content padding>
             <div class="">
-              <div class="infoLabel bgColor-red floatLeft">{{"ADDRESS" | translate}}</div>
+              <div class="infoLabel bgColor-green floatLeft">{{"ADDRESS" | translate}}</div>
               <div class="infoText">{{user.address1}}<br/> {{user.address2}}
                 <br/> {{user.address3}}
                 <br/>

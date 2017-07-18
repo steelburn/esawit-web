@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController,ModalController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
+import { Chart } from 'chart.js';
 
 import { ReportService } from '../../services/reportservice';
 
@@ -44,18 +45,22 @@ class ServerResponse {
   templateUrl: 'landing-v3.html', providers: [ReportService, BaseHttpService]
 })
 export class LandingV3Page {
+
+  @ViewChild('barCanvas') barCanvas;
+
+  barChart: any;
+
   public harvestreports: Harvestreport[] = [];
   searchTerm: string = ''; searchControl: FormControl; items: any;
 
   public mandorreports: Mandorreport[] = [];
   public factoryreports: Factoryreport[] = [];
-public item_ReconciliationReports: ReconciliationReport[] = [];
+  public item_ReconciliationReports: ReconciliationReport[] = [];
 
-baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitdb/_table/HarvestReport?api_key='+constants.DREAMFACTORY_API_KEY;
-  constructor(private reportservice: ReportService,private httpService: BaseHttpService,
-  public navCtrl: NavController,public navParams: NavParams,public loadingCtrl: LoadingController
-  ,public modalCtrl: ModalController) 
-  {
+  baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitdb/_table/HarvestReport?api_key=' + constants.DREAMFACTORY_API_KEY;
+  constructor(private reportservice: ReportService, private httpService: BaseHttpService,
+    public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController
+    , public modalCtrl: ModalController) {
 
     this.searchControl = new FormControl();
     this.GenerateToken();
@@ -69,7 +74,7 @@ baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitd
 
     this.getList(); this.getMandorList(); this.getFactoryList();
     //this.presentLoading();
-    this.get_ReconciliationReport() ;
+    this.get_ReconciliationReport();
   }
 
   presentLoading() {
@@ -82,26 +87,22 @@ baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/esawitd
     //this.GetHarvestReport();
   }
 
-get_ReconciliationReport() 
-  {
+  get_ReconciliationReport() {
     let self = this;
     let params: URLSearchParams = new URLSearchParams();
     //params.set('order', 'last_name+ASC');
     self.reportservice.Reconsilation_Tranactionquery(params)
-      .subscribe((item_ReconciliationReports: ReconciliationReport[]) => 
-      {
+      .subscribe((item_ReconciliationReports: ReconciliationReport[]) => {
         self.item_ReconciliationReports = item_ReconciliationReports
         console.log(self.item_ReconciliationReports);
       });
   }
 
-ViewReconciliation()
-{
-  this.navCtrl.push(ReconciliationPage);
-}
+  ViewReconciliation() {
+    this.navCtrl.push(ReconciliationPage);
+  }
 
-harvestlist() 
-{
+  harvestlist() {
     let addModal = this.modalCtrl.create(HarvestlistPage);
     addModal.onDidDismiss(item => {
       if (item) {
@@ -110,8 +111,7 @@ harvestlist()
     })
     addModal.present();
   }
-mandorlist() 
-{
+  mandorlist() {
     let addModal = this.modalCtrl.create(MandorlistPage);
     addModal.onDidDismiss(item => {
       if (item) {
@@ -120,8 +120,7 @@ mandorlist()
     })
     addModal.present();
   }
-factorylist() 
-{
+  factorylist() {
     let addModal = this.modalCtrl.create(FactorylistPage);
     addModal.onDidDismiss(item => {
       if (item) {
@@ -132,17 +131,15 @@ factorylist()
   }
 
 
-VehicleReport()
-{
-  this.navCtrl.push(VehicleTransactionPage);
-}
+  VehicleReport() {
+    this.navCtrl.push(VehicleTransactionPage);
+  }
 
-LocationReport()
-{
-  this.navCtrl.push(LocationTransactionPage);
-}
+  LocationReport() {
+    this.navCtrl.push(LocationTransactionPage);
+  }
 
-private storeToken(data){localStorage.setItem('session_token', data.session_token);}
+  private storeToken(data) { localStorage.setItem('session_token', data.session_token); }
 
   private GenerateToken() {
     var queryHeaders = new Headers();
@@ -230,10 +227,41 @@ private storeToken(data){localStorage.setItem('session_token', data.session_toke
   };
 
   ionViewDidLoad() {
+        console.log('ionViewDidLoad LandingV2Page');
 
+        this.barChart = new Chart(this.barCanvas.nativeElement, {
 
+            type: 'bar',
+            data: {
+                labels: ["Harvested", "Factory", "Mandor"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [122, 120, 67],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
 
+        });
 
-  }
+    }
 
 }
