@@ -4,7 +4,11 @@
       <ion-row>
         <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
           Vehicle Transaction Report
-          <button ion-button class="bgColor-grey fontColor-white btnStyle1" (click)="print()">Print Page</button>
+          
+          <div class="fontColor-grey btnStyle3 paddingZero marginZero" (click)="print()">
+            <ion-icon name="md-print"></ion-icon>
+          </div>
+
         </ion-card-header>
         <ion-item>
 
@@ -41,7 +45,7 @@
         <ion-item>
           <ion-row *ngFor="let vehicle_transactionReport of (vehicle_transactionReports | filterData: filter.value : 'name');let i = index">
             <ion-col col-1>
-              <ion-badge class="bgColor-red" item-start>{{ i + 1 }}</ion-badge>
+              <ion-badge class="bgColor-lightGrey" item-start>{{ i + 1 }}</ion-badge>
             </ion-col>
             <ion-col col-2>{{vehicle_transactionReport.Location}}</ion-col>
              <ion-col col-1>{{vehicle_transactionReport.Vehicle}}</ion-col>

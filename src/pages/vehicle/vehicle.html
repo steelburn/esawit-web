@@ -2,8 +2,8 @@
 
   <!--form start-->
   <div class="col2">
-    <button class="btnColor-blue cb10 posRelative portletStyle2" full (click)="vehicleRegisterClick()">
-      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-blue" item-start></ion-icon>
+    <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="vehicleRegisterClick()">
+      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
       <div class="portletColStyle2">
         <div class="portletHeaderStyle2">{{"REGISTER_NEW_VEHICLE" | translate}}</div>
       </div>
@@ -11,12 +11,12 @@
 
     <ion-card class="cb10">
       <ion-row>
-        <ion-card-header class="fullWidth graphHeaderStyleBlue fontColor-dark">
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
           {{"TOTAL_VEHICLE" | translate}}
         </ion-card-header>
       </ion-row>
       <ion-card-content>
-        <div class="graphContentStyle2 fontColor-blue">127</div>
+        <div class="graphContentStyle2 fontColor-green">127</div>
         <ion-item class="fontColor-grey">
           {{"ACTIVE" | translate}}
           <ion-badge item-end class="bgColor-green">109</ion-badge>
@@ -44,7 +44,7 @@
     <ion-card class="cb10">
 
       <ion-row>
-        <ion-card-header class="fullWidth graphHeaderStyleBlue fontColor-dark">
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
           {{"VEHICLE" | translate}}
         </ion-card-header>
       </ion-row>
@@ -110,27 +110,27 @@
         <ion-list *ngSwitchDefault>
           <ion-card-content>
             <div class="">
-              <div class="infoLabel bgColor-green floatLeft">{{"BRAND" | translate}}</div>
+              <div class="infoLabel bgColor-lightGrey floatLeft">{{"BRAND" | translate}}</div>
               <div class="infoText">{{vehicle.make}}</div>
             </div>
 
             <div class="">
-              <div class="infoLabel bgColor-green floatLeft">{{"MODEL" | translate}}</div>
+              <div class="infoLabel bgColor-lightGrey floatLeft">{{"MODEL" | translate}}</div>
               <div class="infoText">{{vehicle.model}}</div>
             </div>
 
             <div class="">
-              <div class="infoLabel bgColor-green floatLeft">{{"YEAR" | translate}}</div>
+              <div class="infoLabel bgColor-lightGrey floatLeft">{{"YEAR" | translate}}</div>
               <div class="infoText">{{vehicle.manufacturing_year}}</div>
             </div>
 
             <div class="">
-              <div class="infoLabel bgColor-green floatLeft">{{"CAPACITY" | translate}}</div>
+              <div class="infoLabel bgColor-lightGrey floatLeft">{{"CAPACITY" | translate}}</div>
               <div class="infoText">{{vehicle.capacity_tonne}}</div>
             </div>
 
             <div class="">
-              <div class="infoLabel bgColor-green floatLeft">{{"DESCRIPTION" | translate}}</div>
+              <div class="infoLabel bgColor-lightGrey floatLeft">{{"DESCRIPTION" | translate}}</div>
               <div class="infoText">{{vehicle.description}}</div>
             </div>
 

@@ -42,6 +42,22 @@
 
   <ion-content>
 
+
+    <ion-list class="marginZero">
+      <ion-row>
+        <button ion-item class="bgColor-lightGrey menuButton" (click)="othersPageClick('Others')">
+          <ion-icon name="ios-arrow-forward" class="fontColor-grey" [class.arrowRotate]="othersPageClicked" item-start></ion-icon>
+          Main
+        </button>
+      </ion-row>
+      <ion-row *ngIf="othersPageClicked">
+        <button ion-item menuClose *ngFor="let p of pages" [class.bgColor-darkBlue]="checkActivePage(p)" (click)="openPage(p)" class="bgColor-white menuButton">
+          <ion-icon item-start [name]="p.icon"></ion-icon>
+          {{p.title}}
+        </button>
+      </ion-row>
+    </ion-list>
+    
     <ion-list class="marginZero">
       <ion-row>
         <button ion-item class="bgColor-lightGrey menuButton" (click)="processPageClick('Process')">
@@ -66,21 +82,6 @@
       </ion-row>
       <ion-row *ngIf="reportingPageClicked">
         <button ion-item menuClose *ngFor="let p of reportingPages" [class.bgColor-darkBlue]="checkActivePage(p)" (click)="openPage(p)" class="bgColor-white menuButton">
-          <ion-icon item-start [name]="p.icon"></ion-icon>
-          {{p.title}}
-        </button>
-      </ion-row>
-    </ion-list>
-
-    <ion-list class="marginZero">
-      <ion-row>
-        <button ion-item class="bgColor-lightGrey menuButton" (click)="othersPageClick('Others')">
-          <ion-icon name="ios-arrow-forward" class="fontColor-grey" [class.arrowRotate]="othersPageClicked" item-start></ion-icon>
-          Others
-        </button>
-      </ion-row>
-      <ion-row *ngIf="othersPageClicked">
-        <button ion-item menuClose *ngFor="let p of pages" [class.bgColor-darkBlue]="checkActivePage(p)" (click)="openPage(p)" class="bgColor-white menuButton">
           <ion-icon item-start [name]="p.icon"></ion-icon>
           {{p.title}}
         </button>

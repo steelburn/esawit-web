@@ -64,5 +64,8 @@ export class ReconciliationPage {
   Viewlanding() {
     this.navCtrl.push(LandingV1Page);
   }
-
+  
+  public print = (): void => {
+  window.print();
+  } 
 }

@@ -3,7 +3,7 @@
   <!--form start-->
   <div class="col2">
     <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="userRegisterClick()">
-      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-red" item-start></ion-icon>
+      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
       <div class="portletColStyle2">
         <div class="portletHeaderStyle2">{{"REGISTER_NEW_USER" | translate}}</div>
       </div>
@@ -12,7 +12,33 @@
 
     <ion-card class="cb10">
       <ion-row>
-        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
+
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
+          {{"TOTAL_USER" | translate}}
+        </ion-card-header>
+      </ion-row>
+      <ion-card-content>
+        <div class="graphContentStyle2 fontColor-grey">127</div>
+        <ion-item class="fontColor-grey">
+          {{"ACTIVE" | translate}}
+          <ion-badge item-end class="bgColor-green">109</ion-badge>
+        </ion-item>
+        <div class="percentBar fullWidth">
+          <div class="percentBarValue bgColor-green" style="width: calc(100% * (109 / 127))"></div>
+        </div>
+        <ion-item class="fontColor-grey">
+          {{"INACTIVE" | translate}}
+          <ion-badge item-end class="bgColor-red">18</ion-badge>
+        </ion-item>
+        <div class="percentBar fullWidth">
+          <div class="percentBarValue bgColor-red" style="width: calc(100% * (18 / 127))"></div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="cb10" hidden>
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
           {{"TOTAL_USER" | translate}}
         </ion-card-header>
       </ion-row>
@@ -74,6 +100,13 @@
   <div class="col5">
 
     <ion-card class="cb10">
+
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
+          {{"USER" | translate}}
+        </ion-card-header>
+      </ion-row>
+
       <ion-row>
         <!--<ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>-->
         <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by name"></ion-searchbar>
@@ -83,8 +116,11 @@
         <ion-list>
 
           <ion-item *ngFor="let user of (users| filteruser: filter.value : 'name');" class="tnUserRow">
-
-            <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
+            
+            <ion-icon name="ios-checkmark-circle" item-start class="fontColor-green" *ngIf="user.active == 1"></ion-icon>
+            <ion-icon name="ios-close-circle" item-start class="fontColor-red" *ngIf="user.active == 0"></ion-icon>
+            
+            <!--<ion-toggle checked="true" color="secondary" item-start></ion-toggle>-->
             <ion-label class="fontColor-dark">{{user.fullname}}</ion-label>
             <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(user.user_GUID)"><ion-icon name="md-eye"></ion-icon></button>
             <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="userEditClick()"><ion-icon name="ios-create"></ion-icon></button>
@@ -117,16 +153,15 @@
 
        <ion-card-content padding>
             <div class="">
-              <div class="infoLabel bgColor-green floatLeft">{{"ADDRESS" | translate}}</div>
+              <div class="infoLabel bgColor-lightGrey floatLeft">{{"ADDRESS" | translate}}</div>
               <div class="infoText">{{user.address1}}<br/> {{user.address2}}
                 <br/> {{user.address3}}
-                <br/>
               </div>
             </div>
 
       
             <div class="">
-              <div class="infoLabel bgColor-green floatLeft">{{"EMAIL" | translate}}</div>
+              <div class="infoLabel bgColor-lightGrey floatLeft">{{"EMAIL" | translate}}</div>
               <div class="infoText">{{user.email}}</div>
             </div>
 

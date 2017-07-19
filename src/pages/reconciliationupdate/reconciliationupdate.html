@@ -4,39 +4,32 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-card style="height: 100%;">
+  <ion-card-header class="icTitle headerColor-white posRelative">
+    <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
+    <div class="icHeaderText">Update Status</div>
+  </ion-card-header>
+<ion-card-content class="posRelative fullHeight">
+    <form [formGroup]="Reconciliationform">
 
-  <ion-navbar>
-    <ion-title>Reconciliation Status Update</ion-title>
-  </ion-navbar>
+      <ion-item>
+        <ion-label class="fontColor-green" stacked>{{"STATUS" | translate}}</ion-label>
+        <ion-select formControlName="remark_status" [(ngModel)]="reconciliation_entry.resolved" class="editInput" interface="popover">
+          <ion-option value="0">{{"UN RESOLVED" | translate}}</ion-option>
+          <ion-option value="1">{{"RESOLVED" | translate}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label class="fontColor-green" stacked>{{"Remarks" | translate}}</ion-label>
+        <ion-input type="text" formControlName="remarks" [(ngModel)]="reconciliation_entry.Description" class="editInput"></ion-input>
+      </ion-item>
 
-</ion-header>
 
 
-<ion-content padding>
-  <ion-list>
-   <form [formGroup]="Reconciliationform">
+      <!--<button ion-button color="primary" [disabled]="!Driverform.valid" (click)="save()">Save</button>-->
 
-          <ion-item>
-            <ion-label class="fontColor-green" stacked>{{"STATUS" | translate}}</ion-label>
-            <ion-select formControlName="remark_status" [(ngModel)]="reconciliation_entry.resolved" class="editInput" 
-            interface="popover">
-              <ion-option value="0">{{"UN RESOLVED" | translate}}</ion-option>
-              <ion-option value="1">{{"RESOLVED" | translate}}</ion-option>
-              <ion-option value="2">{{"SURVEYOR" | translate}}</ion-option>
-             </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label class="fontColor-green" stacked>{{"Remarks" | translate}}</ion-label>
-            <ion-input type="text" formControlName="remarks" [(ngModel)]="reconciliation_entry.Description" class="editInput" ></ion-input>
-          </ion-item>
-          
+    </form>
+    <button ion-button full class="bgColor-grey fontColor-white btnStyle1 posAbsolute" style="bottom: 65px;left: 0;" [disabled]="!Reconciliationform.valid" (click)="Update_ReconciliationStatus()">{{"UPDATE" | translate}}</button>
 
-         
-          <!--<button ion-button color="primary" [disabled]="!Driverform.valid" (click)="save()">Save</button>-->
-
-        </form>
-           <button ion-button full class="bgColor-grey fontColor-white btnStyle1" [disabled]="!Reconciliationform.valid" (click)="Update_ReconciliationStatus()">{{"UPDATE" | translate}}</button>
-     
-  </ion-list>
-</ion-content>
+</ion-card-content>
+</ion-card>
