@@ -2,8 +2,8 @@
 
   <!--form start-->
   <div class="col2">
-    <button class="btnColor-red cb10 posRelative portletStyle2" full (click)="userRegisterClick()">
-      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-red" item-start></ion-icon>
+    <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="userRegisterClick()">
+      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
       <div class="portletColStyle2">
         <div class="portletHeaderStyle2">{{"REGISTER_NEW_USER" | translate}}</div>
       </div>
@@ -12,17 +12,69 @@
 
     <ion-card class="cb10">
       <ion-row>
-        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
+
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
           {{"TOTAL_USER" | translate}}
         </ion-card-header>
       </ion-row>
       <ion-card-content>
-        <div class="graphContentStyle2 fontColor-red">25</div>
+        <div class="graphContentStyle2 fontColor-grey">127</div>
+        <ion-item class="fontColor-grey">
+          {{"ACTIVE" | translate}}
+          <ion-badge item-end class="bgColor-green">109</ion-badge>
+        </ion-item>
+        <div class="percentBar fullWidth">
+          <div class="percentBarValue bgColor-green" style="width: calc(100% * (109 / 127))"></div>
+        </div>
+        <ion-item class="fontColor-grey">
+          {{"INACTIVE" | translate}}
+          <ion-badge item-end class="bgColor-red">18</ion-badge>
+        </ion-item>
+        <div class="percentBar fullWidth">
+          <div class="percentBarValue bgColor-red" style="width: calc(100% * (18 / 127))"></div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="cb10" hidden>
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
+          {{"TOTAL_USER" | translate}}
+        </ion-card-header>
+      </ion-row>
+      <ion-card-content>
+        <div class="graphContentStyle2 fontColor-grey">25</div>
         <div class="graphContentStyle1 fontColor-grey">{{"UPDATE_ON" | translate}} 13 March 2017</div>
         <ion-item>
           <canvas #driverDoughnutCanvas></canvas>
         </ion-item>
-        <ion-item class="graphLabelStyle1 fontColor-grey">
+         <ion-item>
+          <ion-row *ngFor="let driverchart of drivercharts">
+            <ion-item *ngIf="driverchart.Employment==1" class="graphLabelStyle1 fontColor-grey">
+              {{"TEMPORARY" | translate}}
+              <ion-badge item-end class="bgColor-red">{{driverchart.TOTAL}}</ion-badge>
+            </ion-item>
+          </ion-row>
+          <ion-row *ngFor="let driverchart of drivercharts">
+            <ion-item *ngIf="driverchart.Employment==2" class="graphLabelStyle1 fontColor-grey">
+              {{"PERMANENT" | translate}}
+              <ion-badge item-end class="bgColor-red">{{driverchart.TOTAL}}</ion-badge>
+            </ion-item>
+          </ion-row>
+          <ion-row *ngFor="let driverchart of drivercharts">
+            <ion-item *ngIf="driverchart.Employment==3" class="graphLabelStyle1 fontColor-grey">
+              {{"CONTRACT" | translate}}
+              <ion-badge item-end class="bgColor-red">{{driverchart.TOTAL}}</ion-badge>
+            </ion-item>
+          </ion-row>
+          <ion-row *ngFor="let driverchart of drivercharts">
+            <ion-item *ngIf="driverchart.Employment==4" class="graphLabelStyle1 fontColor-grey">
+              {{"PROBATION" | translate}}
+              <ion-badge item-end class="bgColor-red">{{driverchart.TOTAL}}</ion-badge>
+            </ion-item>
+          </ion-row>     
+        </ion-item>
+        <!--<ion-item class="graphLabelStyle1 fontColor-grey">
           {{"PERMANENT" | translate}}
           <ion-badge item-end class="bgColor-blue">75</ion-badge>
         </ion-item>
@@ -37,7 +89,7 @@
         <ion-item class="graphLabelStyle1 fontColor-grey">
           {{"CONTRACT" | translate}}
           <ion-badge item-end class="bgColor-green">19</ion-badge>
-        </ion-item>
+        </ion-item>-->
       </ion-card-content>
     </ion-card>
 
@@ -45,18 +97,32 @@
   <!--form end-->
 
   <!--listing start-->
-  <div class="col8">
+  <div class="col5">
 
     <ion-card class="cb10">
+
       <ion-row>
-        <ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
+          {{"USER" | translate}}
+        </ion-card-header>
+      </ion-row>
+
+      <ion-row>
+        <!--<ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>-->
+        <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by name"></ion-searchbar>
+
       </ion-row>
       <ion-card-content>
         <ion-list>
-          <ion-item *ngFor="let user of users" class="tnUserRow">
+
+          <ion-item *ngFor="let user of (users| filteruser: filter.value : 'name');" class="tnUserRow">
             
-            <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
+            <ion-icon name="ios-checkmark-circle" item-start class="fontColor-green" *ngIf="user.active == 1"></ion-icon>
+            <ion-icon name="ios-close-circle" item-start class="fontColor-red" *ngIf="user.active == 0"></ion-icon>
+            
+            <!--<ion-toggle checked="true" color="secondary" item-start></ion-toggle>-->
             <ion-label class="fontColor-dark">{{user.fullname}}</ion-label>
+            <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(user.user_GUID)"><ion-icon name="md-eye"></ion-icon></button>
             <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="userEditClick()"><ion-icon name="ios-create"></ion-icon></button>
             <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red" (click)="remove(user.user_GUID)"><ion-icon name="md-close"></ion-icon></button>
           </ion-item>
@@ -67,6 +133,44 @@
 
   </div>
   <!--listing end-->
+
+  <!--Profile start-->
+  <div class="col3">
+    <ion-card class="cb10">
+
+
+      <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
+        {{user.fullname}}
+      </ion-card-header>
+
+      <!--<ion-card-content>
+        <div class="">
+          <div class="infoLabel bgColor-red floatLeft">{{"ADDRESS" | translate}}</div>
+          <div class="infoText">{{user.address1}}<br/> ADDRESS
+          </div>
+        </div>
+      </ion-card-content>-->
+
+       <ion-card-content padding>
+            <div class="">
+              <div class="infoLabel bgColor-lightGrey floatLeft">{{"ADDRESS" | translate}}</div>
+              <div class="infoText">{{user.address1}}<br/> {{user.address2}}
+                <br/> {{user.address3}}
+              </div>
+            </div>
+
+      
+            <div class="">
+              <div class="infoLabel bgColor-lightGrey floatLeft">{{"EMAIL" | translate}}</div>
+              <div class="infoText">{{user.email}}</div>
+            </div>
+
+          </ion-card-content>
+
+
+    </ion-card>
+  </div>
+  <!--Profile end-->
 
   <!--register User form start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="userRegisterClicked">
@@ -117,8 +221,7 @@
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ROLE" | translate}}</ion-label>
-            <ion-select formControlName="role_GUID" [(ngModel)]="user_entry.role_GUID" class="editInput" interface="popover"
-              placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
+            <ion-select formControlName="role_GUID" [(ngModel)]="user_entry.role_GUID" class="editInput" interface="popover" placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
               <ion-option value="0">N/A</ion-option>
               <ion-option value="1">{{"ADMINISTRATOR" | translate}}</ion-option>
               <ion-option value="2">{{"CARELINE" | translate}}</ion-option>

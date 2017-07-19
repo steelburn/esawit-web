@@ -1,0 +1,216 @@
+<ion-content padding class="contentMarginTop" style="margin-bottom: 55px;">
+
+  <div class="col4">
+
+    <div class="col33">
+      <ion-card class="cb10 posRelative portletStyle1">
+      <ion-icon name="md-car" class="portletIconStyle1 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
+      <div class="portletColStyle1">
+        <div class="portletHeaderStyle1 fontColor-green">Harvested</div>
+        <div class="portletContentStyle2 fontColor-dark">198</div>
+        <div class="portletContentStyle1 fontColor-grey">15 March 2017</div>
+      </div>
+    </ion-card>
+    </div>
+
+    <div class="col33">
+      <ion-card class="cb10 posRelative portletStyle1">
+      <ion-icon name="md-car" class="portletIconStyle1 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
+      <div class="portletColStyle1">
+        <div class="portletHeaderStyle1 fontColor-green">Factory</div>
+        <div class="portletContentStyle2 fontColor-dark">198</div>
+        <div class="portletContentStyle1 fontColor-grey">15 March 2017</div>
+      </div>
+    </ion-card>
+    </div>
+
+    <div class="col33">
+      <ion-card class="cb10 posRelative portletStyle1">
+      <ion-icon name="md-car" class="portletIconStyle1 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
+      <div class="portletColStyle1">
+        <div class="portletHeaderStyle1 fontColor-green">Mandor</div>
+        <div class="portletContentStyle2 fontColor-dark">198</div>
+        <div class="portletContentStyle1 fontColor-grey">15 March 2017</div>
+      </div>
+    </ion-card>
+    </div>
+
+    <div class="col10">
+      <ion-card>
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark posRelative">
+          harvested
+
+          <div class="fontColor-grey btnStyle3 paddingZero marginZero" (click)="harvestlist()">
+            <ion-icon name="ios-list"></ion-icon>
+          </div>
+
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #barCanvas></canvas>
+        </ion-card-content>
+
+      </ion-card>
+    </div>
+
+    <!--<div class="col10">
+      <ion-card>
+        <ion-row>
+          <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark posRelative">
+            harvested
+
+            <div class="fontColor-grey btnStyle3 paddingZero marginZero" (click)="harvestlist()">
+              <ion-icon name="ios-list"></ion-icon>
+            </div>
+
+          </ion-card-header>
+
+        </ion-row>
+        <ion-item class="bgColor-lightGrey">
+          <ion-label>Location</ion-label>
+          <ion-label class="textRight" item-end>Date</ion-label>
+          <ion-label class="textRight" item-end>Bunches</ion-label>
+        </ion-item>
+        <ion-item class="reportItemRow" *ngFor="let harvestreport of harvestreports |  slice:0:5">
+          <ion-label item-start>{{harvestreport.name}}</ion-label>
+          <ion-label item-end>{{harvestreport.created_ts|date:"dd/MM/yy"}}</ion-label>
+          <ion-badge item-end class="bgColor-white fontColor-grey reportLabelValue">{{harvestreport.bunch_count}}</ion-badge>
+        </ion-item>
+      </ion-card>
+    </div>
+
+    <div class="col5">
+      <ion-card>
+        <ion-row>
+          <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark posRelative">
+            Mandor
+
+            <div class="fontColor-grey btnStyle3 paddingZero marginZero" (click)="mandorlist()">
+              <ion-icon name="ios-list"></ion-icon>
+            </div>
+
+          </ion-card-header>
+        </ion-row>
+        <ion-item class="bgColor-lightGrey">
+          <ion-label>Mandor</ion-label>
+          <ion-label class="textRight" item-end>Lorry</ion-label>
+          <ion-label class="textRight" item-end>Bunches</ion-label>
+        </ion-item>
+        <ion-item class="reportItemRow" *ngFor="let mandorreport of mandorreports |  slice:0:5">
+          <ion-label item-start>{{mandorreport.mandor}}</ion-label>
+          <ion-label item-end>{{mandorreport.lorry}}</ion-label>
+          <ion-badge item-end class="bgColor-white fontColor-grey reportLabelValue">{{mandorreport.bunch_count}}</ion-badge>
+        </ion-item>
+      </ion-card>
+    </div>
+
+    <div class="col5">
+      <ion-card>
+        <ion-row>
+          <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark posRelative">
+            Factory
+
+            <div class="fontColor-grey btnStyle3 paddingZero marginZero" (click)="factorylist()">
+              <ion-icon name="ios-list"></ion-icon>
+            </div>
+
+          </ion-card-header>
+        </ion-row>
+        <ion-item class="bgColor-lightGrey">
+          <ion-label>Lorry</ion-label>
+          <ion-label class="textRight" item-end>Location</ion-label>
+          <ion-label class="textRight" item-end>Bunches</ion-label>
+        </ion-item>
+        <ion-item class="reportItemRow" *ngFor="let factoryreport of factoryreports |  slice:0:5">
+          <ion-label item-start>{{factoryreport.lorry}}</ion-label>
+          <ion-label item-end>{{factoryreport.location}}</ion-label>
+          <ion-badge item-end class="bgColor-white fontColor-grey reportLabelValue">{{factoryreport.bunch_count}}</ion-badge>
+        </ion-item>
+      </ion-card>
+    </div>-->
+
+  </div>
+
+
+  <div class="col6">
+    <ion-card>
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark posRelative">
+          Reconciliation Status
+
+          <div class="fontColor-grey btnStyle3 paddingZero marginZero" (click)="ViewReconciliation()">
+            <ion-icon name="ios-redo"></ion-icon>
+          </div>
+        </ion-card-header>
+      </ion-row>
+      <!--<ion-grid>-->
+
+      <ion-item>
+        <ion-row class="reportItemRow2" *ngFor="let item_ReconciliationReport of item_ReconciliationReports | slice:0:10;let i = index">
+
+          <div class="col4">
+            <ion-item>
+              <ion-icon name="ios-checkmark-circle" *ngIf="item_ReconciliationReport.resolved==null" item-start class="fontColor-red"></ion-icon>
+              <ion-icon name="ios-checkmark-circle" *ngIf="item_ReconciliationReport.resolved==0" item-start class="fontColor-red"></ion-icon>
+              <ion-icon name="ios-checkmark-circle" *ngIf="item_ReconciliationReport.resolved==1" item-start class="fontColor-yellow"></ion-icon>
+              <ion-icon name="ios-checkmark-circle" *ngIf="item_ReconciliationReport.resolved==2" item-start class="fontColor-red"></ion-icon>
+
+              <div>
+                <div class="reconReportInfoRow">
+                  <div class="reconReportIcon">
+                    <ion-icon item-start name="ios-pin" class="fontColor-green marginZero"></ion-icon>
+                  </div>
+                  <div class="reconReportValue fontColor-grey">{{item_ReconciliationReport.Location}}</div>
+                </div>
+                <div class="reconReportInfoRow">
+                  <div class="reconReportIcon">
+                    <ion-icon item-start name="ios-home" class="fontColor-yellow marginZero"></ion-icon>
+                  </div>
+                  <div class="reconReportValue fontColor-grey">N/A</div>
+                </div>
+              </div>
+            </ion-item>
+
+          </div>
+
+          <div class="col6">
+
+            <div class="reconReportCard">
+              <div class="reconReportCardLeft bgColor-red fontColor-white">
+                <ion-icon item-start name="md-log-in" class="marginZero paddingZero"></ion-icon>
+              </div>
+              <div class="reconReportCardRight">
+                <ion-card-header class="reconReportCardHeader">
+                  {{item_ReconciliationReport.unbunch_ts | date: 'dd/MM/yyyy'}}
+                </ion-card-header>
+                <ion-card-content class="reconReportCardContent fontColor-red">
+                  {{item_ReconciliationReport.unload_count}}
+                </ion-card-content>
+              </div>
+            </div>
+
+            <div class="reconReportCard">
+              <div class="reconReportCardLeft bgColor-green fontColor-white">
+                <ion-icon item-start name="ios-basket-outline" class="marginZero paddingZero"></ion-icon>
+              </div>
+              <div class="reconReportCardRight">
+                <ion-card-header class="reconReportCardHeader">
+                  {{item_ReconciliationReport.bunch_ts | date: 'dd/MM/yyyy'}}
+                </ion-card-header>
+                <ion-card-content class="reconReportCardContent fontColor-green">
+                  {{item_ReconciliationReport.load_count}}
+                </ion-card-content>
+              </div>
+            </div>
+
+          </div>
+
+        </ion-row>
+      </ion-item>
+
+
+      <!--</ion-grid>-->
+    </ion-card>
+  </div>
+
+
+</ion-content>

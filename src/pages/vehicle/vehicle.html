@@ -2,8 +2,8 @@
 
   <!--form start-->
   <div class="col2">
-    <button class="btnColor-blue cb10 posRelative portletStyle2" full (click)="vehicleRegisterClick()">
-      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-blue" item-start></ion-icon>
+    <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="vehicleRegisterClick()">
+      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
       <div class="portletColStyle2">
         <div class="portletHeaderStyle2">{{"REGISTER_NEW_VEHICLE" | translate}}</div>
       </div>
@@ -11,12 +11,12 @@
 
     <ion-card class="cb10">
       <ion-row>
-        <ion-card-header class="fullWidth graphHeaderStyleBlue fontColor-dark">
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
           {{"TOTAL_VEHICLE" | translate}}
         </ion-card-header>
       </ion-row>
       <ion-card-content>
-        <div class="graphContentStyle2 fontColor-blue">127</div>
+        <div class="graphContentStyle2 fontColor-green">127</div>
         <ion-item class="fontColor-grey">
           {{"ACTIVE" | translate}}
           <ion-badge item-end class="bgColor-green">109</ion-badge>
@@ -39,22 +39,22 @@
   <!--form end-->
 
   <!--listing start-->
-  <div class="col4">
+  <div class="col5">
 
     <ion-card class="cb10">
 
       <ion-row>
-        <ion-card-header class="fullWidth graphHeaderStyleBlue fontColor-dark">
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
           {{"VEHICLE" | translate}}
         </ion-card-header>
       </ion-row>
 
       <ion-row>
-        <ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
+           <ion-searchbar type="text" #filter (keyup)="0" placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
       </ion-row>
 
       <ion-list>
-        <ion-item *ngFor="let vehicle of vehicles" class="tnUserRow">
+        <ion-item *ngFor="let vehicle of (vehicles | filtervehicle: filter.value : 'name');" class="tnUserRow">
           <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
           <ion-label class="fontColor-dark">{{vehicle.registration_no}}</ion-label>
           <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(vehicle.vehicle_GUID)"><ion-icon name="md-eye"></ion-icon></button>
@@ -70,7 +70,7 @@
   <!--listing end-->
 
   <!--location listing start-->
-  <div class="col4">
+  <!--<div class="col4">
     <ion-card class="cb10">
 
       <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
@@ -91,27 +91,82 @@
         </ion-item>
       </ion-list>
 
-      <!--<ion-list>
-        <ion-item>
-          <ion-label>option 1</ion-label>
+    </ion-card>
+  </div>-->
+  <!--vehicle listing end-->
+
+<!--Profile start-->
+  <div class="col3">
+    <ion-card class="cb10">
+
+      <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
+        {{vehicle.registration_no}}
+        <button class="posAbsolute fullHeight topZero rightZero btnStyle2 bgColor-darkBlue" (click)="addLocationClick()">
+        <ion-icon name="md-add"></ion-icon>
+      </button>
+      </ion-card-header>
+
+      <div [ngSwitch]="userInfo">
+        <ion-list *ngSwitchDefault>
+          <ion-card-content>
+            <div class="">
+              <div class="infoLabel bgColor-lightGrey floatLeft">{{"BRAND" | translate}}</div>
+              <div class="infoText">{{vehicle.make}}</div>
+            </div>
+
+            <div class="">
+              <div class="infoLabel bgColor-lightGrey floatLeft">{{"MODEL" | translate}}</div>
+              <div class="infoText">{{vehicle.model}}</div>
+            </div>
+
+            <div class="">
+              <div class="infoLabel bgColor-lightGrey floatLeft">{{"YEAR" | translate}}</div>
+              <div class="infoText">{{vehicle.manufacturing_year}}</div>
+            </div>
+
+            <div class="">
+              <div class="infoLabel bgColor-lightGrey floatLeft">{{"CAPACITY" | translate}}</div>
+              <div class="infoText">{{vehicle.capacity_tonne}}</div>
+            </div>
+
+            <div class="">
+              <div class="infoLabel bgColor-lightGrey floatLeft">{{"DESCRIPTION" | translate}}</div>
+              <div class="infoText">{{vehicle.description}}</div>
+            </div>
+
+          </ion-card-content>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Location'">
+
+          <ion-row>
+            <ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
+          </ion-row>
+
+          <ion-item *ngFor="let get_selectlocation of get_selectlocations">
+          <ion-label>{{get_selectlocation.name}}</ion-label>
           <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
         </ion-item>
 
-        <ion-item>
-          <ion-label>option 2</ion-label>
-          <ion-icon name="ios-close-circle" item-end class="fontColor-red"></ion-icon>
-        </ion-item>
+        </ion-list>
 
-        <ion-item>
-          <ion-label>option 3</ion-label>
-          <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
-        </ion-item>
-      </ion-list>-->
+      </div>
+
+      <ion-row>
+        <ion-segment [(ngModel)]="userInfo" [ngModelOptions]="{standalone:true}" color="primary">
+          <ion-segment-button value="Info" isActive>
+            {{"INFO" | translate}}
+          </ion-segment-button>
+          <ion-segment-button value="Location">
+            {{"LOCATION" | translate}}
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
 
     </ion-card>
-    <!--</form>-->
   </div>
-  <!--vehicle listing end-->
+  <!--Profile end-->
+
 
   <!--edit form start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="vehicleEditClicked">
