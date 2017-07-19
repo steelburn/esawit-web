@@ -98,7 +98,7 @@ export class DriverPage {
 
             //fullname: ['', Validators.compose([Validators.maxLength(10),Validators.minLength(5), Validators.pattern('[a-zA-Z ]*'), Validators.required])],        
             driver_GUID: [UUID.UUID()],
-            fullname: '',
+            fullname: ['', Validators.compose([Validators.maxLength(4), Validators.pattern('[a-zA-Z ]*'), Validators.required])] ,
             identification_type: '',
             identification_no: '',
             address1: '',
