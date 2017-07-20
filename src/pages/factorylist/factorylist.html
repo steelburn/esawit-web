@@ -1,22 +1,22 @@
 <ion-content padding class="contentMarginTop">
   <div class="col12">
     <ion-card>
-          <ion-row>
-            <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
-              Factory
-            </ion-card-header>
-          </ion-row>
-         <ion-item class="bgColor-lightGrey">
-            <ion-label>Lorry</ion-label>
-            <ion-label class="textRight" item-end>Location</ion-label>
-            <ion-label class="textRight" item-end>Bunches</ion-label>
-          </ion-item>
-          <ion-item *ngFor="let factoryreport of factoryreports">
-            <!--<ion-badge class="bgColor-red" item-start>1</ion-badge>-->
-            <ion-label item-start>{{factoryreport.lorry}}</ion-label>
-            <ion-label item-end>{{factoryreport.location}}</ion-label>
-            <ion-badge item-end class="bgColor-yellow">{{factoryreport.bunch_count}}</ion-badge>
-          </ion-item>        
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
+          Factory
+        </ion-card-header>
+      </ion-row>
+      <ion-item class="bgColor-lightGrey">
+        <ion-label>Lorry</ion-label>
+        <ion-label class="textRight" item-end>Location</ion-label>
+        <ion-label class="textRight" item-end>Bunches</ion-label>
+      </ion-item>
+      <ion-item *ngFor="let factoryreport of factoryreports">
+        <!--<ion-badge class="bgColor-red" item-start>1</ion-badge>-->
+        <ion-label item-start>{{factoryreport.lorry}}</ion-label>
+        <ion-label item-end>{{factoryreport.location}}</ion-label>
+        <ion-badge item-end class="bgColor-white fontColor-grey reportLabelValue">{{factoryreport.bunch_count}}</ion-badge>
+      </ion-item>
     </ion-card>
-  </div>   
+  </div>
 </ion-content>

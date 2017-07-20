@@ -2,8 +2,8 @@
 
   <!--form start-->
   <div class="col2">
-    <button class="btnColor-purple cb10 posRelative portletStyle2" full (click)="locationRegisterClick()">
-      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-purple" item-start></ion-icon>
+    <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="locationRegisterClick()">
+      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
       <div class="portletColStyle2">
         <div class="portletHeaderStyle2">{{"REGISTER_NEW_LOCATION" | translate}}</div>
       </div>
@@ -12,12 +12,12 @@
     <ion-card class="cb10">
       <ion-row>
 
-        <ion-card-header class="fullWidth graphHeaderStylePurple fontColor-dark">
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
           {{"TOTAL_LOCATION" | translate}}
         </ion-card-header>
       </ion-row>
       <ion-card-content>
-        <div class="graphContentStyle2 fontColor-purple">127</div>
+        <div class="graphContentStyle2 fontColor-grey">127</div>
         <ion-item class="fontColor-grey">
           {{"ACTIVE" | translate}}
           <ion-badge item-end class="bgColor-green">109</ion-badge>
@@ -39,23 +39,25 @@
   <!--form end-->
 
   <!--listing start-->
-  <div class="col4">
+  <div class="col5">
 
     <ion-card class="cb10">
 
       <ion-row>
-        <ion-card-header class="fullWidth graphHeaderStylePurple fontColor-dark">
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
           {{"LOCATION" | translate}}
         </ion-card-header>
       </ion-row>
 
       <ion-row>
+
         <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by Location Name"></ion-searchbar>
 
       </ion-row>
 
       <ion-list>
         <ion-item *ngFor="let location of (locations| filtervehicle: filter.value : 'name');let i = index" class="tnUserRow">
+
           <ion-toggle *ngIf="location.active==0" checked="false" color="secondary" item-start (ionChange)="Deactive_Location(location)"></ion-toggle>
           <ion-toggle *ngIf="location.active==null" checked="false" color="secondary" item-start (ionChange)="Deactive_Location(location)"></ion-toggle>
           <ion-toggle *ngIf="location.active==1" checked="true" color="secondary" (ionChange)="Deactive_Location(location)" item-start></ion-toggle>
@@ -73,7 +75,7 @@
   <!--listing end-->
 
   <!--vehicle listing start-->
-  <div class="col4">
+  <div class="col3">
     <ion-card class="cb10">
 
       <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
@@ -84,7 +86,7 @@
       </ion-card-header>
 
       <ion-row>
-        <ion-searchbar></ion-searchbar>
+        <ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
       </ion-row>
 
       <ion-list>
@@ -166,7 +168,7 @@
         <ion-list class="overflowTrue contentHeight">
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"LOCATION" | translate}}</ion-label>
-            <ion-input type="text" class="editInput" formControlName="locationname" [(ngModel)]="location_entry.name" placeholder="Location name"></ion-input>
+            <ion-input type="text" class="editInput" formControlName="locationname" [(ngModel)]="location_entry.name" placeholder="{{'FORM_LOCATION_NAME' | translate}}"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label class="fontColor-yellow">{{"ACTIVE" | translate}}</ion-label>
