@@ -45,6 +45,8 @@ export class UserPage {
     UserEditform: FormGroup; User: User = new User();
     user: User = new User();
     public users: User[] = [];
+    Active_Deactive_user: User = new User();
+
 
     @ViewChild('driverDoughnutCanvas') driverDoughnutCanvas;
     driverDoughnutChart: any;
@@ -71,6 +73,31 @@ export class UserPage {
 
             this.fillChart_items();
     }
+
+  Deactive_user(data) 
+  {
+   
+    if(data.active==0 || data.active==null)
+    {
+      this.Active_Deactive_user.active = 1;
+    }
+    if(data.active==1)
+    {
+      this.Active_Deactive_user.active = 0;
+    }
+    this.Active_Deactive_user.userID = data.userID;
+    this.Active_Deactive_user.user_GUID = data.user_GUID;
+    this.Active_Deactive_user.tenant_GUID = data.tenant_GUID;
+    this.Active_Deactive_user.fullname = data.fullname;
+    
+    var self = this;
+    this.userservice.Deactive_User(this.Active_Deactive_user)
+      .subscribe((response) => 
+      {
+        console.log(response);
+      })
+
+  }
 
     save() {
         if (this.Userform.valid) {

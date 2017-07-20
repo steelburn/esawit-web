@@ -74,5 +74,7 @@
   "FORM_DESCRIPTION": "Description are optional",
   "FORM_EMPLOYEMENT_TYPE": "Please select employment type",
   "FORM_LOCATION_NAME": "Please insert location name",
-  "SEARCH": "Search"
+  "SEARCH": "Search",
+  "SEARCH_LOCATION": "Search by location",
+  "SEARCH_VEHICLE": "Search by vehicle"
 }

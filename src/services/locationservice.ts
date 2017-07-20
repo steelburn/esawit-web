@@ -28,7 +28,7 @@ export class LocationService
 	baseResource_Url: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/';
 
 	baseResourceUrl_mastervehicle: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/master_vehicle';
-		baseResourceUrl_vehicle_location: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/vehicle_location';
+	baseResourceUrl_vehicle_location: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/vehicle_location';
 
 	constructor(private httpService: BaseHttpService, private nav: NavController) {};
 
@@ -183,5 +183,24 @@ export class LocationService
 			}).catch(this.handleError);
 	};
 	
+	Deactive_Location (locationmodel: LocationModel) 
+	{
+		console.log(locationmodel);
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+    	
+    	let options = new RequestOptions({ headers: queryHeaders });
+
+		if (locationmodel.ID) 
+		{
+			return this.httpService.http.patch(this.baseResourceUrl, locationmodel.toJson(true),options)
+			.map((data) => {
+				return data;
+			});
+		} 
+	}
+
 
 }

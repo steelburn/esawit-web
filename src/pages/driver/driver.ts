@@ -15,6 +15,7 @@ import { VEHICLEDRIVER_MODEL } from '../../models/vehicle';
 import { FormControlDirective, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { UUID } from 'angular2-uuid';
 
+import {ValidationService} from '../../services/validation';
 
 @IonicPage()
 @Component({
@@ -68,11 +69,10 @@ export class DriverPage {
 
     driverDoughnutChart: any;
 
-    constructor(private fb: FormBuilder, @Inject(FormBuilder) fb2: FormBuilder, private driverservice: DriverService,
-        private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) {
+    constructor(private fb: FormBuilder, @Inject(FormBuilder) fb2: FormBuilder, private driverservice: DriverService,private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) {
+        
         this.searchControl = new FormControl(); this.GenerateToken();
-        this.DriverEditform = fb.group
-            ({
+        this.DriverEditform = fb.group({
 
                 fullname: '',
                 driver_GUID: '',
@@ -92,20 +92,31 @@ export class DriverPage {
 
             });
 
-        this.driver_entry.driver_GUID = UUID.UUID(); this.driver_entry.tenant_GUID = UUID.UUID();
+        this.driver_entry.driver_GUID = UUID.UUID(); 
+        this.driver_entry.tenant_GUID = UUID.UUID();
         //this.GenerateToken();
+        
         this.Driverform = fb2.group({
 
-            //fullname: ['', Validators.compose([Validators.maxLength(10),Validators.minLength(5), Validators.pattern('[a-zA-Z ]*'), Validators.required])],        
-            driver_GUID: [UUID.UUID()],
-            fullname: ['', Validators.compose([Validators.maxLength(4), Validators.pattern('[a-zA-Z ]*'), Validators.required])] ,
+    driver_GUID: [UUID.UUID()],
+            fullname: ['', Validators.compose([
+                Validators.pattern('[a-zA-Z]*'),
+                Validators.minLength(5), 
+                Validators.required
+            ])],
             identification_type: '',
             identification_no: '',
             address1: '',
             address2: '',
             address3: '',
-            phone_no: '',
-            email: '',
+            phone_no: ['', Validators.compose([
+                Validators.required, 
+                Validators.pattern('^[0-9_.+-]*')
+            ])],
+            email: ['', Validators.compose([
+                Validators.required, 
+                Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+            ])] ,
             license_no: '',
             employment_type: '',
             description: '',
@@ -115,7 +126,8 @@ export class DriverPage {
 
 
         this.AvailableVehicleform = fb.group({ availablevehicles: '' });
-        this.getList(); this.fillChart_items();
+        this.getList(); 
+        this.fillChart_items();
         //this.getVehicleList();
 
     }
@@ -186,7 +198,7 @@ export class DriverPage {
         var index_num = this.get_selectvehicles.findIndex(x => x.vehicle_Gid == getselectvehicle.vehicle_Gid);
         console.log("NUM IS " + index_num);
         this.get_selectvehicles.splice(index_num, 1);
-
+        
         this.getvehicles.push(new GETVEHICLE2(getselectvehicle.vehicle_GUID, getselectvehicle.registration_no));
     }
     //#endregion
@@ -216,6 +228,7 @@ export class DriverPage {
         this.driver.license_no = last_element.license_no;
         this.driver.employment_type = last_element.employment_type;
     }
+
     filterItems(searchTerm) {
         if (searchTerm != '') {
             return this.drivers.filter((driver) => {
@@ -230,8 +243,6 @@ export class DriverPage {
         }
     }
     //#endregion
-
-
 
     getList() {
         let self = this;
@@ -253,7 +264,6 @@ export class DriverPage {
         console.log(last_element);
         this.View(last_element.driver_GUID);
     }
-
 
     getVehicleList() {
         let self = this;
@@ -311,7 +321,6 @@ export class DriverPage {
 
     //this.getVehicleList();
 
-
     //#region Remove Driver
     remove(driver_GUID) {
         //alert(driver_GUID);
@@ -327,8 +336,7 @@ export class DriverPage {
     }
     //#endregion
 
-    fillChart_items() 
-    {
+    fillChart_items() {
         let self = this; let chart_label_items = []; 
         let chart_label_data = []; let chart_label_color = [];
         let chart_backgroundcolor=[];let chart_hovercolor=[];
