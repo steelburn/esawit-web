@@ -69,8 +69,8 @@ export class MyApp {
     this.pages = [
       { title: 'Login', component: LoginPage },
       // { title: 'Home', component: HomePage },
-      { title: 'Home', component: LandingV1Page }
-      // { title: 'Landing V3', component: LandingV3Page },
+      { title: 'Home', component: LandingV1Page },
+      { title: 'Landing V3', component: LandingV3Page }
       // { title: 'Component Demo', component: LandingV2Page },
       // { title: 'Tabs', component: TabsPage }
     ];
@@ -78,7 +78,8 @@ export class MyApp {
     this.reportingPages = [
       // { title: 'Report', component: ReportsPage },
       { title: 'Vehicle Transaction', component: VehicleTransactionPage },
-      {title: 'Reconciliation', component: ReconciliationPage}
+      { title: 'Reconciliation', component: ReconciliationPage},
+      { title: 'Driver Info', component: DriverInfoPage }
     ];
 
     this.processPages = [
@@ -86,7 +87,6 @@ export class MyApp {
       { title: 'Location', component: TabsPage, pid: 1 },
       { title: 'User', component: TabsPage, pid: 2 },
       { title: 'Vehicle', component: TabsPage, pid: 3 }
-      // { title: 'Module', component: ModulePage },
       // { title: 'Role', component: RolePage },
       // { title: 'Sector', component: SectorPage },
       // { title: 'Tenant', component: TenantPage }
