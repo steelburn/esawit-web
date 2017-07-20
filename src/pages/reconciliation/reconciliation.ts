@@ -50,22 +50,20 @@ export class ReconciliationPage {
       });
   }
 
-  UpdateInfo(data) {
-    let addModal = this.modalCtrl.create(ReconciliationupdatePage, { ID: data.ID });
-    addModal.onDidDismiss(item => {
-      if (item) {
-        this.items.add(item);
-      }
-    })
-    addModal.present();
+  UpdateInfo(data) 
+  {
+    var ID = data.ID;
+    if (ID != null) {
+      //console.log(ID);
+      //alert(ID);
+      let addModal = this.modalCtrl.create(ReconciliationupdatePage, { ID: data.ID });
+      addModal.onDidDismiss(item => {
+        if (item) {
+          this.items.add(item);
+        }
+      })
+      addModal.present();
+    }
   }
 
-
-  Viewlanding() {
-    this.navCtrl.push(LandingV1Page);
-  }
-  
-  public print = (): void => {
-  window.print();
-  } 
 }

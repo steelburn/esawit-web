@@ -15,6 +15,7 @@ import { VEHICLEDRIVER_MODEL } from '../../models/vehicle';
 import { FormControlDirective, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { UUID } from 'angular2-uuid';
 
+import {ValidationService} from '../../services/validation';
 
 @IonicPage()
 @Component({
@@ -96,6 +97,7 @@ export class DriverPage {
         //this.GenerateToken();
         
         this.Driverform = fb2.group({
+
     driver_GUID: [UUID.UUID()],
             fullname: ['', Validators.compose([
                 Validators.pattern('[a-zA-Z]*'),
