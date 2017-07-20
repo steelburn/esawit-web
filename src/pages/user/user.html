@@ -124,7 +124,7 @@
             <ion-label class="fontColor-dark">{{user.fullname}}</ion-label>
             <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(user.user_GUID)"><ion-icon name="md-eye"></ion-icon></button>
             <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="userEditClick()"><ion-icon name="ios-create"></ion-icon></button>
-            <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red" (click)="remove(user.user_GUID)"><ion-icon name="md-close"></ion-icon></button>
+            <!--<button ion-button color="danger" item-end class=" btnStyle1 bgColor-red" (click)="remove(user.user_GUID)"><ion-icon name="md-close"></ion-icon></button>-->
           </ion-item>
         </ion-list>
       </ion-card-content>
@@ -253,44 +253,44 @@
 
   <!--edit User form start-->
 
-  <!--<div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="userEditClicked">
+  <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="userEditClicked">
 
     <ion-card class="fb4 marginCenter popupFormCard">
 
       <ion-card-header class="icTitle headerColor-white posRelative">
         <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
-        <div class="icHeaderText">{{"UPDATE_USER" | translate}} (<b>{{driver.fullname}}</b>)</div>
+        <div class="icHeaderText">{{"UPDATE_USER" | translate}} (<b>{{user.fullname}}</b>)</div>
         <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="userEditClick()">
           <ion-icon name="md-close"></ion-icon> 
         </button>
       </ion-card-header>
 
       <ion-list class="overflowTrue contentHeight">
-        <form [formGroup]="Driverform">
+        <form [formGroup]="Userform">
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"FULLNAME" | translate}}</ion-label>
-            <ion-input type="text" formControlName="fullname" [(ngModel)]="driver_entry.fullname" class="editInput" placeholder="{{'FORM_FULLNAME' | translate}}"></ion-input>
+            <ion-input type="text" formControlName="fullname" [(ngModel)]="user.fullname" class="editInput" placeholder="{{'FORM_FULLNAME' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"PASSWORD" | translate}}</ion-label>
-            <ion-input type="text" formControlName="fullname" [(ngModel)]="driver_entry.fullname" class="editInput" placeholder="{{'FORM_PASSWORD' | translate}}"></ion-input>
+            <ion-input type="password" formControlName="password" [(ngModel)]="user.password" class="editInput" placeholder="{{'FORM_PASSWORD' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 1</ion-label>
-            <ion-input type="text" formControlName="address1" [(ngModel)]="driver_entry.address1" class="editInput" placeholder="{{'FORM_ADDRESS_1' | translate}}"></ion-input>
+            <ion-input type="text" formControlName="address1" [(ngModel)]="user.address1" class="editInput" placeholder="{{'FORM_ADDRESS_1' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 2</ion-label>
-            <ion-input type="text" formControlName="address2" [(ngModel)]="driver_entry.address2" class="editInput" placeholder="{{'FORM_ADDRESS_2' | translate}}"></ion-input>
+            <ion-input type="text" formControlName="address2" [(ngModel)]="user.address2" class="editInput" placeholder="{{'FORM_ADDRESS_2' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label class="fontColor-green" stacked>{{"ROLE" | translate}}</ion-label>
-            <ion-select formControlName="employment_type" [(ngModel)]="driver_entry.employment_type" class="editInput" interface="popover"
+            <ion-label class="fontColor-green" stacked>{{"IMEI" | translate}}</ion-label>
+            <ion-select class="editInput" interface="popover"
               placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
               <ion-option value="0">N/A</ion-option>
               <ion-option value="1">{{"ADMINISTRATOR" | translate}}</ion-option>
@@ -301,21 +301,16 @@
             </ion-select>
           </ion-item>
 
-          <ion-item>
-            <ion-label class="fontColor-yellow" stacked>{{"ACTIVE" | translate}} </ion-label>
-            <ion-toggle formControlName="active" checked="false" [(ngModel)]="driver_entry.active" color="secondary"></ion-toggle>
-          </ion-item>
-
           </form>
 
       </ion-list>
 
       <ion-card-content>
-        <button ion-button full class="bgColor-grey fontColor-white btnStyle1" [disabled]="!Driverform.valid" (click)="save()">{{"UPDATE" | translate}}</button>
+        <button ion-button full class="bgColor-grey fontColor-white btnStyle1" [disabled]="" (click)="save()">{{"UPDATE" | translate}}</button>
       </ion-card-content>
 
     </ion-card>
-  </div>-->
+  </div>
 
   <!--edit User form end-->
 
