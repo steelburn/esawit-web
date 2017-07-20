@@ -22,7 +22,7 @@
         <ion-item>
           <canvas #driverDoughnutCanvas></canvas>
         </ion-item>
-         <ion-item>
+        <ion-item>
           <ion-row *ngFor="let driverchart of drivercharts">
             <ion-item *ngIf="driverchart.Employment==1" class="graphLabelStyle1 fontColor-grey">
               {{"TEMPORARY" | translate}}
@@ -46,7 +46,7 @@
               {{"PROBATION" | translate}}
               <ion-badge item-end class="bgColor-red">{{driverchart.TOTAL}}</ion-badge>
             </ion-item>
-          </ion-row>     
+          </ion-row>
         </ion-item>
         <!--<ion-item class="graphLabelStyle1 fontColor-grey">
           {{"PERMANENT" | translate}}
@@ -83,7 +83,10 @@
         <ion-list>
           <ion-item *ngFor="let user of (users| filteruser: filter.value : 'name');" class="tnUserRow">
 
-            <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
+            <ion-toggle *ngIf="user.active==0" checked="false" color="secondary" item-start (ionChange)="Deactive_user(user)"></ion-toggle>
+            <ion-toggle *ngIf="user.active==null" checked="false" color="secondary" item-start (ionChange)="Deactive_user(user)"></ion-toggle>
+            <ion-toggle *ngIf="user.active==1" checked="true" color="secondary" (ionChange)="Deactive_user(user)" item-start></ion-toggle>
+
             <ion-label class="fontColor-dark">{{user.fullname}}</ion-label>
             <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(user.user_GUID)"><ion-icon name="md-eye"></ion-icon></button>
             <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="userEditClick()"><ion-icon name="ios-create"></ion-icon></button>
@@ -112,22 +115,22 @@
         </div>
       </ion-card-content>-->
 
-       <ion-card-content>
-            <div class="">
-              <div class="infoLabel bgColor-red floatLeft">{{"ADDRESS" | translate}}</div>
-              <div class="infoText">{{user.address1}}<br/> {{user.address2}}
-                <br/> {{user.address3}}
-                <br/>
-              </div>
-            </div>
+      <ion-card-content>
+        <div class="">
+          <div class="infoLabel bgColor-red floatLeft">{{"ADDRESS" | translate}}</div>
+          <div class="infoText">{{user.address1}}<br/> {{user.address2}}
+            <br/> {{user.address3}}
+            <br/>
+          </div>
+        </div>
 
-      
-            <div class="">
-              <div class="infoLabel bgColor-green floatLeft">{{"EMAIL" | translate}}</div>
-              <div class="infoText">{{user.email}}</div>
-            </div>
 
-          </ion-card-content>
+        <div class="">
+          <div class="infoLabel bgColor-green floatLeft">{{"EMAIL" | translate}}</div>
+          <div class="infoText">{{user.email}}</div>
+        </div>
+
+      </ion-card-content>
 
     </ion-card>
   </div>

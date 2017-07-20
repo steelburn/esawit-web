@@ -50,13 +50,16 @@
       </ion-row>
 
       <ion-row>
-       <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by Location Name"></ion-searchbar>
-        
+        <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by Location Name"></ion-searchbar>
+
       </ion-row>
 
       <ion-list>
         <ion-item *ngFor="let location of (locations| filtervehicle: filter.value : 'name');let i = index" class="tnUserRow">
-          <ion-toggle checked="true" color="secondary" item-start></ion-toggle>
+          <ion-toggle *ngIf="location.active==0" checked="false" color="secondary" item-start (ionChange)="Deactive_Location(location)"></ion-toggle>
+          <ion-toggle *ngIf="location.active==null" checked="false" color="secondary" item-start (ionChange)="Deactive_Location(location)"></ion-toggle>
+          <ion-toggle *ngIf="location.active==1" checked="true" color="secondary" (ionChange)="Deactive_Location(location)" item-start></ion-toggle>
+
           <ion-label class="fontColor-dark">{{location.name}}</ion-label>
           <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(location.location_GUID,i)"><ion-icon name="md-eye"></ion-icon></button>
           <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="locationEditClick(location.location_GUID)"><ion-icon name="ios-create"></ion-icon></button>
@@ -208,7 +211,7 @@
               <ion-label>{{getvehicle.registration_no}}</ion-label>
               <!--<ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>-->
               <ion-checkbox color="secondary" checked="false" (ionChange)="AvailableSelection($event,getvehicle)" item-end></ion-checkbox>
-            </ion-item>           
+            </ion-item>
           </ion-list>
         </div>
       </ion-card>
@@ -226,9 +229,9 @@
             <ion-item *ngFor="let get_selectvehicle of get_selectvehicles">
               <ion-label>{{get_selectvehicle.registration_no}}</ion-label>
               <!--<ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>-->
-                            <ion-checkbox color="secondary" checked="false" (ionChange)="RemoveSelection($event,get_selectvehicle)" item-end></ion-checkbox>
+              <ion-checkbox color="secondary" checked="false" (ionChange)="RemoveSelection($event,get_selectvehicle)" item-end></ion-checkbox>
 
-            </ion-item>           
+            </ion-item>
           </ion-list>
         </div>
 

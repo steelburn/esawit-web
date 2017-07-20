@@ -28,8 +28,8 @@ export class LocationPage {
   Locationform: FormGroup;
   location_entry: LocationModel = new LocationModel();
   location: LocationModel = new LocationModel();
-  
-      location_vehicle: LOCATION_VEHICLE_MODEL = new LOCATION_VEHICLE_MODEL();
+  Active_Deactive_location: LocationModel = new LocationModel();
+  location_vehicle: LOCATION_VEHICLE_MODEL = new LOCATION_VEHICLE_MODEL();
 
 
   public locations: LocationModel[] = [];
@@ -81,19 +81,45 @@ export class LocationPage {
     self.location_service.get_locationss(params)
       .subscribe((locations: LocationModel[]) => {
         self.locations = locations;
-        console.log(locations); 
+        console.log(locations);
         this.FillTopRecordView(0);
       });
   }
 
-  FillTopRecordView(_row: number) 
-  {
+  FillTopRecordView(_row: number) {
 
     var last_element = this.locations[_row];
     console.log(last_element);
     //this.location.name = last_element.name;
     this.location.location_GUID = last_element.location_GUID;
-    this.View(this.location.location_GUID,_row);
+    this.View(this.location.location_GUID, _row);
+  }
+
+  Deactive_Location(data) 
+  {
+    if(data.active==0 || data.active==null)
+    {
+      this.Active_Deactive_location.active = 1;
+    }
+    if(data.active==1)
+    {
+      this.Active_Deactive_location.active = 0;
+    }
+    this.Active_Deactive_location.ID = data.ID;
+    this.Active_Deactive_location.name = data.name;
+    this.Active_Deactive_location.location_GUID = data.location_GUID;
+    this.Active_Deactive_location.tenant_GUID = data.tenant_GUID;
+    
+    var self = this;
+    this.location_service.Deactive_Location(this.Active_Deactive_location)
+      .subscribe((response) => {
+        console.log(response);
+      })
+
+  }
+  Activate_Location(data) 
+  {
+
   }
 
   //#region View Driver Info
@@ -107,12 +133,11 @@ export class LocationPage {
     self2.location_service.getVehicles_bylocation2(location_GUID, params)
       .subscribe((get_selectvehicles: GETLOCATION[]) => {
         self2.get_selectvehicles = get_selectvehicles;
-        this.GetAvailableVehicles(location_GUID,_row);
+        this.GetAvailableVehicles(location_GUID, _row);
       });
   }
 
-  GetAvailableVehicles(location_GUID,_row) 
-  {
+  GetAvailableVehicles(location_GUID, _row) {
     //Get Available Vehicles
     let self_GetAllVehicles = this;
     let params: URLSearchParams = new URLSearchParams();
@@ -124,15 +149,15 @@ export class LocationPage {
   }
 
   vehiclesby_locations() {
-        for (var _i = 0; _i < this.get_selectvehicles.length; _i++) {
-            var item = this.get_selectvehicles[_i].registration_no;
-            if (item != null) {
+    for (var _i = 0; _i < this.get_selectvehicles.length; _i++) {
+      var item = this.get_selectvehicles[_i].registration_no;
+      if (item != null) {
 
-                var index_num = this.getvehicles.findIndex(x => x.registration_no == item);
-                this.getvehicles.splice(index_num, 1);
-            }
-        }
+        var index_num = this.getvehicles.findIndex(x => x.registration_no == item);
+        this.getvehicles.splice(index_num, 1);
+      }
     }
+  }
 
   //#endregion
 
@@ -142,26 +167,25 @@ export class LocationPage {
     console.log(getvehicle.vehicle_GUID);
     console.log(getvehicle.registration_no);
 
-    
+
 
     var index_num = this.getvehicles.findIndex(x => x.vehicle_GUID == getvehicle.vehicle_GUID);
     console.log("NUM IS " + index_num);
     this.getvehicles.splice(index_num, 1);
-    
-     this.location_vehicle.ID = 0,
-            this.location_vehicle.location_GUID = this.current_location_GUID,
-            this.location_vehicle.vehicle_GUID = getvehicle.vehicle_GUID
 
-        this.location_service.save_LocationVehicle(this.location_vehicle)
-            .subscribe((response) => {
-                if (response.status == 200) 
-                {
-                    //this.View(this.current_driverGUID);
-                    alert('Location Vehicle Reqistered successfully');
-                    //location.reload();
-                }
+    this.location_vehicle.ID = 0,
+      this.location_vehicle.location_GUID = this.current_location_GUID,
+      this.location_vehicle.vehicle_GUID = getvehicle.vehicle_GUID
 
-            })
+    this.location_service.save_LocationVehicle(this.location_vehicle)
+      .subscribe((response) => {
+        if (response.status == 200) {
+          //this.View(this.current_driverGUID);
+          alert('Location Vehicle Reqistered successfully');
+          //location.reload();
+        }
+
+      })
 
     this.get_selectvehicles.push(new GETLOCATION(getvehicle.vehicle_GUID, getvehicle.registration_no));
   }

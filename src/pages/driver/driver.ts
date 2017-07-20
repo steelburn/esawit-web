@@ -17,7 +17,7 @@ import { VEHICLEDRIVER_MODEL } from '../../models/vehicle';
 import { FormControlDirective, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { UUID } from 'angular2-uuid';
 
-
+import {ValidationService} from '../../services/validation';
 
 
 @IonicPage()
@@ -100,14 +100,14 @@ export class DriverPage {
 
             //fullname: ['', Validators.compose([Validators.maxLength(10),Validators.minLength(5), Validators.pattern('[a-zA-Z ]*'), Validators.required])],        
             driver_GUID: [UUID.UUID()],
-            fullname: '',
+            fullname: ['', Validators.compose([Validators.maxLength(4), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
             identification_type: '',
             identification_no: '',
             address1: '',
             address2: '',
             address3: '',
             phone_no: '',
-            email: '',
+            email: ['',Validators.compose([Validators.maxLength(20), ValidationService.emailValidator, Validators.required])],
             license_no: '',
             employment_type: '',
             description: '',

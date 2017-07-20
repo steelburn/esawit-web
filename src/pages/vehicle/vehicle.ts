@@ -39,6 +39,7 @@ export class VehiclePage {
   public _filter_getloctions: GET_VEHICLE_LOCATION[] = [];
 
   public current_vehicle_GUID: string = '';
+  Active_Deactive_vehicle: VehicleModel = new VehicleModel();
 
   constructor( @Inject(FormBuilder) fb: FormBuilder, private vehicle_service: VehicleService,
     private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) {
@@ -179,6 +180,30 @@ vehiclesby_locations()
             }
         }
     }
+
+ Deactive_Vehicle(data) 
+  {
+    alert(JSON.stringify(data))
+    if(data.active==0 || data.active==null)
+    {
+      this.Active_Deactive_vehicle.active = 1;
+    }
+    if(data.active==1)
+    {
+      this.Active_Deactive_vehicle.active = 0;
+    }
+    this.Active_Deactive_vehicle.ID = data.ID;
+    this.Active_Deactive_vehicle.vehicle_GUID = data.vehicle_GUID;
+    this.Active_Deactive_vehicle.tenant_GUID = data.tenant_GUID;
+    this.Active_Deactive_vehicle.registration_no = data.registration_no;
+    
+    var self = this;
+    this.vehicle_service.Deactive_Vehicle(this.Active_Deactive_vehicle)
+      .subscribe((response) => {
+        console.log(response);
+      })
+
+  }
 
   ionViewDidLoad() { console.log('ionViewDidLoad VehiclePage'); }
   public vehicleRegisterClicked: boolean = false; //Whatever you want to initialise it as

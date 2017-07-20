@@ -111,12 +111,12 @@ export class VehicleService
 			.map((response) => 
 			{
 				var result: any = response.json();
-				console.log(result);
+				//console.log(result);
 				let get_selectlocations: Array<GET_VEHICLE_LOCATION> = [];
 				result.resource.forEach((get_selectlocation) => {
 					get_selectlocations.push(GET_VEHICLE_LOCATION.fromJson(get_selectlocation));
 				});
-				console.log(get_selectlocations);
+				//console.log(get_selectlocations);
 				return get_selectlocations;
 
 			}).catch(this.handleError);
@@ -182,7 +182,7 @@ export class VehicleService
 				result.resource.forEach((getvehicle) => {
 					getvehicles.push(GETVEHICLE2.fromJson(getvehicle));
 				});
-				console.log(getvehicles);
+				//console.log(getvehicles);
 				return getvehicles;
 
 			}).catch(this.handleError);
@@ -218,6 +218,25 @@ export class VehicleService
 					return response;
 				});
 		
+	}
+
+	Deactive_Vehicle (vehiclemodel: VehicleModel) 
+	{
+		console.log(vehiclemodel);
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+    	
+    	let options = new RequestOptions({ headers: queryHeaders });
+
+		// if (vehiclemodel.vehicle_GUID) 
+		// {
+			return this.httpService.http.patch(this.baseResourceUrl, vehiclemodel.toJson(true),options)
+			.map((data) => {
+				return data;
+			});
+		//} 
 	}
 
 }

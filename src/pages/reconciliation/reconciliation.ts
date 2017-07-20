@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ModalController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { ReportService } from '../../services/reportservice';
 import { BaseHttpService } from '../../services/base-http';
@@ -21,7 +21,7 @@ import { ReconciliationupdatePage } from '../reconciliationupdate/reconciliation
 @IonicPage()
 @Component({
   selector: 'page-reconciliation',
-  templateUrl: 'reconciliation.html',providers: [ReportService, BaseHttpService]
+  templateUrl: 'reconciliation.html', providers: [ReportService, BaseHttpService]
 })
 export class ReconciliationPage {
 
@@ -29,40 +29,39 @@ export class ReconciliationPage {
   //items = [];
   public item_ReconciliationReports: ReconciliationReport[] = [];
 
-  constructor(public navCtrl: NavController,public navParams: NavParams, private reportservice: ReportService,
-    private httpService: BaseHttpService,public modalCtrl: ModalController) 
-  {
- this.get_ReconciliationReport();
+  constructor(public navCtrl: NavController, public navParams: NavParams, private reportservice: ReportService,
+    private httpService: BaseHttpService, public modalCtrl: ModalController) {
+    this.get_ReconciliationReport();
   }
 
-  ionViewDidLoad() 
-  {
+  ionViewDidLoad() {
     console.log('ionViewDidLoad ReconciliationPage');
   }
 
-  get_ReconciliationReport() 
-  {
+  get_ReconciliationReport() {
     let self = this;
     let params: URLSearchParams = new URLSearchParams();
     //params.set('order', 'last_name+ASC');
     self.reportservice.Reconsilation_Tranactionquery(params)
-      .subscribe((item_ReconciliationReports: ReconciliationReport[]) => 
-      {
+      .subscribe((item_ReconciliationReports: ReconciliationReport[]) => {
         self.item_ReconciliationReports = item_ReconciliationReports
         console.log(self.item_ReconciliationReports);
       });
   }
 
-  UpdateInfo(data)
+  UpdateInfo(data) 
   {
-    let addModal = this.modalCtrl.create(ReconciliationupdatePage,{ID: data.ID});
-    addModal.onDidDismiss(item => 
-    {
-      if (item) {
-        this.items.add(item);
-      }
-    })
-    addModal.present();
+    var ID = data.ID;
+    if (ID != null) {
+      //console.log(ID);
+      //alert(ID);
+      let addModal = this.modalCtrl.create(ReconciliationupdatePage, { ID: data.ID });
+      addModal.onDidDismiss(item => {
+        if (item) {
+          this.items.add(item);
+        }
+      })
+      addModal.present();
+    }
   }
-
 }
