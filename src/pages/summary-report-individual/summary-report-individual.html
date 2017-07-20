@@ -1,0 +1,67 @@
+<!--
+  Generated template for the SummaryReportIndividualPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>   
+    <!--<ion-card class="fullWidth graphHeaderStyleRed fontColor-dark">      
+      <ion-item class="bgColor-lightGrey">
+        <ion-label>No</ion-label>                    
+        <ion-label class="">Vehicle No</ion-label>
+        <ion-label class="">Loaded Qty</ion-label>
+        <ion-label class="">Loaded Time Stamp</ion-label>
+        <ion-label class="">Unloaded Qty</ion-label>
+        <ion-label class="">Unloaded Time Stamp</ion-label>            
+        <ion-label class="">Status (KPI)</ion-label>
+      </ion-item> 
+      <ion-item *ngFor="let item of posts1; let j=index">            
+        <ion-badge item-start>{{j+1}}</ion-badge>
+        <ion-label item-start class="textLeft">{{item.registration_no}}</ion-label>
+        <ion-label item-start class="textRight">{{item.Loaded}}</ion-label>
+        
+        <ion-badge class="bgColor-yellow" item-end>NA</ion-badge>
+        <ion-badge class="bgColor-red" item-end>{{item.Unloaded}}</ion-badge>
+        <ion-badge class="bgColor-yellow" item-end>NA</ion-badge>
+        <ion-badge class="bgColor-green" item-end>A</ion-badge>
+      </ion-item>    
+    </ion-card>-->
+  <ion-card class="fullWidth graphHeaderStyleRed fontColor-dark">
+  <!--<ion-grid>-->
+    <ion-item class="bgColor-lightGrey">
+      <ion-row>
+        <ion-col col-1>No</ion-col>
+        <ion-col col-2>Vehicle No</ion-col>
+        <ion-col col-2>Load Qty</ion-col>
+        <ion-col col-2>Load Time</ion-col>
+        <ion-col col-2>Unload Qty</ion-col>
+        <ion-col col-2>Unload Time</ion-col>
+        <ion-col col-1>Status</ion-col>
+      </ion-row>
+    </ion-item>
+    <ion-item>
+      <ion-row *ngFor="let item of posts1; let j=index">
+        <ion-col col-1>
+          <ion-badge class="bgColor-red" item-start>{{ j + 1 }}</ion-badge>
+        </ion-col>
+        <ion-col col-2>{{item.Vehicle}}</ion-col>
+        <ion-col col-2>{{item.load_count}}</ion-col>
+        <ion-col col-2>{{item.bunch_ts}}</ion-col>
+        <ion-col col-2>{{item.unload_count}}</ion-col>
+        <ion-col col-2>{{item.unbunch_ts}}</ion-col>
+                
+        <ion-col col-1 *ngIf="(item.unload_count/item.load_count)*100 >=20">
+          <ion-icon name="ios-checkmark-circle" item-start class="fontColor-blue"></ion-icon>
+        </ion-col>
+        <ion-col col-1 *ngIf="(item.unload_count/item.load_count)*100 <=50">
+          <ion-icon name="ios-checkmark-circle" item-start class="fontColor-red"></ion-icon>
+        </ion-col>
+        <ion-col col-1 *ngIf="(item.unload_count/item.load_count)*100 >=90">
+          <ion-icon name="ios-checkmark-circle" item-start class="fontColor-green"></ion-icon>
+        </ion-col>
+
+      </ion-row>
+    </ion-item>
+  <!--</ion-grid>-->
+  </ion-card>
+</ion-content>
