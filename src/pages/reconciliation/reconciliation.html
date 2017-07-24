@@ -19,7 +19,42 @@
           <ion-searchbar type="text" #filter (keyup)="0" placeholder="{{'SEARCH_LOCATION' | translate}}"></ion-searchbar>
         </ion-item>
       </ion-row>
-      <ion-grid>
+
+
+
+      <table class="fullWidth">
+        <tr class="sumReportHeaderRow bgColor-lightGrey">
+          <th class="tblHeader">No</th>
+          <th class="tblHeader textLeft">Location</th>
+          <th class="tblHeader">Loaded Qty</th>
+          <th class="tblHeader">Loaded Time</th>
+          <th class="tblHeader">Unloaded Qty</th>
+          <th class="tblHeader">Unloaded Time</th>
+          <th class="tblHeader">Factory</th>
+          <th class="tblHeader">Status</th>
+          <th class="tblHeader">Action</th>
+        </tr>
+
+        <tr class="sumReportItemRow" *ngFor="let item_ReconciliationReport of (item_ReconciliationReports | filterData: filter.value : 'name');let i = index">
+          <td class="tblNo">{{i+1}}</td>
+          <td class="tblLoc">{{item_ReconciliationReport.Location}}</td>
+          <td class="tblHar">{{item_ReconciliationReport.load_count}}</td>
+          <td class="tblLoad">{{item_ReconciliationReport.bunch_ts}}</td>
+          <td class="tblUnload">{{item_ReconciliationReport.unload_count}}</td>
+          <td class="tblFac">{{item_ReconciliationReport.unbunch_ts}}</td>
+          <td class="tblFac">N/A</td>
+          <td class="tblFac">
+              <ion-icon *ngIf="item_ReconciliationReport.resolved==null" name="ios-checkmark-circle" class="fontColor-red reconStatus"></ion-icon>
+              <ion-icon *ngIf="item_ReconciliationReport.resolved==0" name="ios-checkmark-circle" class="fontColor-red reconStatus"></ion-icon>
+              <ion-icon *ngIf="item_ReconciliationReport.resolved==1" name="ios-checkmark-circle" class="fontColor-yellow reconStatus"></ion-icon>
+              <ion-icon *ngIf="item_ReconciliationReport.resolved==2" name="ios-checkmark-circle" class="fontColor-red reconStatus"></ion-icon>       
+          </td>
+          <td class="tblFac"><ion-icon name="create" class="reconStatus fontColor-grey" (click)="UpdateInfo(item_ReconciliationReport)"></ion-icon></td>
+        </tr>
+
+      </table>
+
+      <!--<ion-grid>
 
         <ion-item class="bgColor-lightGrey">
           <ion-row>
@@ -65,7 +100,8 @@
           </ion-row>
         </ion-item>
 
-      </ion-grid>
+      </ion-grid>-->
+
     </ion-card>
   </div>
 </ion-content>

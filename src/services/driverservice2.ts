@@ -202,8 +202,6 @@ export class DriverService
 
 	Update (driver: Driver) 
 	{
-		// console.log(localStorage.getItem('session_token'));
-		// console.log(driver.toJson(true));
 		var queryHeaders = new Headers();
     	queryHeaders.append('Content-Type', 'application/json');
     	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
@@ -250,6 +248,25 @@ export class DriverService
 					return response;
 				});
 		
+	}
+	
+	Deactive_Driver (drivermodal: Driver) 
+	{
+		console.log(drivermodal);
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+    	
+    	let options = new RequestOptions({ headers: queryHeaders });
+
+		if (drivermodal.driver_GUID) 
+		{
+			return this.httpService.http.patch(this.baseResourceUrl, drivermodal.toJson(true),options)
+			.map((data) => {
+				return data;
+			});
+		} 
 	}
 
 }

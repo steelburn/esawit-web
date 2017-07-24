@@ -216,7 +216,7 @@ page-landing-v2 {
     min-height: 40px !important;
 }
 
-.item-md ion-thumbnail {min-width: 60px !important;min-height: 60px !important;padding-right: 16px !important;}
+.item-md ion-thumbnail {min-width: 60px !important;min-height: 60px !important;}
 
 .tnUserRow {border-bottom: 2px solid #efefef;}
 
@@ -312,6 +312,14 @@ page-landing-v2 {
     border-radius: 0 0 5px 5px;
     color: #ff6c6c;
 }
+
+
+.sumReportHeaderRow {background: #d8d8d8;}
+.sumReportItemRow:nth-child(odd){background: #ececec;}
+.tblHeader {padding: 10px 0;}
+.tblNo, .tblHar, .tblLoad, .tblUnload, .tblFac { text-align: center; padding: 10px 0;}
+.tblLoc { text-align: left; padding: 10px 0;}
+
 
 .datetime-md {
     padding-top: 8px !important;

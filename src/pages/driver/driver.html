@@ -71,29 +71,23 @@
       </ion-row>
 
       <ion-row>
-        <!--<ion-searchbar [(ngModel)]="searchTerm" [formControl]="searchControl" (ionInput)="setFilteredItems()"></ion-searchbar>-->
         <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by name"></ion-searchbar>
-
       </ion-row>
-      <ion-card-content>
+      
         <ion-list>
-          <ion-item *ngFor="let driver of (drivers| filterdriver: filter.value : 'name');" class="tnUserRow">
-            <ion-icon name="ios-checkmark-circle" item-start class="fontColor-green" *ngIf="driver.active == 1"></ion-icon>
-            <ion-icon name="ios-close-circle" item-start class="fontColor-red" *ngIf="driver.active == 0"></ion-icon>
-            <ion-thumbnail item-start class="menuHide">
 
-              <img class="tnUser" src="http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png">
-            </ion-thumbnail>
-            <h2>{{driver.fullname}}</h2>
-            <p class="menuHide">
-              <ion-icon name="ios-card"></ion-icon> {{driver.identification_no}}
-            </p>
+          <ion-item *ngFor="let driver of (drivers| filterdriver: filter.value : 'name');" class="tnUserRow">
+      
+            <ion-toggle *ngIf="driver.active==0" checked="false" color="secondary" item-start (ionChange)="Deactive_driver(driver)"></ion-toggle>
+            <ion-toggle *ngIf="driver.active==null" checked="false" color="secondary" item-start (ionChange)="Deactive_driver(driver)"></ion-toggle>
+            <ion-toggle *ngIf="driver.active==1" checked="true" color="secondary" (ionChange)="Deactive_driver(driver)" item-start></ion-toggle>
+    
+            <ion-label class="fontColor-dark">{{driver.fullname}}</ion-label>
             <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
-            <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="Edit(driver.driver_GUID)"><ion-icon name="ios-create"></ion-icon></button>
-            <!--<button ion-button color="danger" item-end class=" btnStyle1 bgColor-red" (click)="remove(driver.driver_GUID)"><ion-icon name="md-close"></ion-icon></button>-->
+            <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="Edit(driver.driver_GUID,driver.tenant_GUID)"><ion-icon name="ios-create"></ion-icon></button>
+            
           </ion-item>
         </ion-list>
-      </ion-card-content>
 
     </ion-card>
 
@@ -318,13 +312,17 @@
       </ion-card-header>
 
       <ion-list class="overflowTrue contentHeight">
-        <form [formGroup]="Driverform">
+        <form [formGroup]="DriverEditform">
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"FULLNAME" | translate}} </ion-label>
-            <ion-input type="text" formControlName="fullname" [(ngModel)]="driver_entry.fullname" value="{{driver.fullname}}" class="editInput"
+            <ion-input type="text" formControlName="fullname" [(ngModel)]="driver_entry_edit.fullname" value="{{driver.fullname}}" class="editInput"
               placeholder="{{'FORM_FULLNAME' | translate}}"></ion-input>
           </ion-item>
+          <div class="alertBox" *ngIf="DriverEditform.controls['fullname'].errors && (DriverEditform.controls['fullname'].dirty || DriverEditform.controls['fullname'].touch)">
+            <div [hidden]="!DriverEditform.controls['fullname'].errors.required">Fullname is required!</div>
+            <div [hidden]="!DriverEditform.controls['fullname'].errors.minlength">Name too short</div>
+          </div>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ID_TYPE" | translate}}</ion-label>
@@ -338,43 +336,51 @@
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ID_NO" | translate}}</ion-label>
-            <ion-input type="text" formControlName="identification_no" [(ngModel)]="driver_entry.identification_no" value="{{driver.identification_no}}"
+            <ion-input type="text" formControlName="identification_no" [(ngModel)]="driver_entry_edit.identification_no" value="{{driver.identification_no}}"
               class="editInput" placeholder="{{'FORM_ID_NO' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 1</ion-label>
-            <ion-input type="text" formControlName="address1" [(ngModel)]="driver_entry.address1" value="{{driver.address1}}" class="editInput"
+            <ion-input type="text" formControlName="address1" [(ngModel)]="driver_entry_edit.address1" value="{{driver.address1}}" class="editInput"
               placeholder="{{'FORM_ADDRESS_1' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 2</ion-label>
-            <ion-input type="text" formControlName="address2" [(ngModel)]="driver_entry.address2" value="{{driver.address2}}" class="editInput"
+            <ion-input type="text" formControlName="address2" [(ngModel)]="driver_entry_edit.address2" value="{{driver.address2}}" class="editInput"
               placeholder="{{'FORM_ADDRESS_2' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 3</ion-label>
-            <ion-input type="text" formControlName="address3" [(ngModel)]="driver_entry.address3" value="{{driver.address3}}" class="editInput"
+            <ion-input type="text" formControlName="address3" [(ngModel)]="driver_entry_edit.address3" value="{{driver.address3}}" class="editInput"
               placeholder="{{'FORM_ADDRESS_3' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"PHONE" | translate}}</ion-label>
-            <ion-input type="text" formControlName="phone_no" [(ngModel)]="driver_entry.phone_no" value="{{driver.phone_no}}" class="editInput"
+            <ion-input type="text" formControlName="phone_no" [(ngModel)]="driver_entry_edit.phone_no" value="{{driver.phone_no}}" class="editInput"
               placeholder="{{'FORM_PHONE' | translate}}"></ion-input>
           </ion-item>
+          <div class="alertBox" *ngIf="DriverEditform.controls['phone_no'].errors && (DriverEditform.controls['phone_no'].dirty || DriverEditform.controls['phone_no'].touch)">
+            <div [hidden]="!DriverEditform.controls['phone_no'].errors.required">Phone is required!</div>
+            <div [hidden]="!DriverEditform.controls['phone_no'].errors.pattern">Alphabet are not allowed</div>
+          </div>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"EMAIL" | translate}}</ion-label>
-            <ion-input type="text" formControlName="email" [(ngModel)]="driver_entry.email" value="{{driver.email}}" class="editInput"
+            <ion-input type="text" formControlName="email" [(ngModel)]="driver_entry_edit.email" value="{{driver.email}}" class="editInput"
               placeholder="{{'FORM_EMAIL' | translate}}"></ion-input>
           </ion-item>
+          <div class="alertBox" *ngIf="DriverEditform.controls['email'].errors && (DriverEditform.controls['email'].dirty || DriverEditform.controls['email'].touch)">
+            <div [hidden]="!DriverEditform.controls['email'].errors.required">Email is required!</div>
+            <div [hidden]="!DriverEditform.controls['email'].errors.pattern">Email format is invalid. eg;name@domain.com</div>
+          </div>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"LICENSE" | translate}}</ion-label>
-            <ion-input type="text" formControlName="license_no" [(ngModel)]="driver_entry.license_no" value="{{driver.license_no}}" class="editInput"
+            <ion-input type="text" formControlName="license_no" [(ngModel)]="driver_entry_edit.license_no" value="{{driver.license_no}}" class="editInput"
               placeholder="{{'FORM_LICENSE' | translate}}"></ion-input>
           </ion-item>
 
@@ -385,7 +391,7 @@
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"EMPLOYMENT" | translate}}</ion-label>
-            <ion-select formControlName="employment_type" [(ngModel)]="driver_entry.employment_type" class="editInput" interface="popover"
+            <ion-select formControlName="employment_type" [(ngModel)]="driver_entry_edit.employment_type" class="editInput" interface="popover"
               placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
               <ion-option value="0">N/A</ion-option>
               <ion-option value="1">{{"PERMANENT" | translate}}</ion-option>
@@ -397,23 +403,15 @@
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"DESCRIPTION" | translate}}</ion-label>
-            <ion-textarea type="text" formControlName="description" [(ngModel)]="driver_entry.description" value="{{driver.description}}"
+            <ion-textarea type="text" formControlName="description" [(ngModel)]="driver_entry_edit.description" value="{{driver.description}}"
               class="editInput" placeholder="{{'FORM_DESCRIPTION' | translate}}"></ion-textarea>
           </ion-item>
-
-          <ion-item>
-            <ion-label class="fontColor-yellow" stacked>{{"ACTIVE" | translate}} </ion-label>
-            <ion-toggle formControlName="active" checked="false" [(ngModel)]="driver_entry.active" color="secondary"></ion-toggle>
-          </ion-item>
-
-          <!--<button ion-button color="primary" [disabled]="!Driverform.valid" (click)="save()">Save</button>-->
-
         </form>
 
       </ion-list>
 
       <ion-card-content>
-        <button ion-button full class="bgColor-grey fontColor-white btnStyle1" [disabled]="!Driverform.valid" (click)="save()">{{"UPDATE" | translate}}</button>
+        <button ion-button full class="bgColor-grey fontColor-white btnStyle1" [disabled]="!DriverEditform.valid" (click)="Updateinfo()">{{"UPDATE" | translate}}</button>
       </ion-card-content>
 
     </ion-card>
