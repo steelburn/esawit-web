@@ -33,11 +33,12 @@ export class UserPage {
     public userRegisterClicked: boolean = false; //Whatever you want to initialise it as
     public userEditClicked: boolean = false; //Whatever you want to initialise it as
 
-    public userRegisterClick() {
-
+    public userRegisterClick() 
+    {
         this.userRegisterClicked = !this.userRegisterClicked;
     }
-    public userEditClick() {
+    public userEditClick() 
+    {
 
         this.userEditClicked = !this.userEditClicked;
     }
