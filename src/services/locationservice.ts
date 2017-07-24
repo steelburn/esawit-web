@@ -201,6 +201,19 @@ export class LocationService
 			});
 		} 
 	}
-
+	
+	getLocation (id: string, params?: URLSearchParams): Observable<LocationModel> {
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.get(this.baseResourceUrl + '/' + id, { search: params ,headers: queryHeaders})
+			.map((response) => {
+				var result: any = response.json();
+				let location: LocationModel = LocationModel.fromJson(result);
+				return location;
+			}).catch(this.handleError);
+	};
 
 }

@@ -25,8 +25,10 @@ import { UUID } from 'angular2-uuid';
   templateUrl: 'location.html', providers: [BaseHttpService, LocationService]
 })
 export class LocationPage {
-  Locationform: FormGroup;
+  Locationform: FormGroup;    EditLocationform: FormGroup;current_locationGUID: string = '';
+
   location_entry: LocationModel = new LocationModel();
+ 
   location: LocationModel = new LocationModel();
   Active_Deactive_location: LocationModel = new LocationModel();
   location_vehicle: LOCATION_VEHICLE_MODEL = new LOCATION_VEHICLE_MODEL();
@@ -39,11 +41,14 @@ export class LocationPage {
   public current_location_GUID: string = '';
 
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private location_service: LocationService,
-    private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) {
+  constructor( private fb2: FormBuilder,@Inject(FormBuilder) fb: FormBuilder, private location_service: LocationService,
+    private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) 
+  {
 
     this.Locationform = fb.group
       ({ locationname: '', locationactive: '' });
+    
+    this.EditLocationform=fb2.group({editlocation:'',editlocationactive:''});
 
     this.getList();
   }
@@ -210,7 +215,20 @@ export class LocationPage {
   public locationEditClicked: boolean = false; //Whatever you want to initialise it as
   public addVehicleClicked: boolean = false; //Whatever you want to initialise it as
   public locationRegisterClick() { this.locationRegisterClicked = !this.locationRegisterClicked; }
-  public locationEditClick() { this.locationEditClicked = !this.locationEditClicked; }
+  public locationEditClick(data) 
+  { 
+    this.locationEditClicked = !this.locationEditClicked; 
+    this.current_locationGUID=data.location_GUID;
+
+    alert(this.current_locationGUID);
+     var self = this;
+        this.location_service.get(this.current_locationGUID)
+        .subscribe((location) => self.location = location);
+
+        
+
+  }
+  public locationEditClose () {this.locationEditClicked = !this.locationEditClicked; }
   public addVehicleClick() { this.addVehicleClicked = !this.addVehicleClicked; }
 
 
