@@ -115,6 +115,11 @@ export class VehiclePage {
     var last_element = this.vehicles[_row];
     console.log(last_element);
     this.vehicle.registration_no = last_element.registration_no;
+    this.vehicle.make = last_element.make;
+    this.vehicle.manufacturing_year = last_element.manufacturing_year;
+    this.vehicle.model = last_element.model;
+    this.vehicle.capacity_tonne = last_element.capacity_tonne;
+    this.vehicle.description = last_element.description;
     this.vehicle.vehicle_GUID = last_element.vehicle_GUID;
     this.View(this.vehicle.vehicle_GUID);
   }

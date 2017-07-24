@@ -1,111 +1,152 @@
 <ion-content padding class="contentMarginTop">
 
-   <div class="col2">
+  <div class="col33">
     <ion-card>
       <ion-row>
-        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
-          Harvested
-          <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark posRelative">
+          harvested
+
+          <div class="fontColor-grey btnStyle3 paddingZero marginZero" (click)="harvestlist()">
+            <ion-icon name="ios-list"></ion-icon>
+          </div>
+
+          <!--<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>-->
         </ion-card-header>
-        
+
       </ion-row>
       <ion-item class="bgColor-lightGrey">
         <ion-label>Location</ion-label>
-        <ion-label class="textRight" item-end>bunches</ion-label>
+        <ion-label class="textRight" item-end>Date</ion-label>
+        <ion-label class="textRight" item-end>Bunches</ion-label>
       </ion-item>
-      <ion-item *ngFor="let harvestreport of harvestreports |  slice:0:5">
+      <ion-item class="reportItemRow" *ngFor="let harvestreport of harvestreports |  slice:0:5">
         <!--<ion-badge class="bgColor-green" item-start>1</ion-badge>-->
-        <ion-label>{{harvestreport.name}}</ion-label>
-        <ion-badge item-end class="bgColor-purple">{{harvestreport.bunch_count}}</ion-badge>
-      </ion-item>
-
-      <ion-item >
-        <button ion-button class="bgColor-grey fontColor-white btnStyle1" (click)="harvestlist()">View All</button>
+        <ion-label item-start>{{harvestreport.name}}</ion-label>
+        <ion-label item-end>{{harvestreport.created_ts|date:"dd/MM/yy"}}</ion-label>
+        <ion-badge item-end class="bgColor-white fontColor-grey reportLabelValue">{{harvestreport.bunch_count}}</ion-badge>
       </ion-item>
     </ion-card>
-   </div>
+  </div>
 
-    <div class="col4">
-      <ion-card>
-          <ion-row>
-            <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
-              Mandor
-            </ion-card-header>
-          </ion-row>
-          <ion-item class="bgColor-lightGrey">
-            <ion-label>Mandor</ion-label>
-            <ion-label class="textRight" item-end>Lorry</ion-label>
-            <ion-label class="textRight" item-end>Bunches</ion-label>
-          </ion-item>
-          <ion-item *ngFor="let mandorreport of mandorreports |  slice:0:5">
-            <!--<ion-badge class="bgColor-red" item-start>1</ion-badge>-->
-            <ion-label item-start>{{mandorreport.mandor}}</ion-label>
-            <ion-label item-end>{{mandorreport.lorry}}</ion-label>
-            <ion-badge item-end class="bgColor-yellow">{{mandorreport.bunch_count}}</ion-badge>
-          </ion-item>
-        <ion-item >
-          <button ion-button class="bgColor-grey fontColor-white btnStyle1" (click)="mandorlist()">View All</button>
-        </ion-item>
-      </ion-card>
-    </div>
-
-    <div class="col4">
-      <ion-card>
-          <ion-row>
-            <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
-              Factory
-              <button ion-button outline item-end (click)="factorylist()">View All</button>
-            </ion-card-header>
-          </ion-row>
-          <ion-item class="bgColor-lightGrey">
-            <ion-label>Lorry</ion-label>
-            <ion-label class="textRight" item-end>Location</ion-label>
-            <ion-label class="textRight" item-end>Bunches</ion-label>
-          </ion-item>
-          <ion-item *ngFor="let factoryreport of factoryreports |  slice:0:5">
-            <!--<ion-badge class="bgColor-red" item-start>1</ion-badge>-->
-            <ion-label item-start>{{factoryreport.lorry}}</ion-label>
-            <ion-label item-end>{{factoryreport.location}}</ion-label>
-            <ion-badge item-end class="bgColor-yellow">{{factoryreport.bunch_count}}</ion-badge>
-          </ion-item>
-      </ion-card>
-    </div>
-
-    <div class="col10">
+  <div class="col33">
     <ion-card>
       <ion-row>
-        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
-          Reconciliation Report
-          <button ion-button class="bgColor-grey fontColor-white btnStyle1" (click)="ViewReconciliation()">View All</button>
-        </ion-card-header>
-       </ion-row>
-      <ion-grid>
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark posRelative">
+          Mandor
 
+          <div class="fontColor-grey btnStyle3 paddingZero marginZero" (click)="mandorlist()">
+            <ion-icon name="ios-list"></ion-icon>
+          </div>
+
+          <!--<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>-->
+        </ion-card-header>
+      </ion-row>
+      <ion-item class="bgColor-lightGrey">
+        <ion-label>Mandor</ion-label>
+        <ion-label class="textRight" item-end>Lorry</ion-label>
+        <ion-label class="textRight" item-end>Bunches</ion-label>
+      </ion-item>
+      <ion-item class="reportItemRow" *ngFor="let mandorreport of mandorreports |  slice:0:5">
+        <!--<ion-badge class="bgColor-red" item-start>1</ion-badge>-->
+        <ion-label item-start>{{mandorreport.mandor}}</ion-label>
+        <ion-label item-end>{{mandorreport.lorry}}</ion-label>
+        <ion-badge item-end class="bgColor-white fontColor-grey reportLabelValue">{{mandorreport.bunch_count}}</ion-badge>
+      </ion-item>
+    </ion-card>
+  </div>
+
+  <div class="col33">
+    <ion-card>
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark posRelative">
+          Factory
+
+          <div class="fontColor-grey btnStyle3 paddingZero marginZero" (click)="factorylist()">
+            <ion-icon name="ios-list"></ion-icon>
+          </div>
+
+          <!--<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>-->
+        </ion-card-header>
+      </ion-row>
+      <ion-item class="bgColor-lightGrey">
+        <ion-label>Lorry</ion-label>
+        <ion-label class="textRight" item-end>Location</ion-label>
+        <ion-label class="textRight" item-end>Bunches</ion-label>
+      </ion-item>
+      <ion-item class="reportItemRow" *ngFor="let factoryreport of factoryreports |  slice:0:5">
+        <!--<ion-badge class="bgColor-red" item-start>1</ion-badge>-->
+        <ion-label item-start>{{factoryreport.lorry}}</ion-label>
+        <ion-label item-end>{{factoryreport.location}}</ion-label>
+        <ion-badge item-end class="bgColor-white fontColor-grey reportLabelValue">{{factoryreport.bunch_count}}</ion-badge>
+      </ion-item>
+    </ion-card>
+  </div>
+
+  <div class="col10">
+    <ion-card>
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark posRelative">
+          Reconciliation Report
+
+          <div class="fontColor-grey btnStyle3 paddingZero marginZero" (click)="ViewReconciliation()">
+            <ion-icon name="ios-redo"></ion-icon>
+          </div>
+        </ion-card-header>
+      </ion-row>
+      <ion-grid>
+        
         <ion-item class="bgColor-lightGrey">
           <ion-row>
             <ion-col col-1>No</ion-col>
-            <ion-col col-2>Location</ion-col>
+            <ion-col col-3>Location</ion-col>
             <ion-col col-1>Loaded Qty</ion-col>
             <ion-col col-2>Loaded Time</ion-col>
             <ion-col col-1>Unloaded Qty</ion-col>
             <ion-col col-2>Unloaded Time</ion-col>
             <ion-col col-1>Factory</ion-col>
             <ion-col col-1>Status</ion-col>
-            <!--<ion-col col-1>Action</ion-col>-->
           </ion-row>
         </ion-item>
 
         <ion-item>
-          <ion-row *ngFor="let item_ReconciliationReport of item_ReconciliationReports | slice:0:5;let i = index">
+          <ion-row class="reportItemRow" *ngFor="let item_ReconciliationReport of item_ReconciliationReports | slice:0:5;let i = index">
+            <ion-col col-1>
+              <ion-badge class="bgColor-grey" item-start>{{ i + 1 }}</ion-badge>
+            </ion-col>
+            <ion-col col-3>{{item_ReconciliationReport.Location}}</ion-col>
+            <ion-col col-1>{{item_ReconciliationReport.load_count}}</ion-col>
+            <ion-col col-2>{{item_ReconciliationReport.bunch_ts | date: 'dd/MM/yyyy H:mm'}}</ion-col>
+            <ion-col col-1>{{item_ReconciliationReport.unload_count}}</ion-col>
+            <ion-col col-2>{{item_ReconciliationReport.unbunch_ts | date: 'dd/MM/yyyy H:mm'}}</ion-col>
+            <ion-col col-1>N/A</ion-col>
+            <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==null">
+              <ion-icon name="ios-checkmark-circle" class="fontColor-red reconStatus"></ion-icon>
+            </ion-col>
+            <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==0">
+              <ion-icon name="ios-checkmark-circle" class="fontColor-red reconStatus"></ion-icon>
+            </ion-col>
+            <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==1">
+              <ion-icon name="ios-checkmark-circle" class="fontColor-yellow reconStatus"></ion-icon>
+            </ion-col>
+            <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==2">
+              <ion-icon name="ios-checkmark-circle" class="fontColor-red reconStatus"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+
+        <!--<ion-item>
+          <ion-row class="reportItemRow" *ngFor="let item_ReconciliationReport of item_ReconciliationReports | slice:0:5;let i = index">
             <ion-col col-1>
               <ion-badge class="bgColor-red" item-start>{{ i + 1 }}</ion-badge>
             </ion-col>
-            <ion-col col-2>{{item_ReconciliationReport.Location}}</ion-col>
+            <ion-col col-3>{{item_ReconciliationReport.Location}}</ion-col>
             <ion-col col-1>{{item_ReconciliationReport.load_count}}</ion-col>
-            <ion-col col-2>{{item_ReconciliationReport.bunch_ts|date: 'dd/MM/yyyy H:mm'}}</ion-col>
+            <ion-col col-2>{{item_ReconciliationReport.bunch_ts | date: 'dd/MM/yyyy H:mm'}}</ion-col>
             <ion-col col-1>{{item_ReconciliationReport.unload_count}}</ion-col>
-            <ion-col col-2>{{item_ReconciliationReport.unbunch_ts|date: 'dd/MM/yyyy H:mm'}}</ion-col>
-            <ion-col col-1>NA,{{item_ReconciliationReport.resolved}}</ion-col>
+
+            <ion-col col-2>{{item_ReconciliationReport.unbunch_ts | date: 'dd/MM/yyyy H:mm'}}</ion-col>
+            <ion-col col-1>N/A</ion-col>
+
 
             <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==null">
               <ion-icon name="ios-checkmark-circle" item-start class="fontColor-red"></ion-icon>
@@ -119,13 +160,12 @@
             <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==2">
               <ion-icon name="ios-checkmark-circle" item-start class="fontColor-red"></ion-icon>
             </ion-col>
-            <!--<ion-col col-1>
-              <ion-icon ios="ios-redo" md="md-redo" (click)="UpdateInfo(item_ReconciliationReport)"></ion-icon>
-            </ion-col>-->
           </ion-row>
-        </ion-item>
+        </ion-item>-->
+
+
 
       </ion-grid>
     </ion-card>
-    </div>
+  </div>
 </ion-content>

@@ -1,0 +1,76 @@
+<!--
+  Generated template for the SummaryReportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="bgColor-darkBlue">
+    <button ion-button menuToggle>
+      <ion-icon name="menu" class="fontColor-white"></ion-icon>
+    </button>
+    <ion-avatar class="logoSize" item-start>
+      <img src="img/eSawitLogo.png">
+    </ion-avatar>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="col12">
+    <ion-card>
+
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark posRelative">
+          Summary Report
+        </ion-card-header>
+        <ion-item>
+          <ion-searchbar type="text" placeholder="{{'SEARCH_LOCATION' | translate}}" [(ngModel)]="searchLocationString" (ionInput)="searchLocation($event)"></ion-searchbar>
+        </ion-item>
+      </ion-row>
+
+      <!--<ion-item class="bgColor-lightGrey">
+        <ion-label>No</ion-label>
+        <ion-label class="textRight" item-end>Location</ion-label>
+        <ion-label class="textRight" item-end>Harvested</ion-label>
+        <ion-label class="textRight" item-end>Loaded</ion-label>
+        <ion-label class="textRight" item-end>Unloaded</ion-label>
+        <ion-label class="textRight" item-end>Factory</ion-label>
+        <ion-label class="textRight" item-end>Status (KPI)</ion-label>
+      </ion-item>-->
+
+      <table class="fullWidth">
+        <tr class="sumReportHeaderRow bgColor-lightGrey">
+          <th class="tblHeader">No</th>
+          <th class="tblHeader textLeft">Location</th>
+          <th class="tblHeader">Harvested</th>
+          <th class="tblHeader">Loaded</th>
+          <th class="tblHeader">Unloaded</th>
+          <th class="tblHeader">Factory</th>
+        </tr>
+
+        <tr class="sumReportItemRow" *ngFor="let post of posts; let i=index" text-wrap (click)="toggleGroup(post.location_GUID)">
+          <td class="tblNo">{{i+1}}</td>
+          <td class="tblLoc"><a>{{post.Location}}</a></td>
+          <td class="tblHar">{{post.Harvested}}</td>
+          <td class="tblLoad">{{post.Loaded}}</td>
+          <td class="tblUnload">{{post.Unloaded}}</td>
+          <td class="tblFac">{{post.Factory}}</td>
+        </tr>
+
+      </table>
+
+      <!--<ion-item *ngFor="let post of posts; let i=index" text-wrap (click)="toggleGroup(post.location_GUID)">
+
+        <ion-label item-start>{{i+1}}</ion-label>
+        <ion-label item-start class="textRight"><a>{{post.Location}}</a></ion-label>
+        <ion-label item-start class="textRight">{{post.Harvested}}</ion-label>
+        <ion-label item-start class="textRight">{{post.Loaded}}</ion-label>
+        <ion-label item-start class="textRight">{{post.Unloaded}}</ion-label>
+        <ion-label item-start class="textRight">{{post.Factory}}</ion-label>
+
+      </ion-item>-->
+
+    </ion-card>
+  </div>
+</ion-content>

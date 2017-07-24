@@ -2,15 +2,59 @@
   <div class="col10">
     <ion-card>
       <ion-row>
-        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
+        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark posRelative">
           Reconciliation Report
-          <button ion-button class="bgColor-grey fontColor-white btnStyle1" (click)="print()">Print Page</button>
+          
+          <div class="fontColor-grey btnStyle4 paddingZero marginZero" (click)="print()">
+            <ion-icon name="md-print"></ion-icon>
+          </div>
+          
+          <div class="fontColor-grey btnStyle3 paddingZero marginZero" style="transform: scale(-1, 1);" (click)="Viewlanding()">
+            <ion-icon name="ios-redo"></ion-icon>
+          </div>
+
+          <!--<button ion-button class="bgColor-grey fontColor-white btnStyle1" (click)="print()">Print Page</button>-->
         </ion-card-header>
         <ion-item>
-          <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by Location,Loaded Time"></ion-searchbar>
+          <ion-searchbar type="text" #filter (keyup)="0" placeholder="{{'SEARCH_LOCATION' | translate}}"></ion-searchbar>
         </ion-item>
       </ion-row>
-      <ion-grid>
+
+
+
+      <table class="fullWidth">
+        <tr class="sumReportHeaderRow bgColor-lightGrey">
+          <th class="tblHeader">No</th>
+          <th class="tblHeader textLeft">Location</th>
+          <th class="tblHeader">Loaded Qty</th>
+          <th class="tblHeader">Loaded Time</th>
+          <th class="tblHeader">Unloaded Qty</th>
+          <th class="tblHeader">Unloaded Time</th>
+          <th class="tblHeader">Factory</th>
+          <th class="tblHeader">Status</th>
+          <th class="tblHeader">Action</th>
+        </tr>
+
+        <tr class="sumReportItemRow" *ngFor="let item_ReconciliationReport of (item_ReconciliationReports | filterData: filter.value : 'name');let i = index">
+          <td class="tblNo">{{i+1}}</td>
+          <td class="tblLoc">{{item_ReconciliationReport.Location}}</td>
+          <td class="tblHar">{{item_ReconciliationReport.load_count}}</td>
+          <td class="tblLoad">{{item_ReconciliationReport.bunch_ts}}</td>
+          <td class="tblUnload">{{item_ReconciliationReport.unload_count}}</td>
+          <td class="tblFac">{{item_ReconciliationReport.unbunch_ts}}</td>
+          <td class="tblFac">N/A</td>
+          <td class="tblFac">
+              <ion-icon *ngIf="item_ReconciliationReport.resolved==null" name="ios-checkmark-circle" class="fontColor-red reconStatus"></ion-icon>
+              <ion-icon *ngIf="item_ReconciliationReport.resolved==0" name="ios-checkmark-circle" class="fontColor-red reconStatus"></ion-icon>
+              <ion-icon *ngIf="item_ReconciliationReport.resolved==1" name="ios-checkmark-circle" class="fontColor-yellow reconStatus"></ion-icon>
+              <ion-icon *ngIf="item_ReconciliationReport.resolved==2" name="ios-checkmark-circle" class="fontColor-red reconStatus"></ion-icon>       
+          </td>
+          <td class="tblFac"><ion-icon name="create" class="reconStatus fontColor-grey" (click)="UpdateInfo(item_ReconciliationReport)"></ion-icon></td>
+        </tr>
+
+      </table>
+
+      <!--<ion-grid>
 
         <ion-item class="bgColor-lightGrey">
           <ion-row>
@@ -29,34 +73,35 @@
         <ion-item>
           <ion-row *ngFor="let item_ReconciliationReport of (item_ReconciliationReports | filterData: filter.value : 'name');let i = index">
             <ion-col col-1>
-              <ion-badge class="bgColor-red" item-start>{{ i + 1 }}</ion-badge>
+              <ion-badge class="bgColor-grey" item-start>{{ i + 1 }}</ion-badge>
             </ion-col>
             <ion-col col-2>{{item_ReconciliationReport.Location}}</ion-col>
             <ion-col col-1>{{item_ReconciliationReport.load_count}}</ion-col>
             <ion-col col-2>{{item_ReconciliationReport.bunch_ts}}</ion-col>
             <ion-col col-1>{{item_ReconciliationReport.unload_count}}</ion-col>
             <ion-col col-2>{{item_ReconciliationReport.unbunch_ts}}</ion-col>
-            <ion-col col-1>NA,{{item_ReconciliationReport.resolved}}</ion-col>
+            <ion-col col-1>N/A</ion-col>
 
             <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==null">
-              <ion-icon name="ios-checkmark-circle" item-start class="fontColor-red"></ion-icon>
+              <ion-icon name="ios-checkmark-circle" class="fontColor-red reconStatus"></ion-icon>
             </ion-col>
             <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==0">
-              <ion-icon name="ios-checkmark-circle" item-start class="fontColor-red"></ion-icon>
+              <ion-icon name="ios-checkmark-circle" class="fontColor-red reconStatus"></ion-icon>
             </ion-col>
             <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==1">
-              <ion-icon name="ios-checkmark-circle" item-start class="fontColor-yellow"></ion-icon>
+              <ion-icon name="ios-checkmark-circle" class="fontColor-yellow reconStatus"></ion-icon>
             </ion-col>
             <ion-col col-1 *ngIf="item_ReconciliationReport.resolved==2">
-              <ion-icon name="ios-checkmark-circle" item-start class="fontColor-red"></ion-icon>
+              <ion-icon name="ios-checkmark-circle" class="fontColor-red reconStatus"></ion-icon>
             </ion-col>
             <ion-col col-1>
-              <ion-icon ios="ios-redo" md="md-redo" (click)="UpdateInfo(item_ReconciliationReport)"></ion-icon>
+              <ion-icon name="create" class="reconStatus fontColor-grey" (click)="UpdateInfo(item_ReconciliationReport)"></ion-icon>
             </ion-col>
           </ion-row>
         </ion-item>
 
-      </ion-grid>
+      </ion-grid>-->
+
     </ion-card>
   </div>
 </ion-content>
