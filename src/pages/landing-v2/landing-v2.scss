@@ -313,18 +313,26 @@ page-landing-v2 {
     color: #ff6c6c;
 }
 
-
 .sumReportHeaderRow {background: #d8d8d8;}
 .sumReportItemRow:nth-child(odd){background: #ececec;}
 .tblHeader {padding: 10px 0;}
 .tblNo, .tblHar, .tblLoad, .tblUnload, .tblFac { text-align: center; padding: 10px 0;}
 .tblLoc { text-align: left; padding: 10px 0;}
 
-
 .datetime-md {
     padding-top: 8px !important;
     padding-bottom: 8px !important;
 }
+
+#imeiTable tr {border-bottom: 2px solid #efefef;}
+#imeiTable td:nth-child(2),td:nth-child(3) {text-align: left;}
+.tdStyle {
+    padding: 5px 5px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.imeiIcon {font-size: 25px;}
 
 @media screen and (max-width: 400px) {
 
