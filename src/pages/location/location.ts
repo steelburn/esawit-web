@@ -27,7 +27,8 @@ import { UUID } from 'angular2-uuid';
 export class LocationPage {
   Locationform: FormGroup;    EditLocationform: FormGroup;current_locationGUID: string = '';
 
-  location_entry: LocationModel = new LocationModel();
+  location_entry: LocationModel = new LocationModel();  location_entry_edit: LocationModel = new LocationModel();
+
  
   location: LocationModel = new LocationModel();
   Active_Deactive_location: LocationModel = new LocationModel();
@@ -40,6 +41,9 @@ export class LocationPage {
   public _filter_getvehicles: GETLOCATION[] = [];
   public current_location_GUID: string = '';
 
+  current_ActiveUser: number; current_locationGUID_Edit: string;
+  current_tenantGUID_Edit: string;current_locationID_Edit:number;
+  
 
   constructor( private fb2: FormBuilder,@Inject(FormBuilder) fb: FormBuilder, private location_service: LocationService,
     private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) 
@@ -48,7 +52,7 @@ export class LocationPage {
     this.Locationform = fb.group
       ({ locationname: '', locationactive: '' });
     
-    this.EditLocationform=fb2.group({editlocation:'',editlocationactive:''});
+    this.EditLocationform=fb2.group({locationname:'',locationactive:''});
 
     this.getList();
   }
@@ -215,22 +219,45 @@ export class LocationPage {
   public locationEditClicked: boolean = false; //Whatever you want to initialise it as
   public addVehicleClicked: boolean = false; //Whatever you want to initialise it as
   public locationRegisterClick() { this.locationRegisterClicked = !this.locationRegisterClicked; }
+
   public locationEditClick(data) 
   { 
     this.locationEditClicked = !this.locationEditClicked; 
     this.current_locationGUID=data.location_GUID;
-
-    alert(this.current_locationGUID);
-     var self = this;
-        this.location_service.get(this.current_locationGUID)
-        .subscribe((location) => self.location = location);
-
-        
-
+    alert(JSON.stringify(data));
+    alert(this.current_locationGUID);     
+      this.current_ActiveUser=data.active;
+      this.current_locationGUID_Edit=data.location_GUID;
+      this.current_tenantGUID_Edit=data.tenant_GUID;
+      this.current_locationID_Edit = data.ID;
+      this.location_entry_edit.name=data.name;
   }
+
+  Updateinfo() 
+  {
+        if (this.EditLocationform.valid) 
+        {
+           this.location_entry_edit.ID=this.current_locationID_Edit;
+           this.location_entry_edit.location_GUID=this.current_locationGUID_Edit;
+           this.location_entry_edit.tenant_GUID=this.current_tenantGUID_Edit;
+           this.location_entry_edit.active = this.current_ActiveUser;
+           var self = this;
+            this.location_service.Update(this.location_entry_edit)
+                .subscribe((response) => 
+                {
+                  //console.log(response);
+                    if (response.status == 200) 
+                    {
+                        this.getList();
+                        this.locationEditClose();
+                    }
+                })
+        }
+    }
+
   public locationEditClose () {this.locationEditClicked = !this.locationEditClicked; }
   public addVehicleClick() { this.addVehicleClicked = !this.addVehicleClicked; }
 
-
+  
 
 }

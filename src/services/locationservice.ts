@@ -42,6 +42,24 @@ export class LocationService
 	  return Observable.throw(errMsg);
 	}
 	
+	Update (location: LocationModel) 
+	{
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+    	
+    	let options = new RequestOptions({ headers: queryHeaders });
+
+		// if (driver.driver_GUID) 
+		// {
+			return this.httpService.http.patch(this.baseResourceUrl , location.toJson(true),options)
+			.map((data) => {
+				return data;
+			});
+		// } 
+	}
+
 	save_location (master_location: LocationModel): Observable<any> 
 	{
 		//console.log(localStorage.getItem('session_token'));

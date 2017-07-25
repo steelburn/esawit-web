@@ -13,7 +13,8 @@ export class User {
 		public createdby_GUID: string = null,
 		public created_ts: string = null,
 		public updatedby_GUID: string = null,
-		public updated_ts: string = null
+		public updated_ts: string = null,
+		public user_IMEI: string = null,
 	) { }
 
 
@@ -23,7 +24,8 @@ export class User {
 		return new User(
 			json.tenant_GUID,json.user_GUID,json.fullname,json.userID,json.email,
 			json.address1,json.address2,json.password,json.role_GUID,json.active,
-			json.createdby_GUID,json.created_ts,json.updatedby_GUID,json.updated_ts
+			json.createdby_GUID,json.created_ts,json.updatedby_GUID,json.updated_ts,
+			json.user_IMEI
 		);
 	}
 
@@ -36,7 +38,8 @@ export class User {
 			createdby_GUID:this.createdby_GUID,
 			created_ts:this.created_ts,
 			updatedby_GUID:this.updatedby_GUID,
-			updated_ts:this.updated_ts
+			updated_ts:this.updated_ts,
+			user_IMEI:this.user_IMEI
 		};
 
 		return stringify ? JSON.stringify({ resource: [doc] }) : doc;
@@ -44,3 +47,35 @@ export class User {
 
 }
 
+//** IMEI MODEL **/
+
+export class UserIMEI {
+	constructor(
+		public user_IMEI: string = null,
+		public active: number = null,
+		public module_id:string=null,
+		public user_GUID: string = null,
+
+
+		
+	) { }
+
+
+	static fromJson(json: any) {
+		if (!json) return;
+
+		return new UserIMEI(
+			json.user_IMEI,json.active,json.module_id,json.user_GUID
+		);
+	}
+
+
+	toJson(stringify?: boolean): any {
+		var doc = {
+			user_IMEI:this.user_IMEI,active:this.active,module_id:this.module_id,user_GUID:this.user_GUID
+		};
+
+		return stringify ? JSON.stringify({ resource: [doc] }) : doc;
+	}
+
+}

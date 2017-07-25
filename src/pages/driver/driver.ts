@@ -345,7 +345,10 @@ export class DriverPage {
     }
 
     //#region View Driver Info
-    Edit(driver_GUID, tenant_GUID) {
+ 
+    Edit(driver_GUID,tenant_GUID) 
+    {
+ 
         this.driverEditClicked = !this.driverEditClicked; //hide column
         this.current_driverGUID = driver_GUID; this.current_tenantGUID = tenant_GUID;
         alert(this.current_driverGUID);

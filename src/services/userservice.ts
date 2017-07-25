@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Headers,RequestOptions, URLSearchParams} from '@angular/http';
 
 import {User} from '../models/user';
+import {UserIMEI} from '../models/user';
 
 
 import * as constants from '../app/config/constants';
@@ -21,7 +22,10 @@ class ServerResponse {
 @Injectable()
 export class UserService 
 {
-	baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/master_user'; 
+	baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/master_user';
+	baseResource_Url:string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/';
+    baseResourceUrl_user_imei: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/user_imei';
+
 	constructor(private httpService: BaseHttpService, private nav: NavController) {};
 
 
@@ -67,6 +71,7 @@ export class UserService
 				return user;
 			}).catch(this.handleError);
 	};
+	
 
 	save (master_user: User): Observable<any> 
 	{
@@ -78,6 +83,23 @@ export class UserService
     	let options = new RequestOptions({ headers: queryHeaders });
 		
 			return this.httpService.http.post(this.baseResourceUrl, master_user.toJson(true),options)
+				.map((response) => 
+				{
+					return response;
+				});
+		
+	}
+
+	save_user_imei (user_imei: UserIMEI): Observable<any> 
+	{
+		//console.log(localStorage.getItem('session_token'));
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+    	let options = new RequestOptions({ headers: queryHeaders });
+		
+			return this.httpService.http.post(this.baseResourceUrl_user_imei, user_imei.toJson(true),options)
 				.map((response) => {
 					return response;
 				});
@@ -101,4 +123,45 @@ export class UserService
 			}).catch(this.handleError);
 	};
 
+	Update (user: User) 
+	{
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+    	
+    	let options = new RequestOptions({ headers: queryHeaders });
+
+		// if (driver.driver_GUID) 
+		// {
+			return this.httpService.http.patch(this.baseResourceUrl , user.toJson(true),options)
+			.map((data) => {
+				return data;
+			});
+		// } 
+	}
+	
+	get_IMEI(params?: URLSearchParams): Observable<UserIMEI[]> 
+	{
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+		
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.get(this.baseResource_Url+'getpendingimei_view', { search: params ,headers: queryHeaders})
+			.map((response) => 
+			{
+				var result: any = response.json();
+				//console.log(result);
+				let user_imeis: Array<UserIMEI> = [];
+				result.resource.forEach((user_imei) => {
+					user_imeis.push(UserIMEI.fromJson(user_imei));
+				});
+				console.log('Getting IMEIS');
+				console.log(user_imeis);console.log('ENDING IMEI');
+				return user_imeis;
+
+			}).catch(this.handleError);
+	}
 }
