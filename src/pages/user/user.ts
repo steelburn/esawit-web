@@ -10,6 +10,8 @@ import { BaseHttpService } from '../../services/base-http';
 import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Driver } from '../../models/driver';
 import { User } from '../../models/user';
+import { UserIMEI } from '../../models/user';
+
 
 import { GETVEHICLE } from '../../models/driver';
 import { VEHICLEDRIVER_MODEL } from '../../models/vehicle';
@@ -25,27 +27,29 @@ import { UUID } from 'angular2-uuid';
 
     selector: 'page-user',
 
-    templateUrl: 'user.html', providers: [UserService, BaseHttpService,DriverService]
+    templateUrl: 'user.html', providers: [UserService, BaseHttpService, DriverService]
 
 })
 export class UserPage {
 
     public userRegisterClicked: boolean = false; //Whatever you want to initialise it as
     public userEditClicked: boolean = false; //Whatever you want to initialise it as
-
-    public userRegisterClick() 
-    {
+    current_userGUID: string = ''; current_tenantGUID: string = ''; current_ActiveUser: number;
+    public userRegisterClick() {
         this.userRegisterClicked = !this.userRegisterClicked;
     }
-    public userEditClick() 
-    {
+    public userEditClick() {
 
         this.userEditClicked = !this.userEditClicked;
     }
-    Userform: FormGroup; user_entry: User = new User();
-    UserEditform: FormGroup; User: User = new User();
+    Userform: FormGroup; user_entry: User = new User(); user_imei2: UserIMEI = new UserIMEI();
+    UserEditform: FormGroup; user_entry_edit: User = new User();
+
     user: User = new User();
     public users: User[] = [];
+
+    public user_imeis: UserIMEI[] = [];
+
     Active_Deactive_user: User = new User();
 
 
@@ -54,12 +58,27 @@ export class UserPage {
 
 
     public drivercharts: GETDRIVER_CHART[] = [];
-   
 
-    constructor( @Inject(FormBuilder) fb2: FormBuilder, private userservice: UserService,private driverservice: DriverService,
+
+    constructor(private fb: FormBuilder, @Inject(FormBuilder) fb2: FormBuilder, private userservice: UserService, private driverservice: DriverService,
         private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) {
         this.GenerateToken();
+        this.get_imeis();
         this.getList();
+
+        this.UserEditform = fb.group
+            ({
+                fullname: '',
+                userID: '',
+                email: '',
+                address1: '',
+                address2: '',
+                password: '',
+                role_GUID: '',
+                active: '',
+                user_IMEI: ''
+            });
+
         this.Userform = fb2.group
             ({
                 fullname: '',
@@ -69,60 +88,79 @@ export class UserPage {
                 address2: '',
                 password: '',
                 role_GUID: '',
-                active: ''
+                active: '',
+                user_IMEI: ''
             });
 
-            this.fillChart_items();
+        this.fillChart_items();
     }
 
-  Deactive_user(data) 
-  {
-   
-    if(data.active==0 || data.active==null)
+    Deactive_user(data) {
+
+        if (data.active == 0 || data.active == null) {
+            this.Active_Deactive_user.active = 1;
+        }
+        if (data.active == 1) {
+            this.Active_Deactive_user.active = 0;
+        }
+        this.Active_Deactive_user.userID = data.userID;
+        this.Active_Deactive_user.user_GUID = data.user_GUID;
+        this.Active_Deactive_user.tenant_GUID = data.tenant_GUID;
+        this.Active_Deactive_user.fullname = data.fullname;
+
+        var self = this;
+        this.userservice.Deactive_User(this.Active_Deactive_user)
+            .subscribe((response) => {
+                console.log(response);
+            })
+
+    }
+
+    save() 
     {
-      this.Active_Deactive_user.active = 1;
-    }
-    if(data.active==1)
-    {
-      this.Active_Deactive_user.active = 0;
-    }
-    this.Active_Deactive_user.userID = data.userID;
-    this.Active_Deactive_user.user_GUID = data.user_GUID;
-    this.Active_Deactive_user.tenant_GUID = data.tenant_GUID;
-    this.Active_Deactive_user.fullname = data.fullname;
-    
-    var self = this;
-    this.userservice.Deactive_User(this.Active_Deactive_user)
-      .subscribe((response) => 
-      {
-        console.log(response);
-      })
-
-  }
-
-    save() {
         if (this.Userform.valid) {
-            alert(this.Userform.value['active']);
+            //alert(this.Userform.value['active']);
 
             if (this.Userform.value['active'] == true) {
                 this.user_entry.active = 1;
             } else { this.user_entry.active = 0; }
-            this.user_entry.user_GUID = UUID.UUID.toString();
-            this.user_entry.tenant_GUID = UUID.UUID.toString();
-            this.register();
+            this.user_entry.user_GUID = UUID.UUID();
+            this.user_entry.tenant_GUID = UUID.UUID();
+            //this.register();
 
             var self = this;
-            //if(this.Userform)
             this.userservice.save(this.user_entry)
                 .subscribe((response) => {
-                    if (response.status == 200) {
-                        //this.getList();
-                        alert('User Reqistered successfully');
-                        location.reload();
+                    if (response.status == 200) 
+                    {
+                        this.user_imei2.user_GUID=this.user_entry.user_GUID,
+                        this.user_imei2.module_id=this.user_entry.role_GUID,
+                        this.user_imei2.user_IMEI=this.user_entry.user_IMEI,
+                        this.user_imei2.active=this.user_entry.active
+                        var self = this;
+                        this.userservice.save_user_imei(this.user_imei2)
+                            .subscribe((response) => {
+                                if (response.status == 200) 
+                                {
+
+                                }
+
+                            })
                     }
 
                 })
         }
+    }
+
+    save_user_imei(str_userGUID, str_userIMEI, str_RoleID, str_active) {
+        var self = this;
+        this.userservice.save(this.user_entry)
+            .subscribe((response) => {
+                if (response.status == 200) {
+
+                }
+
+            })
     }
 
     register() {
@@ -130,21 +168,29 @@ export class UserPage {
         alert(JSON.stringify(this.user_entry));
     }
 
-    getList() 
-    {
+    getList() {
         let self = this;
         let params: URLSearchParams = new URLSearchParams();
         //params.set('order', 'last_name+ASC');
         self.userservice.getall_users(params)
-            .subscribe((users: User[]) => 
-            {
+            .subscribe((users: User[]) => {
                 self.users = users;
                 this.FillTopRecordView();
             });
     }
 
-    FillTopRecordView() 
-    {
+    get_imeis() {
+        let self = this;
+        let params: URLSearchParams = new URLSearchParams();
+        //params.set('order', 'last_name+ASC');
+        self.userservice.get_IMEI(params)
+            .subscribe((user_imeis: UserIMEI[]) => {
+                self.user_imeis = user_imeis;
+
+            });
+    }
+
+    FillTopRecordView() {
         var last_element = this.users[0];
         console.log(last_element);
         this.View(last_element.user_GUID);
@@ -155,6 +201,43 @@ export class UserPage {
         //this.current_driverGUID = driver_GUID; //alert(this.current_driverGUID);
         var self = this;
         this.userservice.get_userinfo(user_GUID).subscribe((user) => self.user = user);
+    }
+
+    Updateinfo() {
+        if (this.UserEditform.valid) {
+            this.user_entry_edit.user_GUID = this.current_userGUID;
+            this.user_entry_edit.tenant_GUID = this.current_tenantGUID;
+            this.user_entry_edit.active = this.current_ActiveUser;
+            alert(JSON.stringify(this.user_entry_edit));
+            var self = this;
+            this.userservice.Update(this.user_entry_edit)
+                .subscribe((response) => {
+                    if (response.status == 200) {
+                        this.getList();
+                        this.userEditClick();
+                    }
+                })
+        }
+    }
+
+    Edit(user_data) 
+    {
+        this.userEditClicked = !this.userEditClicked;
+        this.current_userGUID = user_data.user_GUID; this.current_tenantGUID = user_data.tenant_GUID;
+        this.current_ActiveUser = user_data.active;
+        alert(this.current_userGUID);
+
+        this.user_entry_edit.fullname = user_data.fullname;
+        this.user_entry_edit.userID = user_data.userID;
+        this.user_entry_edit.email = user_data.email;
+        this.user_entry_edit.password = "*************";
+        this.user_entry_edit.address1 = user_data.address1;
+        this.user_entry_edit.address2 = user_data.address2;
+        this.user_entry_edit.role_GUID = user_data.role_GUID;
+        //this.user_entry_edit.user_IMEI = 'TESTIMEI1';
+
+        // var self = this;
+        // this.userservice.get_userinfo(this.current_userGUID).subscribe((user) => self.user = user);
     }
 
     //#region Main Genreate Token
@@ -170,54 +253,50 @@ export class UserPage {
     }
     //#endregion
 
-     fillChart_items() 
-    {
-        let self = this; let chart_label_items = []; 
+    fillChart_items() {
+        let self = this; let chart_label_items = [];
         let chart_label_data = []; let chart_label_color = [];
-        let chart_backgroundcolor=[];let chart_hovercolor=[];
+        let chart_backgroundcolor = []; let chart_hovercolor = [];
         let params: URLSearchParams = new URLSearchParams();
         //params.set('order', 'last_name+ASC');
         self.driverservice.GetDriver_Chart(params)
             .subscribe((drivercharts: GETDRIVER_CHART[]) => {
                 self.drivercharts = drivercharts;
 
-                
+
                 // console.log('Chart Detail.');
                 // var index_num = this.drivercharts.findIndex(x => x.Employment == null);
                 // this.drivercharts.splice(index_num, 1);
                 // console.log(this.drivercharts);
                 // console.log('End chart Detail.');
 
-                this.drivercharts.forEach((item, index) => 
-                {
-                    if(item.Employment=="1")
-                    {
-                        chart_label_items.push('Temporary');chart_label_data.push(item.TOTAL);
+                this.drivercharts.forEach((item, index) => {
+                    if (item.Employment == "1") {
+                        chart_label_items.push('Temporary'); chart_label_data.push(item.TOTAL);
                         chart_backgroundcolor.push('rgba(54, 162, 235, 0.8)');
-                        chart_hovercolor.push( "#36A2EB");
+                        chart_hovercolor.push("#36A2EB");
                     }
-                    if(item.Employment=="2")
-                     {
-                         chart_label_items.push('Permanent');chart_label_data.push(item.TOTAL);
-                         chart_backgroundcolor.push('rgba(255, 99, 132, 0.8)');
-                         chart_hovercolor.push("#FF6384");
-                     }
-                    if(item.Employment=="3"){
-                         chart_label_items.push('Contract');chart_label_data.push(item.TOTAL);
+                    if (item.Employment == "2") {
+                        chart_label_items.push('Permanent'); chart_label_data.push(item.TOTAL);
+                        chart_backgroundcolor.push('rgba(255, 99, 132, 0.8)');
+                        chart_hovercolor.push("#FF6384");
+                    }
+                    if (item.Employment == "3") {
+                        chart_label_items.push('Contract'); chart_label_data.push(item.TOTAL);
                         chart_backgroundcolor.push('rgba(248, 203, 0, 0.8)');
                         chart_hovercolor.push("#f8cb00");
                     }
-                    if(item.Employment=="4"){
-                         chart_label_items.push('Probation');chart_label_data.push(item.TOTAL);
-                         chart_backgroundcolor.push('rgba(69, 183, 175, 0.8)');
-                         chart_hovercolor.push("#45b7af");
+                    if (item.Employment == "4") {
+                        chart_label_items.push('Probation'); chart_label_data.push(item.TOTAL);
+                        chart_backgroundcolor.push('rgba(69, 183, 175, 0.8)');
+                        chart_hovercolor.push("#45b7af");
                     }
                 });
-                this.fillChart(chart_label_items,chart_label_data,chart_backgroundcolor,chart_hovercolor);
+                this.fillChart(chart_label_items, chart_label_data, chart_backgroundcolor, chart_hovercolor);
             });
     }
-    
-    fillChart(label_items,data_items,chart_background,chart_hover) {
+
+    fillChart(label_items, data_items, chart_background, chart_hover) {
         //alert(label_items); alert(data_items);
         this.driverDoughnutChart = new Chart(this.driverDoughnutCanvas.nativeElement,
             {

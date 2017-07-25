@@ -105,7 +105,7 @@
 
             <ion-label class="fontColor-dark">{{user.fullname}}</ion-label>
             <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(user.user_GUID)"><ion-icon name="md-eye"></ion-icon></button>
-            <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="userEditClick(user)"><ion-icon name="ios-create"></ion-icon></button>
+            <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="Edit(user)"><ion-icon name="ios-create"></ion-icon></button>
 
           </ion-item>
         </ion-list>
@@ -197,11 +197,17 @@
             <ion-label class="fontColor-green" stacked>{{"ROLE" | translate}}</ion-label>
             <ion-select formControlName="role_GUID" [(ngModel)]="user_entry.role_GUID" class="editInput" interface="popover" placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
               <ion-option value="0">N/A</ion-option>
-              <ion-option value="1">{{"ADMINISTRATOR" | translate}}</ion-option>
-              <ion-option value="2">{{"CARELINE" | translate}}</ion-option>
-              <ion-option value="3">{{"SURVEYOR" | translate}}</ion-option>
-              <ion-option value="4">{{"MANDOR" | translate}}</ion-option>
-              <ion-option value="4">{{"FACTORY" | translate}}</ion-option>
+              <ion-option value="0">N/A</ion-option>
+              <ion-option value="1">{{"SURVEYOR" | translate}}</ion-option>
+              <ion-option value="2">{{"SUPERVISOR" | translate}}</ion-option>
+              <ion-option value="3">{{"FACTORY" | translate}}</ion-option>  
+            </ion-select>
+          </ion-item>
+
+           <ion-item>
+            <ion-label class="fontColor-green" stacked>Select IMEI</ion-label>
+            <ion-select formControlName="user_IMEI" [(ngModel)]="user_entry.user_IMEI" class="editInput" interface="popover" placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
+                <ion-option *ngFor="let user_imei of user_imeis" >{{user_imei.user_IMEI}}</ion-option>
             </ion-select>
           </ion-item>
 
@@ -238,38 +244,54 @@
       </ion-card-header>
 
       <ion-list class="overflowTrue contentHeight">
-        <form [formGroup]="Userform">
+        <form [formGroup]="UserEditform">
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"FULLNAME" | translate}}</ion-label>
-            <ion-input type="text" formControlName="fullname" [(ngModel)]="user.fullname" class="editInput" placeholder="{{'FORM_FULLNAME' | translate}}"></ion-input>
+            <ion-input type="text" formControlName="fullname" [(ngModel)]="user_entry_edit.fullname" class="editInput" placeholder="{{'FORM_FULLNAME' | translate}}"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"USERNAME" | translate}}</ion-label>
+            <ion-input type="text" formControlName="userID" [(ngModel)]="user_entry_edit.userID" class="editInput" placeholder="{{'FORM_USERNAME' | translate}}"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"Email" | translate}}</ion-label>
+            <ion-input type="text" formControlName="email" [(ngModel)]="user_entry_edit.email" class="editInput" placeholder="{{'FORM_EMAIL' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"PASSWORD" | translate}}</ion-label>
-            <ion-input type="password" formControlName="password" [(ngModel)]="user.password" class="editInput" placeholder="{{'FORM_PASSWORD' | translate}}"></ion-input>
+            <ion-input type="password" formControlName="password" [(ngModel)]="user_entry_edit.password" class="editInput" placeholder="{{'FORM_PASSWORD' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 1</ion-label>
-            <ion-input type="text" formControlName="address1" [(ngModel)]="user.address1" class="editInput" placeholder="{{'FORM_ADDRESS_1' | translate}}"></ion-input>
+            <ion-input type="text" formControlName="address1" [(ngModel)]="user_entry_edit.address1" class="editInput" placeholder="{{'FORM_ADDRESS_1' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 2</ion-label>
-            <ion-input type="text" formControlName="address2" [(ngModel)]="user.address2" class="editInput" placeholder="{{'FORM_ADDRESS_2' | translate}}"></ion-input>
+            <ion-input type="text" formControlName="address2" [(ngModel)]="user_entry_edit.address2" class="editInput" placeholder="{{'FORM_ADDRESS_2' | translate}}"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"ROLE" | translate}}</ion-label>
+            <ion-select formControlName="role_GUID" [(ngModel)]="user_entry_edit.role_GUID" class="editInput" interface="popover" 
+            placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
+              <ion-option value="0">N/A</ion-option>
+              <ion-option value="1">{{"SURVEYOR" | translate}}</ion-option>
+              <ion-option value="2">{{"SUPERVISOR" | translate}}</ion-option>
+              <ion-option value="3">{{"FACTORY" | translate}}</ion-option>            
+            </ion-select>
           </ion-item>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"IMEI" | translate}}</ion-label>
-            <ion-select class="editInput" interface="popover"
-              placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
-              <ion-option value="0">N/A</ion-option>
-              <ion-option value="1">{{"ADMINISTRATOR" | translate}}</ion-option>
-              <ion-option value="2">{{"CARELINE" | translate}}</ion-option>
-              <ion-option value="3">{{"SURVEYOR" | translate}}</ion-option>
-              <ion-option value="4">{{"MANDOR" | translate}}</ion-option>
-              <ion-option value="4">{{"FACTORY" | translate}}</ion-option>
+            <ion-select formControlName="role_GUID" [(ngModel)]="user_entry_edit.role_GUID" class="editInput" interface="popover"
+              placeholder="Select IMEI">
+             <ion-option *ngFor="let user_imei of user_imeis" [value] = "user_imei.user_IMEI" >{{user_imei.user_IMEI}}</ion-option>
             </ion-select>
           </ion-item>
 
@@ -278,7 +300,7 @@
       </ion-list>
 
       <ion-card-content>
-        <button ion-button full class="bgColor-grey fontColor-white btnStyle1" [disabled]="" (click)="save()">{{"UPDATE" | translate}}</button>
+        <button ion-button full class="bgColor-grey fontColor-white btnStyle1" [disabled]="" (click)="Updateinfo()">{{"UPDATE" | translate}}</button>
       </ion-card-content>
 
     </ion-card>

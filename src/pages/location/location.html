@@ -120,18 +120,18 @@
         <form [formGroup]="EditLocationform">
         <ion-item>
           <ion-label class="fontColor-green" stacked>{{"LOCATION" | translate}}</ion-label>
-          <ion-input type="text" formControlName="editlocation" [(ngModel)]="location_entry.location" class="editInput" placeholder="Location name"></ion-input>
+          <ion-input type="text" formControlName="locationname" [(ngModel)]="location_entry_edit.name" class="editInput" placeholder="Location name"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label class="fontColor-yellow">{{"ACTIVE" | translate}}</ion-label>
-          <ion-toggle formControlName="editlocationactive" [(ngModel)]="location_entry.active" color="secondary"></ion-toggle>
+          <ion-toggle formControlName="locationactive" [(ngModel)]="location_entry_edit.active" color="secondary"></ion-toggle>
         </ion-item>
         </form>
       </ion-list>
 
       <ion-card-content>
-        <button ion-button full class="bgColor-grey fontColor-white btnStyle1">{{"UPDATE_LOCATION" | translate}}</button>
+        <button ion-button full class="bgColor-grey fontColor-white btnStyle1" (click)="Updateinfo()">{{"UPDATE_LOCATION" | translate}}</button>
       </ion-card-content>
     </ion-card>
   </div>
