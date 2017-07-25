@@ -9,6 +9,7 @@ import { SectorPage } from '../sector/sector';
 import { TenantPage } from '../tenant/tenant';
 import { UserPage } from '../user/user';
 import { VehiclePage } from '../vehicle/vehicle';
+import { ImeiPage } from '../imei/imei';
 /**
  * Generated class for the TabsPage page.
  *
@@ -31,6 +32,7 @@ export class TabsPage {
   tab6Root = TenantPage;
   tab7Root = UserPage;
   tab8Root = VehiclePage;
+  tab9Root = ImeiPage;
 tabToShow : number;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     let pid = navParams.get('pid');

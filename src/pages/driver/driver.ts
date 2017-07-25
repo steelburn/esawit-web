@@ -43,7 +43,7 @@ export class DriverPage {
 
     AvailableVehicleform: FormGroup;
 
-    searchTerm: string = ''; current_driverGUID: string = '';current_tenantGUID: string = '';
+    searchTerm: string = ''; current_driverGUID: string = ''; current_tenantGUID: string = '';
     searchControl: FormControl;
     items: any;
     Active_Deactive_driver: Driver = new Driver();
@@ -235,15 +235,13 @@ export class DriverPage {
     }
     //#endregion
 
-    Updateinfo() 
-    {
-        
+    Updateinfo() {
+
         //console.log(this.driver.driver_GUID);
-        if (this.DriverEditform.valid) 
-        {
-            this.driver_entry_edit.driver_GUID=this.current_driverGUID;
-            this.driver_entry_edit.tenant_GUID=this.current_tenantGUID
-           alert(JSON.stringify(this.driver_entry_edit));
+        if (this.DriverEditform.valid) {
+            this.driver_entry_edit.driver_GUID = this.current_driverGUID;
+            this.driver_entry_edit.tenant_GUID = this.current_tenantGUID
+            alert(JSON.stringify(this.driver_entry_edit));
             var self = this;
             this.driverservice.Update(this.driver_entry_edit)
                 .subscribe((response) => { console.log(response.status) })
@@ -347,9 +345,9 @@ export class DriverPage {
     }
 
     //#region View Driver Info
-    Edit(driver_GUID,tenant_GUID) {
+    Edit(driver_GUID, tenant_GUID) {
         this.driverEditClicked = !this.driverEditClicked; //hide column
-        this.current_driverGUID = driver_GUID;this.current_tenantGUID=tenant_GUID;
+        this.current_driverGUID = driver_GUID; this.current_tenantGUID = tenant_GUID;
         alert(this.current_driverGUID);
         var self = this;
         this.driverservice.get(driver_GUID).subscribe((driver) => self.driver = driver);

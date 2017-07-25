@@ -1,0 +1,101 @@
+<!--
+  Generated template for the ImeiPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>IMEI</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <!--listing start-->
+  <div class="col3">
+
+    <ion-card class="cb10">
+
+
+      <ion-row>
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
+          {{"IMEI" | translate}}
+        </ion-card-header>
+      </ion-row>
+
+      <ion-row>
+        <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by imei"></ion-searchbar>
+      </ion-row>
+
+      <ion-list>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle  checked="true" color="secondary" item-start ></ion-toggle>
+          <ion-label class="fontColor-dark">adsqdsfqfq-faqzsfasa-q3r1fsa</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="true" color="secondary" item-start ></ion-toggle>
+          <ion-label class="fontColor-dark">adsqdsfqfq-faqzsfasa-q3r1fsa</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
+        </ion-item>
+
+        <ion-item class="tnUserRow">
+          <ion-toggle checked="false" color="secondary" item-start ></ion-toggle>
+          <ion-label class="fontColor-dark">adsqdsfqfq-faqzsfasa-q3r1fsa</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
+        </ion-item>
+
+      </ion-list>
+
+  </ion-card>
+
+  </div>
+  <!--listing end-->
+
+  <!--Profile start-->
+  <div class="col7">
+    <ion-card class="cb10">
+
+      <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
+        History for : <b>adsqdsfqfq-faqzsfasa-q3r1fsa</b>
+      </ion-card-header>
+
+      <table id="imeiTable" class="fullWidth">
+        <tr>
+          <td class="tdStyle"><ion-icon item-start name="md-checkmark-circle" class="fontColor-green imeiIcon"></ion-icon></td>
+          <td class="tdStyle">Ahmad Firdaus Bin Nor Azhar</td>
+          <td class="tdStyle fontColor-lightGrey"></td>
+          <td class="tdStyle"><ion-icon item-end name="md-create" class="fontColor-grey imeiIcon"></ion-icon></td>
+        </tr>
+        <tr>
+          <td class="tdStyle"><ion-icon item-start name="md-radio-button-on" class="fontColor-yellow imeiIcon"></ion-icon></td>
+          <td class="tdStyle">Jonathan Loo</td>
+          <td class="tdStyle fontColor-lightGrey">Phone problem. send to service centre for repair</td>
+          <td class="tdStyle"><ion-icon item-end name="md-create" class="fontColor-grey imeiIcon"></ion-icon></td>
+        </tr>
+        <tr>
+          <td class="tdStyle"><ion-icon item-start name="md-close-circle" class="fontColor-red imeiIcon"></ion-icon></td>
+          <td class="tdStyle">Abdul Karim Bin Daud</td>
+          <td class="tdStyle fontColor-lightGrey">User has resigned</td>
+          <td class="tdStyle"><ion-icon item-end name="md-create" class="fontColor-grey imeiIcon"></ion-icon></td>
+        </tr>
+        <tr>
+          <td class="tdStyle"><ion-icon item-start name="md-close-circle" class="fontColor-red imeiIcon"></ion-icon></td>
+          <td class="tdStyle">Isma Bin Mohd halil</td>
+          <td class="tdStyle fontColor-lightGrey">User has resigned</td>
+          <td class="tdStyle"><ion-icon item-end name="md-create" class="fontColor-grey imeiIcon"></ion-icon></td>
+        </tr>
+
+      </table>
+
+    </ion-card>
+  </div>
+
+  <!--Profile end-->
+
+</ion-content>
