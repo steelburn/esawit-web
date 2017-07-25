@@ -14,7 +14,11 @@ export class Driver {
 		public start_year: string = null,
 		public description: string = null,
 		public employment_type: number = null,
-		public active: number = null
+		public active: number = null,
+		public createdby_GUID:string=null,
+		public updatedby_GUID:string=null,
+		public created_ts:Date=null,
+		public updated_ts:Date=null
 	) { }
 
 
@@ -36,7 +40,7 @@ export class Driver {
 			json.start_year,
 			json.description,
 			json.employment_type,
-			json.active
+			json.active,json.createdby_GUID,json.updatedby_GUID,json.created_ts,json.updated_ts
 		);
 	}
 
@@ -57,7 +61,8 @@ export class Driver {
 			start_year:this.start_year,
 			description:this.description,
 			employment_type:this.employment_type,
-			active:this.active
+			active:this.active,createdby_GUID:this.createdby_GUID,created_ts:this.created_ts,
+			updatedby_GUID:this.updatedby_GUID,updated_ts:this.updated_ts
 		};
 
 		return stringify ? JSON.stringify({ resource: [doc] }) : doc;

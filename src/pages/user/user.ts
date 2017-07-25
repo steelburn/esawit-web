@@ -108,6 +108,17 @@ export class UserPage {
         this.Active_Deactive_user.tenant_GUID = data.tenant_GUID;
         this.Active_Deactive_user.fullname = data.fullname;
 
+        this.Active_Deactive_user.email = data.email;
+        this.Active_Deactive_user.address1 = data.address1;
+        this.Active_Deactive_user.address2 = data.address2;
+        this.Active_Deactive_user.password = data.password;
+        this.Active_Deactive_user.role_GUID = data.role_GUID;
+
+        this.Active_Deactive_user.created_ts = data.created_ts;
+        this.Active_Deactive_user.createdby_GUID = data.createdby_GUID;
+        this.Active_Deactive_user.updated_ts = data.updated_ts;
+        this.Active_Deactive_user.updatedby_GUID = data.updatedby_GUID;
+
         var self = this;
         this.userservice.Deactive_User(this.Active_Deactive_user)
             .subscribe((response) => {
