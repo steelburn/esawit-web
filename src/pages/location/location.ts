@@ -118,6 +118,11 @@ export class LocationPage {
     this.Active_Deactive_location.name = data.name;
     this.Active_Deactive_location.location_GUID = data.location_GUID;
     this.Active_Deactive_location.tenant_GUID = data.tenant_GUID;
+
+    this.Active_Deactive_location.created_ts = data.created_ts;
+    this.Active_Deactive_location.createdby_GUID = data.createdby_GUID;
+    this.Active_Deactive_location.updated_ts = data.updated_ts;
+    this.Active_Deactive_location.updatedby_GUID = data.updatedby_GUID;
     
     var self = this;
     this.location_service.Deactive_Location(this.Active_Deactive_location)

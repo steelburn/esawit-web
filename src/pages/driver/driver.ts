@@ -144,7 +144,8 @@ export class DriverPage {
 
     }
 
-    Deactive_driver(data) {
+    Deactive_driver(data) 
+    {
         //alert(JSON.stringify(data));
         if (data.active == 0 || data.active == null) {
             this.Active_Deactive_driver.active = 1;
@@ -155,6 +156,25 @@ export class DriverPage {
         this.Active_Deactive_driver.driver_GUID = data.driver_GUID;
         this.Active_Deactive_driver.tenant_GUID = data.tenant_GUID;
         this.Active_Deactive_driver.fullname = data.fullname;
+
+        this.Active_Deactive_driver.identification_no = data.identification_no;
+        this.Active_Deactive_driver.address1 = data.address1;
+        this.Active_Deactive_driver.address2 = data.address2;
+        this.Active_Deactive_driver.address3 = data.address3;
+        this.Active_Deactive_driver.phone_no = data.phone_no;
+        this.Active_Deactive_driver.email = data.email;
+        this.Active_Deactive_driver.license_no = data.license_no;
+        this.Active_Deactive_driver.start_year = data.start_year;
+        this.Active_Deactive_driver.description = data.description;
+        this.Active_Deactive_driver.employment_type = data.employment_type;
+        //this.Active_Deactive_driver.active = data.active;
+        this.Active_Deactive_driver.created_ts = data.created_ts;
+        this.Active_Deactive_driver.createdby_GUID = data.createdby_GUID;
+        this.Active_Deactive_driver.updated_ts = data.updated_ts;
+        this.Active_Deactive_driver.updatedby_GUID = data.updatedby_GUID;
+
+
+
 
         var self = this;
         this.driverservice.Deactive_Driver(this.Active_Deactive_driver)
