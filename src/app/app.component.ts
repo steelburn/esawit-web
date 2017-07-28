@@ -57,7 +57,7 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LandingV3Page;
+  rootPage: any = LandingV1Page;
   activePage: any;
 
   pages: Array<{ title: string, component: any }>;
