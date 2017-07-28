@@ -126,3 +126,32 @@ export class LOCATION_VEHICLE_MODEL {
 	}
 
 }
+
+export class GETLOCATION_CHART
+{
+	constructor(
+		public Active: string = null,
+		public TOTAL: number = null
+	) { }
+
+
+	static fromJson(json: any) {
+		if (!json) return;
+
+		return new GETLOCATION_CHART(
+			json.Active,
+		    json.TOTAL
+		);
+	}
+
+
+	toJson(stringify?: boolean): any {
+		var doc = {
+			Active:this.Active,
+			TOTAL:this.TOTAL
+		};
+
+		return stringify ? JSON.stringify({ resource: [doc] }) : doc;
+	}
+
+}

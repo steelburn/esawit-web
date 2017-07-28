@@ -61,6 +61,24 @@ export class VehicleService
 		
 	}
 	
+	Update (vehicle: VehicleModel) 
+	{
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+    	
+    	let options = new RequestOptions({ headers: queryHeaders });
+
+		// if (driver.driver_GUID) 
+		// {
+			return this.httpService.http.patch(this.baseResourceUrl , vehicle.toJson(true),options)
+			.map((data) => {
+				return data;
+			});
+		// } 
+	}
+
 	get_vehicles (params?: URLSearchParams): Observable<VehicleModel[]> 
 	{
 		var queryHeaders = new Headers();

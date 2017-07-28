@@ -3,6 +3,7 @@ import {Http, Headers,RequestOptions, URLSearchParams} from '@angular/http';
 
 import {LocationModel} from '../models/location';
 import {GETLOCATION} from '../models/location';
+import {GETLOCATION_CHART} from '../models/location';
 
 import {GET_VEHICLE_LOCATION} from '../models/vehicle';
 import {LOCATION_VEHICLE_MODEL} from '../models/location';
@@ -42,6 +43,24 @@ export class LocationService
 	  return Observable.throw(errMsg);
 	}
 	
+	Update (location: LocationModel) 
+	{
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+    	
+    	let options = new RequestOptions({ headers: queryHeaders });
+
+		// if (driver.driver_GUID) 
+		// {
+			return this.httpService.http.patch(this.baseResourceUrl , location.toJson(true),options)
+			.map((data) => {
+				return data;
+			});
+		// } 
+	}
+
 	save_location (master_location: LocationModel): Observable<any> 
 	{
 		//console.log(localStorage.getItem('session_token'));
@@ -57,6 +76,24 @@ export class LocationService
 		
 	}
 	
+	GetLocation_Chart (params?:URLSearchParams): Observable<GETLOCATION_CHART[]> {
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);    	
+		return this.httpService.http
+			.get(this.baseResource_Url+'totaldriver_view', { search: params, headers: queryHeaders})
+			.map((response) => {
+				var result: any = response.json();
+				let locationcharts: Array<GETLOCATION_CHART> = [];
+				result.resource.forEach((locationchart) => {
+					locationcharts.push(GETLOCATION_CHART.fromJson(locationchart));
+				});
+				
+				return locationcharts;
+			}).catch(this.handleError);
+	};
+
 	get_locationss (params?: URLSearchParams): Observable<LocationModel[]> 
 	{
 		var queryHeaders = new Headers();
@@ -201,6 +238,19 @@ export class LocationService
 			});
 		} 
 	}
-
+	
+	getLocation (id: string, params?: URLSearchParams): Observable<LocationModel> {
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.get(this.baseResourceUrl + '/' + id, { search: params ,headers: queryHeaders})
+			.map((response) => {
+				var result: any = response.json();
+				let location: LocationModel = LocationModel.fromJson(result);
+				return location;
+			}).catch(this.handleError);
+	};
 
 }

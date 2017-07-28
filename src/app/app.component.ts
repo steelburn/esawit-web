@@ -20,6 +20,7 @@ import { UserPage } from '../pages/user/user';
 import { VehiclePage } from '../pages/vehicle/vehicle';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
+import { ImeiPage } from '../pages/imei/imei';
 
 import { ReportsPage } from '../pages/reports/reports';
 import { VehicleTransactionPage } from '../pages/vehicle-transaction/vehicle-transaction';
@@ -91,7 +92,8 @@ export class MyApp {
       { title: 'Driver', component: TabsPage, pid: 0 },
       { title: 'Location', component: TabsPage, pid: 1 },
       { title: 'User', component: TabsPage, pid: 2 },
-      { title: 'Vehicle', component: TabsPage, pid: 3 }
+      { title: 'Vehicle', component: TabsPage, pid: 3 },
+      { title: 'IMEI', component: TabsPage, pid: 4 }
       // { title: 'Role', component: RolePage },
       // { title: 'Sector', component: SectorPage },
       // { title: 'Tenant', component: TenantPage }

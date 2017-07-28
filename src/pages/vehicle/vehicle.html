@@ -3,7 +3,7 @@
   <!--form start-->
   <div class="col2">
     <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="vehicleRegisterClick()">
-      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
+      <ion-icon name="md-add-circle" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
       <div class="portletColStyle2">
         <div class="portletHeaderStyle2">{{"REGISTER_NEW_VEHICLE" | translate}}</div>
       </div>
@@ -50,7 +50,7 @@
       </ion-row>
 
       <ion-row>
-           <ion-searchbar type="text" #filter (keyup)="0" placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
+        <ion-searchbar type="text" #filter (keyup)="0" placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
       </ion-row>
 
       <ion-list>
@@ -58,12 +58,12 @@
 
           <!--<ion-toggle checked="true" color="secondary" item-start></ion-toggle>-->
           <ion-toggle *ngIf="vehicle.active==0" checked="false" color="secondary" item-start (ionChange)="Deactive_Vehicle(vehicle)"></ion-toggle>
-            <ion-toggle *ngIf="vehicle.active==null" checked="false" color="secondary" item-start (ionChange)="Deactive_Vehicle(vehicle)"></ion-toggle>
-            <ion-toggle *ngIf="vehicle.active==1" checked="true" color="secondary" (ionChange)="Deactive_Vehicle(vehicle)" item-start></ion-toggle>
+          <ion-toggle *ngIf="vehicle.active==null" checked="false" color="secondary" item-start (ionChange)="Deactive_Vehicle(vehicle)"></ion-toggle>
+          <ion-toggle *ngIf="vehicle.active==1" checked="true" color="secondary" (ionChange)="Deactive_Vehicle(vehicle)" item-start></ion-toggle>
 
           <ion-label class="fontColor-dark">{{vehicle.registration_no}}</ion-label>
           <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(vehicle.vehicle_GUID)"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="VehicleEditClick(vehicle.vehicle_GUID)"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="Edit(vehicle)"><ion-icon name="ios-create"></ion-icon></button>
           <!--<button ion-button color="danger" item-end class=" btnStyle1 bgColor-red" (click)="remove(vehicle.vehicle_GUID)"><ion-icon name="md-close"></ion-icon></button>-->
         </ion-item>
 
@@ -100,7 +100,7 @@
   </div>-->
   <!--vehicle listing end-->
 
-<!--Profile start-->
+  <!--Profile start-->
   <div class="col3">
     <ion-card class="cb10">
 
@@ -149,9 +149,9 @@
           </ion-row>
 
           <ion-item *ngFor="let get_selectlocation of get_selectlocations">
-          <ion-label>{{get_selectlocation.name}}</ion-label>
-          <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
-        </ion-item>
+            <ion-label>{{get_selectlocation.name}}</ion-label>
+            <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
+          </ion-item>
 
         </ion-list>
 
@@ -171,7 +171,6 @@
     </ion-card>
   </div>
   <!--Profile end-->
-
 
   <!--edit form start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="vehicleEditClicked">
@@ -263,13 +262,13 @@
         </ion-row>
 
         <div class="contentHeight3 overflowTrue">
-           <ion-list>
+          <ion-list>
             <ion-item *ngFor="let getlocation of getlocations">
               <ion-label>{{getlocation.name}}</ion-label>
               <!--<ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>-->
               <ion-checkbox color="secondary" checked="false" (ionChange)="AvailableSelection($event,getlocation)" item-end></ion-checkbox>
-            </ion-item>           
-          </ion-list>        
+            </ion-item>
+          </ion-list>
         </div>
       </ion-card>
       <ion-card class="cb5 contentHeight3">
@@ -296,5 +295,37 @@
     </ion-card>
   </div>
   <!--add Location form end-->
+  <!--edit form start-->
+  <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="vehicleEditClicked">
+    <form [formGroup]="VehicleEditform">
+      <ion-card class="fb4 marginCenter popupFormCard">
+
+        <ion-card-header class="icTitle headerColor-white posRelative">
+          <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
+          <div class="icHeaderText">{{"UPDATE_VEHICLE" | translate}}</div>
+          <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="vehicleEditClick()">
+        <ion-icon name="md-close"></ion-icon> 
+      </button>
+        </ion-card-header>
+
+        <ion-list class="overflowTrue contentHeight">
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"VEHICLE_NO" | translate}}</ion-label>
+            <ion-input type="text" class="editInput" formControlName="vehiclename" [(ngModel)]="vehicle_entry_edit.registration_no" placeholder="Location name"></ion-input>
+          </ion-item>
+
+          <!--<ion-item>
+            <ion-label class="fontColor-yellow">{{"ACTIVE" | translate}}</ion-label>
+            <ion-toggle formControlName="vehicleactive" [(ngModel)]="vehicle_entry_edit.active"  color="secondary"></ion-toggle>
+          </ion-item>-->
+        </ion-list>
+
+        <ion-card-content>
+          <button ion-button full class="bgColor-grey fontColor-white btnStyle1" (click)="Updateinfo()">Update</button>
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </div>
+  <!--edit form end-->
 
 </ion-content>

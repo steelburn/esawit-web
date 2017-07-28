@@ -26,8 +26,12 @@ import { UUID } from 'angular2-uuid';
   templateUrl: 'vehicle.html', providers: [BaseHttpService, VehicleService]
 })
 export class VehiclePage {
-  Vehicleform: FormGroup;
-  vehicle_entry: VehicleModel = new VehicleModel();
+
+  current_ActiveUser: number; current_vehicleGUID_Edit: string;current_tenantGUID_Edit: string;current_vehicleID:number;
+  Vehicleform: FormGroup;  vehicle_entry: VehicleModel = new VehicleModel();
+  VehicleEditform: FormGroup; vehicle_entry_edit: VehicleModel = new VehicleModel();
+
+
   vehicle: VehicleModel = new VehicleModel();
   location_vehicle: LOCATION_VEHICLE_MODEL = new LOCATION_VEHICLE_MODEL();
 
@@ -41,10 +45,13 @@ export class VehiclePage {
   public current_vehicle_GUID: string = '';
   Active_Deactive_vehicle: VehicleModel = new VehicleModel();
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder, private vehicle_service: VehicleService,
+  constructor(private fb2: FormBuilder, @Inject(FormBuilder) fb: FormBuilder, private vehicle_service: VehicleService,
     private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) {
 
     this.Vehicleform = fb.group
+      ({ vehiclename: '', vehicleactive: '' });
+
+    this.VehicleEditform = fb2.group
       ({ vehiclename: '', vehicleactive: '' });
 
     this.getList();
@@ -186,8 +193,8 @@ vehiclesby_locations()
         }
     }
 
- Deactive_Vehicle(data) 
-  {
+Deactive_Vehicle(data) 
+{
     alert(JSON.stringify(data))
     if(data.active==0 || data.active==null)
     {
@@ -201,10 +208,21 @@ vehiclesby_locations()
     this.Active_Deactive_vehicle.vehicle_GUID = data.vehicle_GUID;
     this.Active_Deactive_vehicle.tenant_GUID = data.tenant_GUID;
     this.Active_Deactive_vehicle.registration_no = data.registration_no;
+    this.Active_Deactive_vehicle.make = data.make;
+    this.Active_Deactive_vehicle.model = data.model;
+    this.Active_Deactive_vehicle.manufacturing_year = data.manufacturing_year;
+    this.Active_Deactive_vehicle.capacity_tonne = data.capacity_tonne;
+    this.Active_Deactive_vehicle.description = data.description;
+    this.Active_Deactive_vehicle.createdby_GUID = data.createdby_GUID;
+    this.Active_Deactive_vehicle.created_ts = data.created_ts;
+    this.Active_Deactive_vehicle.updatedby_GUID = data.updatedby_GUID;
+    this.Active_Deactive_vehicle.updated_ts = data.updated_ts;
+
     
     var self = this;
     this.vehicle_service.Deactive_Vehicle(this.Active_Deactive_vehicle)
-      .subscribe((response) => {
+      .subscribe((response) => 
+      {
         console.log(response);
       })
 
@@ -217,4 +235,39 @@ vehiclesby_locations()
   public vehicleRegisterClick() { this.vehicleRegisterClicked = !this.vehicleRegisterClicked; }
   public vehicleEditClick() { this.vehicleEditClicked = !this.vehicleEditClicked; }
   public addLocationClick() { this.addLocationClicked = !this.addLocationClicked; }
+
+  Edit(vehicle_data) 
+  {
+        //alert(JSON.stringify(vehicle_data));
+        this.vehicleEditClicked = !this.vehicleEditClicked;
+        
+        this.current_vehicleID=vehicle_data.ID;
+        this.current_vehicleGUID_Edit=vehicle_data.vehicle_GUID;
+        this.current_tenantGUID_Edit=vehicle_data.tenant_GUID;
+        this.vehicle_entry_edit.registration_no = vehicle_data.registration_no;
+        this.vehicle_entry_edit.active = vehicle_data.active;
+  }
+
+  Updateinfo() 
+  {
+        if (this.VehicleEditform.valid) 
+        {
+           this.vehicle_entry_edit.ID=this.current_vehicleID;
+           this.vehicle_entry_edit.vehicle_GUID=this.current_vehicleGUID_Edit;
+           this.vehicle_entry_edit.tenant_GUID=this.current_tenantGUID_Edit;
+           this.vehicle_entry_edit.active = this.current_ActiveUser;
+           // alert(JSON.stringify(this.vehicle_entry_edit));
+            var self = this;
+            this.vehicle_service.Update(this.vehicle_entry_edit)
+                .subscribe((response) => 
+                {
+                  //console.log(response);
+                    if (response.status == 200) 
+                    {
+                        this.getList();
+                        this.vehicleEditClick();
+                    }
+                })
+        }
+    }
 }

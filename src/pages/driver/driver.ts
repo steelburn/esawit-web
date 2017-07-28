@@ -15,7 +15,7 @@ import { VEHICLEDRIVER_MODEL } from '../../models/vehicle';
 import { FormControlDirective, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { UUID } from 'angular2-uuid';
 
-import {ValidationService} from '../../services/validation';
+import { ValidationService } from '../../services/validation';
 
 @IonicPage()
 @Component({
@@ -43,13 +43,15 @@ export class DriverPage {
 
     AvailableVehicleform: FormGroup;
 
-    searchTerm: string = ''; current_driverGUID: string = '';
+    searchTerm: string = ''; current_driverGUID: string = ''; current_tenantGUID: string = '';
     searchControl: FormControl;
     items: any;
-    public chart_items = [];
+    Active_Deactive_driver: Driver = new Driver();
 
     Driverform: FormGroup;
     driver_entry: Driver = new Driver();
+
+    driver_entry_edit: Driver = new Driver();
 
 
     DriverEditform: FormGroup;
@@ -62,46 +64,58 @@ export class DriverPage {
     get_selectvehicle: GETVEHICLE = new GETVEHICLE();
     public get_selectvehicles: GETVEHICLE[] = [];
 
-    public drivers: Driver[] = []; public drivercharts: GETDRIVER_CHART[] = [];
-    public filter_drivers = []; public label_items = [];
+    public drivers: Driver[] = [];
+    public drivercharts: GETDRIVER_CHART[] = [];
+    public filter_drivers = [];
+    public label_items = [];
 
     @ViewChild('driverDoughnutCanvas') driverDoughnutCanvas;
 
     driverDoughnutChart: any;
 
-    constructor(private fb: FormBuilder, @Inject(FormBuilder) fb2: FormBuilder, private driverservice: DriverService,private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) {
-        
+    constructor(private fb: FormBuilder, @Inject(FormBuilder) fb2: FormBuilder, private driverservice: DriverService, private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) {
+
         this.searchControl = new FormControl(); this.GenerateToken();
         this.DriverEditform = fb.group({
 
-                fullname: '',
-                driver_GUID: '',
-                tenant_GUID: '',
-                identification_no: '',
-                identification_type: '',
-                address1: '',
-                address2: '',
-                address3: '',
-                phone_no: '',
-                email: '',
-                license_no: '',
-                start_year: '',
-                description: '',
-                employment_type: '',
-                active: ''
+            fullname: ['', Validators.compose([
+                Validators.pattern('[a-zA-Z. ]*'),
+                Validators.minLength(5),
+                Validators.required
+            ])],
+            driver_GUID: '',
+            tenant_GUID: '',
+            identification_no: '',
+            identification_type: '',
+            address1: '',
+            address2: '',
+            address3: '',
+            phone_no: ['', Validators.compose([
+                Validators.required,
+                Validators.pattern('^[0-9_.+-]*')
+            ])],
+            email: ['', Validators.compose([
+                Validators.required,
+                Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+            ])],
+            license_no: '',
+            start_year: '',
+            description: '',
+            employment_type: '',
+            active: 1
 
-            });
+        });
 
-        this.driver_entry.driver_GUID = UUID.UUID(); 
+        this.driver_entry.driver_GUID = UUID.UUID();
         this.driver_entry.tenant_GUID = UUID.UUID();
         //this.GenerateToken();
-        
+
         this.Driverform = fb2.group({
 
-    driver_GUID: [UUID.UUID()],
+            driver_GUID: [UUID.UUID()],
             fullname: ['', Validators.compose([
                 Validators.pattern('[a-zA-Z]*'),
-                Validators.minLength(5), 
+                Validators.minLength(5),
                 Validators.required
             ])],
             identification_type: '',
@@ -110,13 +124,13 @@ export class DriverPage {
             address2: '',
             address3: '',
             phone_no: ['', Validators.compose([
-                Validators.required, 
+                Validators.required,
                 Validators.pattern('^[0-9_.+-]*')
             ])],
             email: ['', Validators.compose([
-                Validators.required, 
+                Validators.required,
                 Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-            ])] ,
+            ])],
             license_no: '',
             employment_type: '',
             description: '',
@@ -126,9 +140,48 @@ export class DriverPage {
 
 
         this.AvailableVehicleform = fb.group({ availablevehicles: '' });
-        this.getList(); 
+        this.getList();
         this.fillChart_items();
         //this.getVehicleList();
+
+    }
+
+    Deactive_driver(data) {
+        //alert(JSON.stringify(data));
+        if (data.active == 0 || data.active == null) {
+            this.Active_Deactive_driver.active = 1;
+        }
+        if (data.active == 1) {
+            this.Active_Deactive_driver.active = 0;
+        }
+        this.Active_Deactive_driver.driver_GUID = data.driver_GUID;
+        this.Active_Deactive_driver.tenant_GUID = data.tenant_GUID;
+        this.Active_Deactive_driver.fullname = data.fullname;
+
+        this.Active_Deactive_driver.identification_no = data.identification_no;
+        this.Active_Deactive_driver.address1 = data.address1;
+        this.Active_Deactive_driver.address2 = data.address2;
+        this.Active_Deactive_driver.address3 = data.address3;
+        this.Active_Deactive_driver.phone_no = data.phone_no;
+        this.Active_Deactive_driver.email = data.email;
+        this.Active_Deactive_driver.license_no = data.license_no;
+        this.Active_Deactive_driver.start_year = data.start_year;
+        this.Active_Deactive_driver.description = data.description;
+        this.Active_Deactive_driver.employment_type = data.employment_type;
+        //this.Active_Deactive_driver.active = data.active;
+        this.Active_Deactive_driver.created_ts = data.created_ts;
+        this.Active_Deactive_driver.createdby_GUID = data.createdby_GUID;
+        this.Active_Deactive_driver.updated_ts = data.updated_ts;
+        this.Active_Deactive_driver.updatedby_GUID = data.updatedby_GUID;
+
+
+
+
+        var self = this;
+        this.driverservice.Deactive_Driver(this.Active_Deactive_driver)
+            .subscribe((response) => {
+                console.log(response);
+            })
 
     }
 
@@ -182,10 +235,10 @@ export class DriverPage {
         this.getvehicles.splice(index_num, 1);
 
         this.vehicle_driver.ID = 0,
-        this.vehicle_driver.driver_GUID = this.current_driverGUID,
-        this.vehicle_driver.vehicle_GUID = getvehicle.vehicle_GUID,
+            this.vehicle_driver.driver_GUID = this.current_driverGUID,
+            this.vehicle_driver.vehicle_GUID = getvehicle.vehicle_GUID,
 
-        this.get_selectvehicles.push(new GETVEHICLE(getvehicle.vehicle_Gid, getvehicle.registration_no));
+            this.get_selectvehicles.push(new GETVEHICLE(getvehicle.vehicle_Gid, getvehicle.registration_no));
     }
 
     RemoveSelection(e: any, getselectvehicle) {
@@ -198,17 +251,20 @@ export class DriverPage {
         var index_num = this.get_selectvehicles.findIndex(x => x.vehicle_Gid == getselectvehicle.vehicle_Gid);
         console.log("NUM IS " + index_num);
         this.get_selectvehicles.splice(index_num, 1);
-        
+
         this.getvehicles.push(new GETVEHICLE2(getselectvehicle.vehicle_GUID, getselectvehicle.registration_no));
     }
     //#endregion
 
     Updateinfo() {
-        alert(JSON.stringify(this.DriverEditform.value));
-        console.log(this.driver.driver_GUID);
+
+        //console.log(this.driver.driver_GUID);
         if (this.DriverEditform.valid) {
+            this.driver_entry_edit.driver_GUID = this.current_driverGUID;
+            this.driver_entry_edit.tenant_GUID = this.current_tenantGUID
+            alert(JSON.stringify(this.driver_entry_edit));
             var self = this;
-            this.driverservice.Update(this.driver)
+            this.driverservice.Update(this.driver_entry_edit)
                 .subscribe((response) => { console.log(response.status) })
         }
     }
@@ -299,7 +355,7 @@ export class DriverPage {
     }
 
     vehiclesby_driver() {
-      for (var _i = 0; _i < this.get_selectvehicles.length; _i++) {
+        for (var _i = 0; _i < this.get_selectvehicles.length; _i++) {
             var item = this.get_selectvehicles[_i].registration_no;
             if (item != null) {
 
@@ -310,9 +366,11 @@ export class DriverPage {
     }
 
     //#region View Driver Info
-    Edit(driver_GUID) {
+
+    Edit(driver_GUID, tenant_GUID) {
+
         this.driverEditClicked = !this.driverEditClicked; //hide column
-        this.current_driverGUID = driver_GUID;
+        this.current_driverGUID = driver_GUID; this.current_tenantGUID = tenant_GUID;
         alert(this.current_driverGUID);
         var self = this;
         this.driverservice.get(driver_GUID).subscribe((driver) => self.driver = driver);
@@ -331,60 +389,91 @@ export class DriverPage {
                     return item.driver_GUID != driver_GUID
                 });
             });
-        
+
         this.navCtrl.setRoot(this.navCtrl.getActive().component);
     }
     //#endregion
 
     fillChart_items() {
-        let self = this; let chart_label_items = []; 
+        let self = this; let chart_label_items = [];
+        let bar_label_items = [];
         let chart_label_data = []; let chart_label_color = [];
-        let chart_backgroundcolor=[];let chart_hovercolor=[];
+        let chart_backgroundcolor = []; let chart_hovercolor = [];
         let params: URLSearchParams = new URLSearchParams();
-        //params.set('order', 'last_name+ASC');
 
         self.driverservice.GetDriver_Chart(params)
             .subscribe((drivercharts: GETDRIVER_CHART[]) => {
                 self.drivercharts = drivercharts;
 
-                
-                // console.log('Chart Detail.');
-                // var index_num = this.drivercharts.findIndex(x => x.Employment == null);
-                // this.drivercharts.splice(index_num, 1);
-                // console.log(this.drivercharts);
-                // console.log('End chart Detail.');
-
-                this.drivercharts.forEach((item, index) => 
-                {
-                    if(item.Employment=="1")
-                    {
-                        chart_label_items.push('Temporary');chart_label_data.push(item.TOTAL);
+                this.drivercharts.forEach((item, index) => {
+                    if (item.Employment == "1") {
+                        chart_label_items.push('Temporary'); chart_label_data.push(item.TOTAL);
                         chart_backgroundcolor.push('rgba(54, 162, 235, 0.8)');
-                        chart_hovercolor.push( "#36A2EB");
+                        chart_hovercolor.push("#36A2EB");
                     }
-                    if(item.Employment=="2")
-                     {
-                         chart_label_items.push('Permanent');chart_label_data.push(item.TOTAL);
-                         chart_backgroundcolor.push('rgba(255, 99, 132, 0.8)');
-                         chart_hovercolor.push("#FF6384");
-                     }
-                    if(item.Employment=="3"){
-                         chart_label_items.push('Contract');chart_label_data.push(item.TOTAL);
+                    if (item.Employment == "2") {
+                        chart_label_items.push('Permanent'); chart_label_data.push(item.TOTAL);
+                        chart_backgroundcolor.push('rgba(255, 99, 132, 0.8)');
+                        chart_hovercolor.push("#FF6384");
+                    }
+                    if (item.Employment == "3") {
+                        chart_label_items.push('Contract'); chart_label_data.push(item.TOTAL);
                         chart_backgroundcolor.push('rgba(248, 203, 0, 0.8)');
                         chart_hovercolor.push("#f8cb00");
                     }
-                    if(item.Employment=="4"){
-                         chart_label_items.push('Probation');chart_label_data.push(item.TOTAL);
-                         chart_backgroundcolor.push('rgba(69, 183, 175, 0.8)');
-                         chart_hovercolor.push("#45b7af");
+                    if (item.Employment == "4") {
+                        chart_label_items.push('Probation'); chart_label_data.push(item.TOTAL);
+                        chart_backgroundcolor.push('rgba(69, 183, 175, 0.8)');
+                        chart_hovercolor.push("#45b7af");
+                    }
+
+                    if (item.Employment == "4") {
+                        bar_label_items.push({
+                            Title: 'Probation',
+                            ActiveTotal: item.TOTAL,
+                            bgColor: 'rgba(69, 183, 175, 0.8)'
+                        });
+                    }
+
+                    if (item.Employment == "3") {
+                        bar_label_items.push({
+                            Title: 'Contract',
+                            ActiveTotal: item.TOTAL,
+                            bgColor: 'rgba(248, 203, 0, 0.8)'
+                        });
+                    }
+
+                    if (item.Employment == "2") {
+                        bar_label_items.push({
+                            Title: 'Permanent',
+                            ActiveTotal: item.TOTAL,
+                            bgColor: 'rgba(255, 99, 132, 0.8)'
+                        });
+                    }
+
+                    if (item.Employment == "1") {
+                        bar_label_items.push({
+                            Title: 'Temporary',
+                            ActiveTotal: item.TOTAL,
+                            bgColor: 'rgba(54, 162, 235, 0.8)'
+                        });
                     }
                 });
-                this.fillChart(chart_label_items,chart_label_data,chart_backgroundcolor,chart_hovercolor);
+                this.fillChart(chart_label_items, chart_label_data, chart_backgroundcolor, chart_hovercolor);
+                this.activeUser(bar_label_items);
             });
     }
-    
-    fillChart(label_items,data_items,chart_background,chart_hover) {
-        //alert(label_items); alert(data_items);
+
+    public activeValue: any;
+
+    activeUser(data_items) {
+        this.activeValue = data_items;
+        // console.log(this.activeValue);
+
+    }
+
+    fillChart(label_items, data_items, chart_background, chart_hover) {
+
         this.driverDoughnutChart = new Chart(this.driverDoughnutCanvas.nativeElement,
             {
                 type: 'doughnut',

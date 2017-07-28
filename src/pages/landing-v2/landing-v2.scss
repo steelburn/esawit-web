@@ -5,6 +5,7 @@ page-landing-v2 {
 .cbLogin { width: 350px !important;margin: 10% auto !important;}
 
 .contentMarginTop {margin-top: 55px;}
+.contentMarginTop .scroll-content {padding-bottom: 70px !important;}
 
 .logoSize {width: 120px;}
 
@@ -216,7 +217,7 @@ page-landing-v2 {
     min-height: 40px !important;
 }
 
-.item-md ion-thumbnail {min-width: 60px !important;min-height: 60px !important;padding-right: 16px !important;}
+.item-md ion-thumbnail {min-width: 60px !important;min-height: 60px !important;}
 
 .tnUserRow {border-bottom: 2px solid #efefef;}
 
@@ -257,34 +258,48 @@ page-landing-v2 {
     margin-left: 10px;
     font-size: 25px;}
 
-.reconReportCard {
-    float: right;
-    width: 200px;
+.reconReportCardUnload {
+    position: absolute;
+    right: 15px;
+    width: 170px;
+    margin: 0 10px 0 0;
+    border-radius: 5px;
+    box-shadow: none;
+    border: 1px solid #bbbbbb;}
+
+.reconReportCardLoad {
+    position: absolute;
+    right: 190px;
+    width: 170px;
     margin: 0 10px 0 0;
     border-radius: 5px;
     box-shadow: none;
     border: 1px solid #bbbbbb;}
 
 .reconReportCardHeader {
-    padding: 10px 10px 0 10px;
+    padding: 3px 10px 0 10px;
     font-size: 13px;
-    text-align: center;}
+    text-align: center;
+}
 
 .reconReportCardContent {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 100;
     color: green;
     text-align: center;
-    padding: 0 10px !important;}
+    padding: 0 10px !important;
+    margin: -4px 0;
+}
 
 .reconReportCardLeft {
     float: left;
     width: 50px;
     height: 100%;
-    font-size: 25px;
-    padding: 15px 0;
+    font-size: 20px;
+    padding: 8px 0;
     text-align: center;
-    color: #bbbbbb;}
+    color: #bbbbbb;
+}
 
 .reconReportCardRight {
     margin-left: 50px;
@@ -313,10 +328,26 @@ page-landing-v2 {
     color: #ff6c6c;
 }
 
+.sumReportHeaderRow {background: #d8d8d8;}
+.sumReportItemRow:nth-child(odd){background: #f9f9f9;}
+.tblHeader {padding: 10px 0;}
+.tblNo, .tblHar, .tblLoad, .tblUnload, .tblFac { text-align: center; padding: 10px 0;}
+.tblLoc { text-align: left; padding: 10px 0;}
+
 .datetime-md {
     padding-top: 8px !important;
     padding-bottom: 8px !important;
 }
+
+#imeiTable tr {border-bottom: 2px solid #efefef;}
+#imeiTable td:nth-child(1),td:nth-child(2) {text-align: left;}
+.tdStyle {
+    padding: 5px 5px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.imeiIcon {font-size: 25px;}
 
 @media screen and (max-width: 400px) {
 

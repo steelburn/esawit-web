@@ -23,6 +23,7 @@ import { UserPage } from '../pages/user/user';
 import { VehiclePage } from '../pages/vehicle/vehicle';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
+import { ImeiPage } from '../pages/imei/imei';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -62,7 +63,11 @@ import { SummaryReportIndividualPage } from '../pages/summary-report-individual/
     HomePage,
     LandingV1Page,
     LandingV2Page,
-    FilterData,FilterVehicle,FilterLocation,FilterUser,FilterDriver,
+    FilterData, 
+    FilterVehicle, 
+    FilterLocation, 
+    FilterUser, 
+    FilterDriver,
     LandingV3Page,
     DriverPage,
     DriverInfoPage,
@@ -77,27 +82,27 @@ import { SummaryReportIndividualPage } from '../pages/summary-report-individual/
     TabsPage,
     ReportsPage,
     VehicleTransactionPage,
-ReconciliationPage,ReconciliationupdatePage,
-    
-
+    ReconciliationPage,
+    ReconciliationupdatePage,
     LocationTransactionPage,
     HarvestlistPage,
     MandorlistPage,
     FactorylistPage,
     LoginPage,
     SummaryReportPage,
-    SummaryReportIndividualPage
+    SummaryReportIndividualPage,
+    ImeiPage
   ],
   imports: [
     BrowserModule, HttpModule,
     IonicModule.forRoot(MyApp),
     TranslateModule.forRoot({
-    loader: {
-      provide: TranslateLoader,
-      useFactory: (createTranslateLoader),
-      deps: [Http]
-    }
-  })
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -119,14 +124,17 @@ ReconciliationPage,ReconciliationupdatePage,
     VehiclePage,
     TabsPage,
     ReportsPage,
-    VehicleTransactionPage,ReconciliationPage,ReconciliationupdatePage,
+    VehicleTransactionPage, 
+    ReconciliationPage, 
+    ReconciliationupdatePage,
     LocationTransactionPage,
     HarvestlistPage,
     MandorlistPage,
     FactorylistPage,
     LoginPage,
     SummaryReportPage,
-    SummaryReportIndividualPage
+    SummaryReportIndividualPage,
+    ImeiPage
   ],
   providers: [
     StatusBar,
