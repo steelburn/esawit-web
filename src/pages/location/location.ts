@@ -9,6 +9,7 @@ import { LocationModel } from '../../models/location';
 import { LOCATION_VEHICLE_MODEL } from '../../models/location';
 
 import { GETLOCATION } from '../../models/location';
+import { GETLOCATION_CHART } from '../../models/location';
 
 import { FormControlDirective, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { UUID } from 'angular2-uuid';
@@ -40,6 +41,7 @@ export class LocationPage {
   public getvehicles: GETLOCATION[] = [];
   public _filter_getvehicles: GETLOCATION[] = [];
   public current_location_GUID: string = '';
+  public locationcharts: GETLOCATION_CHART[] = [];
 
   current_ActiveUser: number; current_locationGUID_Edit: string;
   current_tenantGUID_Edit: string;current_locationID_Edit:number;
@@ -55,6 +57,7 @@ export class LocationPage {
     this.EditLocationform=fb2.group({locationname:'',locationactive:''});
 
     this.getList();
+    this.lineChart_items();
   }
 
 
@@ -262,6 +265,48 @@ export class LocationPage {
 
   public locationEditClose () {this.locationEditClicked = !this.locationEditClicked; }
   public addVehicleClick() { this.addVehicleClicked = !this.addVehicleClicked; }
+
+  lineChart_items() {
+        let self = this; let chart_label_items = [];
+        let bar_label_items = [];
+        let chart_label_data = []; let chart_label_color = [];
+        let chart_backgroundcolor = []; let chart_hovercolor = [];
+        let params: URLSearchParams = new URLSearchParams();
+
+        self.location_service.GetLocation_Chart(params)
+            .subscribe((locationcharts: GETLOCATION_CHART[]) => {
+                self.locationcharts = locationcharts;
+
+                this.locationcharts.forEach((item, index) => {
+
+                    if (item.Active == "1") {
+                        bar_label_items.push({
+                            Title : 'Active',
+                            ActiveTotal : item.TOTAL,
+                            bgColor : 'rgba(69, 183, 175, 0.8)'
+                        }); 
+                    }
+
+                    if (item.Active == "0") {
+                        bar_label_items.push({
+                            Title : 'Inactive',
+                            ActiveTotal : item.TOTAL,
+                            bgColor : 'rgba(248, 203, 0, 0.8)'
+                        }); 
+                    }
+
+                });
+                this.activeUser(bar_label_items);
+            });
+    }
+
+    public activeValue:any;
+
+    activeUser(data_items){
+        this.activeValue = data_items;
+        console.log(this.activeValue);
+
+    }
 
   
 

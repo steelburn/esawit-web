@@ -61,8 +61,11 @@ export class Driver {
 			start_year:this.start_year,
 			description:this.description,
 			employment_type:this.employment_type,
-			active:this.active,createdby_GUID:this.createdby_GUID,created_ts:this.created_ts,
-			updatedby_GUID:this.updatedby_GUID,updated_ts:this.updated_ts
+			active:this.active,
+			createdby_GUID:this.createdby_GUID,
+			created_ts:this.created_ts,
+			updatedby_GUID:this.updatedby_GUID,
+			updated_ts:this.updated_ts
 		};
 
 		return stringify ? JSON.stringify({ resource: [doc] }) : doc;

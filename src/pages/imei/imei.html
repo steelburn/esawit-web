@@ -1,21 +1,34 @@
-<!--
-  Generated template for the ImeiPage page.
+<ion-content padding class="posRelative contentMarginTop">
+  <!--form start-->
+  <div class="col2">
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+    <ion-card class="cb10">
+      <ion-row>
 
-  <ion-navbar>
-    <ion-title>IMEI</ion-title>
-  </ion-navbar>
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
+          {{"TOTAL_IMEI" | translate}}
+        </ion-card-header>
+      </ion-row>
+      <ion-card-content>
+        <div class="graphContentStyle2 fontColor-grey">127</div>
+        <div *ngFor="let valUser of activeValue">
+          <ion-item class="fontColor-grey">
+            {{valUser.Title}}
+            <ion-badge item-end class="bgColor-red">{{valUser.ActiveTotal}}</ion-badge>
+          </ion-item>
+          <div class="percentBar fullWidth">
+            <div class="percentBarValue" [ngStyle]="{ width: 'calc(100% * ' + valUser.ActiveTotal + ' / 3)', background: + valUser.bgColor}"></div>
+          </div>
+        </div>
 
-</ion-header>
+      </ion-card-content>
+    </ion-card>
 
+  </div>
+  <!--form end-->
 
-<ion-content>
   <!--listing start-->
-  <div class="col3">
+  <div class="col5">
 
     <ion-card class="cb10">
 
@@ -33,69 +46,101 @@
       <ion-list>
 
         <ion-item class="tnUserRow">
-          <ion-toggle  checked="true" color="secondary" item-start ></ion-toggle>
+          <ion-icon item-start name="md-close-circle" class="fontColor-red imeiIcon"></ion-icon>
           <ion-label class="fontColor-dark">adsqdsfqfq-faqzsfasa-q3r1fsa</ion-label>
           <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
         </ion-item>
 
         <ion-item class="tnUserRow">
-          <ion-toggle checked="true" color="secondary" item-start ></ion-toggle>
+          <ion-icon item-start name="ios-radio-button-on" class="fontColor-yellow imeiIcon"></ion-icon>
           <ion-label class="fontColor-dark">adsqdsfqfq-faqzsfasa-q3r1fsa</ion-label>
           <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
         </ion-item>
 
         <ion-item class="tnUserRow">
-          <ion-toggle checked="false" color="secondary" item-start ></ion-toggle>
+          <ion-icon item-start name="md-checkmark-circle" class="fontColor-green imeiIcon"></ion-icon>
           <ion-label class="fontColor-dark">adsqdsfqfq-faqzsfasa-q3r1fsa</ion-label>
           <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
         </ion-item>
 
       </ion-list>
 
-  </ion-card>
+    </ion-card>
 
   </div>
   <!--listing end-->
 
   <!--Profile start-->
-  <div class="col7">
+  <div class="col3">
     <ion-card class="cb10">
 
       <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
-        History for : <b>adsqdsfqfq-faqzsfasa-q3r1fsa</b>
+        adsqdsfqfq-faqzsfasa-q3r1fsa
+        <button class="posAbsolute fullHeight topZero rightZero btnStyle2 bgColor-darkBlue" (click)="addUserClick()">
+        <ion-icon name="md-add"></ion-icon>
+      </button>
       </ion-card-header>
 
-      <table id="imeiTable" class="fullWidth">
-        <tr>
-          <td class="tdStyle"><ion-icon item-start name="md-checkmark-circle" class="fontColor-green imeiIcon"></ion-icon></td>
-          <td class="tdStyle">Ahmad Firdaus Bin Nor Azhar</td>
-          <td class="tdStyle fontColor-lightGrey"></td>
-          <td class="tdStyle"><ion-icon item-end name="md-create" class="fontColor-grey imeiIcon"></ion-icon></td>
-        </tr>
-        <tr>
-          <td class="tdStyle"><ion-icon item-start name="md-radio-button-on" class="fontColor-yellow imeiIcon"></ion-icon></td>
-          <td class="tdStyle">Jonathan Loo</td>
-          <td class="tdStyle fontColor-lightGrey">Phone problem. send to service centre for repair</td>
-          <td class="tdStyle"><ion-icon item-end name="md-create" class="fontColor-grey imeiIcon"></ion-icon></td>
-        </tr>
-        <tr>
-          <td class="tdStyle"><ion-icon item-start name="md-close-circle" class="fontColor-red imeiIcon"></ion-icon></td>
-          <td class="tdStyle">Abdul Karim Bin Daud</td>
-          <td class="tdStyle fontColor-lightGrey">User has resigned</td>
-          <td class="tdStyle"><ion-icon item-end name="md-create" class="fontColor-grey imeiIcon"></ion-icon></td>
-        </tr>
-        <tr>
-          <td class="tdStyle"><ion-icon item-start name="md-close-circle" class="fontColor-red imeiIcon"></ion-icon></td>
-          <td class="tdStyle">Isma Bin Mohd halil</td>
-          <td class="tdStyle fontColor-lightGrey">User has resigned</td>
-          <td class="tdStyle"><ion-icon item-end name="md-create" class="fontColor-grey imeiIcon"></ion-icon></td>
-        </tr>
+      <ion-item>
+        <ion-icon item-start name="person" class="fontColor-lightGrey"></ion-icon>
+        <ion-label>Sampath Kumar</ion-label>
+        <ion-badge item-end class="bgColor-green">Mandor</ion-badge>
+      </ion-item>
 
-      </table>
+      <ion-item class="tnUserRow bgColor-darkBlue">
+        <ion-icon item-start name="ios-list-box-outline" class="imeiIcon"></ion-icon>
+        <ion-label class="">User History</ion-label>
+      </ion-item>
+      <ion-item class="tnUserRow">
+        <ion-label class="fontColor-dark">Ahmad Firdaus bin Nor Azhar</ion-label>
+        <ion-badge item-end class="bgColor-red">24/5/2017</ion-badge>
+      </ion-item>
+      <ion-item class="tnUserRow">
+        <ion-label class="fontColor-dark">Juzaidi bin Md Ali</ion-label>
+        <ion-badge item-end class="bgColor-red">24/5/2017</ion-badge>
+      </ion-item>
+      <ion-item class="tnUserRow">
+        <ion-label class="fontColor-dark">Abdul mushidul bin Karim</ion-label>
+        <ion-badge item-end class="bgColor-red">24/5/2017</ion-badge>
+      </ion-item>
 
     </ion-card>
   </div>
 
   <!--Profile end-->
+
+  <!--edit form start-->
+  <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="locationEditClicked">
+
+    <ion-card class="fb4 marginCenter popupFormCard">
+
+      <ion-card-header class="icTitle headerColor-white posRelative">
+        <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
+        <div class="icHeaderText">{{"UPDATE_LOCATION" | translate}}</div>
+        <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="locationEditClose()">
+        <ion-icon name="md-close"></ion-icon> 
+      </button>
+      </ion-card-header>
+
+      <ion-list class="overflowTrue contentHeight">
+        <form [formGroup]="EditLocationform">
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"LOCATION" | translate}}</ion-label>
+            <ion-input type="text" formControlName="locationname" [(ngModel)]="location_entry_edit.name" class="editInput" placeholder="Location name"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label class="fontColor-yellow">{{"ACTIVE" | translate}}</ion-label>
+            <ion-toggle formControlName="locationactive" [(ngModel)]="location_entry_edit.active" color="secondary"></ion-toggle>
+          </ion-item>
+        </form>
+      </ion-list>
+
+      <ion-card-content>
+        <button ion-button full class="bgColor-grey fontColor-white btnStyle1" (click)="Updateinfo()">{{"UPDATE_LOCATION" | translate}}</button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <!--edit form end-->
 
 </ion-content>

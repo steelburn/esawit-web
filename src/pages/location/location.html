@@ -3,7 +3,7 @@
   <!--form start-->
   <div class="col2">
     <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="locationRegisterClick()">
-      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
+      <ion-icon name="md-add-circle" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
       <div class="portletColStyle2">
         <div class="portletHeaderStyle2">{{"REGISTER_NEW_LOCATION" | translate}}</div>
       </div>
@@ -18,20 +18,16 @@
       </ion-row>
       <ion-card-content>
         <div class="graphContentStyle2 fontColor-grey">127</div>
-        <ion-item class="fontColor-grey">
-          {{"ACTIVE" | translate}}
-          <ion-badge item-end class="bgColor-green">109</ion-badge>
-        </ion-item>
-        <div class="percentBar fullWidth">
-          <div class="percentBarValue bgColor-green" style="width: calc(100% * (109 / 127))"></div>
+        <div *ngFor="let valUser of activeValue">
+          <ion-item class="fontColor-grey">
+            {{valUser.Title}}
+            <ion-badge item-end class="bgColor-red">{{valUser.ActiveTotal}}</ion-badge>
+          </ion-item>
+          <div class="percentBar fullWidth">
+            <div class="percentBarValue" [ngStyle]="{ width: 'calc(100% * ' + valUser.ActiveTotal + ' / 3)', background: + valUser.bgColor}"></div>
+          </div>
         </div>
-        <ion-item class="fontColor-grey">
-          {{"INACTIVE" | translate}}
-          <ion-badge item-end class="bgColor-red">18</ion-badge>
-        </ion-item>
-        <div class="percentBar fullWidth">
-          <div class="percentBarValue bgColor-red" style="width: calc(100% * (18 / 127))"></div>
-        </div>
+
       </ion-card-content>
     </ion-card>
 
@@ -118,15 +114,15 @@
 
       <ion-list class="overflowTrue contentHeight">
         <form [formGroup]="EditLocationform">
-        <ion-item>
-          <ion-label class="fontColor-green" stacked>{{"LOCATION" | translate}}</ion-label>
-          <ion-input type="text" formControlName="locationname" [(ngModel)]="location_entry_edit.name" class="editInput" placeholder="Location name"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"LOCATION" | translate}}</ion-label>
+            <ion-input type="text" formControlName="locationname" [(ngModel)]="location_entry_edit.name" class="editInput" placeholder="Location name"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label class="fontColor-yellow">{{"ACTIVE" | translate}}</ion-label>
-          <ion-toggle formControlName="locationactive" [(ngModel)]="location_entry_edit.active" color="secondary"></ion-toggle>
-        </ion-item>
+          <ion-item>
+            <ion-label class="fontColor-yellow">{{"ACTIVE" | translate}}</ion-label>
+            <ion-toggle formControlName="locationactive" [(ngModel)]="location_entry_edit.active" color="secondary"></ion-toggle>
+          </ion-item>
         </form>
       </ion-list>
 
