@@ -13,6 +13,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'imei.html',
 })
 export class ImeiPage {
+  
+  public ImeiEditClicked: boolean = false; //Whatever you want to initialise it as
+
+    public ImeiEditClick() {
+
+        this.ImeiEditClicked = !this.ImeiEditClicked;
+    }
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
