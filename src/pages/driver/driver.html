@@ -1,9 +1,9 @@
-<ion-content padding class="contentMarginTop">
+<ion-content padding class="contentMarginTop contentMarginBottom">
 
   <!--form start-->
   <div class="col2">
     <button class="btnColor-green cb10 posRelative portletStyle2" full (click)="driverRegisterClick()">
-      <ion-icon name="ios-pin" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
+      <ion-icon name="md-add-circle" class="portletIconStyle2 posAbsolute leftZero topZero bgColor-green" item-start></ion-icon>
       <div class="portletColStyle2">
         <div class="portletHeaderStyle2">{{"REGISTER_NEW_DRIVER" | translate}}</div>
       </div>
@@ -56,6 +56,29 @@
       </ion-card-content>
     </ion-card>
 
+
+    <ion-card class="cb10">
+      <ion-row>
+
+        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
+          {{"TOTAL_LOCATION" | translate}}
+        </ion-card-header>
+      </ion-row>
+      <ion-card-content>
+        <div class="graphContentStyle2 fontColor-grey">127</div>
+        <div *ngFor="let valUser of activeValue">
+          <ion-item class="fontColor-grey">
+            {{valUser.Title}}
+            <ion-badge item-end class="bgColor-red">{{valUser.ActiveTotal}}</ion-badge>
+          </ion-item>
+          <div class="percentBar fullWidth">
+            <div class="percentBarValue" [ngStyle]="{ width: 'calc(100% * ' + valUser.ActiveTotal + ' / 3)', background: + valUser.bgColor}"></div>
+          </div>
+        </div>
+
+      </ion-card-content>
+    </ion-card>
+
   </div>
   <!--form end-->
 
@@ -73,21 +96,21 @@
       <ion-row>
         <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by name"></ion-searchbar>
       </ion-row>
-      
-        <ion-list>
 
-          <ion-item *ngFor="let driver of (drivers| filterdriver: filter.value : 'name');" class="tnUserRow">
-      
-            <ion-toggle *ngIf="driver.active==0" checked="false" color="secondary" item-start (ionChange)="Deactive_driver(driver)"></ion-toggle>
-            <ion-toggle *ngIf="driver.active==null" checked="false" color="secondary" item-start (ionChange)="Deactive_driver(driver)"></ion-toggle>
-            <ion-toggle *ngIf="driver.active==1" checked="true" color="secondary" (ionChange)="Deactive_driver(driver)" item-start></ion-toggle>
-    
-            <ion-label class="fontColor-dark">{{driver.fullname}}</ion-label>
-            <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
-            <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="Edit(driver.driver_GUID,driver.tenant_GUID)"><ion-icon name="ios-create"></ion-icon></button>
-            
-          </ion-item>
-        </ion-list>
+      <ion-list>
+
+        <ion-item *ngFor="let driver of (drivers| filterdriver: filter.value : 'name');" class="tnUserRow">
+
+          <ion-toggle *ngIf="driver.active==0" checked="false" color="secondary" item-start (ionChange)="Deactive_driver(driver)"></ion-toggle>
+          <ion-toggle *ngIf="driver.active==null" checked="false" color="secondary" item-start (ionChange)="Deactive_driver(driver)"></ion-toggle>
+          <ion-toggle *ngIf="driver.active==1" checked="true" color="secondary" (ionChange)="Deactive_driver(driver)" item-start></ion-toggle>
+
+          <ion-label class="fontColor-dark">{{driver.fullname}}</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="Edit(driver.driver_GUID,driver.tenant_GUID)"><ion-icon name="ios-create"></ion-icon></button>
+
+        </ion-item>
+      </ion-list>
 
     </ion-card>
 
@@ -380,8 +403,8 @@
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"LICENSE" | translate}}</ion-label>
-            <ion-input type="text" formControlName="license_no" [(ngModel)]="driver_entry_edit.license_no" value="{{driver.license_no}}" class="editInput"
-              placeholder="{{'FORM_LICENSE' | translate}}"></ion-input>
+            <ion-input type="text" formControlName="license_no" [(ngModel)]="driver_entry_edit.license_no" value="{{driver.license_no}}"
+              class="editInput" placeholder="{{'FORM_LICENSE' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>

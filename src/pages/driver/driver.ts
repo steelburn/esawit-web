@@ -64,8 +64,10 @@ export class DriverPage {
     get_selectvehicle: GETVEHICLE = new GETVEHICLE();
     public get_selectvehicles: GETVEHICLE[] = [];
 
-    public drivers: Driver[] = []; public drivercharts: GETDRIVER_CHART[] = [];
-    public filter_drivers = []; public label_items = [];
+    public drivers: Driver[] = [];
+    public drivercharts: GETDRIVER_CHART[] = [];
+    public filter_drivers = [];
+    public label_items = [];
 
     @ViewChild('driverDoughnutCanvas') driverDoughnutCanvas;
 
@@ -144,8 +146,7 @@ export class DriverPage {
 
     }
 
-    Deactive_driver(data) 
-    {
+    Deactive_driver(data) {
         //alert(JSON.stringify(data));
         if (data.active == 0 || data.active == null) {
             this.Active_Deactive_driver.active = 1;
@@ -365,10 +366,9 @@ export class DriverPage {
     }
 
     //#region View Driver Info
- 
-    Edit(driver_GUID,tenant_GUID) 
-    {
- 
+
+    Edit(driver_GUID, tenant_GUID) {
+
         this.driverEditClicked = !this.driverEditClicked; //hide column
         this.current_driverGUID = driver_GUID; this.current_tenantGUID = tenant_GUID;
         alert(this.current_driverGUID);
@@ -396,21 +396,14 @@ export class DriverPage {
 
     fillChart_items() {
         let self = this; let chart_label_items = [];
+        let bar_label_items = [];
         let chart_label_data = []; let chart_label_color = [];
         let chart_backgroundcolor = []; let chart_hovercolor = [];
         let params: URLSearchParams = new URLSearchParams();
-        //params.set('order', 'last_name+ASC');
 
         self.driverservice.GetDriver_Chart(params)
             .subscribe((drivercharts: GETDRIVER_CHART[]) => {
                 self.drivercharts = drivercharts;
-
-
-                // console.log('Chart Detail.');
-                // var index_num = this.drivercharts.findIndex(x => x.Employment == null);
-                // this.drivercharts.splice(index_num, 1);
-                // console.log(this.drivercharts);
-                // console.log('End chart Detail.');
 
                 this.drivercharts.forEach((item, index) => {
                     if (item.Employment == "1") {
@@ -433,13 +426,54 @@ export class DriverPage {
                         chart_backgroundcolor.push('rgba(69, 183, 175, 0.8)');
                         chart_hovercolor.push("#45b7af");
                     }
+
+                    if (item.Employment == "4") {
+                        bar_label_items.push({
+                            Title: 'Probation',
+                            ActiveTotal: item.TOTAL,
+                            bgColor: 'rgba(69, 183, 175, 0.8)'
+                        });
+                    }
+
+                    if (item.Employment == "3") {
+                        bar_label_items.push({
+                            Title: 'Contract',
+                            ActiveTotal: item.TOTAL,
+                            bgColor: 'rgba(248, 203, 0, 0.8)'
+                        });
+                    }
+
+                    if (item.Employment == "2") {
+                        bar_label_items.push({
+                            Title: 'Permanent',
+                            ActiveTotal: item.TOTAL,
+                            bgColor: 'rgba(255, 99, 132, 0.8)'
+                        });
+                    }
+
+                    if (item.Employment == "1") {
+                        bar_label_items.push({
+                            Title: 'Temporary',
+                            ActiveTotal: item.TOTAL,
+                            bgColor: 'rgba(54, 162, 235, 0.8)'
+                        });
+                    }
                 });
                 this.fillChart(chart_label_items, chart_label_data, chart_backgroundcolor, chart_hovercolor);
+                this.activeUser(bar_label_items);
             });
     }
 
+    public activeValue: any;
+
+    activeUser(data_items) {
+        this.activeValue = data_items;
+        // console.log(this.activeValue);
+
+    }
+
     fillChart(label_items, data_items, chart_background, chart_hover) {
-        //alert(label_items); alert(data_items);
+
         this.driverDoughnutChart = new Chart(this.driverDoughnutCanvas.nativeElement,
             {
                 type: 'doughnut',
