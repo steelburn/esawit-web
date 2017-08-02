@@ -49,13 +49,14 @@ export class User {
 
 //** IMEI MODEL **/
 
-export class UserIMEI {
+export class UserIMEI 
+{
 	constructor(
 		public user_IMEI: string = null,
 		public active: number = null,
 		public module_id:string=null,
 		public user_GUID: string = null,
-
+		public Imei_GUID: string = null,
 
 		
 	) { }
@@ -65,14 +66,47 @@ export class UserIMEI {
 		if (!json) return;
 
 		return new UserIMEI(
-			json.user_IMEI,json.active,json.module_id,json.user_GUID
+			json.user_IMEI,json.active,json.module_id,json.user_GUID,json.Imei_GUID
 		);
 	}
 
 
 	toJson(stringify?: boolean): any {
 		var doc = {
-			user_IMEI:this.user_IMEI,active:this.active,module_id:this.module_id,user_GUID:this.user_GUID
+			user_IMEI:this.user_IMEI,active:this.active,module_id:this.module_id,user_GUID:this.user_GUID,
+			Imei_GUID:this.Imei_GUID
+		};
+
+		return stringify ? JSON.stringify({ resource: [doc] }) : doc;
+	}
+
+}
+
+////USer IMEI History
+
+export class UserIMEI_HISTORY
+{
+	constructor(
+		public user_IMEI: string = null,
+		public user_GUID: string = null,
+		public fullname: string = null,
+		public Created_Date:string=null
+		
+	) { }
+
+
+	static fromJson(json: any) {
+		if (!json) return;
+
+		return new UserIMEI_HISTORY(
+			json.user_IMEI,json.user_GUID, json.fullname,json.Created_Date
+		);
+	}
+
+
+	toJson(stringify?: boolean): any {
+		var doc = {
+			user_IMEI:this.user_IMEI,user_GUID:this.user_GUID, fullname:this.fullname,Created_Date:this.Created_Date
 		};
 
 		return stringify ? JSON.stringify({ resource: [doc] }) : doc;
