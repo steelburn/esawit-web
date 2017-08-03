@@ -50,11 +50,10 @@ export class DriverPage {
 
     Driverform: FormGroup;
     driver_entry: Driver = new Driver();
+    DriverEditform: FormGroup;
 
     driver_entry_edit: Driver = new Driver();
 
-
-    DriverEditform: FormGroup;
     driver: Driver = new Driver();
     vehicle_driver: VEHICLEDRIVER_MODEL = new VEHICLEDRIVER_MODEL();
 
@@ -78,11 +77,11 @@ export class DriverPage {
         this.searchControl = new FormControl(); this.GenerateToken();
         this.DriverEditform = fb.group({
 
-            fullname: ['', Validators.compose([
-                Validators.pattern('[a-zA-Z. ]*'),
-                Validators.minLength(5),
-                Validators.required
-            ])],
+            // fullname: ['', Validators.compose([
+            //     Validators.pattern('[a-zA-Z. ]*'),
+            //     Validators.required
+            // ])],
+            fullname: '',
             driver_GUID: '',
             tenant_GUID: '',
             identification_no: '',
@@ -90,14 +89,16 @@ export class DriverPage {
             address1: '',
             address2: '',
             address3: '',
-            phone_no: ['', Validators.compose([
-                Validators.required,
-                Validators.pattern('^[0-9_.+-]*')
-            ])],
-            email: ['', Validators.compose([
-                Validators.required,
-                Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-            ])],
+            // phone_no: ['', Validators.compose([
+            //     Validators.required,
+            //     Validators.pattern('^[0-9_.+-]*')
+            // ])],
+            phone_no: '',
+            // email: ['', Validators.compose([
+            //     Validators.required,
+            //     Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+            // ])],
+            email: '',
             license_no: '',
             start_year: '',
             description: '',
@@ -108,6 +109,8 @@ export class DriverPage {
 
         this.driver_entry.driver_GUID = UUID.UUID();
         this.driver_entry.tenant_GUID = UUID.UUID();
+
+
         //this.GenerateToken();
 
         this.Driverform = fb2.group({
@@ -134,8 +137,8 @@ export class DriverPage {
             license_no: '',
             employment_type: '',
             description: '',
-            active: 1,
-            tenant_GUID: [UUID.UUID()]
+            tenant_GUID: [UUID.UUID()],
+            active: ''
         });
 
 
@@ -175,9 +178,6 @@ export class DriverPage {
         this.Active_Deactive_driver.updated_ts = data.updated_ts;
         this.Active_Deactive_driver.updatedby_GUID = data.updatedby_GUID;
 
-
-
-
         var self = this;
         this.driverservice.Deactive_Driver(this.Active_Deactive_driver)
             .subscribe((response) => {
@@ -201,6 +201,11 @@ export class DriverPage {
                     }
 
                 })
+
+            alert("Driver " + this.Driverform.value['fullname'] + " has been successfully registered!");
+            this.Driverform.reset();
+            this.driverRegisterClick();
+            this.getList();
         }
     }
 
@@ -262,11 +267,17 @@ export class DriverPage {
         //console.log(this.driver.driver_GUID);
         if (this.DriverEditform.valid) {
             this.driver_entry_edit.driver_GUID = this.current_driverGUID;
-            this.driver_entry_edit.tenant_GUID = this.current_tenantGUID
+            this.driver_entry_edit.tenant_GUID = this.current_tenantGUID;
+            
             alert(JSON.stringify(this.driver_entry_edit));
             var self = this;
             this.driverservice.Update(this.driver_entry_edit)
                 .subscribe((response) => { console.log(response.status) })
+
+            alert("Driver " + this.DriverEditform.value['fullname'] + " has been successfully updated!");
+            this.getList();
+            this.driverEditClick();
+            this.DriverEditform.reset();
         }
     }
 

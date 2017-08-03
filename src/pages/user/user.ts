@@ -12,7 +12,6 @@ import { Driver } from '../../models/driver';
 import { User } from '../../models/user';
 import { UserIMEI } from '../../models/user';
 
-
 import { GETVEHICLE } from '../../models/driver';
 import { VEHICLEDRIVER_MODEL } from '../../models/vehicle';
 
@@ -42,13 +41,11 @@ export class UserPage {
 
         this.userEditClicked = !this.userEditClicked;
     }
-    Userform: FormGroup; user_entry: User = new User(); user_imei2: UserIMEI = new UserIMEI();
+    Userform: FormGroup; user_entry: User = new User();
     UserEditform: FormGroup; user_entry_edit: User = new User();
 
     user: User = new User();
     public users: User[] = [];
-
-    public user_imeis: UserIMEI[] = [];
 
     Active_Deactive_user: User = new User();
 
@@ -63,7 +60,6 @@ export class UserPage {
     constructor(private fb: FormBuilder, @Inject(FormBuilder) fb2: FormBuilder, private userservice: UserService, private driverservice: DriverService,
         private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) {
         this.GenerateToken();
-        this.get_imeis();
         this.getList();
 
         this.UserEditform = fb.group
@@ -74,9 +70,7 @@ export class UserPage {
                 address1: '',
                 address2: '',
                 password: '',
-                role_GUID: '',
-                active: '',
-                user_IMEI: ''
+                active: ''
             });
 
         this.Userform = fb2.group
@@ -87,9 +81,7 @@ export class UserPage {
                 address1: '',
                 address2: '',
                 password: '',
-                role_GUID: '',
-                active: '',
-                user_IMEI: ''
+                active: ''
             });
 
         this.fillChart_items();
@@ -112,7 +104,6 @@ export class UserPage {
         this.Active_Deactive_user.address1 = data.address1;
         this.Active_Deactive_user.address2 = data.address2;
         this.Active_Deactive_user.password = data.password;
-        this.Active_Deactive_user.role_GUID = data.role_GUID;
 
         this.Active_Deactive_user.created_ts = data.created_ts;
         this.Active_Deactive_user.createdby_GUID = data.createdby_GUID;
@@ -127,8 +118,7 @@ export class UserPage {
 
     }
 
-    save() 
-    {
+    save() {
         if (this.Userform.valid) {
             //alert(this.Userform.value['active']);
 
@@ -142,36 +132,17 @@ export class UserPage {
             var self = this;
             this.userservice.save(this.user_entry)
                 .subscribe((response) => {
-                    if (response.status == 200) 
-                    {
-                        this.user_imei2.user_GUID=this.user_entry.user_GUID,
-                        this.user_imei2.module_id=this.user_entry.role_GUID,
-                        this.user_imei2.user_IMEI=this.user_entry.user_IMEI,
-                        this.user_imei2.active=this.user_entry.active
+                    if (response.status == 200) {
                         var self = this;
-                        this.userservice.save_user_imei(this.user_imei2)
-                            .subscribe((response) => {
-                                if (response.status == 200) 
-                                {
-
-                                }
-
-                            })
                     }
 
                 })
+
+            alert("User " + this.Userform.value['fullname'] + " has been successfully registered!");
+            this.Userform.reset();
+            this.userRegisterClick();
+            this.getList();
         }
-    }
-
-    save_user_imei(str_userGUID, str_userIMEI, str_RoleID, str_active) {
-        var self = this;
-        this.userservice.save(this.user_entry)
-            .subscribe((response) => {
-                if (response.status == 200) {
-
-                }
-
-            })
     }
 
     register() {
@@ -187,17 +158,6 @@ export class UserPage {
             .subscribe((users: User[]) => {
                 self.users = users;
                 this.FillTopRecordView();
-            });
-    }
-
-    get_imeis() {
-        let self = this;
-        let params: URLSearchParams = new URLSearchParams();
-        //params.set('order', 'last_name+ASC');
-        self.userservice.get_IMEI(params)
-            .subscribe((user_imeis: UserIMEI[]) => {
-                self.user_imeis = user_imeis;
-
             });
     }
 
@@ -231,8 +191,7 @@ export class UserPage {
         }
     }
 
-    Edit(user_data) 
-    {
+    Edit(user_data) {
         this.userEditClicked = !this.userEditClicked;
         this.current_userGUID = user_data.user_GUID; this.current_tenantGUID = user_data.tenant_GUID;
         this.current_ActiveUser = user_data.active;
@@ -244,11 +203,7 @@ export class UserPage {
         this.user_entry_edit.password = "*************";
         this.user_entry_edit.address1 = user_data.address1;
         this.user_entry_edit.address2 = user_data.address2;
-        this.user_entry_edit.role_GUID = user_data.role_GUID;
-        //this.user_entry_edit.user_IMEI = 'TESTIMEI1';
 
-        // var self = this;
-        // this.userservice.get_userinfo(this.current_userGUID).subscribe((user) => self.user = user);
     }
 
     //#region Main Genreate Token
@@ -273,13 +228,6 @@ export class UserPage {
         self.driverservice.GetDriver_Chart(params)
             .subscribe((drivercharts: GETDRIVER_CHART[]) => {
                 self.drivercharts = drivercharts;
-
-
-                // console.log('Chart Detail.');
-                // var index_num = this.drivercharts.findIndex(x => x.Employment == null);
-                // this.drivercharts.splice(index_num, 1);
-                // console.log(this.drivercharts);
-                // console.log('End chart Detail.');
 
                 this.drivercharts.forEach((item, index) => {
                     if (item.Employment == "1") {

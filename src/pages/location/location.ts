@@ -77,14 +77,16 @@ export class LocationPage {
       this.location_service.save_location(this.location_entry)
         .subscribe((response) => {
           if (response.status == 200) {
-            alert('Location Reqistered successfully');
-            location.reload();
+            alert("Location " + this.Locationform.value['locationname'] + " Reqistered successfully");
+            this.Locationform.reset();
+            this.locationRegisterClick();
+            // location.reload();
+            this.getList();
           }
 
         })
     }
   }
-
 
   getList() {
     let self = this;

@@ -45,23 +45,13 @@
 
       <ion-list>
 
-        <ion-item *ngFor="let user_imei of user_imeis" class="tnUserRow">
-          <!--<ion-icon item-start name="md-close-circle" class="fontColor-red imeiIcon"></ion-icon>-->
-          <ion-label class="fontColor-dark">{{user_imei.user_IMEI}}</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(user_imei)"><ion-icon name="md-eye"></ion-icon></button>
+        <ion-item *ngFor="let user_imei of user_imeis;let i = index" class="tnUserRow">
+          <ion-icon item-start name="md-close-circle" class="fontColor-red imeiIcon" *ngIf="user_imei.active==0"></ion-icon>
+          <ion-icon item-start name="ios-help-circle" class="fontColor-yellow imeiIcon" *ngIf="!user_imei.user_GUID && user_imei.active==1"></ion-icon>
+          <ion-icon item-start name="ios-checkmark-circle" class="fontColor-green imeiIcon" *ngIf="user_imei.user_GUID && user_imei.active==1"></ion-icon>
+          <ion-label class="fontColor-dark">{{user_imei.user_IMEI}} {{i+1}}</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(i+1)"><ion-icon name="md-eye"></ion-icon></button>
         </ion-item>
-
-        <!--<ion-item class="tnUserRow">
-          <ion-icon item-start name="ios-radio-button-on" class="fontColor-yellow imeiIcon"></ion-icon>
-          <ion-label class="fontColor-dark">adsqdsfqfq-faqzsfasa-q3r1fsa</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
-        </ion-item>
-
-        <ion-item class="tnUserRow">
-          <ion-icon item-start name="md-checkmark-circle" class="fontColor-green imeiIcon"></ion-icon>
-          <ion-label class="fontColor-dark">adsqdsfqfq-faqzsfasa-q3r1fsa</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
-        </ion-item>-->
 
       </ion-list>
 
@@ -76,25 +66,25 @@
 
       <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
         {{user_imei_history.user_IMEI}}        
-      <ion-toggle class="posAbsolute topZero rightZero"  [checked]="user_imei_history.active==1" color="secondary" (ionChange)="Deactive_imei(user_imei_history)" item-start></ion-toggle>
+      <ion-toggle class="posAbsolute topZero rightZero" [checked]="user_imei_history.active==1" color="secondary" (ionChange)="Deactive_imei(user_imei_history)" item-start></ion-toggle>
 
       </ion-card-header>
 
-      <ion-row *ngIf="user_imei_history.active==1 || user_imei_history.active==0">       
+      <ion-item *ngIf="user_imei_history.fullname != null">       
         <ion-label >{{user_imei_history.fullname}}</ion-label>
-        <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red" (click)="Save_ImeiHistory(user_imei_history)"><ion-icon name="md-trash"></ion-icon></button>
-      </ion-row>
+        <button ion-button color="danger" item-end class="btnStyle1 bgColor-red" (click)="Save_ImeiHistory(user_imei_history)"><ion-icon name="md-trash"></ion-icon></button>
+      </ion-item>
 
-      <ion-row *ngIf="user_imei_history.active==2">
-        <button ion-button (click)="ImeiEditClick(user_imei_history)">
+      <ion-row *ngIf="user_imei_history.fullname == null">
+        <button ion-button full icon-left (click)="ImeiEditClick(user_imei_history)">
           <ion-icon name="md-create"></ion-icon>
-          Assign User
+          {{"ASSIGN_NEW_USER" | translate}}
         </button>
       </ion-row>
 
       <ion-item class="tnUserRow bgColor-darkBlue">
         <ion-icon item-start name="ios-list-box-outline" class="imeiIcon"></ion-icon>
-        <ion-label class="">User History</ion-label>
+        <ion-label class="">{{"USER_HISTORY" | translate}}</ion-label>
       </ion-item>
 
       <ion-item class="tnUserRow" *ngFor="let get_imeibyid_historie of get_imeibyid_histories">
@@ -138,9 +128,9 @@
             <ion-label class="fontColor-green" stacked>{{"MODULE" | translate}}</ion-label>
             <ion-select formControlName="formmodule_id" [(ngModel)]="Imeiuser_entry.module_id" class="editInput" interface="popover"
               placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">             
-              <ion-option value="1">SURVEYOR</ion-option>
-              <ion-option value="2">SUPERVISOR</ion-option>
-              <ion-option value="3">FACTORY</ion-option>
+              <ion-option value="1">{{"SURVEYOR" | translate}}</ion-option>
+              <ion-option value="2">{{"SUPERVISOR" | translate}}</ion-option>
+              <ion-option value="3">{{"FACTORY" | translate}}</ion-option>
             </ion-select>
           </ion-item>
 

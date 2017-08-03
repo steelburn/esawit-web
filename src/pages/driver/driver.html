@@ -216,7 +216,7 @@
         <form [formGroup]="Driverform">
 
           <ion-item>
-            <ion-label class="fontColor-dark" stacked>{{"FULLNAME" | translate}}</ion-label>
+            <ion-label class="fontColor-green" stacked>{{"FULLNAME" | translate}}</ion-label>
             <ion-input type="text" formControlName="fullname" [(ngModel)]="driver_entry.fullname" class="editInput" placeholder="{{'FORM_FULLNAME' | translate}}"></ion-input>
           </ion-item>
           <div class="alertBox" *ngIf="Driverform.controls['fullname'].errors && (Driverform.controls['fullname'].dirty || Driverform.controls['fullname'].touch)">
@@ -225,7 +225,7 @@
           </div>
 
           <ion-item>
-            <ion-label class="fontColor-dark" stacked>{{"ID_TYPE" | translate}}</ion-label>
+            <ion-label class="fontColor-green" stacked>{{"ID_TYPE" | translate}}</ion-label>
             <ion-select formControlName="identification_type" [(ngModel)]="driver_entry.identification_type" class="editInput" interface="popover"
               placeholder="{{'FORM_ID_TYPE' | translate}}">
               <ion-option value="0">N/A</ion-option>
@@ -236,28 +236,28 @@
           </ion-item>
 
           <ion-item>
-            <ion-label class="fontColor-dark" stacked>{{"ID_NO" | translate}}</ion-label>
+            <ion-label class="fontColor-green" stacked>{{"ID_NO" | translate}}</ion-label>
             <ion-input type="text" formControlName="identification_no" [(ngModel)]="driver_entry.identification_no" class="editInput"
               placeholder="{{'FORM_ID_NO' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label class="fontColor-dark" stacked>{{"ADDRESS" | translate}} 1</ion-label>
+            <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 1</ion-label>
             <ion-input type="text" formControlName="address1" [(ngModel)]="driver_entry.address1" class="editInput" placeholder="{{'FORM_ADDRESS_1' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label class="fontColor-dark" stacked>{{"ADDRESS" | translate}} 2</ion-label>
+            <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 2</ion-label>
             <ion-input type="text" formControlName="address2" [(ngModel)]="driver_entry.address2" class="editInput" placeholder="{{'FORM_ADDRESS_2' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label class="fontColor-dark" stacked>{{"ADDRESS" | translate}} 3</ion-label>
+            <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 3</ion-label>
             <ion-input type="text" formControlName="address3" [(ngModel)]="driver_entry.address3" class="editInput" placeholder="{{'FORM_ADDRESS_3' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label class="fontColor-dark" stacked>{{"PHONE" | translate}}</ion-label>
+            <ion-label class="fontColor-green" stacked>{{"PHONE" | translate}}</ion-label>
             <ion-input type="text" formControlName="phone_no" [(ngModel)]="driver_entry.phone_no" class="editInput" placeholder="{{'FORM_PHONE' | translate}}"></ion-input>
           </ion-item>
           <div class="alertBox" *ngIf="Driverform.controls['phone_no'].errors && (Driverform.controls['phone_no'].dirty || Driverform.controls['phone_no'].touch)">
@@ -266,7 +266,7 @@
           </div>
 
           <ion-item>
-            <ion-label class="fontColor-dark" stacked>{{"EMAIL" | translate}}</ion-label>
+            <ion-label class="fontColor-green" stacked>{{"EMAIL" | translate}}</ion-label>
             <ion-input type="text" formControlName="email" [(ngModel)]="driver_entry.email" class="editInput" placeholder="{{'FORM_EMAIL' | translate}}"></ion-input>
           </ion-item>
           <div class="alertBox" *ngIf="Driverform.controls['email'].errors && (Driverform.controls['email'].dirty || Driverform.controls['email'].touch)">
@@ -275,17 +275,17 @@
           </div>
 
           <ion-item>
-            <ion-label class="fontColor-dark" stacked>{{"LICENSE" | translate}}</ion-label>
+            <ion-label class="fontColor-green" stacked>{{"LICENSE" | translate}}</ion-label>
             <ion-input type="text" formControlName="license_no" [(ngModel)]="driver_entry.license_no" class="editInput" placeholder="{{'FORM_LICENSE' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label class="fontColor-dark" stacked>{{"START_YEAR" | translate}}</ion-label>
+            <ion-label class="fontColor-green" stacked>{{"START_YEAR" | translate}}</ion-label>
             <ion-datetime displayFormat="YYYY" class="editInput" placeholder="{{'FORM_SELECT_YEAR' | translate}}"></ion-datetime>
           </ion-item>
 
           <ion-item>
-            <ion-label class="fontColor-dark" stacked>{{"EMPLOYMENT" | translate}}</ion-label>
+            <ion-label class="fontColor-green" stacked>{{"EMPLOYMENT" | translate}}</ion-label>
             <ion-select formControlName="employment_type" [(ngModel)]="driver_entry.employment_type" class="editInput" interface="popover"
               placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
               <ion-option value="0">N/A</ion-option>
@@ -297,12 +297,12 @@
           </ion-item>
 
           <ion-item>
-            <ion-label class="fontColor-dark" stacked>{{"DESCRIPTION" | translate}} </ion-label>
+            <ion-label class="fontColor-green" stacked>{{"DESCRIPTION" | translate}} </ion-label>
             <ion-textarea type="text" formControlName="description" [(ngModel)]="driver_entry.description" class="editInput" placeholder="{{'FORM_DESCRIPTION' | translate}}"></ion-textarea>
           </ion-item>
 
           <ion-item>
-            <ion-label class="fontColor-dark" stacked>{{"ACTIVE" | translate}} </ion-label>
+            <ion-label class="fontColor-green" stacked>{{"ACTIVE" | translate}} </ion-label>
             <ion-toggle formControlName="active" checked="false" [(ngModel)]="driver_entry.active" color="secondary"></ion-toggle>
           </ion-item>
 
@@ -349,7 +349,7 @@
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ID_TYPE" | translate}}</ion-label>
-            <ion-select formControlName="identification_type" [(ngModel)]="driver_entry.identification_type" class="editInput" interface="popover">
+            <ion-select formControlName="identification_type" [(ngModel)]="driver_entry_edit.identification_type" class="editInput" interface="popover" placeholder="{{'FORM_ID_TYPE' | translate}}">
               <ion-option value="0" [selected]="driver.identification_type == 0">N/A</ion-option>
               <ion-option value="1" [selected]="driver.identification_type == 1">{{"MYKAD" | translate}}</ion-option>
               <ion-option value="2" [selected]="driver.identification_type == 2">{{"PASSPORT" | translate}}</ion-option>
@@ -429,6 +429,13 @@
             <ion-textarea type="text" formControlName="description" [(ngModel)]="driver_entry_edit.description" value="{{driver.description}}"
               class="editInput" placeholder="{{'FORM_DESCRIPTION' | translate}}"></ion-textarea>
           </ion-item>
+
+          <ion-item>
+            <ion-label class="fontColor-green" stacked>{{"ACTIVE" | translate}}</ion-label>
+            <ion-input type="number" formControlName="active" [(ngModel)]="driver_entry_edit.active" value="{{driver.active}}"
+              class="editInput"></ion-input>
+          </ion-item>
+
         </form>
 
       </ion-list>
