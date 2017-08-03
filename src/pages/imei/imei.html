@@ -82,11 +82,14 @@
 
       <ion-row *ngIf="user_imei_history.active==1 || user_imei_history.active==0">       
         <ion-label >{{user_imei_history.fullname}}</ion-label>
-         <button ion-button (click)="Save_ImeiHistory(user_imei_history)">Remove User</button>
+        <button ion-button color="danger" item-end class=" btnStyle1 bgColor-red" (click)="Save_ImeiHistory(user_imei_history)"><ion-icon name="md-trash"></ion-icon></button>
       </ion-row>
 
       <ion-row *ngIf="user_imei_history.active==2">
-        <button ion-button (click)="ImeiEditClick(user_imei_history)">Assign User</button>
+        <button ion-button (click)="ImeiEditClick(user_imei_history)">
+          <ion-icon name="md-create"></ion-icon>
+          Assign User
+        </button>
       </ion-row>
 
       <ion-item class="tnUserRow bgColor-darkBlue">
@@ -108,11 +111,11 @@
   <!--edit form start-->
   <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="ImeiEditClicked">
 
-    <ion-card class="fb4 marginCenter popupFormCard">
+    <ion-card class="fb4 marginCenter popupFormCard2">
 
       <ion-card-header class="icTitle headerColor-white posRelative">
         <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
-        <div class="icHeaderText">Assign User</div>
+        <div class="icHeaderText">{{"ASSIGN_USER" | translate}}</div>
         <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="ImeiEditClose()">
         <ion-icon name="md-close"></ion-icon> 
       </button>
@@ -132,7 +135,7 @@
          
 
           <ion-item>
-            <ion-label class="fontColor-green" stacked>{{"STATUS" | translate}}</ion-label>
+            <ion-label class="fontColor-green" stacked>{{"MODULE" | translate}}</ion-label>
             <ion-select formControlName="formmodule_id" [(ngModel)]="Imeiuser_entry.module_id" class="editInput" interface="popover"
               placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">             
               <ion-option value="1">SURVEYOR</ion-option>
@@ -145,7 +148,7 @@
       </ion-list>
 
       <ion-card-content>
-        <button ion-button full class="bgColor-grey fontColor-white btnStyle1" (click)="AssignUser()" >Assign User</button>
+        <button ion-button full class="bgColor-grey fontColor-white btnStyle1" (click)="AssignUser()" >{{"REGISTER" | translate}}</button>
       </ion-card-content>
     </ion-card>
   </div>
