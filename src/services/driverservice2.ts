@@ -244,6 +244,7 @@ export class DriverService
 		
 			return this.httpService.http.post(this.baseResourceUrl_VehicleDriver, vehicel_driver.toJson(true),options)
 				.map((response) => {
+					console.log('Response for save_DriverVehicle');
 					console.log(response);
 					return response;
 				});
