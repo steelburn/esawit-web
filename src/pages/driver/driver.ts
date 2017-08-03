@@ -146,7 +146,8 @@ export class DriverPage {
 
     }
 
-    Deactive_driver(data) {
+    Deactive_driver(data) 
+    {
         //alert(JSON.stringify(data));
         if (data.active == 0 || data.active == null) {
             this.Active_Deactive_driver.active = 1;
