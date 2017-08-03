@@ -225,11 +225,12 @@ export class DriverPage {
 
 
     //#region Select and Remove Vehicles
-    AvailableSelection(e: any, getvehicle) {
-        console.log(e);
-        console.log(e.checked);
-        console.log(getvehicle.vehicle_Gid);
-        console.log(getvehicle.registration_no);
+    AvailableSelection(e: any, getvehicle) 
+    {
+        // console.log(e);
+        // console.log(e.checked);
+        // console.log(getvehicle.vehicle_Gid);
+        // console.log(getvehicle.registration_no);
 
         var index_num = this.getvehicles.findIndex(x => x.vehicle_GUID == getvehicle.vehicle_GUID);
         console.log("NUM IS " + index_num);
@@ -239,14 +240,28 @@ export class DriverPage {
             this.vehicle_driver.driver_GUID = this.current_driverGUID,
             this.vehicle_driver.vehicle_GUID = getvehicle.vehicle_GUID,
 
+        
+
             this.get_selectvehicles.push(new GETVEHICLE(getvehicle.vehicle_Gid, getvehicle.registration_no));
+
+
+             this.driverservice.save_DriverVehicle(this.vehicle_driver)
+                .subscribe((response) => {
+                    if (response.status == 200) 
+                    {
+                        this.getList();
+                        alert('User Reqistered successfully');
+                        //location.reload();
+                    }
+
+                })
     }
 
     RemoveSelection(e: any, getselectvehicle) {
-        console.log(e);
-        console.log(e.checked);
-        console.log(getselectvehicle.vehicle_Gid);
-        console.log(getselectvehicle.registration_no);
+        // console.log(e);
+        // console.log(e.checked);
+        // console.log(getselectvehicle.vehicle_Gid);
+        // console.log(getselectvehicle.registration_no);
 
 
         var index_num = this.get_selectvehicles.findIndex(x => x.vehicle_Gid == getselectvehicle.vehicle_Gid);
