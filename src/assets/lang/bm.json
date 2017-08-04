@@ -58,6 +58,8 @@
   "UPDATE_LOCATION": "Kemaskini Lokasi",
   "UPDATE_DRIVER": "kemaskini Pemandu",
   "UPDATE_USER": "Kemaskini Pengguna",
+  "ASSIGN_NEW_USER": "Pengguna Baru",
+  "USER_HISTORY": "Sejarah Pengguna",
 
   "FORM_FULLNAME": "Sila masukkan nama penuh",
   "FORM_USERNAME": "Sila masukkan nama pengguna",

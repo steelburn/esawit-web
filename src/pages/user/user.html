@@ -10,7 +10,7 @@
 
     </button>
 
-    <ion-card class="cb10">
+    <!-- <ion-card class="cb10">
       <ion-row>
 
         <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
@@ -34,7 +34,7 @@
           <div class="percentBarValue bgColor-red" style="width: calc(100% * (18 / 127))"></div>
         </div>
       </ion-card-content>
-    </ion-card>
+    </ion-card> -->
 
     <ion-card class="cb10" hidden>
       <ion-row>
@@ -191,24 +191,6 @@
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 2</ion-label>
             <ion-input type="text" formControlName="address2" [(ngModel)]="user_entry.address2" class="editInput" placeholder="{{'FORM_ADDRESS_2' | translate}}"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label class="fontColor-green" stacked>{{"ROLE" | translate}}</ion-label>
-            <ion-select formControlName="role_GUID" [(ngModel)]="user_entry.role_GUID" class="editInput" interface="popover" placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
-              <ion-option value="0">N/A</ion-option>
-              <ion-option value="0">N/A</ion-option>
-              <ion-option value="1">{{"SURVEYOR" | translate}}</ion-option>
-              <ion-option value="2">{{"SUPERVISOR" | translate}}</ion-option>
-              <ion-option value="3">{{"FACTORY" | translate}}</ion-option>  
-            </ion-select>
-          </ion-item>
-
-           <ion-item>
-            <ion-label class="fontColor-green" stacked>Select IMEI</ion-label>
-            <ion-select formControlName="user_IMEI" [(ngModel)]="user_entry.user_IMEI" class="editInput" interface="popover" placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
-                <ion-option *ngFor="let user_imei of user_imeis" >{{user_imei.user_IMEI}}</ion-option>
-            </ion-select>
           </ion-item>
 
           <ion-item>
