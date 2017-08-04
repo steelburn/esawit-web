@@ -199,7 +199,7 @@ GetAvailableVehicles()
       .subscribe((getlocations: LocationModel[]) => {
        
         self_GetAllLocations.getlocations = getlocations;
-        console.log(this.getlocations);
+        //console.log(this.getlocations);
         this.vehiclesby_locations();
       });
   }
