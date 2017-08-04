@@ -17,8 +17,8 @@
         </ion-card-header>
       </ion-row>
       <ion-card-content>
-        <div class="graphContentStyle2 fontColor-grey">25</div>
-        <div class="graphContentStyle1 fontColor-grey">{{"UPDATE_ON" | translate}} 13 March 2017</div>
+        <!-- <div class="graphContentStyle2 fontColor-grey">25</div>
+        <div class="graphContentStyle1 fontColor-grey">{{"UPDATE_ON" | translate}} 13 March 2017</div> -->
         <ion-item>
           <canvas #driverDoughnutCanvas></canvas>
         </ion-item>
@@ -393,11 +393,11 @@
             <ion-label class="fontColor-green" stacked>{{"EMPLOYMENT" | translate}}</ion-label>
             <ion-select formControlName="employment_type" [(ngModel)]="driver_entry_edit.employment_type" class="editInput" interface="popover"
               placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
-              <ion-option value="0">N/A</ion-option>
-              <ion-option value="1">{{"PERMANENT" | translate}}</ion-option>
-              <ion-option value="2">{{"PROBATION" | translate}}</ion-option>
-              <ion-option value="3">{{"CONTRACT" | translate}}</ion-option>
-              <ion-option value="4">{{"TEMPORARY" | translate}}</ion-option>
+              <ion-option value="0" [selected]="driver.employment_type == 0">N/A</ion-option>
+              <ion-option value="1" [selected]="driver.employment_type == 1">{{"PERMANENT" | translate}}</ion-option>
+              <ion-option value="2" [selected]="driver.employment_type == 2">{{"PROBATION" | translate}}</ion-option>
+              <ion-option value="3" [selected]="driver.employment_type == 3">{{"CONTRACT" | translate}}</ion-option>
+              <ion-option value="4" [selected]="driver.employment_type == 4">{{"TEMPORARY" | translate}}</ion-option>
             </ion-select>
           </ion-item>
 

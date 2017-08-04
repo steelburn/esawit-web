@@ -207,6 +207,7 @@ export class DriverPage {
             this.Driverform.reset();
             this.driverRegisterClick();
             this.getList();
+            this.fillChart_items();
         }
     }
 
@@ -287,7 +288,7 @@ export class DriverPage {
             alert("Driver " + this.DriverEditform.value['fullname'] + " has been successfully updated!");
             this.getList();
             this.driverEditClick();
-            this.DriverEditform.reset();
+            this.fillChart_items();
         }
 
         this.driver_entry_edit.fullname = '';
