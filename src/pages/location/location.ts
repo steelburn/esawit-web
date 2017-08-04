@@ -77,14 +77,16 @@ export class LocationPage {
       this.location_service.save_location(this.location_entry)
         .subscribe((response) => {
           if (response.status == 200) {
-            alert('Location Reqistered successfully');
-            location.reload();
+            alert("Location " + this.Locationform.value['locationname'] + " Reqistered successfully");
+            this.Locationform.reset();
+            this.locationRegisterClick();
+            // location.reload();
+            this.getList();
           }
 
         })
     }
   }
-
 
   getList() {
     let self = this;
@@ -250,6 +252,7 @@ export class LocationPage {
            this.location_entry_edit.tenant_GUID=this.current_tenantGUID_Edit;
            this.location_entry_edit.active = this.current_ActiveUser;
            var self = this;
+            alert(JSON.stringify(this.location_entry_edit));
             this.location_service.Update(this.location_entry_edit)
                 .subscribe((response) => 
                 {

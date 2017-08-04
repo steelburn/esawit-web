@@ -67,15 +67,16 @@ export class MyApp {
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public translate: TranslateService, public translateService: TranslateService) {
     this.initializeApp();
     this.initializeLang();
+
     this.translateToMalay();
     this.translateToEnglish();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Login', component: LoginPage },
+      // { title: 'Login', component: LoginPage },
       // { title: 'Home', component: HomePage },
       { title: 'Home', component: LandingV1Page },
-      { title: 'Landing V3', component: LandingV3Page }
+      // { title: 'Landing V3', component: LandingV3Page }
       // { title: 'Component Demo', component: LandingV2Page },
       // { title: 'Tabs', component: TabsPage }
     ];
@@ -136,22 +137,18 @@ export class MyApp {
 
   //---------------------header button start---------------------//
   public translateToEnglishClicked: boolean = true; //Whatever you want to initialise it as
-  public translateToMalayClicked: boolean =false; //Whatever you want to initialise it as
+  public translateToMalayClicked: boolean = false; //Whatever you want to initialise it as
 
   public translateToEnglish() {
     this.translateService.use('en');
     this.translateToMalayClicked = !this.translateToMalayClicked;
     this.translateToEnglishClicked = !this.translateToEnglishClicked;
-    console.log("bm : " + this.translateToMalayClicked);
-    console.log("en : " + this.translateToEnglishClicked);
   }
 
   public translateToMalay() {
     this.translateService.use('bm');
     this.translateToEnglishClicked = !this.translateToEnglishClicked;
     this.translateToMalayClicked = !this.translateToMalayClicked;
-    console.log("bm : " + this.translateToMalayClicked);
-    console.log("en : " + this.translateToEnglishClicked);
   }
   //---------------------header button end---------------------//
 

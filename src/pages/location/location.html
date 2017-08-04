@@ -9,7 +9,7 @@
       </div>
     </button>
 
-    <ion-card class="cb10">
+    <!-- <ion-card class="cb10">
       <ion-row>
 
         <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
@@ -29,7 +29,7 @@
         </div>
 
       </ion-card-content>
-    </ion-card>
+    </ion-card> -->
 
   </div>
   <!--form end-->
@@ -119,7 +119,7 @@
             <ion-input type="text" formControlName="locationname" [(ngModel)]="location_entry_edit.name" class="editInput" placeholder="Location name"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item hidden>
             <ion-label class="fontColor-yellow">{{"ACTIVE" | translate}}</ion-label>
             <ion-toggle formControlName="locationactive" [(ngModel)]="location_entry_edit.active" color="secondary"></ion-toggle>
           </ion-item>
