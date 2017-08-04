@@ -33,7 +33,13 @@ export class UserPage {
 
     public userRegisterClicked: boolean = false; //Whatever you want to initialise it as
     public userEditClicked: boolean = false; //Whatever you want to initialise it as
+    public addLocationClicked: boolean = false; //Whatever you want to initialise it as
+
     current_userGUID: string = ''; current_tenantGUID: string = ''; current_ActiveUser: number;
+
+    public addLocationClick() {
+        this.addLocationClicked = !this.addLocationClicked;
+    }
     public userRegisterClick() {
         this.userRegisterClicked = !this.userRegisterClicked;
     }
