@@ -58,6 +58,8 @@
   "UPDATE_LOCATION": "Update Location",
   "UPDATE_DRIVER": "Update Driver",
   "UPDATE_USER": "Update User",
+  "ASSIGN_NEW_USER": "Assign New User",
+  "USER_HISTORY": "User History",
 
   "FORM_FULLNAME": "Please insert full name",
   "FORM_USERNAME": "Please insert username",

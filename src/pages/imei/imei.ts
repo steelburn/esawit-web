@@ -107,6 +107,7 @@ export class ImeiPage {
   }
 
   View(index:number) {
+    alert(index);
     var last_element = this.user_imeis[index];
     if (last_element.user_IMEI != "") {
       let self = this;
@@ -138,7 +139,7 @@ export class ImeiPage {
     if (data.active == 0 || data.active == null || data.active == 2) {
       this.Active_Deactive_Imei.active = 1;
     }
-    if (data.active == 1) {
+    if (data.active != 0) {
       this.Active_Deactive_Imei.active = 0;
     }
 

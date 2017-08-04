@@ -50,34 +50,9 @@
           </ion-row>
         </ion-item>
 
-
-
-
       </ion-card-content>
     </ion-card>
 
-
-    <ion-card class="cb10">
-      <ion-row>
-
-        <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
-          {{"TOTAL_LOCATION" | translate}}
-        </ion-card-header>
-      </ion-row>
-      <ion-card-content>
-        <div class="graphContentStyle2 fontColor-grey">127</div>
-        <div *ngFor="let valUser of activeValue">
-          <ion-item class="fontColor-grey">
-            {{valUser.Title}}
-            <ion-badge item-end class="bgColor-red">{{valUser.ActiveTotal}}</ion-badge>
-          </ion-item>
-          <div class="percentBar fullWidth">
-            <div class="percentBarValue" [ngStyle]="{ width: 'calc(100% * ' + valUser.ActiveTotal + ' / 3)', background: + valUser.bgColor}"></div>
-          </div>
-        </div>
-
-      </ion-card-content>
-    </ion-card>
 
   </div>
   <!--form end-->
@@ -349,7 +324,8 @@
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ID_TYPE" | translate}}</ion-label>
-            <ion-select formControlName="identification_type" [(ngModel)]="driver_entry_edit.identification_type" class="editInput" interface="popover" placeholder="{{'FORM_ID_TYPE' | translate}}">
+            <ion-select formControlName="identification_type" [(ngModel)]="driver_entry.identification_type" class="editInput" interface="popover">
+              <ion-option>{{driver.identification_type}}</ion-option>
               <ion-option value="0" [selected]="driver.identification_type == 0">N/A</ion-option>
               <ion-option value="1" [selected]="driver.identification_type == 1">{{"MYKAD" | translate}}</ion-option>
               <ion-option value="2" [selected]="driver.identification_type == 2">{{"PASSPORT" | translate}}</ion-option>
@@ -429,13 +405,6 @@
             <ion-textarea type="text" formControlName="description" [(ngModel)]="driver_entry_edit.description" value="{{driver.description}}"
               class="editInput" placeholder="{{'FORM_DESCRIPTION' | translate}}"></ion-textarea>
           </ion-item>
-
-          <ion-item>
-            <ion-label class="fontColor-green" stacked>{{"ACTIVE" | translate}}</ion-label>
-            <ion-input type="number" formControlName="active" [(ngModel)]="driver_entry_edit.active" value="{{driver.active}}"
-              class="editInput"></ion-input>
-          </ion-item>
-
         </form>
 
       </ion-list>

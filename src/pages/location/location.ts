@@ -252,6 +252,7 @@ export class LocationPage {
            this.location_entry_edit.tenant_GUID=this.current_tenantGUID_Edit;
            this.location_entry_edit.active = this.current_ActiveUser;
            var self = this;
+            alert(JSON.stringify(this.location_entry_edit));
             this.location_service.Update(this.location_entry_edit)
                 .subscribe((response) => 
                 {

@@ -1,6 +1,6 @@
 <ion-content padding class="posRelative contentMarginTop">
   <!--form start-->
-  <div class="col2">
+  <!-- <div class="col2">
 
     <ion-card class="cb10">
       <ion-row>
@@ -24,11 +24,11 @@
       </ion-card-content>
     </ion-card>
 
-  </div>
+  </div> -->
   <!--form end-->
 
   <!--listing start-->
-  <div class="col5">
+  <div class="col7">
 
     <ion-card class="cb10">
 
@@ -47,10 +47,10 @@
 
         <ion-item *ngFor="let user_imei of user_imeis;let i = index" class="tnUserRow">
           <ion-icon item-start name="md-close-circle" class="fontColor-red imeiIcon" *ngIf="user_imei.active==0"></ion-icon>
-          <ion-icon item-start name="ios-help-circle" class="fontColor-yellow imeiIcon" *ngIf="!user_imei.user_GUID && user_imei.active==1"></ion-icon>
-          <ion-icon item-start name="ios-checkmark-circle" class="fontColor-green imeiIcon" *ngIf="user_imei.user_GUID && user_imei.active==1"></ion-icon>
+          <ion-icon item-start name="ios-help-circle" class="fontColor-yellow imeiIcon" *ngIf="!user_imei.user_GUID && user_imei.active!=0"></ion-icon>
+          <ion-icon item-start name="ios-checkmark-circle" class="fontColor-green imeiIcon" *ngIf="user_imei.user_GUID && user_imei.active!=0"></ion-icon>
           <ion-label class="fontColor-dark">{{user_imei.user_IMEI}} {{i+1}}</ion-label>
-          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(i+1)"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(i)"><ion-icon name="md-eye"></ion-icon></button>
         </ion-item>
 
       </ion-list>
@@ -66,7 +66,7 @@
 
       <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
         {{user_imei_history.user_IMEI}}        
-      <ion-toggle class="posAbsolute topZero rightZero" [checked]="user_imei_history.active==1" color="secondary" (ionChange)="Deactive_imei(user_imei_history)" item-start></ion-toggle>
+      <ion-toggle class="posAbsolute topZero rightZero" [checked]="user_imei_history.active!=0" color="secondary" (ionChange)="Deactive_imei(user_imei_history)" item-start></ion-toggle>
 
       </ion-card-header>
 
