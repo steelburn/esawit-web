@@ -81,6 +81,7 @@ export class DriverPage {
             //     Validators.pattern('[a-zA-Z. ]*'),
             //     Validators.required
             // ])],
+
             fullname: '',
             driver_GUID: '',
             tenant_GUID: '',
@@ -98,6 +99,7 @@ export class DriverPage {
             //     Validators.required,
             //     Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
             // ])],
+
             email: '',
             license_no: '',
             start_year: '',
@@ -149,8 +151,7 @@ export class DriverPage {
 
     }
 
-    Deactive_driver(data) 
-    {
+    Deactive_driver(data) {
         //alert(JSON.stringify(data));
         if (data.active == 0 || data.active == null) {
             this.Active_Deactive_driver.active = 1;
@@ -230,13 +231,7 @@ export class DriverPage {
 
 
     //#region Select and Remove Vehicles
-    AvailableSelection(e: any, getvehicle) 
-    {
-        // console.log(e);
-        // console.log(e.checked);
-        // console.log(getvehicle.vehicle_Gid);
-        // console.log(getvehicle.registration_no);
-
+    AvailableSelection(e: any, getvehicle) {
         var index_num = this.getvehicles.findIndex(x => x.vehicle_GUID == getvehicle.vehicle_GUID);
         console.log("NUM IS " + index_num);
         this.getvehicles.splice(index_num, 1);
@@ -245,46 +240,46 @@ export class DriverPage {
             this.vehicle_driver.driver_GUID = this.current_driverGUID,
             this.vehicle_driver.vehicle_GUID = getvehicle.vehicle_GUID,
 
-        
+
 
             this.get_selectvehicles.push(new GETVEHICLE(getvehicle.vehicle_Gid, getvehicle.registration_no));
 
 
-             this.driverservice.save_DriverVehicle(this.vehicle_driver)
-                .subscribe((response) => {
-                    if (response.status == 200) 
-                    {
-                        this.getList();
-                        alert('User Reqistered successfully');
-                        //location.reload();
-                    }
+        this.driverservice.save_DriverVehicle(this.vehicle_driver)
+            .subscribe((response) => {
+                if (response.status == 200) {
+                    this.getList();
+                    alert('User Reqistered successfully');
+                    //location.reload();
+                }
 
-                })
+            })
     }
 
     RemoveSelection(e: any, getselectvehicle) {
-        // console.log(e);
-        // console.log(e.checked);
-        // console.log(getselectvehicle.vehicle_Gid);
-        // console.log(getselectvehicle.registration_no);
-
 
         var index_num = this.get_selectvehicles.findIndex(x => x.vehicle_Gid == getselectvehicle.vehicle_Gid);
         console.log("NUM IS " + index_num);
         this.get_selectvehicles.splice(index_num, 1);
+        
+       
 
         this.getvehicles.push(new GETVEHICLE2(getselectvehicle.vehicle_GUID, getselectvehicle.registration_no));
+
+        
     }
     //#endregion
+
 
     Updateinfo() {
 
         //console.log(this.driver.driver_GUID);
         if (this.DriverEditform.valid) {
             this.driver_entry_edit.driver_GUID = this.current_driverGUID;
-            this.driver_entry_edit.tenant_GUID = this.current_tenantGUID;
-            
-            alert(JSON.stringify(this.driver_entry_edit));
+
+            this.driver_entry_edit.tenant_GUID = this.current_tenantGUID
+            alert(JSON.stringify(this.DriverEditform.value));
+
             var self = this;
             this.driverservice.Update(this.driver_entry_edit)
                 .subscribe((response) => { console.log(response.status) })
@@ -294,6 +289,8 @@ export class DriverPage {
             this.driverEditClick();
             this.DriverEditform.reset();
         }
+
+        this.driver_entry_edit.fullname = '';
     }
 
     //#region User Search
@@ -380,6 +377,23 @@ export class DriverPage {
 
             });
     }
+    
+    Delete(data)
+    {
+        alert(JSON.stringify(data));
+        var self = this;
+        this.driverservice.remove_vehicledriver(data.ID)
+            .subscribe((response) => 
+            {
+               if(response.status==200)
+               {
+                   this.getVehicleList();
+                   var index_num = this.get_selectvehicles.findIndex(x => x.ID == data.ID);
+                   this.get_selectvehicles.splice(index_num, 1);
+               }
+               
+            });
+    }
 
     vehiclesby_driver() {
         for (var _i = 0; _i < this.get_selectvehicles.length; _i++) {
@@ -394,18 +408,22 @@ export class DriverPage {
 
     //#region View Driver Info
 
-    Edit(driver_GUID, tenant_GUID) {
-
+    Edit(data) {
         this.driverEditClicked = !this.driverEditClicked; //hide column
-        this.current_driverGUID = driver_GUID; this.current_tenantGUID = tenant_GUID;
-        alert(this.current_driverGUID);
+        this.current_driverGUID = data.driver_GUID; this.current_tenantGUID = data.tenant_GUID;
+
         var self = this;
-        this.driverservice.get(driver_GUID).subscribe((driver) => self.driver = driver);
+        this.driverservice.get(data.driver_GUID).subscribe(
+            (driver) => self.driver = driver);
+
+        this.DriverEditform.patchValue({ fullname: 'Mahesh' });
     }
     //#endregion
 
     //this.getVehicleList();
-
+    filleditform() {
+        this.DriverEditform.value['fullname'] = this.driver.fullname;
+    }
     //#region Remove Driver
     remove(driver_GUID) {
         //alert(driver_GUID);
