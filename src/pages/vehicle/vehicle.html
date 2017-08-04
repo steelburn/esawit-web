@@ -150,7 +150,8 @@
 
           <ion-item *ngFor="let get_selectlocation of get_selectlocations">
             <ion-label>{{get_selectlocation.name}}</ion-label>
-            <ion-icon name="ios-checkmark-circle" item-end class="fontColor-green"></ion-icon>
+            <button ion-button color="primary" item-end class=" btnStyle1 bgColor-red" (click)="Delete(get_selectlocation)"><ion-icon name="md-trash"></ion-icon></button>
+
           </ion-item>
 
         </ion-list>
@@ -275,7 +276,7 @@
 
         <ion-row>
           <ion-item class="bgColor-lightGrey posRelative">
-            <button item-start ion-button color="primary" class="posAbsolute fullHeight topZero leftZero btnStyle2 marginZero"><ion-icon name="ios-arrow-back"></ion-icon> </button>
+            <!--<button item-start ion-button color="primary" class="posAbsolute fullHeight topZero leftZero btnStyle2 marginZero"><ion-icon name="ios-arrow-back"></ion-icon> </button>-->
             <ion-label class="textAllignRight">{{"SELECTED_LOCATION" | translate}}</ion-label>
           </ion-item>
         </ion-row>
@@ -284,7 +285,7 @@
           <ion-list>
             <ion-item *ngFor="let get_selectlocation of get_selectlocations">
               <ion-label>{{get_selectlocation.name}}</ion-label>
-              <ion-checkbox color="secondary" checked="false" (ionChange)="RemoveSelection($event,get_selectvehicle)" item-end></ion-checkbox>
+              <!--<ion-checkbox color="secondary" checked="false" (ionChange)="RemoveSelection($event,get_selectvehicle)" item-end></ion-checkbox>-->
             </ion-item>
           </ion-list>
 

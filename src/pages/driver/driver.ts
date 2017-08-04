@@ -216,7 +216,7 @@ export class DriverPage {
     //#region Select and Remove Vehicles
     AvailableSelection(e: any, getvehicle) {
         var index_num = this.getvehicles.findIndex(x => x.vehicle_GUID == getvehicle.vehicle_GUID);
-        console.log("NUM IS " + index_num);
+        //console.log("NUM IS " + index_num);
         this.getvehicles.splice(index_num, 1);
 
         this.vehicle_driver.ID = 0,
@@ -356,7 +356,7 @@ export class DriverPage {
     
     Delete(data)
     {
-        alert(JSON.stringify(data));
+        //alert(JSON.stringify(data));
         var self = this;
         this.driverservice.remove_vehicledriver(data.ID)
             .subscribe((response) => 

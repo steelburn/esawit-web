@@ -54,6 +54,7 @@ export class VehicleModel
 ///////
 export class GET_VEHICLE_LOCATION {
 	constructor(
+		public ID:number=null,
 		public vehicle_GUID: string = null,
 		public name: string = null,
 		public location_GUID: string = null,
@@ -65,6 +66,7 @@ export class GET_VEHICLE_LOCATION {
 		if (!json) return;
 
 		return new GET_VEHICLE_LOCATION(
+			json.ID,
 			json.vehicle_GUID,
 		    json.name,
 			json.location_GUID,
@@ -75,6 +77,7 @@ export class GET_VEHICLE_LOCATION {
 
 	toJson(stringify?: boolean): any {
 		var doc = {
+			ID:this.ID,
 			vehicle_GUID:this.vehicle_GUID,
 			registration_no:this.name,
 			location_GUID:this.location_GUID,is_checked:this.is_checked
