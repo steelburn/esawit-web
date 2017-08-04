@@ -107,7 +107,7 @@
 
           <ion-label class="fontColor-dark">{{driver.fullname}}</ion-label>
           <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="Edit(driver.driver_GUID,driver.tenant_GUID)"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="Edit(driver)"><ion-icon name="ios-create"></ion-icon></button>
 
         </ion-item>
       </ion-list>
@@ -173,7 +173,8 @@
 
           <ion-item *ngFor="let get_selectvehicle of get_selectvehicles">
             <ion-label>{{get_selectvehicle.registration_no}}</ion-label>
-            <ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>
+            <button ion-button color="primary" item-end class=" btnStyle1 bgColor-red" (click)="Delete(get_selectvehicle)"><ion-icon name="md-trash"></ion-icon></button>
+
           </ion-item>
 
           <!--<ion-card-content>
@@ -479,7 +480,7 @@
       <ion-card class="cb5 contentHeight3">
         <ion-row>
           <ion-item class="bgColor-lightGrey posRelative">
-            <button item-start ion-button color="primary" class="posAbsolute fullHeight topZero leftZero btnStyle2 marginZero"><ion-icon name="ios-arrow-back"></ion-icon> </button>
+            <!--<button item-start ion-button color="primary" class="posAbsolute fullHeight topZero leftZero btnStyle2 marginZero"><ion-icon name="ios-arrow-back"></ion-icon> </button>-->
             <ion-label class="textAllignRight">{{"SELECTED_VEHICLE" | translate}}</ion-label>
           </ion-item>
         </ion-row>
@@ -487,7 +488,9 @@
           <ion-list>
             <ion-item *ngFor="let get_selectvehicle of get_selectvehicles">
               <ion-label>{{get_selectvehicle.registration_no}}</ion-label>
-              <ion-checkbox color="secondary" checked="false" (ionChange)="RemoveSelection($event,get_selectvehicle)" item-end></ion-checkbox>
+              <!--<ion-checkbox color="secondary" checked="false" (ionChange)="RemoveSelection($event,get_selectvehicle)" item-end></ion-checkbox>-->
+              <ion-checkbox color="secondary" checked="false"  item-end></ion-checkbox>
+            
             </ion-item>
           </ion-list>
         </div>

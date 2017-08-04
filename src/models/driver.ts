@@ -77,6 +77,8 @@ export class Driver {
 
 export class GETVEHICLE {
 	constructor(
+
+		public ID: number = null,
 		public vehicle_Gid: string = null,
 		public registration_no: string = null,
 		public driver_GUID: string = null,
@@ -88,6 +90,7 @@ export class GETVEHICLE {
 		if (!json) return;
 
 		return new GETVEHICLE(
+			json.ID,
 			json.vehicle_Gid,
 		    json.registration_no,
 			json.driver_GUID,
@@ -98,6 +101,7 @@ export class GETVEHICLE {
 
 	toJson(stringify?: boolean): any {
 		var doc = {
+			ID:this.ID,
 			vehicle_Gid:this.vehicle_Gid,
 			registration_no:this.registration_no,
 			driver_GUID:this.driver_GUID,is_checked:this.is_checked
@@ -113,6 +117,7 @@ export class GETVEHICLE {
 export class GETVEHICLE2 
 {
 	constructor(
+		//public ID: number = null,
 		public vehicle_GUID: string = null,
 		public registration_no: string = null,
 		public driver_GUID: string = null,
@@ -124,6 +129,7 @@ export class GETVEHICLE2
 		if (!json) return;
 
 		return new GETVEHICLE2(
+			//json.ID,
 			json.vehicle_GUID,
 		    json.registration_no,
 			json.driver_GUID,
@@ -134,6 +140,7 @@ export class GETVEHICLE2
 
 	toJson(stringify?: boolean): any {
 		var doc = {
+			//ID:this.ID,
 			vehicle_Gid:this.vehicle_GUID,
 			registration_no:this.registration_no,
 			driver_GUID:this.driver_GUID,is_checked:this.is_checked
