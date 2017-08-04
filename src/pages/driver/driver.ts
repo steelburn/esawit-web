@@ -282,8 +282,9 @@ export class DriverPage {
             alert(JSON.stringify(this.DriverEditform.value));
 
             var self = this;
-            this.driverservice.Update(this.driver_entry_edit)
-                .subscribe((response) => { console.log(response.status) })
+            console.log(self);
+            // this.driverservice.Update(this.driver_entry_edit)
+            //     .subscribe((response) => { console.log(response.status) })
 
             alert("Driver " + this.DriverEditform.value['fullname'] + " has been successfully updated!");
             this.getList();
