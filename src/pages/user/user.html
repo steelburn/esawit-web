@@ -181,11 +181,13 @@
             <ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
           </ion-row>
 
-          <ion-item>
-            <ion-label>location</ion-label>
+           <ion-item *ngFor="let get_selectlocation of get_selectlocations">
+            <ion-label>{{get_selectlocation.name}}</ion-label>
             <button ion-button color="primary" item-end class=" btnStyle1 bgColor-red" (click)="Delete(get_selectlocation)"><ion-icon name="md-trash"></ion-icon></button>
 
           </ion-item>
+
+        
 
         </ion-list>
 
