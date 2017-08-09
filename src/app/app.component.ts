@@ -68,8 +68,10 @@ export class MyApp {
     this.initializeApp();
     this.initializeLang();
 
-    this.translateToMalay();
-    this.translateToEnglish();
+    translate.setDefaultLang('bm');
+
+    // this.translateToMalay();
+    // this.translateToEnglish();
 
     // used for an example of ngFor and navigation
     this.pages = [
@@ -136,8 +138,8 @@ export class MyApp {
 
 
   //---------------------header button start---------------------//
-  public translateToEnglishClicked: boolean = true; //Whatever you want to initialise it as
-  public translateToMalayClicked: boolean = false; //Whatever you want to initialise it as
+  public translateToEnglishClicked: boolean = false; //Whatever you want to initialise it as
+  public translateToMalayClicked: boolean = true; //Whatever you want to initialise it as
 
   public translateToEnglish() {
     this.translateService.use('en');

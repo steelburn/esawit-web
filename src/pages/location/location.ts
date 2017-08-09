@@ -26,11 +26,13 @@ import { UUID } from 'angular2-uuid';
   templateUrl: 'location.html', providers: [BaseHttpService, LocationService]
 })
 export class LocationPage {
-  Locationform: FormGroup;    EditLocationform: FormGroup;current_locationGUID: string = '';
+  Locationform: FormGroup; 
+  EditLocationform: FormGroup; 
+  current_locationGUID: string = '';
 
-  location_entry: LocationModel = new LocationModel();  location_entry_edit: LocationModel = new LocationModel();
+  location_entry: LocationModel = new LocationModel(); location_entry_edit: LocationModel = new LocationModel();
 
- 
+
   location: LocationModel = new LocationModel();
   Active_Deactive_location: LocationModel = new LocationModel();
   location_vehicle: LOCATION_VEHICLE_MODEL = new LOCATION_VEHICLE_MODEL();
@@ -43,18 +45,19 @@ export class LocationPage {
   public current_location_GUID: string = '';
   public locationcharts: GETLOCATION_CHART[] = [];
 
-  current_ActiveUser: number; current_locationGUID_Edit: string;
-  current_tenantGUID_Edit: string;current_locationID_Edit:number;
-  
+  current_ActiveUser: number; 
+  current_locationGUID_Edit: string;
+  current_tenantGUID_Edit: string; 
+  current_locationID_Edit: number;
 
-  constructor( private fb2: FormBuilder,@Inject(FormBuilder) fb: FormBuilder, private location_service: LocationService,
-    private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) 
-  {
+
+  constructor(private fb2: FormBuilder, @Inject(FormBuilder) fb: FormBuilder, private location_service: LocationService,
+    private httpService: BaseHttpService, public navCtrl: NavController, public navParams: NavParams) {
 
     this.Locationform = fb.group
       ({ locationname: '', locationactive: '' });
-    
-    this.EditLocationform=fb2.group({locationname:'',locationactive:''});
+
+    this.EditLocationform = fb2.group({ locationname: '', locationactive: '' });
 
     this.getList();
     this.lineChart_items();
@@ -109,14 +112,11 @@ export class LocationPage {
     this.View(this.location.location_GUID, _row);
   }
 
-  Deactive_Location(data) 
-  {
-    if(data.active==0 || data.active==null)
-    {
+  Deactive_Location(data) {
+    if (data.active == 0 || data.active == null) {
       this.Active_Deactive_location.active = 1;
     }
-    if(data.active==1)
-    {
+    if (data.active == 1) {
       this.Active_Deactive_location.active = 0;
     }
     this.Active_Deactive_location.ID = data.ID;
@@ -128,7 +128,7 @@ export class LocationPage {
     this.Active_Deactive_location.createdby_GUID = data.createdby_GUID;
     this.Active_Deactive_location.updated_ts = data.updated_ts;
     this.Active_Deactive_location.updatedby_GUID = data.updatedby_GUID;
-    
+
     var self = this;
     this.location_service.Deactive_Location(this.Active_Deactive_location)
       .subscribe((response) => {
@@ -136,8 +136,7 @@ export class LocationPage {
       })
 
   }
-  Activate_Location(data) 
-  {
+  Activate_Location(data) {
 
   }
 
@@ -230,87 +229,82 @@ export class LocationPage {
   public addVehicleClicked: boolean = false; //Whatever you want to initialise it as
   public locationRegisterClick() { this.locationRegisterClicked = !this.locationRegisterClicked; }
 
-  public locationEditClick(data) 
-  { 
-    this.locationEditClicked = !this.locationEditClicked; 
-    this.current_locationGUID=data.location_GUID;
+  public locationEditClick(data) {
+    this.locationEditClicked = !this.locationEditClicked;
+    this.current_locationGUID = data.location_GUID;
     alert(JSON.stringify(data));
-    alert(this.current_locationGUID);     
-      this.current_ActiveUser=data.active;
-      this.current_locationGUID_Edit=data.location_GUID;
-      this.current_tenantGUID_Edit=data.tenant_GUID;
-      this.current_locationID_Edit = data.ID;
-      this.location_entry_edit.name=data.name;
+    alert(this.current_locationGUID);
+    this.current_ActiveUser = data.active;
+    this.current_locationGUID_Edit = data.location_GUID;
+    this.current_tenantGUID_Edit = data.tenant_GUID;
+    this.current_locationID_Edit = data.ID;
+    this.location_entry_edit.name = data.name;
   }
 
-  Updateinfo() 
-  {
-        if (this.EditLocationform.valid) 
-        {
-           this.location_entry_edit.ID=this.current_locationID_Edit;
-           this.location_entry_edit.location_GUID=this.current_locationGUID_Edit;
-           this.location_entry_edit.tenant_GUID=this.current_tenantGUID_Edit;
-           this.location_entry_edit.active = this.current_ActiveUser;
-           var self = this;
-            alert(JSON.stringify(this.location_entry_edit));
-            this.location_service.Update(this.location_entry_edit)
-                .subscribe((response) => 
-                {
-                  //console.log(response);
-                    if (response.status == 200) 
-                    {
-                        this.getList();
-                        this.locationEditClose();
-                    }
-                })
-        }
+  Updateinfo() {
+    if (this.EditLocationform.valid) {
+      this.location_entry_edit.ID = this.current_locationID_Edit;
+      this.location_entry_edit.location_GUID = this.current_locationGUID_Edit;
+      this.location_entry_edit.tenant_GUID = this.current_tenantGUID_Edit;
+      this.location_entry_edit.active = this.current_ActiveUser;
+      var self = this;
+      alert(JSON.stringify(this.location_entry_edit));
+      this.location_service.Update(this.location_entry_edit)
+        .subscribe((response) => {
+          //console.log(response);
+          if (response.status == 200) {
+            this.getList();
+            this.locationEditClose();
+          }
+        })
     }
+  }
 
-  public locationEditClose () {this.locationEditClicked = !this.locationEditClicked; }
+  public locationEditClose() { this.locationEditClicked = !this.locationEditClicked; }
   public addVehicleClick() { this.addVehicleClicked = !this.addVehicleClicked; }
 
   lineChart_items() {
-        let self = this; let chart_label_items = [];
-        let bar_label_items = [];
-        let chart_label_data = []; let chart_label_color = [];
-        let chart_backgroundcolor = []; let chart_hovercolor = [];
-        let params: URLSearchParams = new URLSearchParams();
+    let self = this; let chart_label_items = [];
+    let bar_label_items = [];
+    let chart_label_data = []; let chart_label_color = [];
+    let chart_backgroundcolor = []; let chart_hovercolor = [];
+    let params: URLSearchParams = new URLSearchParams();
 
-        self.location_service.GetLocation_Chart(params)
-            .subscribe((locationcharts: GETLOCATION_CHART[]) => {
-                self.locationcharts = locationcharts;
+    self.location_service.GetLocation_Chart(params)
+      .subscribe((locationcharts: GETLOCATION_CHART[]) => {
+        self.locationcharts = locationcharts;
 
-                this.locationcharts.forEach((item, index) => {
+        this.locationcharts.forEach((item, index) => {
 
-                    if (item.Active == "1") {
-                        bar_label_items.push({
-                            Title : 'Active',
-                            ActiveTotal : item.TOTAL,
-                            bgColor : 'rgba(69, 183, 175, 0.8)'
-                        }); 
-                    }
-
-                    if (item.Active == "0") {
-                        bar_label_items.push({
-                            Title : 'Inactive',
-                            ActiveTotal : item.TOTAL,
-                            bgColor : 'rgba(248, 203, 0, 0.8)'
-                        }); 
-                    }
-
-                });
-                this.activeUser(bar_label_items);
+          if (item.Active == "1") {
+            bar_label_items.push({
+              Title: 'Active',
+              ActiveTotal: item.TOTAL,
+              bgColor: 'rgba(69, 183, 175, 0.8)'
             });
-    }
+          }
 
-    public activeValue:any;
+          if (item.Active == "0") {
+            bar_label_items.push({
+              Title: 'Inactive',
+              ActiveTotal: item.TOTAL,
+              bgColor: 'rgba(248, 203, 0, 0.8)'
+            });
+          }
 
-    activeUser(data_items){
-        this.activeValue = data_items;
-        console.log(this.activeValue);
+        });
+        this.activeUser(bar_label_items);
+      });
+  }
 
-    }
+  public activeValue: any;
 
-  
+  activeUser(data_items) {
+    this.activeValue = data_items;
+    // console.log(this.activeValue);
+
+  }
+
+
 
 }

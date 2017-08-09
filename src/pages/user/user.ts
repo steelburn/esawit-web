@@ -219,8 +219,8 @@ AvailableSelection(e: any, getlocation)
             .subscribe((response) => {
                 if (response.status == 200) 
                 {
-                     this.getList();
-                    //this.View(this.current_driverGUID);
+                     //this.getList();
+                    this.View(this.current_user_GUID);
                     //alert('Location Vehicle Reqistered successfully');
                     //location.reload();
                 }

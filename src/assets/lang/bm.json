@@ -78,5 +78,18 @@
   "FORM_LOCATION_NAME": "Sila masukkan nama lokasi",
   "SEARCH": "Carian",
   "SEARCH_LOCATION": "Carian lokasi",
-  "SEARCH_VEHICLE": "Carian kenderaan"
+  "SEARCH_VEHICLE": "Carian kenderaan",
+
+  "HARVESTED": "Telah Dituai",
+  "MANDOR": "Mandor",
+  "FACTORY": "Kilang",
+  "DATE": "Tarikh",
+  "LOADED_QTY": "Diangkut",
+  "UNLOADED_QTY": "Diturunkan",
+  "LOADED_TIME": "Masa Diangkut",
+  "UNLOADED_TIME": "Masa Diturunkan",
+  "STATUS": "Status",
+  "LORRY": "Lori",
+  "BUNCHES": "Tandan",
+  "RECONCILIATION_REPORT": "Laporan Rekonsiliasi"
 }

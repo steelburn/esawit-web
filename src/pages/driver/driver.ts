@@ -32,10 +32,19 @@ export class DriverPage {
 
         this.driverRegisterClicked = !this.driverRegisterClicked;
     }
-    public driverEditClick() {
+    public driverEditClick(data) {
+
+        this.driverEditClicked = !this.driverEditClicked;
+        alert(JSON.stringify(data));
+        alert(data.driver_GUID);
+        this.current_ActiveUser = data.active;
+        this.driver_entry_edit.fullname = data.fullname;
+    }
+    public driverEditClose() {
 
         this.driverEditClicked = !this.driverEditClicked;
     }
+    
     public addVehicleClick() {
 
         this.addVehicleClicked = !this.addVehicleClicked;
@@ -51,6 +60,8 @@ export class DriverPage {
     Driverform: FormGroup;
     driver_entry: Driver = new Driver();
     DriverEditform: FormGroup;
+
+    current_ActiveUser: number; 
 
     driver_entry_edit: Driver = new Driver();
 
@@ -262,12 +273,12 @@ export class DriverPage {
         var index_num = this.get_selectvehicles.findIndex(x => x.vehicle_Gid == getselectvehicle.vehicle_Gid);
         console.log("NUM IS " + index_num);
         this.get_selectvehicles.splice(index_num, 1);
-        
-       
+
+
 
         this.getvehicles.push(new GETVEHICLE2(getselectvehicle.vehicle_GUID, getselectvehicle.registration_no));
 
-        
+
     }
     //#endregion
 
@@ -277,19 +288,20 @@ export class DriverPage {
         //console.log(this.driver.driver_GUID);
         if (this.DriverEditform.valid) {
             this.driver_entry_edit.driver_GUID = this.current_driverGUID;
-
             this.driver_entry_edit.tenant_GUID = this.current_tenantGUID
+            this.driver_entry_edit.active = this.current_ActiveUser;
             alert(JSON.stringify(this.DriverEditform.value));
-
             var self = this;
             console.log(self);
-            // this.driverservice.Update(this.driver_entry_edit)
-            //     .subscribe((response) => { console.log(response.status) })
-
-            alert("Driver " + this.DriverEditform.value['fullname'] + " has been successfully updated!");
-            this.getList();
-            this.driverEditClick();
-            this.fillChart_items();
+            this.driverservice.Update(this.driver_entry_edit)
+                .subscribe((response) => {
+                    // console.log(response.status) 
+                    if (response.status == 200) {
+                        this.getList();
+                        this.driverEditClose();
+                        this.fillChart_items();
+                    }
+                })
         }
 
         this.driver_entry_edit.fullname = '';
@@ -363,7 +375,7 @@ export class DriverPage {
     //#region View Driver Info
     View(driver_GUID) {
 
-        this.current_driverGUID = driver_GUID; //alert(this.current_driverGUID);
+        this.current_driverGUID = driver_GUID;
         var self = this;
         this.driverservice.get(driver_GUID).subscribe((driver) => self.driver = driver);
 
@@ -379,21 +391,18 @@ export class DriverPage {
 
             });
     }
-    
-    Delete(data)
-    {
+
+    Delete(data) {
         //alert(JSON.stringify(data));
         var self = this;
         this.driverservice.remove_vehicledriver(data.ID)
-            .subscribe((response) => 
-            {
-               if(response.status==200)
-               {
-                   this.getVehicleList();
-                   var index_num = this.get_selectvehicles.findIndex(x => x.ID == data.ID);
-                   this.get_selectvehicles.splice(index_num, 1);
-               }
-               
+            .subscribe((response) => {
+                if (response.status == 200) {
+                    this.getVehicleList();
+                    var index_num = this.get_selectvehicles.findIndex(x => x.ID == data.ID);
+                    this.get_selectvehicles.splice(index_num, 1);
+                }
+
             });
     }
 

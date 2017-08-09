@@ -82,7 +82,7 @@
 
           <ion-label class="fontColor-dark">{{driver.fullname}}</ion-label>
           <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(driver.driver_GUID)"><ion-icon name="md-eye"></ion-icon></button>
-          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="Edit(driver)"><ion-icon name="ios-create"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="driverEditClick(driver)"><ion-icon name="ios-create"></ion-icon></button>
 
         </ion-item>
       </ion-list>
@@ -305,7 +305,7 @@
       <ion-card-header class="icTitle headerColor-white posRelative">
         <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
         <div class="icHeaderText">{{"UPDATE_DRIVER" | translate}} (<b>{{driver.fullname}}</b>)</div>
-        <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="driverEditClick()">
+        <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="driverEditClose()">
           <ion-icon name="md-close"></ion-icon> 
         </button>
       </ion-card-header>

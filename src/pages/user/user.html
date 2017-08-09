@@ -320,7 +320,7 @@
             <ion-input type="text" formControlName="address2" [(ngModel)]="user_entry_edit.address2" class="editInput" placeholder="{{'FORM_ADDRESS_2' | translate}}"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <!-- <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ROLE" | translate}}</ion-label>
             <ion-select formControlName="role_GUID" [(ngModel)]="user_entry_edit.role_GUID" class="editInput" interface="popover" placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
               <ion-option value="0">N/A</ion-option>
@@ -335,7 +335,7 @@
             <ion-select formControlName="role_GUID" [(ngModel)]="user_entry_edit.role_GUID" class="editInput" interface="popover" placeholder="Select IMEI">
               <ion-option *ngFor="let user_imei of user_imeis" [value]="user_imei.user_IMEI">{{user_imei.user_IMEI}}</ion-option>
             </ion-select>
-          </ion-item>
+          </ion-item> -->
 
         </form>
 
