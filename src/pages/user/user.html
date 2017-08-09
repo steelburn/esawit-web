@@ -10,7 +10,7 @@
 
     </button>
 
-    <ion-card class="cb10">
+    <!-- <ion-card class="cb10">
       <ion-row>
 
         <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
@@ -34,7 +34,7 @@
           <div class="percentBarValue bgColor-red" style="width: calc(100% * (18 / 127))"></div>
         </div>
       </ion-card-content>
-    </ion-card>
+    </ion-card> -->
 
     <ion-card class="cb10" hidden>
       <ion-row>
@@ -94,21 +94,21 @@
       <ion-row>
         <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by name"></ion-searchbar>
       </ion-row>
-      
-        <ion-list>
 
-          <ion-item *ngFor="let user of (users| filteruser: filter.value : 'name');" class="tnUserRow">
-            
-            <ion-toggle *ngIf="user.active==0" checked="false" color="secondary" item-start (ionChange)="Deactive_user(user)"></ion-toggle>
-            <ion-toggle *ngIf="user.active==null" checked="false" color="secondary" item-start (ionChange)="Deactive_user(user)"></ion-toggle>
-            <ion-toggle *ngIf="user.active==1" checked="true" color="secondary" (ionChange)="Deactive_user(user)" item-start></ion-toggle>
+      <ion-list>
 
-            <ion-label class="fontColor-dark">{{user.fullname}}</ion-label>
-            <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(user.user_GUID)"><ion-icon name="md-eye"></ion-icon></button>
-            <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="Edit(user)"><ion-icon name="ios-create"></ion-icon></button>
+        <ion-item *ngFor="let user of (users| filteruser: filter.value : 'name');" class="tnUserRow">
 
-          </ion-item>
-        </ion-list>
+          <ion-toggle *ngIf="user.active==0" checked="false" color="secondary" item-start (ionChange)="Deactive_user(user)"></ion-toggle>
+          <ion-toggle *ngIf="user.active==null" checked="false" color="secondary" item-start (ionChange)="Deactive_user(user)"></ion-toggle>
+          <ion-toggle *ngIf="user.active==1" checked="true" color="secondary" (ionChange)="Deactive_user(user)" item-start></ion-toggle>
+
+          <ion-label class="fontColor-dark">{{user.fullname}}</ion-label>
+          <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(user.user_GUID)"><ion-icon name="md-eye"></ion-icon></button>
+          <button ion-button color="primary" item-end class=" btnStyle1 bgColor-blue" (click)="Edit(user)"><ion-icon name="ios-create"></ion-icon></button>
+
+        </ion-item>
+      </ion-list>
 
     </ion-card>
 
@@ -116,7 +116,7 @@
   <!--listing end-->
 
   <!--Profile start-->
-  <div class="col3">
+  <!-- <div class="col3">
     <ion-card class="cb10">
 
 
@@ -124,23 +124,85 @@
         {{user.fullname}}
       </ion-card-header>
 
-       <ion-card-content padding>
-            <div class="">
-              <div class="infoLabel bgColor-lightGrey floatLeft">{{"ADDRESS" | translate}}</div>
-              <div class="infoText">{{user.address1}}<br/> {{user.address2}}
-                <br/> {{user.address3}}
-              </div>
-            </div>
+      <ion-card-content padding>
 
-      
+        <div class="">
+          <div class="infoLabel bgColor-lightGrey floatLeft">{{"ADDRESS" | translate}}</div>
+          <div class="infoText">{{user.address1}}<br/> {{user.address2}}
+            <br/> {{user.address3}}
+          </div>
+        </div>
+
+        <div class="">
+          <div class="infoLabel bgColor-lightGrey floatLeft">{{"EMAIL" | translate}}</div>
+          <div class="infoText">{{user.email}}</div>
+        </div>
+
+      </ion-card-content>
+
+    </ion-card>
+  </div> -->
+  <!--Profile end-->
+
+
+  <!--Profile start-->
+  <div class="col3">
+    <ion-card class="cb10">
+
+      <ion-card-header class="fullWidth posRelative bgColor-darkBlue">
+        {{user.fullname}}
+        <button class="posAbsolute fullHeight topZero rightZero btnStyle2 bgColor-darkBlue" (click)="addLocationClick()">
+        <ion-icon name="md-add"></ion-icon>
+      </button>
+      </ion-card-header>
+
+      <div [ngSwitch]="userInfo">
+        <ion-list *ngSwitchDefault>
+          <ion-card-content>
+            
             <div class="">
-              <div class="infoLabel bgColor-lightGrey floatLeft">{{"EMAIL" | translate}}</div>
-              <div class="infoText">{{user.email}}</div>
-            </div>
+          <div class="infoLabel bgColor-lightGrey floatLeft">{{"ADDRESS" | translate}}</div>
+          <div class="infoText">{{user.address1}}<br/> {{user.address2}}
+            <br/> {{user.address3}}
+          </div>
+        </div>
+
+        <div class="">
+          <div class="infoLabel bgColor-lightGrey floatLeft">{{"EMAIL" | translate}}</div>
+          <div class="infoText">{{user.email}}</div>
+        </div>
 
           </ion-card-content>
+        </ion-list>
 
+        <ion-list *ngSwitchCase="'Location'">
 
+          <ion-row>
+            <ion-searchbar placeholder="{{'SEARCH' | translate}}"></ion-searchbar>
+          </ion-row>
+
+           <ion-item *ngFor="let get_selectlocation of get_selectlocations">
+            <ion-label>{{get_selectlocation.name}}</ion-label>
+            <button ion-button color="primary" item-end class=" btnStyle1 bgColor-red" (click)="Delete(get_selectlocation)"><ion-icon name="md-trash"></ion-icon></button>
+
+          </ion-item>
+
+        
+
+        </ion-list>
+
+      </div>
+
+      <ion-row>
+         <ion-segment [(ngModel)]="userInfo" [ngModelOptions]="{standalone:true}" color="primary"> 
+          <ion-segment-button value="Info" isActive>
+            {{"INFO" | translate}}
+          </ion-segment-button>
+          <ion-segment-button value="Location">
+            {{"LOCATION" | translate}}
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
 
     </ion-card>
   </div>
@@ -191,24 +253,6 @@
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ADDRESS" | translate}} 2</ion-label>
             <ion-input type="text" formControlName="address2" [(ngModel)]="user_entry.address2" class="editInput" placeholder="{{'FORM_ADDRESS_2' | translate}}"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label class="fontColor-green" stacked>{{"ROLE" | translate}}</ion-label>
-            <ion-select formControlName="role_GUID" [(ngModel)]="user_entry.role_GUID" class="editInput" interface="popover" placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
-              <ion-option value="0">N/A</ion-option>
-              <ion-option value="0">N/A</ion-option>
-              <ion-option value="1">{{"SURVEYOR" | translate}}</ion-option>
-              <ion-option value="2">{{"SUPERVISOR" | translate}}</ion-option>
-              <ion-option value="3">{{"FACTORY" | translate}}</ion-option>  
-            </ion-select>
-          </ion-item>
-
-           <ion-item>
-            <ion-label class="fontColor-green" stacked>Select IMEI</ion-label>
-            <ion-select formControlName="user_IMEI" [(ngModel)]="user_entry.user_IMEI" class="editInput" interface="popover" placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
-                <ion-option *ngFor="let user_imei of user_imeis" >{{user_imei.user_IMEI}}</ion-option>
-            </ion-select>
           </ion-item>
 
           <ion-item>
@@ -276,26 +320,24 @@
             <ion-input type="text" formControlName="address2" [(ngModel)]="user_entry_edit.address2" class="editInput" placeholder="{{'FORM_ADDRESS_2' | translate}}"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <!-- <ion-item>
             <ion-label class="fontColor-green" stacked>{{"ROLE" | translate}}</ion-label>
-            <ion-select formControlName="role_GUID" [(ngModel)]="user_entry_edit.role_GUID" class="editInput" interface="popover" 
-            placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
+            <ion-select formControlName="role_GUID" [(ngModel)]="user_entry_edit.role_GUID" class="editInput" interface="popover" placeholder="{{'FORM_EMPLOYEMENT_TYPE' | translate}}">
               <ion-option value="0">N/A</ion-option>
               <ion-option value="1">{{"SURVEYOR" | translate}}</ion-option>
               <ion-option value="2">{{"SUPERVISOR" | translate}}</ion-option>
-              <ion-option value="3">{{"FACTORY" | translate}}</ion-option>            
+              <ion-option value="3">{{"FACTORY" | translate}}</ion-option>
             </ion-select>
           </ion-item>
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"IMEI" | translate}}</ion-label>
-            <ion-select formControlName="role_GUID" [(ngModel)]="user_entry_edit.role_GUID" class="editInput" interface="popover"
-              placeholder="Select IMEI">
-             <ion-option *ngFor="let user_imei of user_imeis" [value] = "user_imei.user_IMEI" >{{user_imei.user_IMEI}}</ion-option>
+            <ion-select formControlName="role_GUID" [(ngModel)]="user_entry_edit.role_GUID" class="editInput" interface="popover" placeholder="Select IMEI">
+              <ion-option *ngFor="let user_imei of user_imeis" [value]="user_imei.user_IMEI">{{user_imei.user_IMEI}}</ion-option>
             </ion-select>
-          </ion-item>
+          </ion-item> -->
 
-          </form>
+        </form>
 
       </ion-list>
 
@@ -307,5 +349,61 @@
   </div>
   <!--edit User form end-->
 
+   <!--add Location form start-->
+  <div padding class="fb10 posFixed popupFormCol bgColor-blackOpa fullHeight" *ngIf="addLocationClicked">
 
+    <ion-card class="fb6 marginCenter popupFormCard">
+
+      <ion-card-header class="icTitle headerColor-white posRelative">
+        <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
+        <div class="icHeaderText">{{"REGISTER_NEW_LOCATION" | translate}} <b>ABC 123</b></div>
+        <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="addLocationClick()">
+        <ion-icon name="md-close"></ion-icon> 
+      </button>
+      </ion-card-header>
+
+      <ion-card class="cb5 contentHeight3">
+
+        <ion-row>
+          <ion-item class="bgColor-lightGrey posRelative">
+            <ion-label item-start>{{"AVAILABLE_LOCATION" | translate}}</ion-label>
+            <button item-end ion-button color="primary" class="posAbsolute fullHeight topZero rightZero btnStyle2 marginZero"><ion-icon name="ios-arrow-forward"></ion-icon> </button>
+          </ion-item>
+        </ion-row>
+
+        <div class="contentHeight3 overflowTrue">
+          <ion-list>
+            <ion-item *ngFor="let getlocation of getlocations">
+              <ion-label>{{getlocation.name}}</ion-label>
+              <!--<ion-checkbox color="secondary" checked="false" item-end></ion-checkbox>-->
+              <ion-checkbox color="secondary" checked="false" (ionChange)="AvailableSelection($event,getlocation)" item-end></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-card>
+      <ion-card class="cb5 contentHeight3">
+
+        <ion-row>
+          <ion-item class="bgColor-lightGrey posRelative">
+            <!--<button item-start ion-button color="primary" class="posAbsolute fullHeight topZero leftZero btnStyle2 marginZero"><ion-icon name="ios-arrow-back"></ion-icon> </button>-->
+            <ion-label class="textAllignRight">{{"SELECTED_LOCATION" | translate}}</ion-label>
+          </ion-item>
+        </ion-row>
+
+        <div class="contentHeight3 overflowTrue">
+          <ion-list>
+            <ion-item *ngFor="let get_selectlocation of get_selectlocations">
+              <ion-label>{{get_selectlocation.name}}</ion-label>
+              <!--<ion-checkbox color="secondary" checked="false" (ionChange)="RemoveSelection($event,get_selectvehicle)" item-end></ion-checkbox>-->
+            </ion-item>
+          </ion-list>
+
+
+        </div>
+
+      </ion-card>
+    </ion-card>
+  </div>
+  <!--add Location form end-->
+  
 </ion-content>

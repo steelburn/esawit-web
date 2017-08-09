@@ -45,6 +45,22 @@ export class DriverService
 	  return Observable.throw(errMsg);
 	}
 	
+	remove_vehicledriver (id: string) 
+	{
+		console.log('remove_vehicledriver');
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.delete(this.baseResourceUrl_VehicleDriver + '/' + id,{ headers: queryHeaders})
+			.map((response) => {
+				var result: any = response.json();
+				//console.log(result.driver_GUID);
+				return response;
+			});
+	}
+
 	query (params?:URLSearchParams): Observable<Driver[]> {
 		var queryHeaders = new Headers();
     	queryHeaders.append('Content-Type', 'application/json');
@@ -139,7 +155,27 @@ export class DriverService
 			}).catch(this.handleError);
 	};
 	
+getVehicles_Available (params?: URLSearchParams): Observable<GETVEHICLE2[]> 
+	{
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+		
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.get(this.baseResourceUrl_Vehicle, { search: params ,headers: queryHeaders})
+			.map((response) => 
+			{
+				var result: any = response.json();
+				let getvehicles: Array<GETVEHICLE2> = [];
+				result.resource.forEach((getvehicle) => {
+					getvehicles.push(GETVEHICLE2.fromJson(getvehicle));
+				});
+				console.log(getvehicles);
+				return getvehicles;
 
+			}).catch(this.handleError);
+	};
 
 	getTotalReport (params?: URLSearchParams) 
 	{
@@ -244,6 +280,7 @@ export class DriverService
 		
 			return this.httpService.http.post(this.baseResourceUrl_VehicleDriver, vehicel_driver.toJson(true),options)
 				.map((response) => {
+					console.log('Response for save_DriverVehicle');
 					console.log(response);
 					return response;
 				});

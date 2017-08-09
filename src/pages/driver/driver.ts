@@ -32,10 +32,19 @@ export class DriverPage {
 
         this.driverRegisterClicked = !this.driverRegisterClicked;
     }
-    public driverEditClick() {
+    public driverEditClick(data) {
+
+        this.driverEditClicked = !this.driverEditClicked;
+        alert(JSON.stringify(data));
+        alert(data.driver_GUID);
+        this.current_ActiveUser = data.active;
+        this.driver_entry_edit.fullname = data.fullname;
+    }
+    public driverEditClose() {
 
         this.driverEditClicked = !this.driverEditClicked;
     }
+    
     public addVehicleClick() {
 
         this.addVehicleClicked = !this.addVehicleClicked;
@@ -50,11 +59,12 @@ export class DriverPage {
 
     Driverform: FormGroup;
     driver_entry: Driver = new Driver();
+    DriverEditform: FormGroup;
+
+    current_ActiveUser: number; 
 
     driver_entry_edit: Driver = new Driver();
 
-
-    DriverEditform: FormGroup;
     driver: Driver = new Driver();
     vehicle_driver: VEHICLEDRIVER_MODEL = new VEHICLEDRIVER_MODEL();
 
@@ -78,11 +88,12 @@ export class DriverPage {
         this.searchControl = new FormControl(); this.GenerateToken();
         this.DriverEditform = fb.group({
 
-            fullname: ['', Validators.compose([
-                Validators.pattern('[a-zA-Z. ]*'),
-                Validators.minLength(5),
-                Validators.required
-            ])],
+            // fullname: ['', Validators.compose([
+            //     Validators.pattern('[a-zA-Z. ]*'),
+            //     Validators.required
+            // ])],
+
+            fullname: '',
             driver_GUID: '',
             tenant_GUID: '',
             identification_no: '',
@@ -90,14 +101,17 @@ export class DriverPage {
             address1: '',
             address2: '',
             address3: '',
-            phone_no: ['', Validators.compose([
-                Validators.required,
-                Validators.pattern('^[0-9_.+-]*')
-            ])],
-            email: ['', Validators.compose([
-                Validators.required,
-                Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-            ])],
+            // phone_no: ['', Validators.compose([
+            //     Validators.required,
+            //     Validators.pattern('^[0-9_.+-]*')
+            // ])],
+            phone_no: '',
+            // email: ['', Validators.compose([
+            //     Validators.required,
+            //     Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+            // ])],
+
+            email: '',
             license_no: '',
             start_year: '',
             description: '',
@@ -108,6 +122,8 @@ export class DriverPage {
 
         this.driver_entry.driver_GUID = UUID.UUID();
         this.driver_entry.tenant_GUID = UUID.UUID();
+
+
         //this.GenerateToken();
 
         this.Driverform = fb2.group({
@@ -134,8 +150,8 @@ export class DriverPage {
             license_no: '',
             employment_type: '',
             description: '',
-            active: 1,
-            tenant_GUID: [UUID.UUID()]
+            tenant_GUID: [UUID.UUID()],
+            active: ''
         });
 
 
@@ -146,8 +162,7 @@ export class DriverPage {
 
     }
 
-    Deactive_driver(data) 
-    {
+    Deactive_driver(data) {
         //alert(JSON.stringify(data));
         if (data.active == 0 || data.active == null) {
             this.Active_Deactive_driver.active = 1;
@@ -175,9 +190,6 @@ export class DriverPage {
         this.Active_Deactive_driver.updated_ts = data.updated_ts;
         this.Active_Deactive_driver.updatedby_GUID = data.updatedby_GUID;
 
-
-
-
         var self = this;
         this.driverservice.Deactive_Driver(this.Active_Deactive_driver)
             .subscribe((response) => {
@@ -201,6 +213,12 @@ export class DriverPage {
                     }
 
                 })
+
+            alert("Driver " + this.Driverform.value['fullname'] + " has been successfully registered!");
+            this.Driverform.reset();
+            this.driverRegisterClick();
+            this.getList();
+            this.fillChart_items();
         }
     }
 
@@ -226,36 +244,44 @@ export class DriverPage {
 
     //#region Select and Remove Vehicles
     AvailableSelection(e: any, getvehicle) {
-        console.log(e);
-        console.log(e.checked);
-        console.log(getvehicle.vehicle_Gid);
-        console.log(getvehicle.registration_no);
-
         var index_num = this.getvehicles.findIndex(x => x.vehicle_GUID == getvehicle.vehicle_GUID);
-        console.log("NUM IS " + index_num);
+        //console.log("NUM IS " + index_num);
         this.getvehicles.splice(index_num, 1);
 
         this.vehicle_driver.ID = 0,
             this.vehicle_driver.driver_GUID = this.current_driverGUID,
             this.vehicle_driver.vehicle_GUID = getvehicle.vehicle_GUID,
 
+
+
             this.get_selectvehicles.push(new GETVEHICLE(getvehicle.vehicle_Gid, getvehicle.registration_no));
+
+
+        this.driverservice.save_DriverVehicle(this.vehicle_driver)
+            .subscribe((response) => {
+                if (response.status == 200) {
+                    this.getList();
+                    alert('User Reqistered successfully');
+                    //location.reload();
+                }
+
+            })
     }
 
     RemoveSelection(e: any, getselectvehicle) {
-        console.log(e);
-        console.log(e.checked);
-        console.log(getselectvehicle.vehicle_Gid);
-        console.log(getselectvehicle.registration_no);
-
 
         var index_num = this.get_selectvehicles.findIndex(x => x.vehicle_Gid == getselectvehicle.vehicle_Gid);
         console.log("NUM IS " + index_num);
         this.get_selectvehicles.splice(index_num, 1);
 
+
+
         this.getvehicles.push(new GETVEHICLE2(getselectvehicle.vehicle_GUID, getselectvehicle.registration_no));
+
+
     }
     //#endregion
+
 
     Updateinfo() {
 
@@ -263,11 +289,22 @@ export class DriverPage {
         if (this.DriverEditform.valid) {
             this.driver_entry_edit.driver_GUID = this.current_driverGUID;
             this.driver_entry_edit.tenant_GUID = this.current_tenantGUID
-            alert(JSON.stringify(this.driver_entry_edit));
+            this.driver_entry_edit.active = this.current_ActiveUser;
+            alert(JSON.stringify(this.DriverEditform.value));
             var self = this;
+            console.log(self);
             this.driverservice.Update(this.driver_entry_edit)
-                .subscribe((response) => { console.log(response.status) })
+                .subscribe((response) => {
+                    // console.log(response.status) 
+                    if (response.status == 200) {
+                        this.getList();
+                        this.driverEditClose();
+                        this.fillChart_items();
+                    }
+                })
         }
+
+        this.driver_entry_edit.fullname = '';
     }
 
     //#region User Search
@@ -338,7 +375,7 @@ export class DriverPage {
     //#region View Driver Info
     View(driver_GUID) {
 
-        this.current_driverGUID = driver_GUID; //alert(this.current_driverGUID);
+        this.current_driverGUID = driver_GUID;
         var self = this;
         this.driverservice.get(driver_GUID).subscribe((driver) => self.driver = driver);
 
@@ -351,6 +388,20 @@ export class DriverPage {
                 self2.get_selectvehicles = get_selectvehicles;
                 this.getVehicleList();
                 //this.vehiclesby_driver();
+
+            });
+    }
+
+    Delete(data) {
+        //alert(JSON.stringify(data));
+        var self = this;
+        this.driverservice.remove_vehicledriver(data.ID)
+            .subscribe((response) => {
+                if (response.status == 200) {
+                    this.getVehicleList();
+                    var index_num = this.get_selectvehicles.findIndex(x => x.ID == data.ID);
+                    this.get_selectvehicles.splice(index_num, 1);
+                }
 
             });
     }
@@ -368,18 +419,22 @@ export class DriverPage {
 
     //#region View Driver Info
 
-    Edit(driver_GUID, tenant_GUID) {
-
+    Edit(data) {
         this.driverEditClicked = !this.driverEditClicked; //hide column
-        this.current_driverGUID = driver_GUID; this.current_tenantGUID = tenant_GUID;
-        alert(this.current_driverGUID);
+        this.current_driverGUID = data.driver_GUID; this.current_tenantGUID = data.tenant_GUID;
+
         var self = this;
-        this.driverservice.get(driver_GUID).subscribe((driver) => self.driver = driver);
+        this.driverservice.get(data.driver_GUID).subscribe(
+            (driver) => self.driver = driver);
+
+        this.DriverEditform.patchValue({ fullname: 'Mahesh' });
     }
     //#endregion
 
     //this.getVehicleList();
-
+    filleditform() {
+        this.DriverEditform.value['fullname'] = this.driver.fullname;
+    }
     //#region Remove Driver
     remove(driver_GUID) {
         //alert(driver_GUID);

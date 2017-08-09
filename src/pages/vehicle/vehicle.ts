@@ -82,8 +82,10 @@ export class VehiclePage {
     }
   }
   
-  AvailableSelection(e: any, getlocation) {
+  AvailableSelection(e: any, getlocation) 
+  {
 
+    //alert(JSON.stringify(getlocation));
     var index_num = this.getlocations.findIndex(x => x.location_GUID == getlocation.location_GUID);
     this.getlocations.splice(index_num, 1);
     
@@ -91,18 +93,21 @@ export class VehiclePage {
      this.location_vehicle.location_GUID = getlocation.location_GUID;
      this.location_vehicle.vehicle_GUID =  this.current_vehicle_GUID;
 
+ this.get_selectlocations.push(new GET_VEHICLE_LOCATION(getlocation.location_GUID, getlocation.name));
+
         this.vehicle_service.save_LocationVehicle(this.location_vehicle)
             .subscribe((response) => {
                 if (response.status == 200) 
                 {
+                     this.getList();
                     //this.View(this.current_driverGUID);
-                    alert('Location Vehicle Reqistered successfully');
+                    //alert('Location Vehicle Reqistered successfully');
                     //location.reload();
                 }
 
             });
 
-    this.get_selectlocations.push(new GET_VEHICLE_LOCATION(getlocation.location_GUID, getlocation.name));
+   
   }
 
   getList() {
@@ -145,6 +150,23 @@ export class VehiclePage {
       });
   }
 
+Delete(data)
+{
+ //alert(JSON.stringify(data));
+ var self = this;
+        this.vehicle_service.remove_vehiclelocation(data.ID)
+            .subscribe((response) => 
+            {
+               if(response.status==200)
+               {
+                   this.GetAvailableVehicles();
+                   var index_num = this.get_selectlocations.findIndex(x => x.ID == data.ID);
+                   this.get_selectlocations.splice(index_num, 1);
+               }
+               
+            });
+}
+
   View(vehicle_GUID) {
 
    this.current_vehicle_GUID=vehicle_GUID;
@@ -177,7 +199,7 @@ GetAvailableVehicles()
       .subscribe((getlocations: LocationModel[]) => {
        
         self_GetAllLocations.getlocations = getlocations;
-        console.log(this.getlocations);
+        //console.log(this.getlocations);
         this.vehiclesby_locations();
       });
   }

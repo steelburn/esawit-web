@@ -58,6 +58,8 @@
   "UPDATE_LOCATION": "Kemaskini Lokasi",
   "UPDATE_DRIVER": "kemaskini Pemandu",
   "UPDATE_USER": "Kemaskini Pengguna",
+  "ASSIGN_NEW_USER": "Pengguna Baru",
+  "USER_HISTORY": "Sejarah Pengguna",
 
   "FORM_FULLNAME": "Sila masukkan nama penuh",
   "FORM_USERNAME": "Sila masukkan nama pengguna",
@@ -76,5 +78,18 @@
   "FORM_LOCATION_NAME": "Sila masukkan nama lokasi",
   "SEARCH": "Carian",
   "SEARCH_LOCATION": "Carian lokasi",
-  "SEARCH_VEHICLE": "Carian kenderaan"
+  "SEARCH_VEHICLE": "Carian kenderaan",
+
+  "HARVESTED": "Telah Dituai",
+  "MANDOR": "Mandor",
+  "FACTORY": "Kilang",
+  "DATE": "Tarikh",
+  "LOADED_QTY": "Diangkut",
+  "UNLOADED_QTY": "Diturunkan",
+  "LOADED_TIME": "Masa Diangkut",
+  "UNLOADED_TIME": "Masa Diturunkan",
+  "STATUS": "Status",
+  "LORRY": "Lori",
+  "BUNCHES": "Tandan",
+  "RECONCILIATION_REPORT": "Laporan Rekonsiliasi"
 }

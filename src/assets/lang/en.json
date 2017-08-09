@@ -58,6 +58,8 @@
   "UPDATE_LOCATION": "Update Location",
   "UPDATE_DRIVER": "Update Driver",
   "UPDATE_USER": "Update User",
+  "ASSIGN_NEW_USER": "Assign New User",
+  "USER_HISTORY": "User History",
 
   "FORM_FULLNAME": "Please insert full name",
   "FORM_USERNAME": "Please insert username",
@@ -76,5 +78,18 @@
   "FORM_LOCATION_NAME": "Please insert location name",
   "SEARCH": "Search",
   "SEARCH_LOCATION": "Search by location",
-  "SEARCH_VEHICLE": "Search by vehicle"
+  "SEARCH_VEHICLE": "Search by vehicle",
+
+  "HARVESTED": "Harvested",
+  "MANDOR": "Mandor",
+  "FACTORY": "Factory",
+  "DATE": "Date",
+  "LOADED_QTY": "Loaded Qty",
+  "UNLOADED_QTY": "Unloaded Qty",
+  "LOADED_TIME": "Loaded Time",
+  "UNLOADED_TIME": "Unloaded Time",
+  "STATUS": "Status",
+  "LORRY": "Lorry",
+  "BUNCHES": "Bunches",
+  "RECONCILIATION_REPORT": "Reconciliation Report"
 }
