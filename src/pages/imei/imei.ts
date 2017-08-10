@@ -70,6 +70,7 @@ export class ImeiPage {
     this.Imeiuser_entry.Imei_GUID = this.current_Imei_GUID;
     this.Imeiuser_entry.user_IMEI = this.current_user_IMEI;
     this.Imeiuser_entry.active = this.current_Imei_active;
+    alert(this.current_Imei_active);
     alert(JSON.stringify(this.Imeiuser_entry));
     var self = this;
     this.imei_service.AssginUser_Imei(this.Imeiuser_entry)

@@ -242,7 +242,7 @@
 
           <ion-item>
             <ion-label class="fontColor-green" stacked>{{"PASSWORD" | translate}}</ion-label>
-            <ion-input type="text" formControlName="password" [(ngModel)]="user_entry.password" class="editInput" placeholder="{{'FORM_PASSWORD' | translate}}"></ion-input>
+            <ion-input type="password" formControlName="password" [(ngModel)]="user_entry.password" class="editInput" placeholder="{{'FORM_PASSWORD' | translate}}"></ion-input>
           </ion-item>
 
           <ion-item>
@@ -356,7 +356,7 @@
 
       <ion-card-header class="icTitle headerColor-white posRelative">
         <ion-icon name="ios-add-circle-outline" class="icHeaderIcon posAbsolute leftZero topZero" item-end></ion-icon>
-        <div class="icHeaderText">{{"REGISTER_NEW_LOCATION" | translate}} <b>ABC 123</b></div>
+        <div class="icHeaderText">{{"REGISTER_NEW_LOCATION" | translate}} <b>{{user.fullname}}</b></div>
         <button class="posAbsolute fullHeight bgColor-red topZero rightZero btnStyle2" (click)="addLocationClick()">
         <ion-icon name="md-close"></ion-icon> 
       </button>
