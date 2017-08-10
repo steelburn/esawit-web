@@ -86,7 +86,7 @@ export class ImeiPage {
     let self = this;
     let params: URLSearchParams = new URLSearchParams();
     //params.set('order', 'last_name+ASC');
-    self.imei_service.getImei2(params)
+    self.imei_service.getImei(params)
       .subscribe((user_imeis: UserIMEI[]) => {
         self.user_imeis = user_imeis;
         this.fillTop_imeiHistory();
