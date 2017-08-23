@@ -36,7 +36,7 @@ export class DriverPage {
 
         this.driverEditClicked = !this.driverEditClicked;
         alert(JSON.stringify(data));
-        alert(data.driver_GUID);
+        //alert(data.driver_GUID);
         this.current_ActiveUser = data.active;
         this.driver_entry_edit.fullname = data.fullname;
     }
@@ -214,7 +214,7 @@ export class DriverPage {
 
                 })
 
-            alert("Driver " + this.Driverform.value['fullname'] + " has been successfully registered!");
+            //alert("Driver " + this.Driverform.value['fullname'] + " has been successfully registered!");
             this.Driverform.reset();
             this.driverRegisterClick();
             this.getList();

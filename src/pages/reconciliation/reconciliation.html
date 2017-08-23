@@ -3,7 +3,7 @@
     <ion-card>
       <ion-row>
         <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark posRelative">
-          Reconciliation Report
+          {{"RECONCILIATION_REPORT" | translate}}
           
           <div class="fontColor-grey btnStyle4 paddingZero marginZero" (click)="print()">
             <ion-icon name="md-print"></ion-icon>
@@ -25,14 +25,14 @@
       <table class="fullWidth">
         <tr class="sumReportHeaderRow bgColor-lightGrey">
           <th class="tblHeader">No</th>
-          <th class="tblHeader textLeft">Location</th>
-          <th class="tblHeader">Loaded Qty</th>
-          <th class="tblHeader">Loaded Time</th>
-          <th class="tblHeader">Unloaded Qty</th>
-          <th class="tblHeader">Unloaded Time</th>
-          <th class="tblHeader">Factory</th>
-          <th class="tblHeader">Status</th>
-          <th class="tblHeader">Action</th>
+          <th class="tblHeader textLeft">{{"LOCATION" | translate}}</th>
+          <th class="tblHeader">{{"LOADED_QTY" | translate}}</th>
+          <th class="tblHeader">{{"LOADED_TIME" | translate}}</th>
+          <th class="tblHeader">{{"UNLOADED_QTY" | translate}}</th>
+          <th class="tblHeader">{{"UNLOADED_TIME" | translate}}</th> 
+          <th class="tblHeader">{{"FACTORY" | translate}}</th>
+          <th class="tblHeader">{{"STATUS" | translate}}</th>
+          <th class="tblHeader">{{"ACTION" | translate}}</th>
         </tr>
 
         <tr class="sumReportItemRow" *ngFor="let item_ReconciliationReport of (item_ReconciliationReports | filterData: filter.value : 'name');let i = index">

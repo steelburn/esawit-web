@@ -60,6 +60,23 @@
   "UPDATE_USER": "Kemaskini Pengguna",
   "ASSIGN_NEW_USER": "Pengguna Baru",
   "USER_HISTORY": "Sejarah Pengguna",
+  "ACTION": "Tindakan",
+  "VEHICLE_TRANSACTION_REPORT": "Laporan Transaksi Kenderaan",
+  "MENU": "Menu",
+  "MAIN": "Utama",
+  "SETTING": "Tetapan",
+  "REPORTING": "Laporan",
+  "HOME": "Utama",
+  "ASSIGN_USER": "Tetapkan Pengguna",
+  "SURVEYOR": "Juruukur",
+  "SUPERVISOR": "Penyelia",
+  
+  "PHONE_UUID": "UUID Telefon bimbit",
+
+  "BRAND": "Jenama",
+  "MODEL": "Model",
+  "YEAR": "Tahun",
+  "CAPACITY": "Kapasiti",
 
   "FORM_FULLNAME": "Sila masukkan nama penuh",
   "FORM_USERNAME": "Sila masukkan nama pengguna",

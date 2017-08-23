@@ -2,9 +2,8 @@
   <div class="col10">
     <ion-card>
       <ion-row>
-        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
-          Vehicle Transaction Report
-          
+        <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark posRelative">
+          {{"VEHICLE_TRANSACTION_REPORT" | translate}}
           <div class="fontColor-grey btnStyle3 paddingZero marginZero" (click)="print()">
             <ion-icon name="md-print"></ion-icon>
           </div>
@@ -32,14 +31,14 @@
         <ion-item class="bgColor-lightGrey">
           <ion-row>
             <ion-col col-1>No</ion-col>
-            <ion-col col-2>Location</ion-col>
-            <ion-col col-1>Vehicle</ion-col>
-            <ion-col col-1>Loaded Qty</ion-col>
-            <ion-col col-2>Loaded Time</ion-col>
-            <ion-col col-1>Unloaded Qty</ion-col>
-            <ion-col col-2>Unloaded Time</ion-col>
-            <ion-col col-1>Factory</ion-col>
-            <ion-col col-1>Status</ion-col>
+            <ion-col col-2>{{"LOCATION" | translate}}</ion-col>
+            <ion-col col-1>{{"VEHICLE" | translate}}</ion-col>
+            <ion-col col-1>{{"LOADED_QTY" | translate}}</ion-col>
+            <ion-col col-2>{{"LOADED_TIME" | translate}}</ion-col>
+            <ion-col col-1>{{"UNLOADED_QTY" | translate}}</ion-col>
+            <ion-col col-2>{{"UNLOADED_TIME" | translate}}</ion-col>
+            <ion-col col-1>{{"FACTORY" | translate}}</ion-col>
+            <ion-col col-1>{{"STATUS" | translate}}</ion-col>
           </ion-row>
         </ion-item>
 

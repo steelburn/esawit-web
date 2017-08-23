@@ -66,4 +66,8 @@ export class ReconciliationPage {
     }
   }
 
+  Viewlanding(){
+    
+  }
+
 }

@@ -64,13 +64,12 @@ export class ImeiPage {
   }
 
   AssignUser() {
-    alert(this.Imeiuser_entry.module_id);
+    //alert(this.Imeiuser_entry.module_id);
     //  this.Imeiuser_entry.user_GUID = this.Imeiuser_entry.user_GUID;
     //  this.Imeiuser_entry.module_id = this.Imeiuser_entry.module_id;
     this.Imeiuser_entry.Imei_GUID = this.current_Imei_GUID;
     this.Imeiuser_entry.user_IMEI = this.current_user_IMEI;
     this.Imeiuser_entry.active = this.current_Imei_active;
-    alert(this.current_Imei_active);
     alert(JSON.stringify(this.Imeiuser_entry));
     var self = this;
     this.imei_service.AssginUser_Imei(this.Imeiuser_entry)
@@ -86,7 +85,7 @@ export class ImeiPage {
     let self = this;
     let params: URLSearchParams = new URLSearchParams();
     //params.set('order', 'last_name+ASC');
-    self.imei_service.getImei(params)
+    self.imei_service.getImei2(params)
       .subscribe((user_imeis: UserIMEI[]) => {
         self.user_imeis = user_imeis;
         this.fillTop_imeiHistory();
@@ -108,7 +107,7 @@ export class ImeiPage {
   }
 
   View(index:number) {
-    alert(index);
+    //alert(index);
     var last_element = this.user_imeis[index];
     if (last_element.user_IMEI != "") {
       let self = this;
