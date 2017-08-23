@@ -36,7 +36,7 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar class="bgColor-purple fontColor-white">
-      <ion-title>Menu</ion-title>
+      <ion-title>{{"MENU" | translate}}</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -45,13 +45,7 @@
 
     <ion-list class="marginZero">
       <ion-row>
-        <button ion-item class="bgColor-lightGrey menuButton" (click)="othersPageClick('Others')">
-          <ion-icon name="ios-arrow-forward" class="fontColor-grey" [class.arrowRotate]="othersPageClicked" item-start></ion-icon>
-          Main
-        </button>
-      </ion-row>
-      <ion-row *ngIf="othersPageClicked">
-        <button ion-item menuClose *ngFor="let p of pages" [class.bgColor-darkBlue]="checkActivePage(p)" (click)="openPage(p)" class="bgColor-white menuButton">
+        <button ion-item menuClose *ngFor="let p of pages" [class.bgColor-darkBlue]="checkActivePage(p)" (click)="openPage(p)" class="bgColor-lightGrey menuButton">
           <ion-icon item-start [name]="p.icon"></ion-icon>
           {{p.title}}
         </button>
@@ -62,7 +56,7 @@
       <ion-row>
         <button ion-item class="bgColor-lightGrey menuButton" (click)="processPageClick('Process')">
           <ion-icon name="ios-arrow-forward" class="fontColor-grey" [class.arrowRotate]="processPageClicked" item-start></ion-icon>
-          Process
+          {{"SETTING" | translate}}
         </button>
       </ion-row>
       <ion-row *ngIf="processPageClicked">
@@ -77,7 +71,7 @@
       <ion-row>
         <button ion-item class="bgColor-lightGrey menuButton" (click)="reportingPageClick('Reporting')">
           <ion-icon name="ios-arrow-forward" class="fontColor-grey" [class.arrowRotate]="reportingPageClicked" item-start></ion-icon>
-          Reporting
+          {{"REPORTING" | translate}}
         </button>
       </ion-row>
       <ion-row *ngIf="reportingPageClicked">

@@ -4,12 +4,12 @@
     <ion-card>
       <ion-row>
         <ion-card-header class="fullWidth graphHeaderStyleRed fontColor-dark">
-          harvested
+          {{"HARVESTED" | translate}}
         </ion-card-header>
       </ion-row>
       <ion-item class="bgColor-lightGrey">
-        <ion-label>Location</ion-label>
-        <ion-label class="textRight" item-end>Bunches</ion-label>
+        <ion-label>{{"LOCATION" | translate}}</ion-label>
+        <ion-label class="textRight" item-end>{{"BUNCHES" | translate}}</ion-label>
       </ion-item>
       <ion-item class="reportItemRow" *ngFor="let harvestreport of harvestreports">
         <!--<ion-badge class="bgColor-red" item-start>1</ion-badge>-->

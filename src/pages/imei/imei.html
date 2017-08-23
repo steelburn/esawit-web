@@ -35,12 +35,12 @@
 
       <ion-row>
         <ion-card-header class="fullWidth graphHeaderStyleGreen fontColor-dark">
-          {{"IMEI" | translate}}
+          {{"PHONE_UUID" | translate}}
         </ion-card-header>
       </ion-row>
 
       <ion-row>
-        <ion-searchbar type="text" #filter (keyup)="0" placeholder="Search by imei"></ion-searchbar>
+        <ion-searchbar type="text" #filter (keyup)="0" placeholder='{{"SEARCH" | translate}}'></ion-searchbar>
       </ion-row>
 
       <ion-list>
@@ -49,7 +49,7 @@
           <ion-icon item-start name="md-close-circle" class="fontColor-red imeiIcon" *ngIf="user_imei.active==0"></ion-icon>
           <ion-icon item-start name="ios-help-circle" class="fontColor-yellow imeiIcon" *ngIf="!user_imei.user_GUID && user_imei.active!=0"></ion-icon>
           <ion-icon item-start name="ios-checkmark-circle" class="fontColor-green imeiIcon" *ngIf="user_imei.user_GUID && user_imei.active!=0"></ion-icon>
-          <ion-label class="fontColor-dark">{{user_imei.user_IMEI}} {{i+1}}</ion-label>
+          <ion-label class="fontColor-dark">{{user_imei.user_IMEI}}</ion-label>
           <button ion-button color="sunny" item-end class=" btnStyle1 bgColor-yellow" (click)="View(i)"><ion-icon name="md-eye"></ion-icon></button>
         </ion-item>
 

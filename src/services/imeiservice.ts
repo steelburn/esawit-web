@@ -53,7 +53,7 @@ export class ImeiService
     	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
     	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
 		return this.httpService.http
-			.get(this.baseResource_Url+'getimei_distinct_view', { search: params ,headers: queryHeaders})
+			.get(this.baseResource_Url+'getimei_users_view', { search: params ,headers: queryHeaders})
 			.map((response) => 
 			{
 				var result: any = response.json();

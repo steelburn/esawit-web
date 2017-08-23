@@ -77,7 +77,7 @@ export class MyApp {
     this.pages = [
       // { title: 'Login', component: LoginPage },
       // { title: 'Home', component: HomePage },
-      { title: 'Home', component: LandingV1Page },
+      { title: 'Utama', component: LandingV1Page },
       // { title: 'Landing V3', component: LandingV3Page }
       // { title: 'Component Demo', component: LandingV2Page },
       // { title: 'Tabs', component: TabsPage }
@@ -85,18 +85,18 @@ export class MyApp {
 
     this.reportingPages = [
       // { title: 'Report', component: ReportsPage },
-      { title: 'Vehicle Transaction', component: VehicleTransactionPage },
-      { title: 'Reconciliation', component: ReconciliationPage},
-      { title: 'Summary Report', component: SummaryReportPage }
+      { title: 'Transaksi Kenderaan', component: VehicleTransactionPage },
+      { title: 'Laporan Rekonsilasi', component: ReconciliationPage },
+      { title: 'Ringkasan Laporan', component: SummaryReportPage }
 
     ];
 
     this.processPages = [
-      { title: 'Driver', component: TabsPage, pid: 0 },
-      { title: 'Location', component: TabsPage, pid: 1 },
-      { title: 'User', component: TabsPage, pid: 2 },
-      { title: 'Vehicle', component: TabsPage, pid: 3 },
-      { title: 'IMEI', component: TabsPage, pid: 4 }
+      { title: 'Pemandu', component: TabsPage, pid: 0 },
+      { title: 'Lokasi', component: TabsPage, pid: 1 },
+      { title: 'Pengguna', component: TabsPage, pid: 2 },
+      { title: 'Kenderaan', component: TabsPage, pid: 3 },
+      { title: 'UUID Telefon Bimbit', component: TabsPage, pid: 4 }
       // { title: 'Role', component: RolePage },
       // { title: 'Sector', component: SectorPage },
       // { title: 'Tenant', component: TenantPage }

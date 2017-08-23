@@ -79,6 +79,23 @@
   "SEARCH": "Search",
   "SEARCH_LOCATION": "Search by location",
   "SEARCH_VEHICLE": "Search by vehicle",
+  "ACTION": "Action",
+  "VEHICLE_TRANSACTION_REPORT": "Vehicle Trasaction Report",
+  "MENU": "Menu",
+  "MAIN": "Main",
+  "SETTING": "Setting",
+  "REPORTING": "Reporting",
+  "HOME": "Home",
+  "ASSIGN_USER": "Assign User",
+  "SURVEYOR": "Surveyor",
+  "SUPERVISOR": "Supervisor",
+
+  "PHONE_UUID": "Phone UUID",
+
+  "BRAND": "Brand",
+  "MODEL": "Model",
+  "YEAR": "Year",
+  "CAPACITY": "Capacity",
 
   "HARVESTED": "Harvested",
   "MANDOR": "Mandor",

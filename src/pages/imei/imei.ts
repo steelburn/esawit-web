@@ -64,7 +64,7 @@ export class ImeiPage {
   }
 
   AssignUser() {
-    alert(this.Imeiuser_entry.module_id);
+    //alert(this.Imeiuser_entry.module_id);
     //  this.Imeiuser_entry.user_GUID = this.Imeiuser_entry.user_GUID;
     //  this.Imeiuser_entry.module_id = this.Imeiuser_entry.module_id;
     this.Imeiuser_entry.Imei_GUID = this.current_Imei_GUID;
@@ -107,7 +107,7 @@ export class ImeiPage {
   }
 
   View(index:number) {
-    alert(index);
+    //alert(index);
     var last_element = this.user_imeis[index];
     if (last_element.user_IMEI != "") {
       let self = this;
