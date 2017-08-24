@@ -70,6 +70,9 @@
   "ASSIGN_USER": "Tetapkan Pengguna",
   "SURVEYOR": "Juruukur",
   "SUPERVISOR": "Penyelia",
+  "HARVESTED_BY_LOCATION": "Tuaian Mengikut lokasi",
+  "LOADED_BY_VEHICLE": "Muatan Mengikut Kenderaan",
+  "UNLOADED_BY_FACTORY": "Punggahan Mengikut Kilang",
   
   "PHONE_UUID": "UUID Telefon bimbit",
 

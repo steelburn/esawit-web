@@ -158,7 +158,9 @@ export class ImeiPage {
 
   }
 
-  Save_ImeiHistory(data) {
+  Save_ImeiHistory(data) 
+  {
+    alert(JSON.stringify(data));
     this.UserImeiHistory_entry.user_IMEI = data.user_IMEI;
     this.UserImeiHistory_entry.user_GUID = data.user_GUID;
     this.UserImeiHistory_entry.fullname = data.fullname;
@@ -177,7 +179,7 @@ export class ImeiPage {
   RemoveUser(data) {
     //alert(JSON.stringify(data));
 
-    // this.Active_Deactive_Imei.active = 2;
+    this.Active_Deactive_Imei.active = 0;
     this.Active_Deactive_Imei.user_IMEI = data.user_IMEI;
     this.Active_Deactive_Imei.module_id = null;
     this.Active_Deactive_Imei.user_GUID = "";
