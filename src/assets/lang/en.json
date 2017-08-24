@@ -89,6 +89,9 @@
   "ASSIGN_USER": "Assign User",
   "SURVEYOR": "Surveyor",
   "SUPERVISOR": "Supervisor",
+  "HARVESTED_BY_LOCATION": "Harvested By Location",
+  "LOADED_BY_VEHICLE": "Loaded By Vehicle",
+  "UNLOADED_BY_FACTORY": "Unloaded By Factory",
 
   "PHONE_UUID": "Phone UUID",
 
