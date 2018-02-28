@@ -52,9 +52,10 @@ export class ImeiPage {
     this.ImeiEditClicked = !this.ImeiEditClicked;
   }
 
-  constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, private httpService: BaseHttpService,
+  constructor(public http: Http, private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, private httpService: BaseHttpService,
     private imei_service: ImeiService) {
-    this.get_imeis();
+    // this.get_imeis();
+    this.getImeiUsingView();
     this.ImeiUserform = fb.group
       ({
         formuser_GUID: '',
@@ -70,15 +71,33 @@ export class ImeiPage {
     this.Imeiuser_entry.Imei_GUID = this.current_Imei_GUID;
     this.Imeiuser_entry.user_IMEI = this.current_user_IMEI;
     this.Imeiuser_entry.active = this.current_Imei_active;
-    alert(JSON.stringify(this.Imeiuser_entry));
+    // alert(JSON.stringify(this.Imeiuser_entry));
     var self = this;
     this.imei_service.AssginUser_Imei(this.Imeiuser_entry)
       .subscribe((response) => {
-        this.get_imeis();
+        this.getImeiUsingView();
       })
 
     this.ImeiEditClose();
     this.get_UserList();
+  }
+
+  getImeiUsingView() {
+    this.http
+      .get('http://api.zen.com.my/api/v2/eSawitdb/_table/view_user_imei?api_key=b34c8b6e26a41f07dee48513714a534920f647cd48f299e9f28410a86d8a2cb4')
+      .map(res => res.json())
+      .subscribe(data => {
+        this.user_imeis = data['resource'];
+        this.user_imeis.forEach(element => {
+          if (element.module_id === '1')
+            element.module_id = 'Surveyor'
+          else if (element.module_id === '2')
+            element.module_id = 'Supervisor'
+          else if (element.module_id === '3')
+            element.module_id = 'Factory'
+        });
+        console.table(data['resource']);
+      });
   }
 
   get_imeis() {
@@ -106,7 +125,7 @@ export class ImeiPage {
     }
   }
 
-  View(index:number) {
+  View(index: number) {
     //alert(index);
     var last_element = this.user_imeis[index];
     if (last_element.user_IMEI != "") {
@@ -135,7 +154,7 @@ export class ImeiPage {
 
 
   Deactive_imei(data) {
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
     if (data.active == 0 || data.active == null || data.active == 2) {
       this.Active_Deactive_Imei.active = 1;
     }
@@ -153,14 +172,13 @@ export class ImeiPage {
     var self = this;
     this.imei_service.Deactive_Imei(this.Active_Deactive_Imei)
       .subscribe((response) => {
-        this.get_imeis();
+        this.getImeiUsingView();
       })
 
   }
 
-  Save_ImeiHistory(data) 
-  {
-    alert(JSON.stringify(data));
+  Save_ImeiHistory(data) {
+    // alert(JSON.stringify(data));
     this.UserImeiHistory_entry.user_IMEI = data.user_IMEI;
     this.UserImeiHistory_entry.user_GUID = data.user_GUID;
     this.UserImeiHistory_entry.fullname = data.fullname;
@@ -189,7 +207,7 @@ export class ImeiPage {
     var self = this;
     this.imei_service.Deactive_Imei(this.Active_Deactive_Imei)
       .subscribe((response) => {
-        this.get_imeis();
+        this.getImeiUsingView();
       })
 
   }

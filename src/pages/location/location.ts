@@ -232,8 +232,8 @@ export class LocationPage {
   public locationEditClick(data) {
     this.locationEditClicked = !this.locationEditClicked;
     this.current_locationGUID = data.location_GUID;
-    alert(JSON.stringify(data));
-    alert(this.current_locationGUID);
+    // alert(JSON.stringify(data));
+    // alert(this.current_locationGUID);
     this.current_ActiveUser = data.active;
     this.current_locationGUID_Edit = data.location_GUID;
     this.current_tenantGUID_Edit = data.tenant_GUID;
@@ -248,7 +248,7 @@ export class LocationPage {
       this.location_entry_edit.tenant_GUID = this.current_tenantGUID_Edit;
       this.location_entry_edit.active = this.current_ActiveUser;
       var self = this;
-      alert(JSON.stringify(this.location_entry_edit));
+      // alert(JSON.stringify(this.location_entry_edit));
       this.location_service.Update(this.location_entry_edit)
         .subscribe((response) => {
           //console.log(response);

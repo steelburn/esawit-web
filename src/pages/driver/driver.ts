@@ -35,7 +35,7 @@ export class DriverPage {
     public driverEditClick(data) {
 
         this.driverEditClicked = !this.driverEditClicked;
-        alert(JSON.stringify(data));
+        // alert(JSON.stringify(data));
         //alert(data.driver_GUID);
         this.current_ActiveUser = data.active;
         this.driver_entry_edit.fullname = data.fullname;
@@ -208,7 +208,7 @@ export class DriverPage {
                 .subscribe((response) => {
                     if (response.status == 200) {
                         this.getList();
-                        alert('User Reqistered successfully');
+                        alert('User Registered successfully');
                         location.reload();
                     }
 
@@ -223,8 +223,8 @@ export class DriverPage {
     }
 
     register() {
-        alert(JSON.stringify(this.Driverform.value));
-        alert(JSON.stringify(this.driver_entry));
+        // alert(JSON.stringify(this.Driverform.value));
+        // alert(JSON.stringify(this.driver_entry));
     }
 
 
@@ -290,7 +290,7 @@ export class DriverPage {
             this.driver_entry_edit.driver_GUID = this.current_driverGUID;
             this.driver_entry_edit.tenant_GUID = this.current_tenantGUID
             this.driver_entry_edit.active = this.current_ActiveUser;
-            alert(JSON.stringify(this.DriverEditform.value));
+            // alert(JSON.stringify(this.DriverEditform.value));
             var self = this;
             console.log(self);
             this.driverservice.Update(this.driver_entry_edit)

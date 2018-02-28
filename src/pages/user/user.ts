@@ -163,8 +163,8 @@ export class UserPage {
     }
 
     register() {
-        alert(JSON.stringify(this.Userform.value));
-        alert(JSON.stringify(this.user_entry));
+        // alert(JSON.stringify(this.Userform.value));
+        // alert(JSON.stringify(this.user_entry));
     }
 
     getList() {
@@ -276,7 +276,7 @@ vehiclesby_locations()
             this.user_entry_edit.user_GUID = this.current_userGUID;
             this.user_entry_edit.tenant_GUID = this.current_tenantGUID;
             this.user_entry_edit.active = this.current_ActiveUser;
-            alert(JSON.stringify(this.user_entry_edit));
+            // alert(JSON.stringify(this.user_entry_edit));
             var self = this;
             this.userservice.Update(this.user_entry_edit)
                 .subscribe((response) => {
@@ -292,7 +292,7 @@ vehiclesby_locations()
         this.userEditClicked = !this.userEditClicked;
         this.current_userGUID = user_data.user_GUID; this.current_tenantGUID = user_data.tenant_GUID;
         this.current_ActiveUser = user_data.active;
-        alert(this.current_userGUID);
+        // alert(this.current_userGUID);
 
         this.user_entry_edit.fullname = user_data.fullname;
         this.user_entry_edit.userID = user_data.userID;

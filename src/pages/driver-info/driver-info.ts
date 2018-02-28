@@ -56,8 +56,8 @@ export class DriverInfoPage {
 
   register() 
     {
-      alert(JSON.stringify(this.Driverform.value));
-      alert(JSON.stringify(this.driver));
+      // alert(JSON.stringify(this.Driverform.value));
+      // alert(JSON.stringify(this.driver));
     }
 
   save()

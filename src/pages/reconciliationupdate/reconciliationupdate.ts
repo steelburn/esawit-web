@@ -41,8 +41,8 @@ export class ReconciliationupdatePage {
   Update_ReconciliationStatus() 
   {
     
-     alert(this.navParams.get('ID'));
-     alert(JSON.stringify(this.Reconciliationform.value));
+    //  alert(this.navParams.get('ID'));
+    //  alert(JSON.stringify(this.Reconciliationform.value));
       if (this.Reconciliationform.valid) 
       {
         var self = this;

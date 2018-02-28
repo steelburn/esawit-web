@@ -132,7 +132,7 @@ setFilteredItems()
 
 filterItems(searchTerm)
 {
-  alert(searchTerm);
+  // alert(searchTerm);
    if(searchTerm!='')
    {
         return this.harvestreports.filter((harvestreport) => 
@@ -142,7 +142,7 @@ filterItems(searchTerm)
    } 
    else
    {
-     alert('hh');
+    //  alert('hh');
    }
 }
 

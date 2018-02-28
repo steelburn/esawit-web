@@ -74,7 +74,7 @@ export class VehiclePage {
       this.vehicle_service.save_vehicle(this.vehicle_entry)
         .subscribe((response) => {
           if (response.status == 200) {
-            alert('Vehicle Reqistered successfully');
+            // alert('Vehicle Reqistered successfully');
             location.reload();
           }
 
@@ -138,7 +138,7 @@ export class VehiclePage {
 
   remove(vehicle_GUID) 
   {
-    alert(vehicle_GUID);
+    // alert(vehicle_GUID);
     var self = this;
     this.vehicle_service.remove(vehicle_GUID)
       .subscribe(() => {
@@ -217,7 +217,7 @@ vehiclesby_locations()
 
 Deactive_Vehicle(data) 
 {
-    alert(JSON.stringify(data))
+    // alert(JSON.stringify(data))
     if(data.active==0 || data.active==null)
     {
       this.Active_Deactive_vehicle.active = 1;

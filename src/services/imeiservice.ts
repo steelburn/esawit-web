@@ -23,7 +23,7 @@ class ServerResponse {
 @Injectable()
 export class ImeiService 
 {
-	
+	baseViewUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/view_user_imei';
 	baseResourceUrl: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/user_imei';
 	baseResourceUrl_masteruser: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/master_user';
     baseResourceUrl_ImeiHistory: string = constants.DREAMFACTORY_INSTANCE_URL + '/api/v2/eSawitdb/_table/users_imei_history';
@@ -88,6 +88,29 @@ export class ImeiService
 
 			}).catch(this.handleError);
 	};
+
+	getImeiUsingView (params?: URLSearchParams): Observable<UserIMEI[]> 
+	{
+        //console.log(localStorage.getItem('session_token'));console.log(constants.DREAMFACTORY_API_KEY);
+		var queryHeaders = new Headers();
+    	queryHeaders.append('Content-Type', 'application/json');
+    	queryHeaders.append('X-Dreamfactory-Session-Token', localStorage.getItem('session_token'));
+    	queryHeaders.append('X-Dreamfactory-API-Key', constants.DREAMFACTORY_API_KEY);
+		return this.httpService.http
+			.get(this.baseViewUrl, { search: params ,headers: queryHeaders})
+			.map((response) => 
+			{
+				var result: any = response.json();
+				let getImeis: Array<UserIMEI> = [];
+				result.resource.forEach((getImei) => {
+					getImeis.push(UserIMEI.fromJson(getImei));
+				});
+                console.log(getImeis);
+				return getImeis.filter(getImei => getImei.user_IMEI != '');
+
+			}).catch(this.handleError);
+	};
+
 
     Get_IMEI_History (Imei_id:string,params?: URLSearchParams): Observable<Get_IMEI[]> 
 	{
